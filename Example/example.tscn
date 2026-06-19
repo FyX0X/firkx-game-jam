@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://cmbynywvcmrwp"]
 
+[ext_resource type="Script" uid="uid://cfkdx6uk6yw80" path="res://Example/example.gd" id="1_3bano"]
 [ext_resource type="Texture2D" uid="uid://bhaw2w17rxf6d" path="res://assets/images/dwarf.jpg" id="1_nh52x"]
 
 [node name="Example" type="Node2D" unique_id=638127527]
+script = ExtResource("1_3bano")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2012080527]
 texture = ExtResource("1_nh52x")
