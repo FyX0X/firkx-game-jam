@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dloy8kaaf63r5"]
+
+[ext_resource type="PackedScene" uid="uid://cmbynywvcmrwp" path="res://Example/example.tscn" id="1_ig7tw"]
+
+[node name="Main" type="Node" unique_id=761649392]
+
+[node name="Example" parent="." unique_id=638127527 instance=ExtResource("1_ig7tw")]
+position = Vector2(320, 342)
+scale = Vector2(0.685, 0.685)
+
+[node name="Label" type="Label" parent="." unique_id=399251921]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -516.0
+offset_bottom = 179.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 64
+text = "Six Toothed Fork
+"
