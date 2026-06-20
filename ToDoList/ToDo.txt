@@ -4,12 +4,15 @@ Principales :
 				   -> Anim
 	Commencer avec crafter / laser ?
 	Degats chute (ecran rouge qlq secs)
-	Transi 3e -> 1er personne qd vaisseau
+	Transi 3e -> 1er personne qd vaisseau (rendre le corps transparent si la camera se rapproche devrait marcher)
 	Fer Titane (Cuivre) Sillicium Tungsten
 	Pierre Argile 
 	Points de science -> feed ressources et plantes cailloux jolis et meteorites
 	Nom des Inventaires correct pour les batiments
-	Sons (musiques?) 
+	Sons (musiques?):
+		Props
+		batiments
+		Ambiance
 	Effets ?
 
 
