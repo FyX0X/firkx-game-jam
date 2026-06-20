@@ -2,10 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://u42v52f6xw2m" path="res://Player/player.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://d0qsixhs4x7nf" path="res://World/World.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://dqbniuv054ai1" path="res://HUD/hud.tscn" id="3_h2yge"]
 
 [node name="Main" type="Node" unique_id=761649392]
 
 [node name="World" parent="." unique_id=1479313556 instance=ExtResource("2_h2yge")]
 
-[node name="Player" parent="." unique_id=1614768388 instance=ExtResource("1_0xm2m")]
+[node name="Player" parent="." unique_id=1614768388 groups=["player"] instance=ExtResource("1_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 12.5, 0)
+
+[node name="HUD" parent="." unique_id=594591012 instance=ExtResource("3_h2yge")]
