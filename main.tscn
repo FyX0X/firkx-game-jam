@@ -22,8 +22,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54638034, 5.4950824, 7.5645
 
 [node name="Factory" parent="." unique_id=125905545 instance=ExtResource("5_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.6014395, 0)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=879743808]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.965537, -6.360722)
-light_energy = 5.504
-omni_range = 574.584

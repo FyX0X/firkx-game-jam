@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dqi622av1kr1r" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://fsa4twm22msf" path="res://Inventory/inventory.tscn" id="2_4ntmi"]
-[ext_resource type="PackedScene" uid="uid://8j1ui6gsknnb" path="res://Placement/placement.tscn" id="3_btcbx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8lsb0"]
 
@@ -31,9 +30,4 @@ target_position = Vector3(0, 0, -10)
 debug_shape_custom_color = Color(1, 0, 0, 1)
 
 [node name="Inventory" parent="." unique_id=1803995424 instance=ExtResource("2_4ntmi")]
-
-[node name="Placement" parent="." unique_id=964907743 instance=ExtResource("3_btcbx")]
-
-[node name="Marker3D" type="Marker3D" parent="." unique_id=1879040963]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2.5)
 inventory_name = "Backpack"

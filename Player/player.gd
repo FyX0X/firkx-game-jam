@@ -17,17 +17,9 @@ var _current_target: Node = null
 var fly_debug: bool = false
 
 
-@onready var placement: Placement = $Placement
-
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	placement.building_placed.connect(_on_building_placed)
 
-func _on_building_placed(building: Building) -> void:
-	var inventory = $Inventory
-	for item in building.cost:
-		inventory.remove_item(item, building.cost[item])
-		
 func _physics_process(delta: float) -> void:
 	if fly_debug:
 		_process_debug_flying(delta)

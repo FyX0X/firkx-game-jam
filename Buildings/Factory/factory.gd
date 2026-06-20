@@ -11,7 +11,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	super._process(delta)
 	if _can_process():
 		buffer += delta * process_speed
 		if (buffer >= recipe["time"]):
@@ -31,6 +30,8 @@ func _finish_processing() -> void:
 	for item in recipe["output"]:
 		inventory.add_item(item, recipe["output"][item])
 	buffer -= recipe["time"]
+	for item in inventory.get_all_items():
+		print("Factory :" + str(inventory.get_all_items()[item]))
 
 func set_recipe(new_recipe : Dictionary):
 	recipe = new_recipe
