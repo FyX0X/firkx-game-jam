@@ -5,3 +5,6 @@
 
 [node name="Drill" unique_id=243835565 instance=ExtResource("1_p4g2w")]
 script = ExtResource("2_3rq8i")
+
+[node name="Inventory" parent="." index="2" unique_id=1803995424]
+inventory_name = "Drill Inventory"
