@@ -26,3 +26,8 @@ Martin:
 	Inventory Transfer:
 		UI
 		Data
+		mostly done.
+	Reglé la camera qui bug:
+		move H ok
+		move V still todo
+		stutter todo

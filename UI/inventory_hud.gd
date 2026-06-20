@@ -1,3 +1,4 @@
+class_name InventoryHUD
 extends Control
 
 @onready var left_ui: Control  = $LeftInventoryUI
@@ -11,6 +12,7 @@ var _grabbed_from: Inventory = null
 var _grabbed_slot: Panel = null   # to highlight it
 
 func _ready():
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	cursor_label.hide()
 	left_ui.slot_picked.connect(_on_slot_picked)
 	left_ui.slot_dropped.connect(_on_slot_dropped)

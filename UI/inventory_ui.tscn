@@ -1,29 +1,62 @@
 [gd_scene format=3 uid="uid://qb6o7uf04vum"]
 
 [ext_resource type="Script" uid="uid://b0p58cukvec05" path="res://UI/inventory_ui.gd" id="1_4hlgy"]
+[ext_resource type="PackedScene" uid="uid://bllbuy6rksqit" path="res://UI/inventory_slot.tscn" id="2_l6l0t"]
 
 [node name="InventoryUI" type="Control" unique_id=1944066177]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_4hlgy")
 
-[node name="TitleLabel" type="Label" parent="." unique_id=845716905]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=881592187]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -93.0
+offset_right = 336.0
+offset_bottom = 93.0
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=845716905]
+layout_mode = 2
 text = "Title"
 
-[node name="DetailLabel" type="Label" parent="." unique_id=1339500203]
-layout_mode = 0
-offset_left = -3.0
-offset_top = 26.0
-offset_right = 72.0
-offset_bottom = 49.0
-text = "Label"
-
-[node name="GridContainer" type="GridContainer" parent="." unique_id=776054258]
-layout_mode = 0
-offset_top = 27.0
-offset_right = 75.0
-offset_bottom = 27.0
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer" unique_id=776054258]
+layout_mode = 2
 columns = 5
+
+[node name="InventorySlot" parent="VBoxContainer/GridContainer" unique_id=980545827 instance=ExtResource("2_l6l0t")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="VBoxContainer/GridContainer" unique_id=365009626 instance=ExtResource("2_l6l0t")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="VBoxContainer/GridContainer" unique_id=331333013 instance=ExtResource("2_l6l0t")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="VBoxContainer/GridContainer" unique_id=285594262 instance=ExtResource("2_l6l0t")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="VBoxContainer/GridContainer" unique_id=447340788 instance=ExtResource("2_l6l0t")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="VBoxContainer/GridContainer" unique_id=876640481 instance=ExtResource("2_l6l0t")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="VBoxContainer/GridContainer" unique_id=1025587969 instance=ExtResource("2_l6l0t")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="VBoxContainer/GridContainer" unique_id=2145270854 instance=ExtResource("2_l6l0t")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="VBoxContainer/GridContainer" unique_id=466854575 instance=ExtResource("2_l6l0t")]
+layout_mode = 2
+
+[node name="InventorySlot10" parent="VBoxContainer/GridContainer" unique_id=480803677 instance=ExtResource("2_l6l0t")]
+layout_mode = 2
+
+[node name="DetailLabel" type="Label" parent="VBoxContainer" unique_id=1339500203]
+layout_mode = 2
+offset_transform_enabled = true
+text = "Label"

@@ -19,11 +19,25 @@ offset_bottom = 23.0
 
 [node name="TransferBar" type="SpinBox" parent="." unique_id=400317091]
 layout_mode = 0
-offset_right = 86.5
-offset_bottom = 31.0
+offset_left = 109.0
+offset_top = 4.0
+offset_right = 195.5
+offset_bottom = 35.0
 
 [node name="LeftInventoryUI" parent="." unique_id=1944066177 instance=ExtResource("2_f0n0s")]
 layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
 
 [node name="RightInventoryUI" parent="." unique_id=1074532455 instance=ExtResource("2_f0n0s")]
 layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
