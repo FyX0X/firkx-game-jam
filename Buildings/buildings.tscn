@@ -1,44 +1,30 @@
 [gd_scene format=3 uid="uid://ccafhp5bef5b3"]
 
+[ext_resource type="Script" uid="uid://glos5346diyn" path="res://Buildings/buildings.gd" id="1_ocqis"]
 [ext_resource type="PackedScene" uid="uid://fsa4twm22msf" path="res://Inventory/inventory.tscn" id="2_qnjey"]
 
-[sub_resource type="GDScript" id="GDScript_qnjey"]
-script/source = "extends StaticBody3D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
+[sub_resource type="BoxShape3D" id="BoxShape3D_4kxuq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4kxuq"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ocqis"]
-transparency = 1
-albedo_color = Color(0.3571339, 0.61602896, 0.35409054, 1)
-
-[node name="Buildings" type="StaticBody3D" unique_id=243835565 groups=["interactable"]]
-script = ExtResource("1_ocqis")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mti6b"]
+albedo_color = Color(1, 0.23529412, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qnjey"]
 size = Vector3(0.8, 0.8, 0.8)
 
-[node name="Buildings" type="StaticBody3D" unique_id=243835565]
-script = SubResource("GDScript_qnjey")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1292359159]
-mesh = SubResource("BoxMesh_4kxuq")
-surface_material_override/0 = SubResource("StandardMaterial3D_ocqis")
+[node name="Buildings" type="StaticBody3D" unique_id=243835565 groups=["interactable"]]
+script = ExtResource("1_ocqis")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=63273900]
 shape = SubResource("BoxShape3D_4kxuq")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1292359159]
+mesh = SubResource("BoxMesh_4kxuq")
+surface_material_override/0 = SubResource("StandardMaterial3D_mti6b")
+
 [node name="Inventory" parent="." unique_id=1803995424 instance=ExtResource("2_qnjey")]
+inventory_name = "DefaultInventoryBuilding"
 
 [node name="ClippingHitbox" type="Area3D" parent="." unique_id=210735664]
 
@@ -49,4 +35,3 @@ shape = SubResource("BoxShape3D_qnjey")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FloatingHitbox" unique_id=191916926]
 shape = SubResource("BoxShape3D_4kxuq")
-inventory_name = "DefaultInventoryBuilding"
