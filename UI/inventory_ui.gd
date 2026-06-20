@@ -16,11 +16,11 @@ func _ready():
 		slot.slot_clicked.connect(_on_slot_clicked.bind(slot))
 	hide()
 
-func setup(target: Inventory, label: String = "Inventory") -> void:
+func setup(target: Inventory) -> void:
 	inventory = target
 	inventory.inventory_changed.connect(_on_inventory_changed)
 	if title_label:
-		title_label.text = label
+		title_label.text = target.inventory_name
 	refresh()
 
 func refresh():

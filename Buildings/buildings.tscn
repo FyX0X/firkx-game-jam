@@ -10,7 +10,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mti6b"]
 albedo_color = Color(1, 0.23529412, 1, 1)
 
-[node name="Buildings" type="StaticBody3D" unique_id=243835565]
+[node name="Buildings" type="StaticBody3D" unique_id=243835565 groups=["interactable"]]
 script = ExtResource("1_ocqis")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=63273900]

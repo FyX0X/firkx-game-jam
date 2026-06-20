@@ -5,7 +5,8 @@ signal item_added(item_id: String, amount: int)
 signal item_removed(item_id: String, amount: int)
 signal inventory_changed
 
-@export var capacity: int = 20  # max number of distinct stacks
+@export var inventory_name: String = "DefaultInventoryName"
+@export var capacity: int = 10  # max number of distinct stacks
 
 # { "iron": 12, "coal": 5, ... }
 var _items: Dictionary = {}

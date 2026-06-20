@@ -20,16 +20,15 @@ func _ready():
 	right_ui.slot_dropped.connect(_on_slot_dropped)
 	hide()
 
-func open_single(inv: Inventory, label: String = "Inventory") -> void:
-	left_ui.setup(inv, label)
+func open_single(inv: Inventory) -> void:
+	left_ui.setup(inv)
 	right_ui.hide()
 	left_ui.show()
 	show()
 
-func open_transfer(left_inv: Inventory, right_inv: Inventory,
-		left_label: String = "Player", right_label: String = "Chest") -> void:
-	left_ui.setup(left_inv, left_label)
-	right_ui.setup(right_inv, right_label)
+func open_transfer(left_inv: Inventory, right_inv: Inventory) -> void:
+	left_ui.setup(left_inv)
+	right_ui.setup(right_inv)
 	left_ui.show()
 	right_ui.show()
 	show()
