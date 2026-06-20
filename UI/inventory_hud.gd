@@ -3,13 +3,14 @@ extends Control
 
 @onready var left_ui: Control  = $LeftInventoryUI
 @onready var right_ui: Control = $RightInventoryUI
-@onready var transfer_amount: SpinBox = $TransferBar
 @onready var cursor_label: Label = $CursorLabel   # floating label that follows mouse
+var is_open: bool = false
 
 # Grab state
 var _grabbed_item: String = ""
 var _grabbed_from: Inventory = null
 var _grabbed_slot: Panel = null   # to highlight it
+var _grabbed_count: int = 0
 
 func _ready():
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -20,31 +21,47 @@ func _ready():
 	right_ui.slot_dropped.connect(_on_slot_dropped)
 	hide()
 
-func open_single(inv: Inventory, label: String = "Inventory") -> void:
-	left_ui.setup(inv, label)
+func open_single(inv: Inventory) -> void:
+	is_open = true
+	left_ui.setup(inv)
 	right_ui.hide()
 	left_ui.show()
 	show()
+	_set_ui_mode(true)
 
-func open_transfer(left_inv: Inventory, right_inv: Inventory,
-		left_label: String = "Player", right_label: String = "Chest") -> void:
-	left_ui.setup(left_inv, left_label)
-	right_ui.setup(right_inv, right_label)
+func open_transfer(left_inv: Inventory, right_inv: Inventory) -> void:
+	is_open = true
+	left_ui.setup(left_inv)
+	right_ui.setup(right_inv)
 	left_ui.show()
 	right_ui.show()
 	show()
+	_set_ui_mode(true)
 
 func close() -> void:
+	if not is_open:
+		return
+	is_open = false
+	left_ui.teardown()   # disconnect signals
+	right_ui.teardown()
 	_cancel_grab()
 	hide()
+	_set_ui_mode(false)
 
 # ── grab / drop ─────────────────────────────────────────────────────
-func _on_slot_picked(from_inv: Inventory, item_id: String, slot: Panel) -> void:
-	if _grabbed_item == "":
+func _on_slot_picked(from_inv: Inventory, item_id: String, mouse_button: MouseButton, slot: Panel) -> void:
+	if slot == _grabbed_slot:
+		if mouse_button == MOUSE_BUTTON_LEFT:
+			_cancel_grab()
+		elif mouse_button == MOUSE_BUTTON_RIGHT:
+			_grabbed_count = min(_grabbed_count + 1, from_inv.get_amount(item_id))
+	elif _grabbed_item == "":
 		# First click: grab
 		_grabbed_item = item_id
 		_grabbed_from = from_inv
 		_grabbed_slot = slot
+		var total := from_inv.get_amount(item_id)
+		_grabbed_count = total if mouse_button == MOUSE_BUTTON_LEFT else 1
 		slot.set_selected(true)
 		cursor_label.text = item_id
 		cursor_label.show()
@@ -57,14 +74,15 @@ func _on_slot_picked(from_inv: Inventory, item_id: String, slot: Panel) -> void:
 			# Drop onto an occupied slot: transfer there anyway
 			_do_transfer(from_inv)
 
-func _on_slot_dropped(to_inv: Inventory, _item_id: String) -> void:
+func _on_slot_dropped(to_inv: Inventory, _item_id: String, mouse_button: MouseButton) -> void:
 	# Clicked an empty slot
 	if _grabbed_item != "":
 		_do_transfer(to_inv)
 
 func _do_transfer(to_inv: Inventory) -> void:
-	var amount := int(transfer_amount.value) if transfer_amount else 1
-	Inventory.transfer_partial(_grabbed_from, to_inv, _grabbed_item, amount)
+	print("inv_hud: _do_transfer")
+	var result: Dictionary = Inventory.transfer_partial(_grabbed_from, to_inv, _grabbed_item, _grabbed_count)
+	print(result)
 	_cancel_grab()
 
 func _cancel_grab() -> void:
@@ -73,6 +91,7 @@ func _cancel_grab() -> void:
 	_grabbed_item = ""
 	_grabbed_from = null
 	_grabbed_slot = null
+	_grabbed_count = 0
 	cursor_label.hide()
 
 # ── cursor label follows mouse ───────────────────────────────────────
@@ -84,7 +103,13 @@ func _process(_delta: float) -> void:
 func _gui_input(event: InputEvent) -> void:
 	if _grabbed_item == "" :
 		return
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-		_cancel_grab()
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		_cancel_grab()
+
+func _set_ui_mode(enabled: bool) -> void:
+	if enabled:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		mouse_filter = Control.MOUSE_FILTER_STOP
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		mouse_filter = Control.MOUSE_FILTER_IGNORE

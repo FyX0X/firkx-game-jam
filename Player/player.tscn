@@ -24,4 +24,10 @@ spring_length = 5.0
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=2076138250]
 
+[node name="RayCast3D" type="RayCast3D" parent="SpringArm3D/Camera3D" unique_id=167313293]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+target_position = Vector3(0, 0, -10)
+debug_shape_custom_color = Color(1, 0, 0, 1)
+
 [node name="Inventory" parent="." unique_id=1803995424 instance=ExtResource("2_4ntmi")]
+inventory_name = "Backpack"

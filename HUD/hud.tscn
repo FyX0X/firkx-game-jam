@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://dqbniuv054ai1"]
 
 [ext_resource type="PackedScene" uid="uid://s6v8ha85bmj1" path="res://UI/debug_panel.tscn" id="1_h61sl"]
+[ext_resource type="Script" uid="uid://cinlkav6p42d3" path="res://HUD/hud.gd" id="1_yu8mg"]
 [ext_resource type="PackedScene" uid="uid://c5x8h2rgp4iwv" path="res://UI/inventory_hud.tscn" id="2_mi5n8"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1757733813]
+script = ExtResource("1_yu8mg")
 
 [node name="DebugPanel" parent="." unique_id=157777416 instance=ExtResource("1_h61sl")]
 anchors_preset = 1
@@ -12,3 +14,19 @@ anchor_right = 1.0
 grow_horizontal = 0
 
 [node name="InventoryHUD" parent="." unique_id=1233354875 instance=ExtResource("2_mi5n8")]
+
+[node name="PopupMessage" type="Label" parent="." unique_id=793503565]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.5
+offset_top = 71.0
+offset_right = 60.5
+offset_bottom = 94.0
+grow_horizontal = 2
+text = "Popup Message"
+
+[node name="PopupTimer" type="Timer" parent="PopupMessage" unique_id=1536493230]
+one_shot = true
+
+[connection signal="timeout" from="PopupMessage/PopupTimer" to="." method="clear_popup_message"]

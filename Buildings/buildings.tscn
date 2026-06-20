@@ -10,7 +10,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mti6b"]
 albedo_color = Color(1, 0.23529412, 1, 1)
 
-[node name="Buildings" type="StaticBody3D" unique_id=243835565]
+[node name="Buildings" type="StaticBody3D" unique_id=243835565 groups=["interactable"]]
 script = ExtResource("1_ocqis")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=63273900]
@@ -21,3 +21,4 @@ mesh = SubResource("BoxMesh_4kxuq")
 surface_material_override/0 = SubResource("StandardMaterial3D_mti6b")
 
 [node name="Inventory" parent="." unique_id=1803995424 instance=ExtResource("2_qnjey")]
+inventory_name = "DefaultInventoryBuilding"
