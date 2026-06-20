@@ -109,7 +109,7 @@ func _gui_input(event: InputEvent) -> void:
 func _set_ui_mode(enabled: bool) -> void:
 	if enabled:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		mouse_filter = Control.MOUSE_FILTER_STOP
+		# mouse_filter = Control.MOUSE_FILTER_STOP debug ui doesn't with this 
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		mouse_filter = Control.MOUSE_FILTER_IGNORE
+		# mouse_filter = Control.MOUSE_FILTER_IGNORE
