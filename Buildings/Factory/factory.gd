@@ -18,17 +18,14 @@ func _process(delta: float) -> void:
 func _can_process() -> bool:
 	for item in recipe["input"]:
 		var amount_needed = recipe["input"][item]
-		if not inputs.has(item) or inputs[item] < amount_needed:
+		if not inventory.get_all_items().has(item) or inventory.get_all_items()[item] < amount_needed:
 			return false
 	return true
 
 func _finish_processing() -> void:
 	for item in recipe["input"]:
-		inputs[item] -= recipe["input"][item]
+		inventory.remove([item], recipe["input"][item])
 	
 	for item in recipe["output"]:
-		if outputs.has(item):
-			outputs[item] += recipe["output"][item]
-		else:
-			outputs[item] = recipe["output"][item]
+		inventory.add_item(item, recipe["output"][item])
 	buffer -= recipe["time"]

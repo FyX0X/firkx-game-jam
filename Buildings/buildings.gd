@@ -17,7 +17,6 @@ func _ready() -> void:
 
 func _on_interact() -> void:
 	inventory.show()
-	pass
 
 func _on_destroyed(player_inventory : Inventory) -> void :
 	for item in inventory.get_all_items():
@@ -26,3 +25,9 @@ func _on_destroyed(player_inventory : Inventory) -> void :
 		player_inventory.add_item(item, cost[item])
 	print("Batiment detruit")
 	queue_free()
+
+func _on_hit(damage : int, player_inventory : Inventory):
+	health -= damage
+	if health <= 0:
+		_on_destroyed(player_inventory)
+	print("Building Damaged " + str(health))
