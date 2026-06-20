@@ -4,8 +4,8 @@
 
 [node name="StaticBody3D" type="StaticBody3D" unique_id=1813780921]
 
-[node name="map_test_1" parent="." unique_id=1388119013 instance=ExtResource("1_folwd")]
+[node name="map_test_2" parent="." unique_id=254239541 instance=ExtResource("1_folwd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28703034, 0, -0.4880829)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="map_test_1" unique_id=208955167]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=208955167]
 transform = Transform3D(1, 0, 0, 0, -0.8724122, 0.48877084, 0, -0.48877084, -0.8724122, 0, 157.70529, 0)
-
