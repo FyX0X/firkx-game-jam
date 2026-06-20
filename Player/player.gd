@@ -2,10 +2,12 @@ class_name Player
 extends CharacterBody3D
 
 @onready var inventory: Inventory = $Inventory
+@onready var camera_arm: SpringArm3D = $SpringArm3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 @export var mouse_sensitivity: float = 0.003
+@export var tilt_limit = deg_to_rad(75)
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -36,7 +38,10 @@ func _physics_process(delta: float) -> void:
 # Camera and escape.
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		rotate_y(-event.relative.x * mouse_sensitivity)
+		camera_arm.rotation.x -= event.screen_relative.y * mouse_sensitivity
+		# Prevent the camera from rotating too far up or down.
+		camera_arm.rotation.x = clampf(camera_arm.rotation.x, -tilt_limit, tilt_limit)
+		rotation.y += -event.screen_relative.x * mouse_sensitivity
 
 func get_inventory() -> Inventory:
 	return inventory
