@@ -1,19 +1,10 @@
 [gd_scene format=3 uid="uid://d0qsixhs4x7nf"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_4kxuq"]
+[ext_resource type="PackedScene" uid="uid://drwrj12eem6v6" path="res://assets/modele/map_test_1.glb" id="1_folwd"]
 
-[node name="World" type="RigidBody3D" unique_id=1479313556]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
-metadata/_edit_group_ = true
+[node name="StaticBody3D" type="StaticBody3D" unique_id=1813780921]
 
-[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="." unique_id=91137273]
-polygon = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)
+[node name="map_test_1" parent="." unique_id=1388119013 instance=ExtResource("1_folwd")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=153103404]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
-mesh = SubResource("BoxMesh_4kxuq")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1767967913]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.5, 1.5, 0)
-light_energy = 5.0
-omni_range = 20.0
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="map_test_1" unique_id=208955167]
+transform = Transform3D(1, 0, 0, 0, -0.8724122, 0.48877084, 0, -0.48877084, -0.8724122, 0, 157.70529, 0)
