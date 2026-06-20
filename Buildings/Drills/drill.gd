@@ -1,7 +1,7 @@
 extends Building
 
 var type : String;
-var outputs : Dictionary;
+var outputs : Dictionary = {};
 
 
 # Called when the node enters the scene tree for the first time.
