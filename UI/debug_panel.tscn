@@ -11,33 +11,53 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_aispr")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1679755685]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -81.0
-offset_bottom = 148.0
-grow_horizontal = 0
+[node name="Categories" type="HBoxContainer" parent="." unique_id=74997252]
+layout_mode = 0
+offset_right = 71.0
+offset_bottom = 137.0
 
-[node name="AddButton" type="Button" parent="VBoxContainer" unique_id=1234864264]
+[node name="Inventory" type="VBoxContainer" parent="Categories" unique_id=1679755685]
+layout_mode = 2
+
+[node name="InventoryLabel" type="Label" parent="Categories/Inventory" unique_id=1395315413]
+layout_mode = 2
+text = "Inventory:"
+
+[node name="AddButton" type="Button" parent="Categories/Inventory" unique_id=1234864264]
 layout_mode = 2
 text = "Add"
 
-[node name="RemoveButton" type="Button" parent="VBoxContainer" unique_id=674006188]
+[node name="RemoveButton" type="Button" parent="Categories/Inventory" unique_id=674006188]
 layout_mode = 2
 text = "Remove
 "
 
-[node name="AmountSlider" type="HSlider" parent="VBoxContainer" unique_id=614679235]
+[node name="AmountSlider" type="HSlider" parent="Categories/Inventory" unique_id=614679235]
 layout_mode = 2
 
-[node name="AmountLabel" type="Label" parent="VBoxContainer" unique_id=1816512575]
+[node name="AmountLabel" type="Label" parent="Categories/Inventory" unique_id=1816512575]
 layout_mode = 2
 text = "0"
 
-[node name="ItemOption" type="OptionButton" parent="VBoxContainer" unique_id=434677894]
+[node name="ItemOption" type="OptionButton" parent="Categories/Inventory" unique_id=434677894]
 layout_mode = 2
 
-[connection signal="pressed" from="VBoxContainer/AddButton" to="." method="_on_add_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/RemoveButton" to="." method="_on_remove_button_pressed"]
+[node name="Movement" type="VBoxContainer" parent="Categories" unique_id=2127011541]
+layout_mode = 2
+
+[node name="MovementLabel" type="Label" parent="Categories/Movement" unique_id=849349547]
+layout_mode = 2
+text = "Movement:"
+
+[node name="SpeedLabel" type="Label" parent="Categories/Movement" unique_id=426641313]
+layout_mode = 2
+text = "Movement:"
+
+[node name="SpeedSlider" type="HSlider" parent="Categories/Movement" unique_id=1960825755]
+layout_mode = 2
+
+[node name="FlyButton" type="CheckButton" parent="Categories/Movement" unique_id=820070979]
+layout_mode = 2
+
+[connection signal="pressed" from="Categories/Inventory/AddButton" to="." method="_on_add_button_pressed"]
+[connection signal="pressed" from="Categories/Inventory/RemoveButton" to="." method="_on_remove_button_pressed"]
