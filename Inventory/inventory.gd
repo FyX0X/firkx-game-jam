@@ -48,3 +48,70 @@ func is_empty() -> bool:
 func clear():
 	_items.clear()
 	inventory_changed.emit()
+
+
+# Inventory Transfer
+
+enum TransferResult {
+	SUCCESS,
+	INSUFFICIENT_ITEMS,
+	NO_CAPACITY,
+	INVALID_AMOUNT,
+	SAME_INVENTORY,
+}
+
+static func transfer(
+	from: Inventory,
+	to: Inventory,
+	item_id: String,
+	amount: int = 1
+) -> Dictionary:
+	if from == to:
+		return { "result": TransferResult.SAME_INVENTORY, "amount": 0 }
+	if amount <= 0:
+		return { "result": TransferResult.INVALID_AMOUNT, "amount": 0 }
+	if not from.has_item(item_id, amount):
+		return { "result": TransferResult.INSUFFICIENT_ITEMS, "amount": 0 }
+
+	var added := to.add_item(item_id, amount)
+	if added <= 0:
+		return { "result": TransferResult.NO_CAPACITY, "amount": 0 }
+
+	from.remove_item(item_id, added)
+	return { "result": TransferResult.SUCCESS, "amount": added }
+
+
+static func transfer_partial(
+	from: Inventory,
+	to: Inventory,
+	item_id: String,
+	amount: int = 1
+) -> Dictionary:
+	if from == to:
+		return { "result": TransferResult.SAME_INVENTORY, "amount": 0 }
+	if amount <= 0:
+		return { "result": TransferResult.INVALID_AMOUNT, "amount": 0 }
+
+	var available := from.get_amount(item_id)
+	if available <= 0:
+		return { "result": TransferResult.INSUFFICIENT_ITEMS, "amount": 0 }
+
+	var added := to.add_item(item_id, mini(amount, available))
+	if added <= 0:
+		return { "result": TransferResult.NO_CAPACITY, "amount": 0 }
+
+	from.remove_item(item_id, added)
+	return { "result": TransferResult.SUCCESS, "amount": added }
+
+
+## Tries to transfert a maximum amount of item from "from" to "to".
+static func transfer_all(from: Inventory, to: Inventory) -> Dictionary:
+	if from == to:
+		return {}
+	var transferred := {}
+	for item_id in from.get_all_items():
+		var added := to.add_item(item_id, from.get_amount(item_id))
+		if added > 0:
+			from.remove_item(item_id, added)
+			transferred[item_id] = added
+	return transferred
