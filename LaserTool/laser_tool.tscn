@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://w6q3hf7tffl8"]
+
+[ext_resource type="Script" uid="uid://d0ukwt18y77i7" path="res://LaserTool/laser_tool.gd" id="1_jn3ic"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8lsb0"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8lsb0"]
+top_radius = 0.025
+bottom_radius = 0.025
+height = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jn3ic"]
+vertex_color_is_srgb = true
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="LaserTool" type="Node3D" unique_id=717149006]
+script = ExtResource("1_jn3ic")
+metadata/_edit_group_ = true
+
+[node name="Gun" type="MeshInstance3D" parent="." unique_id=748669666]
+mesh = SubResource("BoxMesh_8lsb0")
+
+[node name="Beam" type="MeshInstance3D" parent="." unique_id=939976280]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.00080543756, 0, -0.41004688)
+mesh = SubResource("CylinderMesh_8lsb0")
+surface_material_override/0 = SubResource("StandardMaterial3D_jn3ic")

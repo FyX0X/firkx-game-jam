@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://l8e50w5f82cg"]
+
+[ext_resource type="Script" uid="uid://bxnxe3kk1m3eb" path="res://Props/base_prop.gd" id="1_0df6i"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_qfhvn"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8lsb0"]
+
+[node name="BaseProp" type="StaticBody3D" unique_id=1569469946 groups=["mineable"]]
+script = ExtResource("1_0df6i")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=42334917]
+mesh = SubResource("SphereMesh_qfhvn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1109386413]
+shape = SubResource("SphereShape3D_8lsb0")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1511737486]

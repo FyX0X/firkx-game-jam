@@ -14,3 +14,6 @@ recipe = {
 },
 "time": 1.5
 }
+
+[node name="Inventory" parent="." index="2" unique_id=1803995424]
+inventory_name = "Factory Inventory"

@@ -1,6 +1,6 @@
 extends Node
 
-@onready var hud_layer: CanvasLayer = $HUD
+@onready var hud_layer: HUD = $HUD
 @onready var inventory_hud: InventoryHUD = $HUD/InventoryHUD
 @onready var player: Player = $Player
 
@@ -36,8 +36,11 @@ func _on_player_interacted(target: Node) -> void:
 	else:
 		print("Interact failed: No suitable methods for target found.")
 
-func _on_interaction_target_changed(target: Node) -> void:
-	if target:
-		hud_layer.show_popup_message("Press E to Interact")
-	else:
+func _on_interaction_target_changed(target: Node, group: String) -> void:
+	if target == null:
 		hud_layer.clear_popup_message()
+		return
+	if group == "interactable":
+		hud_layer.show_popup_message("Press E to Interact")
+	if group == "mineable":
+		hud_layer.show_popup_message("Left Click to Mine", 2)

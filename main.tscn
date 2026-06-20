@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dqbniuv054ai1" path="res://HUD/hud.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dngxpdrv7eh50" path="res://Buildings/Drills/drill.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://ctquw3vjfldvm" path="res://Buildings/Factory/factory.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://cge462m4fg0tl" path="res://Props/OreVein/ore_vein.tscn" id="7_272bh"]
 
 [node name="Main" type="Node" unique_id=761649392]
 script = ExtResource("1_1bvp3")
@@ -27,3 +28,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.6014395, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.965537, -6.360722)
 light_energy = 5.504
 omni_range = 574.584
+
+[node name="Props" type="Node3D" parent="." unique_id=921321307]
+
+[node name="BaseProp" parent="Props" unique_id=1569469946 instance=ExtResource("7_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7271852, 0.7130506, -2.8837562)
+
+[node name="BaseProp2" parent="Props" unique_id=1484541983 instance=ExtResource("7_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3561106, 0.7130506, 1.6881552)
+
+[node name="BaseProp3" parent="Props" unique_id=1020009003 instance=ExtResource("7_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7130506, -2.8837562)
+
+[node name="BaseProp4" parent="Props" unique_id=720013084 instance=ExtResource("7_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.094196, 0.7130506, -2.8837562)
