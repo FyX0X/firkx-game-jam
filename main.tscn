@@ -9,6 +9,6 @@
 [node name="World" parent="." unique_id=1479313556 instance=ExtResource("2_h2yge")]
 
 [node name="Player" parent="." unique_id=1614768388 groups=["player"] instance=ExtResource("1_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 12.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 10, 0)
 
 [node name="HUD" parent="." unique_id=594591012 instance=ExtResource("3_h2yge")]

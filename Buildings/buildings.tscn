@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ccafhp5bef5b3"]
 
 [ext_resource type="Script" uid="uid://glos5346diyn" path="res://Buildings/buildings.gd" id="1_ocqis"]
+[ext_resource type="PackedScene" uid="uid://fsa4twm22msf" path="res://Inventory/inventory.tscn" id="2_qnjey"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4kxuq"]
 
@@ -18,3 +19,5 @@ shape = SubResource("BoxShape3D_4kxuq")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1292359159]
 mesh = SubResource("BoxMesh_4kxuq")
 surface_material_override/0 = SubResource("StandardMaterial3D_mti6b")
+
+[node name="Inventory" parent="." unique_id=1803995424 instance=ExtResource("2_qnjey")]

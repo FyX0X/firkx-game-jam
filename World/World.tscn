@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://d0qsixhs4x7nf"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_4kxuq"]
+[sub_resource type="BoxMesh" id="BoxMesh_mti6b"]
 
-[node name="World" type="RigidBody3D" unique_id=1479313556]
+[node name="StaticBody3D" type="StaticBody3D" unique_id=258942767]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
-metadata/_edit_group_ = true
 
-[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="." unique_id=91137273]
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="." unique_id=224610784]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 polygon = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=153103404]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
-mesh = SubResource("BoxMesh_4kxuq")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=775018586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+mesh = SubResource("BoxMesh_mti6b")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1767967913]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.5, 1.5, 0)
-light_energy = 5.0
-omni_range = 20.0
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1221873044]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.5, 1, 0.5)
+light_energy = 9.713
+omni_range = 6.556

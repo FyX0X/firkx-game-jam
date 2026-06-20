@@ -1,8 +1,8 @@
 extends Building
 
-@export var recipe : Dictionary; #ie my_recipe = {"input" : {ITEMS}, "output" : {ITEMS}, "time" : FLOAT}
-var inputs : Dictionary;
-var outputs : Dictionary = {};
+@export var recipe : Dictionary ={} #ie my_recipe = {"input" : {ITEMS}, "output" : {ITEMS}, "time" : FLOAT}
+var inputs : Dictionary
+var outputs : Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
