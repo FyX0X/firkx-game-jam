@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cge462m4fg0tl"]
+
+[ext_resource type="PackedScene" uid="uid://l8e50w5f82cg" path="res://Props/BaseProp.tscn" id="1_2quyu"]
+[ext_resource type="Script" uid="uid://dgd0a3r1yus3f" path="res://Props/OreVein/ore_vein.gd" id="2_n77vr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n77vr"]
+vertex_color_is_srgb = true
+albedo_color = Color(0.58431375, 0.654902, 0.60784316, 1)
+metallic = 1.0
+metallic_specular = 0.35
+roughness = 0.3
+
+[node name="BaseProp" unique_id=1569469946 instance=ExtResource("1_2quyu")]
+script = ExtResource("2_n77vr")
+ore_type = "iron"
+total_yield = 8
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=42334917]
+surface_material_override/0 = SubResource("StandardMaterial3D_n77vr")

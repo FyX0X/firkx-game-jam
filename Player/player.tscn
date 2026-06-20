@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://fsa4twm22msf" path="res://Inventory/inventory.tscn" id="2_4ntmi"]
 [ext_resource type="PackedScene" uid="uid://8j1ui6gsknnb" path="res://Placement/placement.tscn" id="3_btcbx"]
 [ext_resource type="PackedScene" uid="uid://bf0eexdenfl14" path="res://assets/modele/testcharagamejam.glb" id="4_gwnis"]
+[ext_resource type="PackedScene" uid="uid://w6q3hf7tffl8" path="res://LaserTool/laser_tool.tscn" id="5_k53q1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8lsb0"]
 height = 1.6
@@ -43,3 +44,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2.5)
 
 [node name="testcharagamejam2" parent="." unique_id=739969826 instance=ExtResource("4_gwnis")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.8, 0)
+
+[node name="LaserTool" parent="." unique_id=717149006 instance=ExtResource("5_k53q1")]
+transform = Transform3D(0.92388326, 0, -0.38267443, 0.15465504, 0.914696, 0.37338057, 0.35003075, -0.4041426, 0.8450723, -0.5552398, 0.79946405, 0.05508995)

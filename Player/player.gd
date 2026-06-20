@@ -2,12 +2,14 @@ class_name Player
 extends CharacterBody3D
 
 signal interacted(target: Node)
-signal interaction_target_changed(target: Node)  # null when nothing in sight
+signal interaction_target_changed(target: Node, group: String)  # null when nothing in sight
 var _current_target: Node = null
 
 @onready var inventory: Inventory = $Inventory
 @onready var camera_arm: SpringArm3D = $SpringArm3D
 @onready var raycast: RayCast3D = $SpringArm3D/Camera3D/RayCast3D
+@onready var placement: Placement = $Placement
+var hud_layer: HUD
 
 @export var speed = 5.0
 @export var jump_velocity = 4.5
@@ -17,14 +19,13 @@ var _current_target: Node = null
 var fly_debug: bool = false
 
 
-@onready var placement: Placement = $Placement
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	placement.building_placed.connect(_on_building_placed)
+	hud_layer = get_tree().get_first_node_in_group("hud")
 
 func _on_building_placed(building: Building) -> void:
-	var inventory = $Inventory
 	for item in building.cost:
 		inventory.remove_item(item, building.cost[item])
 		
@@ -61,15 +62,18 @@ func _process_movement(delta: float) -> void:
 func raycast_check() -> void:
 	if raycast.is_colliding():
 		var interactable = raycast.get_collider()
-		if interactable != null and interactable.is_in_group("interactable"):
-			if interactable != _current_target:
-				_current_target = interactable
-				interaction_target_changed.emit(_current_target)
+		if interactable == null or interactable == _current_target:
 			return
-
+			
+		_current_target = interactable
+		for group in ["interactable", "mineable"]:
+			if interactable.is_in_group(group):
+				interaction_target_changed.emit(_current_target, group)
+				return
+	
 	if _current_target != null:
 		_current_target = null
-		interaction_target_changed.emit(null)
+		interaction_target_changed.emit(null, "")
 
 func _input(event: InputEvent):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -96,6 +100,12 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func get_inventory() -> Inventory:
 	return inventory
+
+func pickup_resource(item_id: String, amount: int) -> void:
+	if amount <= 0:
+		return
+	hud_layer.show_popup_message("Pickup: " + item_id + " * " + str(amount), 1)
+	inventory.add_item(item_id, amount)
 
 
 func _process_debug_flying(delta: float) -> void:
