@@ -42,6 +42,8 @@ func close() -> void:
 	if not is_open:
 		return
 	is_open = false
+	left_ui.teardown()   # disconnect signals
+	right_ui.teardown()
 	_cancel_grab()
 	hide()
 	_set_ui_mode(false)

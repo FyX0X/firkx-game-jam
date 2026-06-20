@@ -23,11 +23,8 @@ Secondaires :
 
 Martin:
 	Fly debug
+Martin DONE:
+	Reglé la camera qui bug
 	Inventory Transfer:
 		UI
 		Data
-		mostly done.
-	Reglé la camera qui bug:
-		move H ok
-		move V still todo
-		stutter todo

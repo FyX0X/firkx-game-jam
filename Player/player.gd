@@ -64,8 +64,9 @@ func _input(event: InputEvent):
 		rotation.y += -event.screen_relative.x * mouse_sensitivity
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact") and _current_target != null:
-		interacted.emit(_current_target)
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		if event.is_action_pressed("interact") and _current_target != null:
+			interacted.emit(_current_target)
 
 func get_inventory() -> Inventory:
 	return inventory

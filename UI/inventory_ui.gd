@@ -24,6 +24,11 @@ func setup(target: Inventory) -> void:
 		title_label.text = target.inventory_name
 	refresh()
 
+func teardown() -> void:
+	if inventory:
+		inventory.inventory_changed.disconnect(_on_inventory_changed)
+		inventory = null
+
 func refresh():
 	if not inventory:
 		return
