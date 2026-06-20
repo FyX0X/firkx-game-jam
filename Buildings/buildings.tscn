@@ -1,23 +1,47 @@
 [gd_scene format=3 uid="uid://ccafhp5bef5b3"]
 
-[ext_resource type="Script" uid="uid://glos5346diyn" path="res://Buildings/buildings.gd" id="1_ocqis"]
+[ext_resource type="Material" uid="uid://b0oqoitiqj5x8" path="res://assets/Material/blue.tres" id="2_43q18"]
 [ext_resource type="PackedScene" uid="uid://fsa4twm22msf" path="res://Inventory/inventory.tscn" id="2_qnjey"]
+
+[sub_resource type="GDScript" id="GDScript_qnjey"]
+script/source = "extends StaticBody3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4kxuq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4kxuq"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mti6b"]
-albedo_color = Color(1, 0.23529412, 1, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_qnjey"]
+size = Vector3(0.8, 0.8, 0.8)
 
 [node name="Buildings" type="StaticBody3D" unique_id=243835565]
-script = ExtResource("1_ocqis")
+script = SubResource("GDScript_qnjey")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=63273900]
 shape = SubResource("BoxShape3D_4kxuq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1292359159]
 mesh = SubResource("BoxMesh_4kxuq")
-surface_material_override/0 = SubResource("StandardMaterial3D_mti6b")
+surface_material_override/0 = ExtResource("2_43q18")
 
 [node name="Inventory" parent="." unique_id=1803995424 instance=ExtResource("2_qnjey")]
+
+[node name="ClippingHitbox" type="Area3D" parent="." unique_id=210735664]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ClippingHitbox" unique_id=1892864354]
+shape = SubResource("BoxShape3D_qnjey")
+
+[node name="FloatingHitbox" type="Area3D" parent="." unique_id=1390152168]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FloatingHitbox" unique_id=191916926]
+shape = SubResource("BoxShape3D_4kxuq")

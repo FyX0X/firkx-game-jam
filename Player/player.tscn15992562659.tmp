@@ -29,4 +29,4 @@ spring_length = 5.0
 [node name="Placement" parent="." unique_id=964907743 instance=ExtResource("3_btcbx")]
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=1879040963]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
