@@ -7,6 +7,7 @@ var buffer : float = 0.0
 var cost : Dictionary
 @onready var inventory : Inventory = $Inventory
 
+
 @onready var model: MeshInstance3D = $MeshInstance3D
 @onready var collision_shape : CollisionShape3D = $CollisionShape3D
 @onready var clipping_hitbox: Area3D = $ClippingHitbox
@@ -41,8 +42,9 @@ func place() -> void:
 	clipping_hitbox.queue_free()
 	floating_hitbox.queue_free()
 	
-func _on_interact() -> void:
-	inventory.show()
+func get_inventory() -> Inventory:
+	return inventory;
+
 
 func _on_destroyed(player_inventory : Inventory) -> void :
 	for item in inventory.get_all_items():

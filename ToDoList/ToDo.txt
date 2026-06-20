@@ -8,7 +8,7 @@ Principales :
 	Fer Titane (Cuivre) Sillicium Tungsten
 	Pierre Argile 
 	Points de science -> feed ressources et plantes cailloux jolis et meteorites
-	Inventaire ?
+	Nom des Inventaires correct pour les batiments
 	Sons (musiques?) 
 	Effets ?
 
@@ -19,3 +19,12 @@ Secondaires :
 	Astéroides avec vaisseau
 	Systeme Energetique
 	Convoyeur ? 
+
+
+Martin:
+Martin DONE:
+	Fly debug
+	Reglé la camera qui bug
+	Inventory Transfer:
+		UI
+		Data
