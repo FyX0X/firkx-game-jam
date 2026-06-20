@@ -16,8 +16,15 @@ grow_horizontal = 0
 [node name="InventoryHUD" parent="." unique_id=1233354875 instance=ExtResource("2_mi5n8")]
 
 [node name="PopupMessage" type="Label" parent="." unique_id=793503565]
-offset_right = 40.0
-offset_bottom = 23.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.5
+offset_top = 71.0
+offset_right = 60.5
+offset_bottom = 94.0
+grow_horizontal = 2
+text = "Popup Message"
 
 [node name="PopupTimer" type="Timer" parent="PopupMessage" unique_id=1536493230]
 one_shot = true

@@ -1,6 +1,6 @@
 extends Panel
 
-signal slot_clicked(item_id: String)
+signal slot_clicked(item_id: String, mouse_button: MouseButton)
 
 @onready var icon_label: Label = $VBoxContainer/Icon
 @onready var count_label: Label = $VBoxContainer/Count
@@ -33,4 +33,4 @@ func set_selected(selected: bool) -> void:
 
 func _gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.pressed:
-		slot_clicked.emit(current_item)   # emit even if empty (for drop target)
+		slot_clicked.emit(current_item, event.button_index)   # emit even if empty (for drop target)

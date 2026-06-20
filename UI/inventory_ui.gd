@@ -1,7 +1,7 @@
 extends Control
 
-signal slot_picked(inventory: Inventory, item_id: String, slot: Panel)
-signal slot_dropped(inventory: Inventory, item_id: String)
+signal slot_picked(inventory: Inventory, item_id: String, mouse_button: MouseButton, slot: Panel)
+signal slot_dropped(inventory: Inventory, item_id: String, mouse_button: MouseButton)
 
 @onready var grid: GridContainer = $VBoxContainer/GridContainer
 @onready var detail_label: Label = $VBoxContainer/DetailLabel
@@ -44,10 +44,10 @@ func clear_selection() -> void:
 func _on_inventory_changed():
 	refresh()
 
-func _on_slot_clicked(item_id: String, slot: Panel) -> void:
+func _on_slot_clicked(item_id: String, mouse_button: MouseButton, slot: Panel) -> void:
 	if detail_label:
 		detail_label.text = item_id + "  ×" + str(inventory.get_amount(item_id)) if item_id != "" else ""
 	if item_id != "":
-		slot_picked.emit(inventory, item_id, slot)
+		slot_picked.emit(inventory, item_id, mouse_button, slot)
 	else:
-		slot_dropped.emit(inventory, item_id)
+		slot_dropped.emit(inventory, item_id, mouse_button)
