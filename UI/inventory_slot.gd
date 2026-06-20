@@ -10,11 +10,10 @@ var current_item: String = ""
 
 func _ready():
 	custom_minimum_size = Vector2(64, 64)
-	count_label.text = "0"
+	count_label.text = ""
 
 func set_item(item_id: String, amount: int):
 	current_item = item_id
-	# icon_label.text = ItemDB.get_icon(item_id)   # returns an emoji or texture path
 	icon_label.text = item_id
 	count_label.text = "×" + str(amount)
 	modulate.a = 1.0
@@ -25,7 +24,13 @@ func clear():
 	count_label.text = ""
 	modulate.a = 0.4
 
+# ── selection highlight ─────────────────────────────────────────────
+func set_selected(selected: bool) -> void:
+	if selected:
+		self_modulate = Color(1.5, 1.5, 0.5)   # yellow tint
+	else:
+		self_modulate = Color.WHITE
+
 func _gui_input(event: InputEvent):
-	if event is InputEventMouseButton and event.pressed and current_item != "":
-		print("DEBUG (inventory_slot.gd _gui_input())")
-		slot_clicked.emit(current_item)
+	if event is InputEventMouseButton and event.pressed:
+		slot_clicked.emit(current_item)   # emit even if empty (for drop target)

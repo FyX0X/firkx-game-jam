@@ -4,17 +4,17 @@
 
 [node name="DebugPanel" type="Control" unique_id=157777416]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 script = ExtResource("1_aispr")
 
 [node name="Categories" type="HBoxContainer" parent="." unique_id=74997252]
-layout_mode = 0
-offset_right = 71.0
-offset_bottom = 137.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -171.0
+offset_bottom = 164.0
+grow_horizontal = 0
 
 [node name="Inventory" type="VBoxContainer" parent="Categories" unique_id=1679755685]
 layout_mode = 2
@@ -49,15 +49,17 @@ layout_mode = 2
 layout_mode = 2
 text = "Movement:"
 
-[node name="SpeedLabel" type="Label" parent="Categories/Movement" unique_id=426641313]
-layout_mode = 2
-text = "Movement:"
-
 [node name="SpeedSlider" type="HSlider" parent="Categories/Movement" unique_id=1960825755]
 layout_mode = 2
+
+[node name="SpeedLabel" type="Label" parent="Categories/Movement" unique_id=426641313]
+layout_mode = 2
+text = "Speed: ?"
 
 [node name="FlyButton" type="CheckButton" parent="Categories/Movement" unique_id=820070979]
 layout_mode = 2
 
 [connection signal="pressed" from="Categories/Inventory/AddButton" to="." method="_on_add_button_pressed"]
 [connection signal="pressed" from="Categories/Inventory/RemoveButton" to="." method="_on_remove_button_pressed"]
+[connection signal="value_changed" from="Categories/Movement/SpeedSlider" to="." method="_on_speed_slider_value_changed"]
+[connection signal="toggled" from="Categories/Movement/FlyButton" to="." method="_on_fly_button_toggled"]
