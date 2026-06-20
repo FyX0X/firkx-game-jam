@@ -82,6 +82,17 @@ func _unhandled_input(event: InputEvent) -> void:
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		if event.is_action_pressed("interact") and _current_target != null:
 			interacted.emit(_current_target)
+		if event.is_action_pressed("build"):
+			placement.building_mode = not placement.building_mode
+			if not placement.building_mode:
+				placement.clear_hologram()
+
+		if placement.building_mode:
+			if event.is_action_pressed("scroll_up"):
+				placement.object_change(1)
+			elif event.is_action_pressed("scroll_down"):
+				placement.object_change(-1)
+
 
 func get_inventory() -> Inventory:
 	return inventory
