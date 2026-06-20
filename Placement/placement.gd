@@ -41,9 +41,8 @@ func _update_hologram() -> void:
 	#if Input.is_action_just_pressed("rotate"):
 		#hologram.rotation.y += deg_to_rad(90)
 	var can : bool = _has_enough_resources()
-	hologram.set_hologram_mode(can)
 
-	if Input.is_action_just_pressed("attack") and hologram.is_place():
+	if Input.is_action_just_pressed("attack") and hologram.is_placeable() and can:
 		_place_building()
 
 
@@ -58,11 +57,17 @@ func _has_enough_resources() -> bool:
 func _place_building() -> void:
 	print("tried placing building")
 	var instance: Building = objects[current_object_index].instantiate()
+	
 	get_parent().get_parent().add_child(instance)
+	
 	instance.global_position = snap_to_grid(hologram.global_position)
 	instance.global_rotation = hologram.global_rotation
+	
 	instance.place()
 	building_placed.emit(instance)
+	
+	hologram.queue_free()
+	hologram = null
 
 
 func spawn_hologram() -> void:
@@ -70,6 +75,7 @@ func spawn_hologram() -> void:
 	get_parent().add_child(hologram)
 	hologram.global_position = marker.global_position
 	hologram.set_hologram_mode(true)
+	
 	print(hologram)
 
 

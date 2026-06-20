@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://ccafhp5bef5b3"]
 
-[ext_resource type="Material" uid="uid://b0oqoitiqj5x8" path="res://assets/Material/blue.tres" id="2_43q18"]
 [ext_resource type="PackedScene" uid="uid://fsa4twm22msf" path="res://Inventory/inventory.tscn" id="2_qnjey"]
 
 [sub_resource type="GDScript" id="GDScript_qnjey"]
@@ -17,9 +16,13 @@ func _process(delta: float) -> void:
 	pass
 "
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4kxuq"]
-
 [sub_resource type="BoxMesh" id="BoxMesh_4kxuq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ocqis"]
+transparency = 1
+albedo_color = Color(0.3571339, 0.61602896, 0.35409054, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4kxuq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qnjey"]
 size = Vector3(0.8, 0.8, 0.8)
@@ -27,12 +30,12 @@ size = Vector3(0.8, 0.8, 0.8)
 [node name="Buildings" type="StaticBody3D" unique_id=243835565]
 script = SubResource("GDScript_qnjey")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=63273900]
-shape = SubResource("BoxShape3D_4kxuq")
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1292359159]
 mesh = SubResource("BoxMesh_4kxuq")
-surface_material_override/0 = ExtResource("2_43q18")
+surface_material_override/0 = SubResource("StandardMaterial3D_ocqis")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=63273900]
+shape = SubResource("BoxShape3D_4kxuq")
 
 [node name="Inventory" parent="." unique_id=1803995424 instance=ExtResource("2_qnjey")]
 

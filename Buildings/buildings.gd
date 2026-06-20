@@ -18,7 +18,7 @@ var blue_material: Material = preload("res://assets/Material/blue.tres")
 var can_place: bool = false
 var is_hologram: bool = false
 
-func is_place():
+func is_placeable():
 	return clipping_hitbox.get_overlapping_bodies().is_empty() and not floating_hitbox.get_overlapping_bodies().is_empty()
 	
 
@@ -26,20 +26,18 @@ func _process(_delta: float) -> void:
 	# Uniquement actif pendant le mode hologramme
 	if not is_hologram:
 		return
-	can_place = is_place()
+	can_place = is_placeable()
 	model.material_override = blue_material if can_place else red_material
 
 func set_hologram_mode(enabled: bool) -> void:
 	is_hologram = enabled
-	model.transparency = 0.6 if enabled else 0.0
 	collision_shape.disabled = enabled
 	clipping_hitbox.monitoring = enabled
 	floating_hitbox.monitoring = enabled
 
-
 func place() -> void:
-	# Désactive le mode preview et active le vrai bâtiment
 	set_hologram_mode(false)
+	model.material_override = null
 	clipping_hitbox.queue_free()
 	floating_hitbox.queue_free()
 	

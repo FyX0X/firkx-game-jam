@@ -13,7 +13,6 @@ func _process(delta: float) -> void:
 	if (buffer >= 1):
 		inventory.add_item(type, 1)
 		buffer -= 1
-		print("Drill :" + str(inventory.get_all_items()[type]))
 
 func set_type(new_type : String):
 	type = new_type
