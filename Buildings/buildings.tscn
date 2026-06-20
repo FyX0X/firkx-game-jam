@@ -21,3 +21,4 @@ mesh = SubResource("BoxMesh_4kxuq")
 surface_material_override/0 = SubResource("StandardMaterial3D_mti6b")
 
 [node name="Inventory" parent="." unique_id=1803995424 instance=ExtResource("2_qnjey")]
+inventory_name = "DefaultInventoryBuilding"

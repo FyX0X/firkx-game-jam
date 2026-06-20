@@ -9,6 +9,7 @@ signal slot_dropped(inventory: Inventory, item_id: String)
 
 var inventory: Inventory
 
+
 func _ready():
 	for i in grid.get_child_count():
 		var slot = grid.get_child(i)

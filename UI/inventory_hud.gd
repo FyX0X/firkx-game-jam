@@ -5,11 +5,13 @@ extends Control
 @onready var right_ui: Control = $RightInventoryUI
 @onready var transfer_amount: SpinBox = $TransferBar
 @onready var cursor_label: Label = $CursorLabel   # floating label that follows mouse
+var is_open: bool = false
 
 # Grab state
 var _grabbed_item: String = ""
 var _grabbed_from: Inventory = null
 var _grabbed_slot: Panel = null   # to highlight it
+
 
 func _ready():
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -21,12 +23,14 @@ func _ready():
 	hide()
 
 func open_single(inv: Inventory) -> void:
+	is_open = true
 	left_ui.setup(inv)
 	right_ui.hide()
 	left_ui.show()
 	show()
 
 func open_transfer(left_inv: Inventory, right_inv: Inventory) -> void:
+	is_open = true
 	left_ui.setup(left_inv)
 	right_ui.setup(right_inv)
 	left_ui.show()
@@ -34,6 +38,7 @@ func open_transfer(left_inv: Inventory, right_inv: Inventory) -> void:
 	show()
 
 func close() -> void:
+	is_open = false
 	_cancel_grab()
 	hide()
 

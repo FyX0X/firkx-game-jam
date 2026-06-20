@@ -10,8 +10,8 @@ var cost : Dictionary
 
 
 
-func _on_interact() -> void:
-	inventory.show()
+func get_inventory() -> Inventory:
+	return inventory;
 
 func _on_destroyed(player_inventory : Inventory) -> void :
 	for item in inventory.get_all_items():
