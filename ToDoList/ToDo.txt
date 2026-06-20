@@ -19,3 +19,15 @@ Secondaires :
 	Astéroides avec vaisseau
 	Systeme Energetique
 	Convoyeur ? 
+
+
+Martin:
+	Fly debug
+	Inventory Transfer:
+		UI
+		Data
+		mostly done.
+	Reglé la camera qui bug:
+		move H ok
+		move V still todo
+		stutter todo

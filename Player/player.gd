@@ -1,5 +1,7 @@
+class_name Player
 extends CharacterBody3D
 
+@onready var inventory: Inventory = $Inventory
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -32,13 +34,9 @@ func _physics_process(delta: float) -> void:
 
 
 # Camera and escape.
-func _unhandled_input(event):
-	if event is InputEventMouseMotion:
+func _input(event):
+	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		else:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+func get_inventory() -> Inventory:
+	return inventory
