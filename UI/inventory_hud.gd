@@ -39,6 +39,8 @@ func open_transfer(left_inv: Inventory, right_inv: Inventory) -> void:
 	_set_ui_mode(true)
 
 func close() -> void:
+	if not is_open:
+		return
 	is_open = false
 	_cancel_grab()
 	hide()

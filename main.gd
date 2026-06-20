@@ -16,10 +16,8 @@ func _process(delta: float) -> void:
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
-		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		else:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		inventory_hud.close()
+		print("TODO: implement pause")
 	
 	if event.is_action_pressed("inventory"):
 		if inventory_hud.is_open:
@@ -32,6 +30,7 @@ func _on_player_interacted(target: Node) -> void:
 	print("debug: on_player_interacted - " + str(target))
 	if target.has_method("get_inventory"):
 		inventory_hud.open_transfer(player.get_inventory(), target.get_inventory())
+		hud_layer.clear_popup_message()
 	elif target.has_method("interact"):
 		target.interact(player)
 	else:
