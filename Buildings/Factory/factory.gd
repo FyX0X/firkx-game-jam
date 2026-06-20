@@ -1,11 +1,12 @@
 extends Building
 
-@export var recipe : Dictionary ={} #ie my_recipe = {"input" : {ITEMS}, "output" : {ITEMS}, "time" : FLOAT}
+@export var recipe : Dictionary = {"input" : {"iron" : 2}, "output" : {"iron_bar" : 1}, "time" : 1.5} #ie my_recipe = {"input" : {ITEMS}, "output" : {ITEMS}, "time" : FLOAT}
 var inputs : Dictionary
 var outputs : Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	inventory.add_item("iron", 19)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,8 +25,14 @@ func _can_process() -> bool:
 
 func _finish_processing() -> void:
 	for item in recipe["input"]:
-		inventory.remove([item], recipe["input"][item])
+		inventory.remove_item(item, recipe["input"][item])
 	
 	for item in recipe["output"]:
 		inventory.add_item(item, recipe["output"][item])
 	buffer -= recipe["time"]
+	for item in inventory.get_all_items():
+		print("Factory :" + str(inventory.get_all_items()[item]))
+
+func set_recipe(new_recipe : Dictionary):
+	recipe = new_recipe
+	

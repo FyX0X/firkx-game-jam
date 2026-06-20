@@ -5,4 +5,12 @@
 
 [node name="Factory" unique_id=243835565 instance=ExtResource("1_7h7j1")]
 script = ExtResource("2_4jq7f")
-recipe = {}
+recipe = {
+"input": {
+"iron": 2
+},
+"output": {
+"iron_bar": 1
+},
+"time": 1.5
+}

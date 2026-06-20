@@ -3,16 +3,11 @@ extends StaticBody3D
 
 
 var health : int
-var process_speed : float
-var buffer : float
+var process_speed : float = 0.5 #base_speed
+var buffer : float = 0.0
 var cost : Dictionary
-var inventory : Inventory
+@onready var inventory : Inventory = $Inventory
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	buffer = 0.0
-	inventory = $Inventory
 
 
 func _on_interact() -> void:
@@ -31,3 +26,6 @@ func _on_hit(damage : int, player_inventory : Inventory):
 	if health <= 0:
 		_on_destroyed(player_inventory)
 	print("Building Damaged " + str(health))
+
+func set_speed(new_speed : float):
+	process_speed = new_speed
