@@ -11,7 +11,7 @@ script = ExtResource("1_l8h54")
 metadata/_edit_group_ = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1803130361]
-transform = Transform3D(1, 0, 0, 0, 0.99847585, 0.0551897, 0, -0.0551897, 0.99847585, 0, 1.0413599, 1.7886271)
+transform = Transform3D(1, 0, 0, 0, 0.9984759, 0.055189703, 0, -0.055189703, 0.9984759, 0, 1.0413599, 2.86082)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1953526512]
 shape = SubResource("CapsuleShape3D_8lsb0")
