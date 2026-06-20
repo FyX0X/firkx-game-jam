@@ -8,3 +8,4 @@
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="map_test_1" unique_id=208955167]
 transform = Transform3D(1, 0, 0, 0, -0.8724122, 0.48877084, 0, -0.48877084, -0.8724122, 0, 157.70529, 0)
+

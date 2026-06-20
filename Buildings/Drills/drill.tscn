@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dngxpdrv7eh50"]
+
+[ext_resource type="PackedScene" uid="uid://ccafhp5bef5b3" path="res://Buildings/buildings.tscn" id="1_p4g2w"]
+[ext_resource type="Script" uid="uid://d2uouubruf6vf" path="res://Buildings/Drills/drill.gd" id="2_3rq8i"]
+
+[node name="Drill" unique_id=243835565 instance=ExtResource("1_p4g2w")]
+script = ExtResource("2_3rq8i")

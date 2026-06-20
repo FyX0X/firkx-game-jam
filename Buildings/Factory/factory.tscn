@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ctquw3vjfldvm"]
+
+[ext_resource type="PackedScene" uid="uid://ccafhp5bef5b3" path="res://Buildings/buildings.tscn" id="1_7h7j1"]
+[ext_resource type="Script" uid="uid://b4ox2ex38d13q" path="res://Buildings/Factory/factory.gd" id="2_4jq7f"]
+
+[node name="Factory" unique_id=243835565 instance=ExtResource("1_7h7j1")]
+script = ExtResource("2_4jq7f")
+recipe = {
+"input": {
+"iron": 2
+},
+"output": {
+"iron_bar": 1
+},
+"time": 1.5
+}

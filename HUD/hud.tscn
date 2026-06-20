@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dqbniuv054ai1"]
+
+[ext_resource type="PackedScene" uid="uid://s6v8ha85bmj1" path="res://UI/debug_panel.tscn" id="1_h61sl"]
+[ext_resource type="PackedScene" uid="uid://qb6o7uf04vum" path="res://UI/inventory_ui.tscn" id="2_mi5n8"]
+
+[node name="HUD" type="Control" unique_id=594591012]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DebugPanel" parent="." unique_id=157777416 instance=ExtResource("1_h61sl")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 1
+
+[node name="InventoryUi" parent="." unique_id=1944066177 instance=ExtResource("2_mi5n8")]
+layout_mode = 1

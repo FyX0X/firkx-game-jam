@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bllbuy6rksqit"]
+
+[ext_resource type="Script" uid="uid://cwwdbt5wqs4st" path="res://UI/inventory_slot.gd" id="1_hmrqk"]
+
+[node name="InventorySlot" type="Panel" unique_id=980545827]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_hmrqk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=554382727]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Icon" type="Label" parent="VBoxContainer" unique_id=536215721]
+layout_mode = 2
+text = "Empty"
+
+[node name="Count" type="Label" parent="VBoxContainer" unique_id=619604979]
+layout_mode = 2
+text = "0"
