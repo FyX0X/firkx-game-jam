@@ -1,11 +1,24 @@
+class_name ScienceTable
 extends Building
 
-@export var science_values : Dictionary = {
-	"iron": 1
+const science_values : Dictionary = {
+	"iron": 1,
+	"titanium": 2,
+	"sillicium": 3,
+	"tungsten": 5
 }
+
+const science_needed : Dictionary = {
+	"iron" : 0,
+	"titanium" : 50,
+	"sillicium" : 100,
+	"tungsten" : 250,
+}
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
+  process_speed = 10
 
 
 func _process(delta: float) -> void:
