@@ -54,7 +54,7 @@ func _on_destroyed(player_inventory : Inventory) -> void :
 	print("Batiment detruit")
 	queue_free()
 
-func _on_hit(damage : int, player_inventory : Inventory):
+func take_damage(damage : int, player_inventory : Inventory):
 	health -= damage
 	if health <= 0:
 		_on_destroyed(player_inventory)

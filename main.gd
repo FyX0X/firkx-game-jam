@@ -28,11 +28,11 @@ func _input(event):
 
 func _on_player_interacted(target: Node) -> void:
 	print("debug: on_player_interacted - " + str(target))
-	if target.has_method("get_inventory"):
+	if target.has_method("interact"):
+		target.interact(player)
+	elif target.has_method("get_inventory"):
 		inventory_hud.open_transfer(player.get_inventory(), target.get_inventory())
 		hud_layer.clear_popup_message()
-	elif target.has_method("interact"):
-		target.interact(player)
 	else:
 		print("Interact failed: No suitable methods for target found.")
 

@@ -20,6 +20,8 @@ var blue_material: Material = preload("res://assets/Material/blue.tres")
 func _ready() -> void:
 	objects.append(preload("res://Buildings/Drills/drill.tscn"))
 	objects.append(preload("res://Buildings/Factory/factory.tscn"))
+	objects.append(preload("res://Buildings/Science/science_table.tscn"))
+	objects.append(preload("res://Buildings/Science/research_table.tscn"))
 
 
 func _process(_delta: float) -> void:
@@ -90,6 +92,7 @@ func object_change(direction: int) -> void:
 		hologram.queue_free()
 		hologram = null
 	current_object_index = posmod(current_object_index + direction, objects.size())
+	print(current_object_index)
 	spawn_hologram()
 
 

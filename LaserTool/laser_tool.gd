@@ -19,8 +19,10 @@ func _process(delta: float) -> void:
 		_disconnect_target()
 
 func _do_laser(delta: float) -> void:
+	if player.current_state != Player.PlayerState.NORMAL:
+		return
 	var target = player._current_target
-	if target == null or not target.is_in_group("minable"):
+	if target == null or not (target.is_in_group("minable") or target.is_in_group("breakable")):
 		beam.visible = false
 		_tick_timer = 0.0
 		_disconnect_target()
@@ -35,7 +37,7 @@ func _do_laser(delta: float) -> void:
 	beam.visible = true
 	
 	if target.is_in_group("breakable"):
-		target.take_damage(damage_per_second * delta)
+		target.take_damage(damage_per_second * delta,player.get_inventory())
 
 	_tick_timer += delta
 	if _tick_timer >= resource_tick:
