@@ -17,6 +17,7 @@ var hud_layer: HUD
 @export var tilt_limit = deg_to_rad(75)
 
 var fly_debug: bool = false
+var active: bool = true
 
 
 
@@ -24,12 +25,19 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	placement.building_placed.connect(_on_building_placed)
 	hud_layer = get_tree().get_first_node_in_group("hud")
+	
+	print("player _ready: REMOVE FREE RESOURCES")
+	inventory.add_item("iron", 20)
+
 
 func _on_building_placed(building: Building) -> void:
 	for item in building.cost:
 		inventory.remove_item(item, building.cost[item])
 		
 func _physics_process(delta: float) -> void:
+	if not active:
+		return
+	
 	if fly_debug:
 		_process_debug_flying(delta)
 	else:
@@ -76,6 +84,9 @@ func raycast_check() -> void:
 		interaction_target_changed.emit(null, "")
 
 func _input(event: InputEvent):
+	if not active:
+		return
+	
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		camera_arm.rotation.x -= event.screen_relative.y * mouse_sensitivity
 		# Prevent the camera from rotating too far up or down.

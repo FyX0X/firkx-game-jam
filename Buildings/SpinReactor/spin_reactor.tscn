@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://doaxano446wcu"]
+
+[ext_resource type="PackedScene" uid="uid://ccafhp5bef5b3" path="res://Buildings/buildings.tscn" id="1_6kjxs"]
+[ext_resource type="Script" uid="uid://dd0r8d3queb7h" path="res://Buildings/SpinReactor/spin_reactor.gd" id="2_8wmlx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6kjxs"]
+size = Vector3(2, 6, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_870kc"]
+size = Vector3(2, 6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fh3ot"]
+size = Vector3(2, 5.5, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ljvw"]
+size = Vector3(2, 6, 2)
+
+[node name="SpinReactor" unique_id=243835565 groups=["win_condition"] instance=ExtResource("1_6kjxs")]
+script = ExtResource("2_8wmlx")
+
+[node name="CollisionShape3D" parent="." index="0" unique_id=63273900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+shape = SubResource("BoxShape3D_6kjxs")
+
+[node name="MeshInstance3D" parent="." index="1" unique_id=1292359159]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("BoxMesh_870kc")
+
+[node name="ClippingHitbox" parent="." index="3" unique_id=210735664]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="CollisionShape3D" parent="ClippingHitbox" index="0" unique_id=1892864354]
+shape = SubResource("BoxShape3D_fh3ot")
+
+[node name="FloatingHitbox" parent="." index="4" unique_id=1390152168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="CollisionShape3D" parent="FloatingHitbox" index="0" unique_id=191916926]
+shape = SubResource("BoxShape3D_0ljvw")

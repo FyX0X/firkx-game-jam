@@ -8,7 +8,7 @@ Principales :
 	Fer Titane (Cuivre) Sillicium Tungsten
 	Pierre Argile 
 	Points de science -> feed ressources et plantes cailloux jolis et meteorites
-	Nom des Inventaires correct pour les batiments
+	Nom des Inventaires correct pour les batiments (ok)
 	Sons (musiques?):
 		Props
 		batiments

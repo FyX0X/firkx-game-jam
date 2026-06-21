@@ -3,11 +3,39 @@ extends Node
 @onready var hud_layer: HUD = $HUD
 @onready var inventory_hud: InventoryHUD = $HUD/InventoryHUD
 @onready var player: Player = $Player
+@onready var building_placement: Placement = $Player/Placement
+@onready var intro_video: VideoStreamPlayer = $HUD/IntroVideo
+
+enum GameState { INTRO, GAME, WON }
+var state: GameState = GameState.INTRO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player.interacted.connect(_on_player_interacted)
 	player.interaction_target_changed.connect(_on_interaction_target_changed)
+	building_placement.win_triggered.connect(_on_win)
+	set_state(GameState.INTRO)
+
+func set_state(new_state: GameState) -> void:
+	state = new_state
+	match state:
+		GameState.INTRO:
+			player.active = false
+			hud_layer.play_cinematic(true, _on_intro_finished)
+		GameState.GAME:
+			player.active = true
+		GameState.WON:
+			player.active = false
+			hud_layer.play_cinematic(false, _on_outro_finished)
+
+func _on_intro_finished() -> void:
+	set_state(GameState.GAME)
+
+func _on_outro_finished() -> void:
+	pass
+
+func _on_win() -> void:
+	set_state(GameState.WON)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -17,6 +45,8 @@ func _process(delta: float) -> void:
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		inventory_hud.close()
+		if state == GameState.INTRO:
+			hud_layer.skip_intro()
 		print("TODO: implement pause")
 	
 	if event.is_action_pressed("inventory"):

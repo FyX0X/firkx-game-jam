@@ -2,6 +2,8 @@ class_name Placement
 extends Node3D
 
 signal building_placed(building: Building)
+signal win_triggered
+var win_sent: bool = false
 
 @onready var camera: Camera3D = get_parent().get_node("SpringArm3D/Camera3D")
 @onready var ray: RayCast3D = get_parent().get_node("SpringArm3D/Camera3D/RayCast3D")
@@ -20,6 +22,7 @@ var blue_material: Material = preload("res://assets/Material/blue.tres")
 func _ready() -> void:
 	objects.append(preload("res://Buildings/Drills/drill.tscn"))
 	objects.append(preload("res://Buildings/Factory/factory.tscn"))
+	objects.append(preload("res://Buildings/SpinReactor/spin_reactor.tscn"))
 
 
 func _process(_delta: float) -> void:
@@ -70,6 +73,9 @@ func _place_building() -> void:
 	
 	instance.place()
 	building_placed.emit(instance)
+	if instance.is_in_group("win_condition") and not win_sent:
+		win_sent = true
+		win_triggered.emit()
 	
 	hologram.queue_free()
 	print(hologram)
