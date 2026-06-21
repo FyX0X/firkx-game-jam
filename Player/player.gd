@@ -24,6 +24,10 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	placement.building_placed.connect(_on_building_placed)
 	hud_layer = get_tree().get_first_node_in_group("hud")
+	
+	print("player _ready: REMOVE FREE RESOURCES")
+	inventory.add_item("iron", 20)
+
 
 func _on_building_placed(building: Building) -> void:
 	for item in building.cost:

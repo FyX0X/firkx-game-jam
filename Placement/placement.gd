@@ -20,6 +20,7 @@ var blue_material: Material = preload("res://assets/Material/blue.tres")
 func _ready() -> void:
 	objects.append(preload("res://Buildings/Drills/drill.tscn"))
 	objects.append(preload("res://Buildings/Factory/factory.tscn"))
+	objects.append(preload("res://Buildings/SpinReactor/spin_reactor.tscn"))
 
 
 func _process(_delta: float) -> void:
