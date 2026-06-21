@@ -12,6 +12,7 @@ var _grabbed_from: Inventory = null
 var _grabbed_slot: Panel = null   # to highlight it
 var _grabbed_count: int = 0
 
+
 func _ready():
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	cursor_label.hide()

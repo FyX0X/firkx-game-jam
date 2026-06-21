@@ -11,6 +11,7 @@ var state: GameState = GameState.INTRO
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player.interacted.connect(_on_player_interacted)
+	player.respawn()
 	player.interaction_target_changed.connect(_on_interaction_target_changed)
 	building_placement.win_triggered.connect(_on_win)
 	building_placement.building_selection_changed.connect(_on_building_selection_change)
