@@ -19,11 +19,21 @@ var hud_layer: HUD
 var fly_debug: bool = false
 var active: bool = true
 
+var science_points = 0
 
+enum PlayerState{
+	NORMAL,
+	ATTACKING,
+	BUILDING,
+	DEAD
+}
+
+var current_state : PlayerState = PlayerState.NORMAL
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	placement.building_placed.connect(_on_building_placed)
+	GlobalSignals.science_generated.connect(_on_science_generated)
 	hud_layer = get_tree().get_first_node_in_group("hud")
 	
 	print("player _ready: REMOVE FREE RESOURCES")
@@ -74,7 +84,7 @@ func raycast_check() -> void:
 			return
 			
 		_current_target = interactable
-		for group in ["interactable", "mineable"]:
+		for group in ["interactable", "mineable", "breakable"]:
 			if interactable.is_in_group(group):
 				interaction_target_changed.emit(_current_target, group)
 				return
@@ -99,8 +109,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			interacted.emit(_current_target)
 		if event.is_action_pressed("build"):
 			placement.building_mode = not placement.building_mode
+			if placement.building_mode:
+				current_state = PlayerState.BUILDING
 			if not placement.building_mode:
 				placement.clear_hologram()
+				current_state = PlayerState.NORMAL
 
 		if placement.building_mode:
 			if event.is_action_pressed("scroll_up"):
@@ -108,6 +121,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			elif event.is_action_pressed("scroll_down"):
 				placement.object_change(-1)
 
+func _on_science_generated(amount : int) -> void:
+	science_points += amount
 
 func get_inventory() -> Inventory:
 	return inventory
