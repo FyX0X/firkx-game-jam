@@ -67,7 +67,7 @@ func _physics_process(delta: float) -> void:
 		_process_movement(delta)
 	move_and_slide()
 	_apply_zone_damage(delta)
-	heal(delta)
+	_process_health(delta)
 	raycast_check()
 
 func _process_movement(delta: float) -> void:
@@ -165,12 +165,15 @@ func take_damage(damage: float) -> void:
 	_time_since_damage = 0
 	health -= damage
 	if health <= 0:
+		health = 0
 		die()
+	hud_layer.set_damage_overlay(health / max_health)
 
-func heal(delta: float) -> void:
+func _process_health(delta: float) -> void:
 	_time_since_damage += delta
-	if _time_since_damage >= heal_time:
-		health += healing_speed * delta
+	if _time_since_damage >= heal_time and health <= max_health:
+		health += minf(healing_speed * delta, max_health)
+		hud_layer.set_damage_overlay(health / max_health)
 
 func die() -> void:
 	print("YOU ARE DEAD TODO")

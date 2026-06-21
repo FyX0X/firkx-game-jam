@@ -37,5 +37,13 @@ grow_horizontal = 2
 grow_vertical = 2
 expand = true
 
+[node name="DamageOverlay" type="ColorRect" parent="." unique_id=881070842]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 0)
+
 [connection signal="timeout" from="PopupMessage/PopupTimer" to="." method="clear_popup_message"]
 [connection signal="finished" from="CinematicPlayer" to="." method="_on_cinematic_player_finished"]
