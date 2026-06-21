@@ -7,13 +7,21 @@
 [node name="HUD" type="CanvasLayer" unique_id=1757733813 groups=["hud"]]
 script = ExtResource("1_yu8mg")
 
+[node name="DamageOverlay" type="ColorRect" parent="." unique_id=881070842]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 0)
+
+[node name="InventoryHUD" parent="." unique_id=1233354875 instance=ExtResource("2_mi5n8")]
+
 [node name="DebugPanel" parent="." unique_id=157777416 instance=ExtResource("1_h61sl")]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 grow_horizontal = 0
-
-[node name="InventoryHUD" parent="." unique_id=1233354875 instance=ExtResource("2_mi5n8")]
 
 [node name="PopupMessage" type="Label" parent="." unique_id=793503565]
 anchors_preset = 5
@@ -36,14 +44,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 expand = true
-
-[node name="DamageOverlay" type="ColorRect" parent="." unique_id=881070842]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 0, 0, 0)
 
 [connection signal="timeout" from="PopupMessage/PopupTimer" to="." method="clear_popup_message"]
 [connection signal="finished" from="CinematicPlayer" to="." method="_on_cinematic_player_finished"]
