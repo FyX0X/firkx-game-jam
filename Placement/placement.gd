@@ -37,6 +37,9 @@ func _process(_delta: float) -> void:
 
 	_update_hologram()
 
+func _is_placeable(hologram : Building):
+	if hologram is 
+	return hologram.is_not_clipping()
 
 func _update_hologram() -> void:
 	if ray.is_colliding():
@@ -50,7 +53,7 @@ func _update_hologram() -> void:
 		#hologram.rotation.y += deg_to_rad(90)
 	var can : bool = has_enough_resources()
 
-	if Input.is_action_just_pressed("attack") and hologram.is_placeable() and can:
+	if Input.is_action_just_pressed("attack") and _is_placeable(hologram) and can:
 		_place_building()
 
 

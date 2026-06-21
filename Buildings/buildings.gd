@@ -22,14 +22,14 @@ var is_hologram: bool = false
 func is_placed() -> bool:
 	return not is_hologram
 
-func is_placeable():
+func is_not_clipping():
 	return clipping_hitbox.get_overlapping_bodies().is_empty() and not floating_hitbox.get_overlapping_bodies().is_empty()
 
 func _process(_delta: float) -> void:
 	# Uniquement actif pendant le mode hologramme
 	if not is_hologram:
 		return
-	can_place = is_placeable() and get_parent().get_node("Placement").has_enough_resources()
+	can_place = is_not_clipping() and get_parent().get_node("Placement").has_enough_resources()
 	model.material_override = blue_material if can_place else red_material
 
 func set_hologram_mode(enabled: bool) -> void:
