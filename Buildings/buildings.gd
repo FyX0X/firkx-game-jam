@@ -19,6 +19,9 @@ var blue_material: Material = preload("res://assets/Material/blue.tres")
 var can_place: bool = false
 var is_hologram: bool = false
 
+func is_placed() -> bool:
+	return not is_hologram
+
 func is_placeable():
 	return clipping_hitbox.get_overlapping_bodies().is_empty() and not floating_hitbox.get_overlapping_bodies().is_empty()
 
