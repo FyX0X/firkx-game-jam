@@ -34,4 +34,5 @@ func _process(delta: float) -> void:
 
 func set_type(new_type : String):
 	type = new_type
+	cost = drill_cost[type]
 	process_speed = dico_speed[type]
