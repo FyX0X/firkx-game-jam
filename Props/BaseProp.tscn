@@ -6,7 +6,7 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8lsb0"]
 
-[node name="BaseProp" type="StaticBody3D" unique_id=1569469946 groups=["mineable"]]
+[node name="BaseProp" type="StaticBody3D" unique_id=1569469946]
 script = ExtResource("1_0df6i")
 metadata/_edit_group_ = true
 

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c01uo1kbl6f1i"]
+
+[ext_resource type="PackedScene" uid="uid://l8e50w5f82cg" path="res://Props/BaseProp.tscn" id="1_il81f"]
+[ext_resource type="Script" uid="uid://c5qkb1sbwayrh" path="res://Props/BigOre/big_ore.gd" id="2_k8fdt"]
+
+[node name="BaseProp" unique_id=1569469946 groups=["BigOre"] instance=ExtResource("1_il81f")]
+script = ExtResource("2_k8fdt")
