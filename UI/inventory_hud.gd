@@ -81,6 +81,9 @@ func _on_slot_dropped(to_inv: Inventory, _item_id: String, mouse_button: MouseBu
 
 func _do_transfer(to_inv: Inventory) -> void:
 	print("inv_hud: _do_transfer")
+	if not is_instance_valid(_grabbed_from):
+		push_warning("grabbed_from was freed!")
+		return
 	var result: Dictionary = Inventory.transfer_partial(_grabbed_from, to_inv, _grabbed_item, _grabbed_count)
 	print(result)
 	_cancel_grab()

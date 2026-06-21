@@ -40,19 +40,31 @@ func _on_win() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func _open_inventory(left: Inventory, right: Inventory = null) -> void:
+	player.current_state = Player.PlayerState.UI_OPEN
+	if right == null:
+		inventory_hud.open_single(left)
+		return
+	inventory_hud.open_transfer(left, right);
+		
+	
+func _close_inventory() -> void:
+	inventory_hud.close()
+	player.current_state == Player.PlayerState.NORMAL
+
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
-		inventory_hud.close()
+		_close_inventory()
 		if state == GameState.INTRO:
 			hud_layer.skip_intro()
 		print("TODO: implement pause")
 	
 	if event.is_action_pressed("inventory"):
 		if inventory_hud.is_open:
-			inventory_hud.close()
+			_close_inventory()
 		else:
-			inventory_hud.open_single(player.get_inventory())
+			_open_inventory(player.get_inventory())
 
 
 func _on_player_interacted(target: Node) -> void:
@@ -60,7 +72,7 @@ func _on_player_interacted(target: Node) -> void:
 	if target.has_method("interact"):
 		target.interact(player)
 	elif target.has_method("get_inventory"):
-		inventory_hud.open_transfer(player.get_inventory(), target.get_inventory())
+		_open_inventory(player.get_inventory(), target.get_inventory())
 		hud_layer.clear_popup_message()
 	else:
 		print("Interact failed: No suitable methods for target found.")

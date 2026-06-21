@@ -25,6 +25,12 @@ Secondaires :
 
 
 Martin:
+	
+	Etat transition
+	build mode : building label
+	death state.
+	build_health
+	
 Martin DONE:
 	Fly debug
 	Reglé la camera qui bug
