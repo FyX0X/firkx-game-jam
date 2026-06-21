@@ -3,11 +3,40 @@ extends Node
 @onready var hud_layer: HUD = $HUD
 @onready var inventory_hud: InventoryHUD = $HUD/InventoryHUD
 @onready var player: Player = $Player
+@onready var building_placement: Placement = $Player/Placement
+@onready var intro_video: VideoStreamPlayer = $HUD/IntroVideo
+
+enum GameState { INTRO, GAME, WON }
+var state: GameState = GameState.INTRO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player.interacted.connect(_on_player_interacted)
 	player.interaction_target_changed.connect(_on_interaction_target_changed)
+	building_placement.win_triggered.connect(_on_win)
+	set_state(GameState.INTRO)
+
+func set_state(new_state: GameState) -> void:
+	state = new_state
+	match state:
+		GameState.INTRO:
+			player.set_process_input(false)
+			hud_layer.visible = false
+			intro_video.play()
+			intro_video.finished.connect(_on_intro_finished, CONNECT_ONE_SHOT)
+		GameState.GAME:
+			player.set_process_input(true)
+			hud_layer.visible = true
+			intro_video.visible = false
+		GameState.WON:
+			player.set_process_input(false)
+			hud_layer.show_win_screen()
+
+func _on_intro_finished() -> void:
+	set_state(GameState.GAME)
+
+func _on_win() -> void:
+	set_state(GameState.WON)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
