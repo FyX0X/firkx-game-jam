@@ -21,6 +21,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 10, 0)
 
 [node name="Drill" parent="." unique_id=243835565 instance=ExtResource("4_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54638034, 5.4950824, 7.564541)
+type = "iron"
 
 [node name="Factory" parent="." unique_id=125905545 instance=ExtResource("5_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.6014395, 0)
@@ -47,3 +48,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.094196, 0.7130506, -2.88375
 
 [node name="BigOre" parent="." unique_id=471333196 instance=ExtResource("8_5vw27")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5890422, -10.860464)
+
+[node name="BigOre2" parent="." unique_id=107770490 instance=ExtResource("8_5vw27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7966747, 1.5890422, -10.860464)
+type = 2
+
+[node name="BigOre3" parent="." unique_id=1001745808 instance=ExtResource("8_5vw27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5911655, 1.5890422, -10.860464)
+type = 1
+
+[node name="BigOre4" parent="." unique_id=1180993615 instance=ExtResource("8_5vw27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3879948, 1.5890422, -10.860464)
+type = 3
