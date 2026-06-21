@@ -27,9 +27,9 @@ Secondaires :
 
 
 Martin:
-	Etat transition inventaire -> normal
 	death state.
-	
+Martin MAYBE DONE:
+	Etat transition inventaire -> normal<
 Martin DONE:
 	BUILD COST UI (current task)
 	build mode : building label
