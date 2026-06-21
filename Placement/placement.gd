@@ -37,10 +37,21 @@ func _process(_delta: float) -> void:
 
 	_update_hologram()
 
+func is_placeable(hologram : Building):
+	if hologram == null:
+		return
+	var location : bool = true
+	if  (hologram is Drill and not ray.get_collider() is BigOre):
+		location = false
+	if (hologram is not Drill and ray.get_collider() and not ray.get_collider().is_in_group("ground")):
+		location = false
+	var ressources : bool = has_enough_resources()
+	print(ray.get_collider())
+	return hologram.is_not_clipping() and location and ressources
 
 func _update_hologram() -> void:
 	if ray.is_colliding():
-		var snap_pos := snap_to_grid(ray.get_collision_point()) + Vector3(0,0.5,0)
+		var snap_pos := snap_to_grid(ray.get_collision_point())
 		hologram.global_position = hologram.global_position.lerp(snap_pos, 0.1)
 	else:
 		var snap_pos = ray.to_global(ray.target_position)
@@ -48,9 +59,8 @@ func _update_hologram() -> void:
 
 	#if Input.is_action_just_pressed("rotate"):
 		#hologram.rotation.y += deg_to_rad(90)
-	var can : bool = has_enough_resources()
 
-	if Input.is_action_just_pressed("attack") and hologram.is_placeable() and can:
+	if Input.is_action_just_pressed("attack") and is_placeable(hologram):
 		_place_building()
 
 

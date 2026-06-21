@@ -10,7 +10,7 @@ metallic = 1.0
 metallic_specular = 0.35
 roughness = 0.3
 
-[node name="BaseProp" unique_id=1569469946 instance=ExtResource("1_2quyu")]
+[node name="OreVein" unique_id=1569469946 groups=["mineable"] instance=ExtResource("1_2quyu")]
 script = ExtResource("2_n77vr")
 ore_type = "iron"
 total_yield = 8

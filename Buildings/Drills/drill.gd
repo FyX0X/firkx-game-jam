@@ -1,3 +1,4 @@
+class_name Drill
 extends Building
 
 @export var type : String = "iron"

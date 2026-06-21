@@ -1,3 +1,4 @@
+class_name Factory
 extends Building
 
 @export var recipe : Dictionary = {"input" : {"iron" : 2}, "output" : {"iron_bar" : 1}, "time" : 1.5} #ie my_recipe = {"input" : {ITEMS}, "output" : {ITEMS}, "time" : FLOAT}

@@ -7,6 +7,7 @@
 albedo_color = Color(0.5102997, 0.51651025, 0.39885715, 1)
 
 [node name="Factory" unique_id=243835565 instance=ExtResource("1_7h7j1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("2_4jq7f")
 recipe = {
 "input": {
@@ -17,6 +18,7 @@ recipe = {
 },
 "time": 1.5
 }
+metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" parent="." index="1" unique_id=1292359159]
 surface_material_override/0 = SubResource("StandardMaterial3D_7h7j1")
