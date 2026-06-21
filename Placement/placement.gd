@@ -4,7 +4,7 @@ extends Node3D
 signal building_placed(building: Building)
 
 @onready var camera: Camera3D = get_parent().get_node("SpringArm3D/Camera3D")
-@onready var marker: Marker3D = get_parent().get_node("Marker3D")
+@onready var ray: RayCast3D = get_parent().get_node("SpringArm3D/Camera3D/RayCast3D")
 
 var building_mode: bool = false
 var hologram: Building = null
@@ -35,8 +35,14 @@ func _process(_delta: float) -> void:
 
 
 func _update_hologram() -> void:
-	var snap_pos := snap_to_grid(marker.global_position)
-	hologram.global_position = hologram.global_position.lerp(snap_pos, 0.1)
+	
+	if ray.is_colliding():
+		var snap_pos := snap_to_grid(ray.get_collision_point()) + Vector3(0,0.5,0)
+		hologram.global_position = hologram.global_position.lerp(snap_pos, 0.1)
+	else:
+		var snap_pos = ray.target_position
+		hologram.global_position = hologram.global_position.lerp(snap_pos, 0.1)
+
 
 	#if Input.is_action_just_pressed("rotate"):
 		#hologram.rotation.y += deg_to_rad(90)
@@ -73,7 +79,7 @@ func _place_building() -> void:
 func spawn_hologram() -> void:
 	hologram = objects[current_object_index].instantiate()
 	get_parent().add_child(hologram)
-	hologram.global_position = marker.global_position
+	hologram.global_position = ray.get_collision_point()
 	hologram.set_hologram_mode(true)
 	
 	print(hologram)
