@@ -14,6 +14,7 @@ Principales :
 		batiments
 		Ambiance
 	Effets ?
+	Science table replace computer in ship
 
 
 
@@ -22,16 +23,17 @@ Secondaires :
 	Astéroides avec vaisseau
 	Systeme Energetique
 	Convoyeur ? 
+	Son de laser quand on detruit / mine
 
 
 Martin:
 	
 	Etat transition
-	build mode : building label
 	death state.
-	build_health
 	
 Martin DONE:
+	build mode : building label
+	build_health
 	Fly debug
 	Reglé la camera qui bug
 	Inventory Transfer:

@@ -1,6 +1,7 @@
 class_name Placement
 extends Node3D
 
+signal building_selection_changed(building: Building)
 signal building_placed(building: Building)
 signal win_triggered
 var win_sent: bool = false
@@ -46,7 +47,6 @@ func is_placeable(hologram : Building):
 	if (hologram is not Drill and ray.get_collider() and not ray.get_collider().is_in_group("ground")):
 		location = false
 	var ressources : bool = has_enough_resources()
-	print(ray.get_collider())
 	return hologram.is_not_clipping() and location and ressources
 
 func _update_hologram() -> void:
@@ -110,6 +110,7 @@ func object_change(direction: int) -> void:
 	current_object_index = posmod(current_object_index + direction, objects.size())
 	print(current_object_index)
 	spawn_hologram()
+	building_selection_changed.emit(hologram)
 
 
 func snap_to_grid(position: Vector3) -> Vector3:
