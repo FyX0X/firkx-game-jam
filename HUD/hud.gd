@@ -1,6 +1,7 @@
 class_name HUD
 extends CanvasLayer
 
+@onready var popups: Control = $PopupRoot
 @onready var cinematic_player: VideoStreamPlayer = $CinematicPlayer
 @onready var debug_panel: Control = $DebugPanel
 @onready var inventory_hud: Control = $InventoryHUD
@@ -25,7 +26,7 @@ func _process(delta: float) -> void:
 
 func play_cinematic(is_intro: bool, end_observer: Callable) -> void:
 	_is_intro = is_intro
-	# popup_message.hide()
+	popups.hide()
 	inventory_hud.hide()
 	debug_panel.hide()
 	cinematic_player.show()
@@ -65,7 +66,7 @@ func show_popup_message(text: String, time: float = 2.0) -> void:
 	label.text = text
 	label.modulate.a = 1.0  # already visible
 
-	add_child(label)
+	popups.add_child(label)
 	messages.append(label)
 
 	if messages.size() > MAX_MESSAGES:
@@ -120,7 +121,7 @@ func _on_cinematic_player_finished() -> void:
 	if not _is_intro:
 		print("hud: _on_cinematic_player_finished: outro finished keeps video shown")
 		return
-	# popup_message.show()
+	popups.show()
 	inventory_hud.show()
 	debug_panel.show()
 	cinematic_player.hide()
