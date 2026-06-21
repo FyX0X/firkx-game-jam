@@ -50,6 +50,10 @@ func _on_inventory_changed():
 	refresh()
 
 func _on_slot_clicked(item_id: String, mouse_button: MouseButton, slot: Panel) -> void:
+	print("inventory:", inventory)
+	print("valid:", is_instance_valid(inventory))
+	print("class:", inventory.get_class() if is_instance_valid(inventory) else "invalid")
+	print("script:", inventory.get_script() if is_instance_valid(inventory) else "invalid")
 	if detail_label:
 		detail_label.text = item_id + "  ×" + str(inventory.get_amount(item_id)) if item_id != "" else ""
 	if item_id != "":

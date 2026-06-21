@@ -37,7 +37,8 @@ enum PlayerState{
 	NORMAL,
 	ATTACKING,
 	BUILDING,
-	DEAD
+	DEAD,
+	UI_OPEN
 }
 
 var current_state : PlayerState = PlayerState.NORMAL
