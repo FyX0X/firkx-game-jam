@@ -27,8 +27,8 @@ Secondaires :
 
 
 Martin:
-	
-	Etat transition
+	BUILD COST UI (current task)
+	Etat transition inventaire -> normal
 	death state.
 	
 Martin DONE:

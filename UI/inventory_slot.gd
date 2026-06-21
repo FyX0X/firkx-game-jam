@@ -1,3 +1,4 @@
+class_name InventorySlot
 extends Panel
 
 signal slot_clicked(item_id: String, mouse_button: MouseButton)

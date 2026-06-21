@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var debug_panel: Control = $DebugPanel
 @onready var inventory_hud: Control = $InventoryHUD
 @onready var damage_overlay: ColorRect = $DamageOverlay
+@onready var build_cost_ui: BuildCostUI = $BuildCostUI
 
 var intro_video: VideoStreamTheora
 var outro_video: VideoStreamTheora
@@ -125,3 +126,7 @@ func _on_cinematic_player_finished() -> void:
 	inventory_hud.show()
 	debug_panel.show()
 	cinematic_player.hide()
+
+func show_build_recipe(recipe: Dictionary) -> void:
+	build_cost_ui.show()
+	build_cost_ui.set_build_cost(recipe)
