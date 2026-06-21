@@ -1,6 +1,7 @@
 class_name Placement
 extends Node3D
 
+signal building_selection_changed(building: Building)
 signal building_placed(building: Building)
 signal win_triggered
 var win_sent: bool = false
@@ -143,6 +144,7 @@ func object_change(direction: int) -> void:
 	current_object_index = posmod(current_object_index + direction, objects.size())
 	print(current_object_index)
 	spawn_hologram()
+	building_selection_changed.emit(hologram)
 
 
 func snap_to_grid(position: Vector3) -> Vector3:

@@ -13,6 +13,7 @@ func _ready() -> void:
 	player.interacted.connect(_on_player_interacted)
 	player.interaction_target_changed.connect(_on_interaction_target_changed)
 	building_placement.win_triggered.connect(_on_win)
+	building_placement.building_selection_changed.connect(_on_building_selection_change)
 	set_state(GameState.INTRO)
 
 func set_state(new_state: GameState) -> void:
@@ -73,15 +74,18 @@ func _on_player_interacted(target: Node) -> void:
 		target.interact(player)
 	elif target.has_method("get_inventory"):
 		_open_inventory(player.get_inventory(), target.get_inventory())
-		hud_layer.clear_popup_message()
 	else:
 		print("Interact failed: No suitable methods for target found.")
 
 func _on_interaction_target_changed(target: Node, group: String) -> void:
 	if target == null:
-		hud_layer.clear_popup_message()
 		return
 	if group == "interactable":
 		hud_layer.show_popup_message("Press E to Interact")
 	if group == "mineable":
 		hud_layer.show_popup_message("Left Click to Mine", 2)
+
+func _on_building_selection_change(building: Building) -> void:
+	hud_layer.show_popup_message("Left Click to place : " + building.name, 2)
+	pass
+	

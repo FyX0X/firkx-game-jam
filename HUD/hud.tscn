@@ -23,20 +23,6 @@ anchor_left = 1.0
 anchor_right = 1.0
 grow_horizontal = 0
 
-[node name="PopupMessage" type="Label" parent="." unique_id=793503565]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -60.5
-offset_top = 71.0
-offset_right = 60.5
-offset_bottom = 94.0
-grow_horizontal = 2
-text = "Popup Message"
-
-[node name="PopupTimer" type="Timer" parent="PopupMessage" unique_id=1536493230]
-one_shot = true
-
 [node name="CinematicPlayer" type="VideoStreamPlayer" parent="." unique_id=1299268508]
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,5 +31,10 @@ grow_horizontal = 2
 grow_vertical = 2
 expand = true
 
-[connection signal="timeout" from="PopupMessage/PopupTimer" to="." method="clear_popup_message"]
+[node name="PopupRoot" type="Control" parent="." unique_id=1000566685]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="finished" from="CinematicPlayer" to="." method="_on_cinematic_player_finished"]
