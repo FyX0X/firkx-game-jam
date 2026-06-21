@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b7ufllxudj6l3"]
+
+[ext_resource type="Script" uid="uid://bt3d40eumd2wo" path="res://World/DamageZone/damage_zone.gd" id="1_71tig"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vbaju"]
+size = Vector3(100, 100, 100)
+
+[node name="DamageZone" type="Area3D" unique_id=1738022576]
+collision_mask = 2
+script = ExtResource("1_71tig")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1968634112]
+shape = SubResource("BoxShape3D_vbaju")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
