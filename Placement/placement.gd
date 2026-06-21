@@ -50,10 +50,6 @@ func is_placeable(hologram : Building):
 		location = false
 	var ressources : bool = has_enough_resources()
 	var science = _enough_science(hologram)
-	if (not science):
-		hud_layer.show_popup_message("Not enough Sience Points")
-	if (not ressources):
-		hud_layer.show_popup_message("Not enough Sience Points")
 	return hologram.is_not_clipping() and location and ressources and science
 
 func _update_hologram() -> void:
@@ -71,6 +67,9 @@ func _update_hologram() -> void:
 		if is_placeable(hologram):
 			_place_building()
 		elif not has_enough_resources():
+			hud_layer.show_popup_message("Not enough Ressources")
+		elif not _enough_science(hologram):
+			hud_layer.show_popup_message("Not enough Sience Points")
 			
 
 
@@ -86,6 +85,8 @@ func has_enough_resources() -> bool:
 func _enough_science(building : Building) -> bool:
 	if building is not Drill:
 		return true
+	if ray.get_collider() is not BigOre:
+		return false
 	var ore : BigOre = ray.get_collider()
 	var type = ore.type
 	var player : Player= get_parent()
@@ -109,6 +110,7 @@ func _place_building() -> void:
 	var instance: Building = objects[current_object_index].instantiate()
 	
 	get_parent().get_parent().add_child(instance)
+	_enough_science(instance)
 	
 	instance.global_position = snap_to_grid(hologram.global_position)
 	instance.global_rotation = hologram.global_rotation
