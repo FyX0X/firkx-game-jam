@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://drwrj12eem6v6" path="res://assets/modele/map_test_1.glb" id="1_folwd"]
 
-[node name="StaticBody3D" type="StaticBody3D" unique_id=1813780921]
+[node name="StaticBody3D" type="StaticBody3D" unique_id=1813780921 groups=["ground"]]
 
-[node name="map_test_2" parent="." unique_id=254239541 instance=ExtResource("1_folwd")]
+[node name="map_test_2" parent="." unique_id=254239541 groups=["ground"] instance=ExtResource("1_folwd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28703034, 0, -0.4880829)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=208955167]

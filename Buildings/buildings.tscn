@@ -17,9 +17,11 @@ size = Vector3(0.8, 0.8, 0.8)
 script = ExtResource("1_ocqis")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=63273900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_4kxuq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1292359159]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_4kxuq")
 surface_material_override/0 = SubResource("StandardMaterial3D_mti6b")
 
@@ -27,11 +29,14 @@ surface_material_override/0 = SubResource("StandardMaterial3D_mti6b")
 inventory_name = "DefaultInventoryBuilding"
 
 [node name="ClippingHitbox" type="Area3D" parent="." unique_id=210735664]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ClippingHitbox" unique_id=1892864354]
 shape = SubResource("BoxShape3D_qnjey")
 
 [node name="FloatingHitbox" type="Area3D" parent="." unique_id=1390152168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FloatingHitbox" unique_id=191916926]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
 shape = SubResource("BoxShape3D_4kxuq")

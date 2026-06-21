@@ -29,7 +29,7 @@ func _process(_delta: float) -> void:
 	# Uniquement actif pendant le mode hologramme
 	if not is_hologram:
 		return
-	can_place = is_not_clipping() and get_parent().get_node("Placement").has_enough_resources()
+	can_place = get_parent().get_node("Placement").is_placeable(self)
 	model.material_override = blue_material if can_place else red_material
 
 func set_hologram_mode(enabled: bool) -> void:
