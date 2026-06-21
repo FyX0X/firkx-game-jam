@@ -3,6 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://ccafhp5bef5b3" path="res://Buildings/buildings.tscn" id="1_7h7j1"]
 [ext_resource type="Script" uid="uid://b4ox2ex38d13q" path="res://Buildings/Factory/factory.gd" id="2_4jq7f"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7h7j1"]
+albedo_color = Color(0.5102997, 0.51651025, 0.39885715, 1)
+
 [node name="Factory" unique_id=243835565 instance=ExtResource("1_7h7j1")]
 script = ExtResource("2_4jq7f")
 recipe = {
@@ -14,6 +17,9 @@ recipe = {
 },
 "time": 1.5
 }
+
+[node name="MeshInstance3D" parent="." index="1" unique_id=1292359159]
+surface_material_override/0 = SubResource("StandardMaterial3D_7h7j1")
 
 [node name="Inventory" parent="." index="2" unique_id=1803995424]
 inventory_name = "Factory Inventory"
