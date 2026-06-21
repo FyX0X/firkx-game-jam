@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 		_disconnect_target()
 
 func _do_laser(delta: float) -> void:
-	if player._current_state != Player.PlayerState.NORMAL:
+	if player.get_state() != Player.State.NORMAL:
 		return
 	var target = player._current_target
 	if target == null or not (target.is_in_group("minable") or target.is_in_group("breakable")):

@@ -21,7 +21,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 10, 0)
 
 [node name="Drill" parent="." unique_id=243835565 instance=ExtResource("4_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54638034, 5.4950824, 7.564541)
-type = "iron"
 
 [node name="Factory" parent="." unique_id=125905545 instance=ExtResource("5_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.6014395, 0)

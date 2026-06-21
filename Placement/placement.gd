@@ -8,8 +8,7 @@ var win_sent: bool = false
 
 @onready var camera: Camera3D = get_parent().get_node("SpringArm3D/Camera3D")
 @onready var ray: RayCast3D = get_parent().get_node("SpringArm3D/Camera3D/RayCast3D")
-
-var building_mode: bool = false
+@onready var player: Player = get_parent()
 var hologram: Building = null
 var current_object_index: int = 0
 var grid_size: float = 0.1
@@ -28,10 +27,12 @@ func _ready() -> void:
 	objects.append(preload("res://Buildings/Science/research_table.tscn"))
 	objects.append(preload("res://Buildings/SpinReactor/spin_reactor.tscn"))
 	hud_layer = get_tree().get_first_node_in_group("hud")
-
+	
+	assert(player is Player and player != null)
+	assert(not objects.is_empty())
 
 func _process(_delta: float) -> void:
-	if not building_mode or objects.is_empty():
+	if player.get_state() != Player.State.BUILDING:
 		return
 
 	if hologram == null:
@@ -110,7 +111,6 @@ func _enough_science(building: Building) -> bool:
 		return true
 	if ray.get_collider() is not BigOre:
 		return false
-	var player: Player = get_parent()
 	return player.science_points >= ScienceTable.science_needed[building.type]
 	
 
@@ -165,5 +165,6 @@ func snap_to_grid(position: Vector3) -> Vector3:
 
 func clear_hologram() -> void:
 	if hologram:
+		print("clear hologram")
 		hologram.queue_free()
 		hologram = null
