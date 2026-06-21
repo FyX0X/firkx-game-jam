@@ -61,17 +61,39 @@ func _update_hologram() -> void:
 		var snap_pos = ray.to_global(ray.target_position)
 		hologram.global_position = hologram.global_position.lerp(snap_pos, 0.1)
 
-	#if Input.is_action_just_pressed("rotate"):
-		#hologram.rotation.y += deg_to_rad(90)
+	if hologram is Drill:
+		_update_drill_type(hologram)
 
 	if Input.is_action_just_pressed("attack"):
 		if is_placeable(hologram):
 			_place_building()
-		elif not has_enough_resources():
-			hud_layer.show_popup_message("Not enough Ressources")
 		elif not _enough_science(hologram):
-			hud_layer.show_popup_message("Not enough Sience Points")
-			
+			hud_layer.show_popup_message("Not enough Science Points")
+		elif not has_enough_resources():
+			hud_layer.show_popup_message("Not enough Resources")
+
+func _update_drill_type(drill: Drill) -> void:
+	var collider = ray.get_collider()
+	if collider is not BigOre:
+		return
+
+	var ore: BigOre = collider
+	var new_type: String = ""
+	match ore.type:
+		BigOre.OreType.IRON:      new_type = "iron"
+		BigOre.OreType.TITANIUM:  new_type = "titanium"
+		BigOre.OreType.TUNGSTEN:  new_type = "tungsten"
+		BigOre.OreType.SILLICIUM: new_type = "sillicium"
+		_:
+			print("Error: unknown ore type")
+			return
+
+	if drill.type == new_type:
+		return  # no change, skip emit
+
+	drill.set_type(new_type)
+	building_selection_changed.emit(drill)
+
 
 
 func has_enough_resources() -> bool:
@@ -83,27 +105,14 @@ func has_enough_resources() -> bool:
 			return false
 	return true
 
-func _enough_science(building : Building) -> bool:
+func _enough_science(building: Building) -> bool:
 	if building is not Drill:
 		return true
 	if ray.get_collider() is not BigOre:
 		return false
-	var ore : BigOre = ray.get_collider()
-	var type = ore.type
-	var player : Player= get_parent()
-	match type :
-		BigOre.OreType.IRON :
-			building.set_type("iron")
-		BigOre.OreType.TITANIUM:
-			building.set_type("titanium")
-		BigOre.OreType.TUNGSTEN:
-			building.set_type("tungsten")
-		BigOre.OreType.SILLICIUM:
-			building.set_type("sillicium")
-		_:
-			print("Error no ore type")
-			return false
-	return (player.science_points >= ScienceTable.science_needed[building.type])
+	var player: Player = get_parent()
+	return player.science_points >= ScienceTable.science_needed[building.type]
+	
 
 
 func _place_building() -> void:
@@ -111,13 +120,13 @@ func _place_building() -> void:
 	var instance: Building = objects[current_object_index].instantiate()
 	
 	get_parent().get_parent().add_child(instance)
-	_enough_science(instance)
+	# _enough_science(instance) done in update drill_type
 	
 	instance.global_position = snap_to_grid(hologram.global_position)
 	instance.global_rotation = hologram.global_rotation
 	
 	if instance is Drill:
-		pass
+		_update_drill_type(instance)
 	
 	instance.place()
 	building_placed.emit(instance)

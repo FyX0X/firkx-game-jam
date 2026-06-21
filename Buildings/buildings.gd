@@ -6,7 +6,7 @@ extends StaticBody3D
 var health : int
 var process_speed : float = 0.5 #base_speed
 var buffer : float = 0.0
-var cost : Dictionary = {"iron":5}
+@export var cost : Dictionary = {"iron":5}
 @onready var inventory : Inventory = $Inventory
 
 

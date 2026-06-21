@@ -17,6 +17,12 @@ size = Vector3(2, 6, 2)
 
 [node name="SpinReactor" unique_id=243835565 groups=["win_condition"] instance=ExtResource("1_6kjxs")]
 script = ExtResource("2_8wmlx")
+cost = {
+"iron": 200,
+"sillicium": 100,
+"titanium": 100,
+"tungsten": 100
+}
 
 [node name="CollisionShape3D" parent="." index="0" unique_id=63273900]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
