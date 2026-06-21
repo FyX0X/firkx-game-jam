@@ -11,6 +11,7 @@ var _current_target: Node = null
 @onready var placement: Placement = $Placement
 var hud_layer: HUD
 var debug_panel: DebugPanel
+var spawnpoint: Node3D
 
 @export var speed = 5.0
 @export var jump_velocity = 4.5
@@ -21,8 +22,11 @@ var health: float
 @export var heal_time: float = 5
 @export var healing_speed: float = 25
 var _time_since_damage: float = 0
+@export var respawn_delay: float = 1
 
 var _active_zones: Dictionary = {}  # Damage -> time_spent
+
+var loot_bag_scene: PackedScene = preload("res://Props/LootBag/loot_bag.tscn")
 
 ## resistance are bonus : 0.5 -> + 50% of grace period
 var upgrades: Dictionary = {
@@ -50,8 +54,13 @@ func _ready() -> void:
 	GlobalSignals.science_generated.connect(_on_science_generated)
 	hud_layer = get_tree().get_first_node_in_group("hud")
 	debug_panel = get_tree().get_first_node_in_group("debug_panel")
+	spawnpoint = get_tree().get_first_node_in_group("spawn")
 	print("player _ready: REMOVE FREE RESOURCES")
 	inventory.add_item("iron", 20)
+	
+	assert(hud_layer != null)
+	assert(debug_panel != null)
+	assert(spawnpoint != null)
 
 
 func _on_building_placed(building: Building) -> void:
@@ -72,6 +81,9 @@ func _physics_process(delta: float) -> void:
 	raycast_check()
 
 func _process_movement(delta: float) -> void:
+	if _current_state == State.DEAD:
+		return
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -109,7 +121,7 @@ func raycast_check() -> void:
 		interaction_target_changed.emit(null, "")
 
 func _input(event: InputEvent):
-	if not active:
+	if not active or _current_state == State.DEAD:
 		return
 	
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -119,6 +131,8 @@ func _input(event: InputEvent):
 		rotation.y += -event.screen_relative.x * mouse_sensitivity
 
 func _unhandled_input(event: InputEvent) -> void:
+	if _current_state == State.DEAD:
+		return
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		if event.is_action_pressed("interact") and _current_target != null:
 			interacted.emit(_current_target)
@@ -151,7 +165,7 @@ func set_state(state: State) -> void:
 			placement.clear_hologram()
 			hud_layer.build_cost_ui.hide()
 		State.DEAD:
-			pass
+			active = true
 			# revive ?
 		State.UI_OPEN:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -167,7 +181,7 @@ func set_state(state: State) -> void:
 			placement.object_change(0)
 			hud_layer.build_cost_ui.show()
 		State.DEAD:
-			pass
+			active = false
 		State.UI_OPEN:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	debug_panel.set_player_state(_current_state)
@@ -196,6 +210,8 @@ func _process_debug_flying(delta: float) -> void:
 	velocity = velocity.lerp(target_velocity, delta * 10.0)  # smooth it out
 
 func take_damage(damage: float) -> void:
+	if _current_state == State.DEAD:
+		return
 	_time_since_damage = 0
 	health -= damage
 	if health <= 0:
@@ -210,7 +226,21 @@ func _process_health(delta: float) -> void:
 		hud_layer.set_damage_overlay(health / max_health)
 
 func die() -> void:
-	print("YOU ARE DEAD TODO")
+	set_state(State.DEAD)
+	velocity = Vector3.ZERO
+	var bag: LootBag = loot_bag_scene.instantiate()
+	get_tree().current_scene.add_child(bag)
+	bag.global_position = global_position
+	Inventory.transfer_all(inventory, bag.get_inventory())
+	assert(inventory.is_empty())
+	get_tree().create_timer(respawn_delay).timeout.connect(respawn)
+
+func respawn() -> void:
+	set_state(State.NORMAL)
+	global_position = spawnpoint.global_position
+	health = max_health
+	_time_since_damage = heal_time  # prevents instant damage tick
+	hud_layer.set_damage_overlay(1.0)
 
 func enter_zone(zone: DamageZone) -> void:
 	_active_zones[zone] = 0.0

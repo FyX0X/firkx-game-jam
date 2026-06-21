@@ -59,3 +59,6 @@ type = 1
 [node name="BigOre4" parent="." unique_id=1180993615 instance=ExtResource("8_5vw27")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3879948, 1.5890422, -10.860464)
 type = 3
+
+[node name="SpawnPoint" type="Node3D" parent="." unique_id=537513120 groups=["spawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6432613, 0)
