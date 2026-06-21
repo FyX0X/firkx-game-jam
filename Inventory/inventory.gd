@@ -16,7 +16,7 @@ func add_item(item_id: String, amount: int = 1) -> int:
 		return 0
 	if not _items.has(item_id) and _items.size() >= capacity:
 		return 0  # no room for a new stack, return 0 added
-	print("Add item : " + item_id + " (" + str(amount) + ")")
+	# print("Add item : " + item_id + " (" + str(amount) + ")")
 	_items[item_id] = _items.get(item_id, 0) + amount
 	item_added.emit(item_id, amount)
 	inventory_changed.emit()

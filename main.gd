@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _open_inventory(left: Inventory, right: Inventory = null) -> void:
-	player.current_state = Player.PlayerState.UI_OPEN
+	player.set_state(Player.PlayerState.UI_OPEN)
 	if right == null:
 		inventory_hud.open_single(left)
 		return
@@ -51,7 +51,7 @@ func _open_inventory(left: Inventory, right: Inventory = null) -> void:
 	
 func _close_inventory() -> void:
 	inventory_hud.close()
-	player.current_state == Player.PlayerState.NORMAL
+	player.set_state(Player.PlayerState.NORMAL)
 
 
 func _input(event):
@@ -87,5 +87,5 @@ func _on_interaction_target_changed(target: Node, group: String) -> void:
 
 func _on_building_selection_change(building: Building) -> void:
 	hud_layer.show_popup_message("Left Click to place : " + building.name, 2)
-	pass
+	hud_layer.show_build_recipe(building.cost)
 	

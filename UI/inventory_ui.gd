@@ -1,6 +1,6 @@
 extends Control
 
-signal slot_picked(inventory: Inventory, item_id: String, mouse_button: MouseButton, slot: Panel)
+signal slot_picked(inventory: Inventory, item_id: String, mouse_button: MouseButton, slot: InventorySlot)
 signal slot_dropped(inventory: Inventory, item_id: String, mouse_button: MouseButton)
 
 @onready var grid: GridContainer = $VBoxContainer/GridContainer
@@ -49,7 +49,7 @@ func clear_selection() -> void:
 func _on_inventory_changed():
 	refresh()
 
-func _on_slot_clicked(item_id: String, mouse_button: MouseButton, slot: Panel) -> void:
+func _on_slot_clicked(item_id: String, mouse_button: MouseButton, slot: InventorySlot) -> void:
 	print("inventory:", inventory)
 	print("valid:", is_instance_valid(inventory))
 	print("class:", inventory.get_class() if is_instance_valid(inventory) else "invalid")

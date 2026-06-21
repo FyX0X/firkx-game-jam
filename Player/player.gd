@@ -41,7 +41,7 @@ enum PlayerState{
 	UI_OPEN
 }
 
-var current_state : PlayerState = PlayerState.NORMAL
+var _current_state : PlayerState = PlayerState.NORMAL
 
 func _ready() -> void:
 	health = max_health
@@ -125,11 +125,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.is_action_pressed("build"):
 			placement.building_mode = not placement.building_mode
 			if placement.building_mode:
-				current_state = PlayerState.BUILDING
-				placement.object_change(0)
+				set_state(PlayerState.BUILDING)
 			if not placement.building_mode:
-				placement.clear_hologram()
-				current_state = PlayerState.NORMAL
+				set_state(PlayerState.NORMAL)
 
 		if placement.building_mode:
 			if event.is_action_pressed("scroll_up"):
@@ -139,6 +137,38 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_science_generated(amount : int) -> void:
 	science_points += amount
+
+func set_state(state: PlayerState) -> void:
+	# Handle exit of previous state
+	match _current_state:
+		PlayerState.NORMAL:
+			pass
+		PlayerState.ATTACKING:
+			pass
+		PlayerState.BUILDING:
+			placement.clear_hologram()
+			hud_layer.build_cost_ui.hide()
+		PlayerState.DEAD:
+			pass
+			# revive ?
+		PlayerState.UI_OPEN:
+			# close ui ?
+			pass
+	
+	# handle new state
+	_current_state = state
+	match _current_state:
+		PlayerState.NORMAL:
+			pass
+		PlayerState.ATTACKING:
+			pass
+		PlayerState.BUILDING:
+			placement.object_change(0)
+			hud_layer.build_cost_ui.show()
+		PlayerState.DEAD:
+			pass
+		PlayerState.UI_OPEN:
+			pass
 
 func get_inventory() -> Inventory:
 	return inventory

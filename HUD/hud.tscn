@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://s6v8ha85bmj1" path="res://UI/debug_panel.tscn" id="1_h61sl"]
 [ext_resource type="Script" uid="uid://cinlkav6p42d3" path="res://HUD/hud.gd" id="1_yu8mg"]
 [ext_resource type="PackedScene" uid="uid://br2mjt0381f5f" path="res://UI/inventory_hud.tscn" id="2_mi5n8"]
+[ext_resource type="PackedScene" uid="uid://cx303wd8t3lfy" path="res://UI/build_cost_ui.tscn" id="4_jvmdh"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1757733813 groups=["hud"]]
 script = ExtResource("1_yu8mg")
@@ -36,5 +37,14 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="BuildCostUI" parent="." unique_id=627746237 instance=ExtResource("4_jvmdh")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [connection signal="finished" from="CinematicPlayer" to="." method="_on_cinematic_player_finished"]
