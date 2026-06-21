@@ -14,6 +14,7 @@ Principales :
 		batiments
 		Ambiance
 	Effets ?
+	Science table replace computer in ship
 
 
 
@@ -28,10 +29,10 @@ Secondaires :
 Martin:
 	
 	Etat transition
-	build mode : building label
 	death state.
 	
 Martin DONE:
+	build mode : building label
 	build_health
 	Fly debug
 	Reglé la camera qui bug
