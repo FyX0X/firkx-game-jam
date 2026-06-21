@@ -15,7 +15,19 @@ var hud_layer: HUD
 @export var jump_velocity = 4.5
 @export var mouse_sensitivity: float = 0.003
 @export var tilt_limit = deg_to_rad(75)
+@export var max_health: float = 100
+var health: float
+@export var heal_time: float = 5
+@export var healing_speed: float = 25
+var _time_since_damage: float = 0
 
+var _active_zones: Dictionary = {}  # Damage -> time_spent
+
+## resistance are bonus : 0.5 -> + 50% of grace period
+var upgrades: Dictionary = {
+	"heat_resistance": 0.0,
+	"cold_resistance": 0.0,
+}
 var fly_debug: bool = false
 var active: bool = true
 
@@ -31,6 +43,7 @@ enum PlayerState{
 var current_state : PlayerState = PlayerState.NORMAL
 
 func _ready() -> void:
+	health = max_health
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	placement.building_placed.connect(_on_building_placed)
 	GlobalSignals.science_generated.connect(_on_science_generated)
@@ -53,7 +66,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		_process_movement(delta)
 	move_and_slide()
-	
+	_apply_zone_damage(delta)
+	heal(delta)
 	raycast_check()
 
 func _process_movement(delta: float) -> void:
@@ -146,3 +160,42 @@ func _process_debug_flying(delta: float) -> void:
 	
 	var target_velocity: Vector3 = direction * speed + Vector3.UP * up_down * speed
 	velocity = velocity.lerp(target_velocity, delta * 10.0)  # smooth it out
+
+func take_damage(damage: float) -> void:
+	_time_since_damage = 0
+	health -= damage
+	if health <= 0:
+		die()
+
+func heal(delta: float) -> void:
+	_time_since_damage += delta
+	if _time_since_damage >= heal_time:
+		health += healing_speed * delta
+
+func die() -> void:
+	print("YOU ARE DEAD TODO")
+
+func enter_zone(zone: DamageZone) -> void:
+	_active_zones[zone] = 0.0
+	print("player: enter_zone()" +  str(zone) + ", " + zone.zone_type)
+
+func exit_zone(zone: DamageZone) -> void:
+	_active_zones.erase(zone)
+
+func _apply_zone_damage(delta: float) -> void:
+	for zone in _active_zones:
+		_active_zones[zone] += delta
+		var time_in_zone: float = _active_zones[zone]
+		
+		# grace period reduced by player upgrades
+		var effective_grace = zone.grace_period * (1 + _get_zone_resistance(zone))
+		
+		if time_in_zone >= effective_grace:
+			take_damage(zone.damage_per_second * delta)
+
+func _get_zone_resistance(zone: DamageZone) -> float:
+	# 0.0 = no resistance, 0.5 = grace period +50%
+	match zone.zone_type:
+		"desert": return upgrades.get("heat_resistance", 0.0)
+		"cold":   return upgrades.get("cold_resistance", 0.0)
+		_:        return 0.0

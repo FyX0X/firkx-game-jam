@@ -8,6 +8,7 @@ albedo_color = Color(0.9333836, 0.5322276, 5.7756904e-07, 1)
 
 [node name="Drill" unique_id=243835565 instance=ExtResource("1_p4g2w")]
 script = ExtResource("2_3rq8i")
+type = "iron"
 
 [node name="MeshInstance3D" parent="." index="1" unique_id=1292359159]
 surface_material_override/0 = SubResource("StandardMaterial3D_hxtsf")

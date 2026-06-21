@@ -1,11 +1,21 @@
 [gd_scene format=3 uid="uid://d0qsixhs4x7nf"]
 
 [ext_resource type="PackedScene" uid="uid://drwrj12eem6v6" path="res://assets/modele/map_test_1.glb" id="1_folwd"]
+[ext_resource type="Script" uid="uid://cxjscxsov6sxu" path="res://World/world.gd" id="1_y6flb"]
+[ext_resource type="PackedScene" uid="uid://b7ufllxudj6l3" path="res://World/DamageZone/damage_zone.tscn" id="3_mlekv"]
 
 [node name="StaticBody3D" type="StaticBody3D" unique_id=1813780921]
+script = ExtResource("1_y6flb")
 
 [node name="map_test_2" parent="." unique_id=254239541 instance=ExtResource("1_folwd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28703034, 0, -0.4880829)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.90471, 0, -0.4880829)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=208955167]
 transform = Transform3D(1, 0, 0, 0, -0.8724122, 0.48877084, 0, -0.48877084, -0.8724122, 0, 157.70529, 0)
+
+[node name="Desert" parent="." unique_id=1738022576 instance=ExtResource("3_mlekv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.292786, 0, 0)
+zone_type = "Desert"
+
+[node name="Cold" parent="." unique_id=1000619642 instance=ExtResource("3_mlekv")]
+zone_type = "Cold"
