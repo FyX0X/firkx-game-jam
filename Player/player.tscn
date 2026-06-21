@@ -39,9 +39,6 @@ inventory_name = "Backpack"
 
 [node name="Placement" parent="." unique_id=964907743 instance=ExtResource("3_btcbx")]
 
-[node name="Marker3D" type="Marker3D" parent="." unique_id=1879040963]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2.5)
-
 [node name="testcharagamejam2" parent="." unique_id=739969826 instance=ExtResource("4_gwnis")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.8, 0)
 
