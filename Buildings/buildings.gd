@@ -4,7 +4,7 @@ extends StaticBody3D
 var health : int
 var process_speed : float = 0.5 #base_speed
 var buffer : float = 0.0
-var cost : Dictionary
+var cost : Dictionary = {"iron":5}
 @onready var inventory : Inventory = $Inventory
 
 
@@ -21,13 +21,12 @@ var is_hologram: bool = false
 
 func is_placeable():
 	return clipping_hitbox.get_overlapping_bodies().is_empty() and not floating_hitbox.get_overlapping_bodies().is_empty()
-	
 
 func _process(_delta: float) -> void:
 	# Uniquement actif pendant le mode hologramme
 	if not is_hologram:
 		return
-	can_place = is_placeable()
+	can_place = is_placeable() and get_parent().get_node("Placement").has_enough_resources()
 	model.material_override = blue_material if can_place else red_material
 
 func set_hologram_mode(enabled: bool) -> void:
@@ -41,6 +40,7 @@ func place() -> void:
 	model.material_override = null
 	clipping_hitbox.queue_free()
 	floating_hitbox.queue_free()
+	print(get_parent())
 	
 func get_inventory() -> Inventory:
 	return inventory;

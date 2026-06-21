@@ -20,7 +20,6 @@ var blue_material: Material = preload("res://assets/Material/blue.tres")
 func _ready() -> void:
 	objects.append(preload("res://Buildings/Drills/drill.tscn"))
 	objects.append(preload("res://Buildings/Factory/factory.tscn"))
-	pass
 
 
 func _process(_delta: float) -> void:
@@ -35,24 +34,24 @@ func _process(_delta: float) -> void:
 
 
 func _update_hologram() -> void:
-	
 	if ray.is_colliding():
 		var snap_pos := snap_to_grid(ray.get_collision_point()) + Vector3(0,0.5,0)
 		hologram.global_position = hologram.global_position.lerp(snap_pos, 0.1)
 	else:
-		var snap_pos = ray.target_position
+		var snap_pos = ray.to_global(ray.target_position)
 		hologram.global_position = hologram.global_position.lerp(snap_pos, 0.1)
-
 
 	#if Input.is_action_just_pressed("rotate"):
 		#hologram.rotation.y += deg_to_rad(90)
-	var can : bool = _has_enough_resources()
+	var can : bool = has_enough_resources()
 
 	if Input.is_action_just_pressed("attack") and hologram.is_placeable() and can:
 		_place_building()
 
 
-func _has_enough_resources() -> bool:
+func has_enough_resources() -> bool:
+	if hologram == null:
+		return false
 	var inventory = get_parent().get_node("Inventory")
 	for item in hologram.cost:
 		if not inventory.has_item(item, hologram.cost[item]):
@@ -73,7 +72,10 @@ func _place_building() -> void:
 	building_placed.emit(instance)
 	
 	hologram.queue_free()
+	print(hologram)
 	hologram = null
+	print(hologram)
+
 
 
 func spawn_hologram() -> void:
@@ -81,8 +83,6 @@ func spawn_hologram() -> void:
 	get_parent().add_child(hologram)
 	hologram.global_position = ray.get_collision_point()
 	hologram.set_hologram_mode(true)
-	
-	print(hologram)
 
 
 func object_change(direction: int) -> void:
