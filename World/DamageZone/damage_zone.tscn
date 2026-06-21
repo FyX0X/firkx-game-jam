@@ -6,6 +6,7 @@
 size = Vector3(100, 100, 100)
 
 [node name="DamageZone" type="Area3D" unique_id=1738022576]
+collision_mask = 2
 script = ExtResource("1_71tig")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1968634112]

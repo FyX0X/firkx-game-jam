@@ -4,6 +4,12 @@
 [ext_resource type="Script" uid="uid://cxjscxsov6sxu" path="res://World/world.gd" id="1_y6flb"]
 [ext_resource type="PackedScene" uid="uid://b7ufllxudj6l3" path="res://World/DamageZone/damage_zone.tscn" id="3_mlekv"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_mlekv"]
+size = Vector3(100, 100, 300)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_il6x7"]
+size = Vector3(100, 100, 300)
+
 [node name="StaticBody3D" type="StaticBody3D" unique_id=1813780921]
 script = ExtResource("1_y6flb")
 
@@ -14,8 +20,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.90471, 0, -0.4880829)
 transform = Transform3D(1, 0, 0, 0, -0.8724122, 0.48877084, 0, -0.48877084, -0.8724122, 0, 157.70529, 0)
 
 [node name="Desert" parent="." unique_id=1738022576 instance=ExtResource("3_mlekv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.292786, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.34655, 0, 0)
 zone_type = "Desert"
 
+[node name="CollisionShape3D" parent="Desert" index="0" unique_id=1968634112]
+shape = SubResource("BoxShape3D_mlekv")
+
 [node name="Cold" parent="." unique_id=1000619642 instance=ExtResource("3_mlekv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.7997, 0, 0)
 zone_type = "Cold"
+
+[node name="CollisionShape3D" parent="Cold" index="0" unique_id=1968634112]
+shape = SubResource("BoxShape3D_il6x7")
+
+[editable path="Desert"]
+[editable path="Cold"]
