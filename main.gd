@@ -21,13 +21,9 @@ func set_state(new_state: GameState) -> void:
 	match state:
 		GameState.INTRO:
 			player.set_process_input(false)
-			hud_layer.visible = false
-			intro_video.play()
-			intro_video.finished.connect(_on_intro_finished, CONNECT_ONE_SHOT)
+			hud_layer.play_intro_cinematic(_on_intro_finished)
 		GameState.GAME:
 			player.set_process_input(true)
-			hud_layer.visible = true
-			intro_video.visible = false
 		GameState.WON:
 			player.set_process_input(false)
 			hud_layer.show_win_screen()

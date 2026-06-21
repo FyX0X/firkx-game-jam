@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://s6v8ha85bmj1" path="res://UI/debug_panel.tscn" id="1_h61sl"]
 [ext_resource type="Script" uid="uid://cinlkav6p42d3" path="res://HUD/hud.gd" id="1_yu8mg"]
 [ext_resource type="PackedScene" uid="uid://br2mjt0381f5f" path="res://UI/inventory_hud.tscn" id="2_mi5n8"]
+[ext_resource type="VideoStream" uid="uid://daf5cujtfoehm" path="res://assets/video/gamejam_animation_debut.ogv" id="4_jvmdh"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1757733813 groups=["hud"]]
 script = ExtResource("1_yu8mg")
@@ -29,4 +30,14 @@ text = "Popup Message"
 [node name="PopupTimer" type="Timer" parent="PopupMessage" unique_id=1536493230]
 one_shot = true
 
+[node name="IntroVideo" type="VideoStreamPlayer" parent="." unique_id=1299268508]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("4_jvmdh")
+expand = true
+
 [connection signal="timeout" from="PopupMessage/PopupTimer" to="." method="clear_popup_message"]
+[connection signal="finished" from="IntroVideo" to="." method="_on_intro_video_finished"]
