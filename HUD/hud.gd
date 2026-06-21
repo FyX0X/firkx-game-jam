@@ -7,6 +7,8 @@ extends CanvasLayer
 @onready var debug_panel: Control = $DebugPanel
 @onready var inventory_hud: Control = $InventoryHUD
 
+var intro_end_callable: Callable = Callable()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	clear_popup_message()
@@ -22,9 +24,13 @@ func play_intro_cinematic(end_observer: Callable) -> void:
 	debug_panel.hide()
 	intro_video.show()
 	intro_video.play()
-	intro_video.finished.connect(end_observer, CONNECT_ONE_SHOT)
+	intro_end_callable = end_observer
 	
-
+func skip_intro() -> void:
+	intro_video.stop()
+	_on_intro_video_finished()
+	
+	
 func show_popup_message(message: String, time: float = -1) -> void:
 	popup_message.text = message
 	if (time > 0):
@@ -36,6 +42,9 @@ func clear_popup_message() -> void:
 
 
 func _on_intro_video_finished() -> void:
+	if (intro_end_callable.is_valid()):
+		intro_end_callable.call()
+		intro_end_callable = Callable()
 	popup_message.show()
 	inventory_hud.show()
 	debug_panel.show()

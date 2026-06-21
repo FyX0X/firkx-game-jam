@@ -42,6 +42,8 @@ func _process(delta: float) -> void:
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		inventory_hud.close()
+		if state == GameState.INTRO:
+			hud_layer.skip_intro()
 		print("TODO: implement pause")
 	
 	if event.is_action_pressed("inventory"):
