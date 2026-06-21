@@ -20,16 +20,19 @@ func set_state(new_state: GameState) -> void:
 	state = new_state
 	match state:
 		GameState.INTRO:
-			player.set_process_input(false)
-			hud_layer.play_intro_cinematic(_on_intro_finished)
+			player.active = false
+			hud_layer.play_cinematic(true, _on_intro_finished)
 		GameState.GAME:
-			player.set_process_input(true)
+			player.active = true
 		GameState.WON:
-			player.set_process_input(false)
-			hud_layer.show_win_screen()
+			player.active = false
+			hud_layer.play_cinematic(false, _on_outro_finished)
 
 func _on_intro_finished() -> void:
 	set_state(GameState.GAME)
+
+func _on_outro_finished() -> void:
+	pass
 
 func _on_win() -> void:
 	set_state(GameState.WON)
