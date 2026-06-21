@@ -24,7 +24,7 @@ Secondaires :
 	Systeme Energetique
 	Convoyeur ? 
 	Son de laser quand on detruit / mine
-
+	detruire les loot bags apres un certain temps ou quand ils sont vide 
 
 Martin:
 	death state.
