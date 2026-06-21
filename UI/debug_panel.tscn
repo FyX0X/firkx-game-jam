@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://eby6aipv3lmr" path="res://UI/debug_panel.gd" id="1_aispr"]
 
-[node name="DebugPanel" type="Control" unique_id=157777416]
+[node name="DebugPanel" type="Control" unique_id=157777416 groups=["debug_panel"]]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_aispr")
@@ -15,6 +15,16 @@ anchor_right = 1.0
 offset_left = -171.0
 offset_bottom = 164.0
 grow_horizontal = 0
+
+[node name="Information" type="VBoxContainer" parent="Categories" unique_id=737397673]
+layout_mode = 2
+
+[node name="PlayerStateHeader" type="Label" parent="Categories/Information" unique_id=500913026]
+layout_mode = 2
+text = "PlayerState:"
+
+[node name="PlayerStateValue" type="Label" parent="Categories/Information" unique_id=959006580]
+layout_mode = 2
 
 [node name="Inventory" type="VBoxContainer" parent="Categories" unique_id=1679755685]
 layout_mode = 2

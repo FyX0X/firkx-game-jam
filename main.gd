@@ -20,10 +20,12 @@ func set_state(new_state: GameState) -> void:
 	state = new_state
 	match state:
 		GameState.INTRO:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			player.active = false
 			hud_layer.play_cinematic(true, _on_intro_finished)
 		GameState.GAME:
 			player.active = true
+			player.set_state(Player.State.NORMAL)
 		GameState.WON:
 			player.active = false
 			hud_layer.play_cinematic(false, _on_outro_finished)
@@ -42,7 +44,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _open_inventory(left: Inventory, right: Inventory = null) -> void:
-	player.set_state(Player.PlayerState.UI_OPEN)
+	player.set_state(Player.State.UI_OPEN)
 	if right == null:
 		inventory_hud.open_single(left)
 		return
@@ -51,7 +53,7 @@ func _open_inventory(left: Inventory, right: Inventory = null) -> void:
 	
 func _close_inventory() -> void:
 	inventory_hud.close()
-	player.set_state(Player.PlayerState.NORMAL)
+	player.set_state(Player.State.NORMAL)
 
 
 func _input(event):

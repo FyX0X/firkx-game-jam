@@ -10,6 +10,7 @@ var _current_target: Node = null
 @onready var raycast: RayCast3D = $SpringArm3D/Camera3D/RayCast3D
 @onready var placement: Placement = $Placement
 var hud_layer: HUD
+var debug_panel: DebugPanel
 
 @export var speed = 5.0
 @export var jump_velocity = 4.5
@@ -33,7 +34,7 @@ var active: bool = true
 
 var science_points = 0
 
-enum PlayerState{
+enum State{
 	NORMAL,
 	ATTACKING,
 	BUILDING,
@@ -41,15 +42,14 @@ enum PlayerState{
 	UI_OPEN
 }
 
-var _current_state : PlayerState = PlayerState.NORMAL
+var _current_state : State = State.NORMAL
 
 func _ready() -> void:
 	health = max_health
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	placement.building_placed.connect(_on_building_placed)
 	GlobalSignals.science_generated.connect(_on_science_generated)
 	hud_layer = get_tree().get_first_node_in_group("hud")
-	
+	debug_panel = get_tree().get_first_node_in_group("debug_panel")
 	print("player _ready: REMOVE FREE RESOURCES")
 	inventory.add_item("iron", 20)
 
@@ -123,13 +123,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.is_action_pressed("interact") and _current_target != null:
 			interacted.emit(_current_target)
 		if event.is_action_pressed("build"):
-			placement.building_mode = not placement.building_mode
-			if placement.building_mode:
-				set_state(PlayerState.BUILDING)
-			if not placement.building_mode:
-				set_state(PlayerState.NORMAL)
+			if _current_state == State.BUILDING:
+				set_state(State.NORMAL)
+			else:
+				set_state(State.BUILDING)
 
-		if placement.building_mode:
+		if _current_state == State.BUILDING:
 			if event.is_action_pressed("scroll_up"):
 				placement.object_change(1)
 			elif event.is_action_pressed("scroll_down"):
@@ -138,37 +137,40 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_science_generated(amount : int) -> void:
 	science_points += amount
 
-func set_state(state: PlayerState) -> void:
+func get_state() -> State:
+	return _current_state
+
+func set_state(state: State) -> void:
 	# Handle exit of previous state
 	match _current_state:
-		PlayerState.NORMAL:
+		State.NORMAL:
 			pass
-		PlayerState.ATTACKING:
+		State.ATTACKING:
 			pass
-		PlayerState.BUILDING:
+		State.BUILDING:
 			placement.clear_hologram()
 			hud_layer.build_cost_ui.hide()
-		PlayerState.DEAD:
+		State.DEAD:
 			pass
 			# revive ?
-		PlayerState.UI_OPEN:
-			# close ui ?
-			pass
+		State.UI_OPEN:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	# handle new state
 	_current_state = state
 	match _current_state:
-		PlayerState.NORMAL:
+		State.NORMAL:
 			pass
-		PlayerState.ATTACKING:
+		State.ATTACKING:
 			pass
-		PlayerState.BUILDING:
+		State.BUILDING:
 			placement.object_change(0)
 			hud_layer.build_cost_ui.show()
-		PlayerState.DEAD:
+		State.DEAD:
 			pass
-		PlayerState.UI_OPEN:
-			pass
+		State.UI_OPEN:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	debug_panel.set_player_state(_current_state)
 
 func get_inventory() -> Inventory:
 	return inventory
