@@ -22,6 +22,7 @@ Secondaires :
 	Astéroides avec vaisseau
 	Systeme Energetique
 	Convoyeur ? 
+	Son de laser quand on detruit / mine
 
 
 Martin:
@@ -29,9 +30,9 @@ Martin:
 	Etat transition
 	build mode : building label
 	death state.
-	build_health
 	
 Martin DONE:
+	build_health
 	Fly debug
 	Reglé la camera qui bug
 	Inventory Transfer:

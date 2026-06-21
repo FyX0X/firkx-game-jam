@@ -1,6 +1,8 @@
 class_name Building
 extends StaticBody3D
 
+@export var max_health: float = 100
+@export var regen: float = 2
 var health : int
 var process_speed : float = 0.5 #base_speed
 var buffer : float = 0.0
@@ -25,7 +27,15 @@ func is_placed() -> bool:
 func is_not_clipping():
 	return clipping_hitbox.get_overlapping_bodies().is_empty() and not floating_hitbox.get_overlapping_bodies().is_empty()
 
-func _process(_delta: float) -> void:
+func _ready() -> void:
+	health = max_health
+	print(health)
+
+func _process(delta: float) -> void:
+	health = minf(health + delta * regen, max_health)
+
+	
+	
 	# Uniquement actif pendant le mode hologramme
 	if not is_hologram:
 		return
@@ -57,7 +67,7 @@ func _on_destroyed(player_inventory : Inventory) -> void :
 	print("Batiment detruit")
 	queue_free()
 
-func take_damage(damage : int, player_inventory : Inventory):
+func take_damage(damage : float, player_inventory : Inventory):
 	health -= damage
 	if health <= 0:
 		_on_destroyed(player_inventory)

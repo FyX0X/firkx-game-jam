@@ -1,8 +1,6 @@
 class_name HUD
 extends CanvasLayer
 
-@onready var popup_message: Label = $PopupMessage
-@onready var popup_timer: Timer = $PopupMessage/PopupTimer 
 @onready var cinematic_player: VideoStreamPlayer = $CinematicPlayer
 @onready var debug_panel: Control = $DebugPanel
 @onready var inventory_hud: Control = $InventoryHUD
@@ -13,9 +11,10 @@ var outro_video: VideoStreamTheora
 var _is_intro: bool = true
 var end_callable: Callable = Callable()
 
+var messages: Array[Control] = []
+@export var MAX_MESSAGES: int = 5
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	clear_popup_message()
 	intro_video = preload("res://assets/video/gamejam_animation_debut.ogv")
 	outro_video = preload("res://assets/video/gamejam_animation_outro.ogv")
 
@@ -26,7 +25,7 @@ func _process(delta: float) -> void:
 
 func play_cinematic(is_intro: bool, end_observer: Callable) -> void:
 	_is_intro = is_intro
-	popup_message.hide()
+	# popup_message.hide()
 	inventory_hud.hide()
 	debug_panel.hide()
 	cinematic_player.show()
@@ -52,15 +51,67 @@ func flash_damage() -> void:
 	tween.tween_property(damage_overlay, "color:a", 0.5, 0.05)
 	tween.tween_property(damage_overlay, "color:a", 0.0, 0.3)
 
-func show_popup_message(message: String, time: float = -1) -> void:
-	popup_message.text = message
-	if (time > 0):
-		popup_timer.start(time)
-		
+func show_popup_message(text: String, time: float = 2.0) -> void:
+	if time <= 0:
+		return
 
-func clear_popup_message() -> void:
-	popup_message.text = ""
+	# prevent duplicate last message
+	if messages.size() > 0:
+		var last := messages[messages.size() - 1]
+		if is_instance_valid(last) and last.text == text:
+			return
 
+	var label := Label.new()
+	label.text = text
+	label.modulate.a = 1.0  # already visible
+
+	add_child(label)
+	messages.append(label)
+
+	if messages.size() > MAX_MESSAGES:
+		_remove_message(messages[0])
+
+	# place immediately, then animate only if needed
+	_relayout(false)
+
+	if time > 0:
+		var timer := get_tree().create_timer(time)
+		timer.timeout.connect(func():
+			_remove_message(label)
+		)
+
+func _remove_message(label: Control) -> void:
+	if not is_instance_valid(label):
+		return
+
+	messages.erase(label)
+
+	var t := create_tween()
+	t.tween_property(label, "modulate:a", 0.0, 0.15)
+	t.parallel().tween_property(label, "position:x", label.position.x + 20, 0.15)
+
+	t.tween_callback(func():
+		if is_instance_valid(label):
+			label.queue_free()
+		_relayout(true)
+	)
+
+func _relayout(animated: bool = true) -> void:
+	var start_pos := Vector2(20, 20)
+	var spacing := 30
+
+	for i in messages.size():
+		var label := messages[i]
+		if not is_instance_valid(label):
+			continue
+
+		var target := start_pos + Vector2(0, i * spacing)
+
+		if animated:
+			var t := create_tween()
+			t.tween_property(label, "position", target, 0.2)
+		else:
+			label.position = target
 
 func _on_cinematic_player_finished() -> void:
 	if (end_callable.is_valid()):
@@ -69,7 +120,7 @@ func _on_cinematic_player_finished() -> void:
 	if not _is_intro:
 		print("hud: _on_cinematic_player_finished: outro finished keeps video shown")
 		return
-	popup_message.show()
+	# popup_message.show()
 	inventory_hud.show()
 	debug_panel.show()
 	cinematic_player.hide()

@@ -126,6 +126,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			placement.building_mode = not placement.building_mode
 			if placement.building_mode:
 				current_state = PlayerState.BUILDING
+				placement.object_change(0)
 			if not placement.building_mode:
 				placement.clear_hologram()
 				current_state = PlayerState.NORMAL
