@@ -3,12 +3,14 @@ extends Building
 
 @export var recipe : Dictionary = {} #ie my_recipe = {"input" : {ITEMS}, "output" : {ITEMS}, "time" : FLOAT}
 var outputs : Dictionary = {}
+@onready var Audiofactory: AudioStreamPlayer3D = $Audiofactory
+
 
 const recipes : Dictionary = {
-	"iron" : {"input" : {"iron" : 2}, "output" : {"iron_bar" : 1}, "time" : 0.2},
-	"titanium" : {"input" : {"titanium" : 2}, "output" : {"titanium_bar" : 1}, "time" : 0.2},
-	"sillicium" : {"input": {"sillicium" : 2}, "output" : {"sillicium_bar" : 1}, "time" : 0.2},
-	"tungsten" :{"input" : {"tungsten" : 2}, "output" : {"tungsten_bar" : 1}, "time" : 0.2},
+	"iron" : {"input" : {"iron" : 2}, "output" : {"iron_bar" : 1}, "time" : 3},
+	"titanium" : {"input" : {"titanium" : 2}, "output" : {"titanium_bar" : 1}, "time" : 4},
+	"sillicium" : {"input": {"sillicium" : 2}, "output" : {"sillicium_bar" : 1}, "time" : 3},
+	"tungsten" :{"input" : {"tungsten" : 2}, "output" : {"tungsten_bar" : 1}, "time" : 3},
 }
 
 const ores = ["iron", "titanium", "sillicium", "tungsten"]
@@ -26,9 +28,12 @@ func _process(delta: float) -> void:
 		return
 	
 	if _can_process():
+		if Audiofactory and not Audiofactory.playing:
+			Audiofactory.play()
 		buffer += delta * process_speed
 		if (buffer >= recipe["time"]):
 			_finish_processing()
+			
 
 func _on_inventory_changed():
 	var keys = inventory.get_all_items().keys()

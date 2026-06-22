@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ccafhp5bef5b3" path="res://Buildings/buildings.tscn" id="1_p4g2w"]
 [ext_resource type="Script" uid="uid://d2uouubruf6vf" path="res://Buildings/Drills/drill.gd" id="2_3rq8i"]
+[ext_resource type="AudioStream" uid="uid://d1nreb4lacrhl" path="res://assets/audio/Audiodrill.wav" id="3_ng00e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hxtsf"]
 albedo_color = Color(0.9333836, 0.5322276, 5.7756904e-07, 1)
@@ -16,3 +17,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_hxtsf")
 
 [node name="Inventory" parent="." index="2" unique_id=1803995424]
 inventory_name = "Drill Inventory"
+
+[node name="DrillAudio" type="AudioStreamPlayer3D" parent="." index="5" unique_id=413927254]
+stream = ExtResource("3_ng00e")
+volume_db = -45.025

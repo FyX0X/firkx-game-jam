@@ -36,11 +36,9 @@ func _do_laser(delta: float) -> void:
 			
 	beam.visible = true
 	
-	# --- MODIFICATION ICI ---
-	# On joue le son SEULEMENT s'il n'est pas déjà en train de jouer
 	if laser_audio and not laser_audio.playing:
 		laser_audio.play()
-	# -------------------------
+	
 	
 	if target.is_in_group("breakable"):
 		target.take_damage(damage_per_second * delta, player.get_inventory())
