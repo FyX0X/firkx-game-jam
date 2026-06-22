@@ -9,6 +9,8 @@ var _current_target: Node = null
 @onready var camera_arm: SpringArm3D = $SpringArm3D
 @onready var raycast: RayCast3D = $SpringArm3D/Camera3D/RayCast3D
 @onready var placement: Placement = $Placement
+@onready var Audiostep: AudioStreamPlayer3D = $Audiostep
+@onready var Audiojump: AudioStreamPlayer3D = $Audiojump
 var hud_layer: HUD
 var debug_panel: DebugPanel
 var spawnpoint: Node3D
@@ -82,6 +84,8 @@ func _physics_process(delta: float) -> void:
 
 func _process_movement(delta: float) -> void:
 	if _current_state == State.DEAD:
+		if Audiostep.playing:
+			Audiostep.stop()
 		return
 	
 	# Add the gravity.
@@ -91,6 +95,7 @@ func _process_movement(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
+		Audiojump.play()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -102,6 +107,14 @@ func _process_movement(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
+	var est_en_mouvement := Vector2(velocity.x, velocity.z).length() > 0.1
+	
+	if is_on_floor() and est_en_mouvement:
+		if not Audiostep.playing:
+			Audiostep.play()
+	else:
+		if Audiostep.playing:
+			Audiostep.stop()
 
 
 func raycast_check() -> void:

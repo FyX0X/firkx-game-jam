@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://8j1ui6gsknnb" path="res://Placement/placement.tscn" id="3_btcbx"]
 [ext_resource type="PackedScene" uid="uid://bf0eexdenfl14" path="res://assets/modele/testcharagamejam.glb" id="4_gwnis"]
 [ext_resource type="PackedScene" uid="uid://w6q3hf7tffl8" path="res://LaserTool/laser_tool.tscn" id="5_k53q1"]
+[ext_resource type="AudioStream" uid="uid://spieyelhwx37" path="res://assets/audio/audiostep.wav" id="6_fhl08"]
+[ext_resource type="AudioStream" uid="uid://rwpvd1xpivrp" path="res://assets/audio/Audiojump.wav" id="7_vtle1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8lsb0"]
 height = 1.6
@@ -44,3 +46,11 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -
 
 [node name="LaserTool" parent="." unique_id=717149006 instance=ExtResource("5_k53q1")]
 transform = Transform3D(0.92388326, 0, -0.38267443, 0.15465504, 0.914696, 0.37338057, 0.35003075, -0.4041426, 0.8450723, -0.5552398, 0.79946405, 0.05508995)
+
+[node name="Audiostep" type="AudioStreamPlayer3D" parent="." unique_id=864115961]
+stream = ExtResource("6_fhl08")
+volume_db = -26.533
+
+[node name="Audiojump" type="AudioStreamPlayer3D" parent="." unique_id=2039150589]
+stream = ExtResource("7_vtle1")
+volume_db = -16.884
