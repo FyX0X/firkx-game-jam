@@ -1,14 +1,22 @@
 class_name Factory
 extends Building
 
-@export var recipe : Dictionary = {"input" : {"iron" : 2}, "output" : {"iron_bar" : 1}, "time" : 1.5} #ie my_recipe = {"input" : {ITEMS}, "output" : {ITEMS}, "time" : FLOAT}
-var inputs : Dictionary
+@export var recipe : Dictionary = {} #ie my_recipe = {"input" : {ITEMS}, "output" : {ITEMS}, "time" : FLOAT}
 var outputs : Dictionary = {}
+
+const recipes : Dictionary = {
+	"iron" : {"input" : {"iron" : 2}, "output" : {"iron_bar" : 1}, "time" : 0.2},
+	"titanium" : {"input" : {"titanium" : 2}, "output" : {"titanium_bar" : 1}, "time" : 0.2},
+	"sillicium" : {"input": {"sillicium" : 2}, "output" : {"sillicium_bar" : 1}, "time" : 0.2},
+	"tungsten" :{"input" : {"tungsten" : 2}, "output" : {"tungsten_bar" : 1}, "time" : 0.2},
+}
+
+const ores = ["iron", "titanium", "sillicium", "tungsten"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
-	inventory.add_item("iron", 19)
+	inventory.item_added.connect(_on_inventory_added)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,6 +29,10 @@ func _process(delta: float) -> void:
 		buffer += delta * process_speed
 		if (buffer >= recipe["time"]):
 			_finish_processing()
+
+func _on_inventory_added(item: String, amount: int):
+	if item in ores: 
+		recipe = recipes[item]
 
 func _can_process() -> bool:
 	for item in recipe["input"]:
