@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d0ukwt18y77i7" path="res://LaserTool/laser_tool.gd" id="1_jn3ic"]
 [ext_resource type="AudioStream" uid="uid://do52jgam7hpe3" path="res://assets/audio/miningsound.wav" id="2_3xf76"]
+[ext_resource type="AudioStream" uid="uid://dmydsgqruwdiy" path="res://assets/audio/lasersound.wav" id="3_ci1qa"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8lsb0"]
 size = Vector3(0.1, 0.1, 0.1)
@@ -29,4 +30,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_jn3ic")
 
 [node name="pickup_audio" type="AudioStreamPlayer3D" parent="Beam" unique_id=1193076557]
 stream = ExtResource("2_3xf76")
-volume_db = 32.965
+volume_db = 20.905
+
+[node name="laser_audio" type="AudioStreamPlayer3D" parent="Beam" unique_id=590194873]
+stream = ExtResource("3_ci1qa")
+volume_db = -28.945
