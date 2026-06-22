@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ccafhp5bef5b3" path="res://Buildings/buildings.tscn" id="1_73vyo"]
 [ext_resource type="Script" uid="uid://c81fvndm348on" path="res://Buildings/Science/science_table.gd" id="2_yjxsp"]
+[ext_resource type="AudioStream" uid="uid://dhnoig0ipeb42" path="res://assets/audio/bubble.wav" id="3_wqs34"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73vyo"]
 albedo_color = Color(0.7781917, 0.62779355, 0.14251667, 1)
@@ -18,3 +19,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_73vyo")
 
 [node name="Inventory" parent="." index="2" unique_id=1803995424]
 inventory_name = "Sience Table"
+
+[node name="Audioscience" type="AudioStreamPlayer3D" parent="." index="5" unique_id=908845961]
+stream = ExtResource("3_wqs34")
