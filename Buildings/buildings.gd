@@ -3,7 +3,7 @@ extends StaticBody3D
 
 @export var max_health: float = 100
 @export var regen: float = 2
-var health : int
+var health : float
 var process_speed : float = 0.5 #base_speed
 var buffer : float = 0.0
 @export var cost : Dictionary = {"iron":5}
