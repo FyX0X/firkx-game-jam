@@ -16,7 +16,7 @@ const ores = ["iron", "titanium", "sillicium", "tungsten"]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
-	inventory.item_added.connect(_on_inventory_added)
+	inventory.inventory_changed.connect(_on_inventory_changed)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,9 +30,12 @@ func _process(delta: float) -> void:
 		if (buffer >= recipe["time"]):
 			_finish_processing()
 
-func _on_inventory_added(item: String, amount: int):
-	if item in ores: 
-		recipe = recipes[item]
+func _on_inventory_changed():
+	var keys = inventory.get_all_items().keys()
+	for item in keys:
+		if item in ores:
+			recipe = recipes[item]
+			return
 
 func _can_process() -> bool:
 	for item in recipe["input"]:
