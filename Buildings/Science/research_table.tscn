@@ -15,3 +15,6 @@ cost = {
 
 [node name="MeshInstance3D" parent="." index="1" unique_id=1292359159]
 surface_material_override/0 = SubResource("StandardMaterial3D_qa22y")
+
+[node name="Inventory" parent="." index="2" unique_id=1803995424]
+inventory_name = "Research Table"
