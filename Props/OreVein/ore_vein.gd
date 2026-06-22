@@ -16,7 +16,7 @@ func yield_resource() -> void:
 	if remaining_yield <= 0:
 		return
 	remaining_yield -= 1
-	resource_yielded.emit(OreType, 1)
+	resource_yielded.emit(_get_string(type), 1)
 	if remaining_yield <= 0:
 		_deplete()
 

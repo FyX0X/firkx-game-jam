@@ -51,3 +51,16 @@ func _set_ore_color(new_color : Color) -> void:
 	new_mat.roughness = 0.4
 
 	mesh_instance.material_override = new_mat
+
+func _get_string(ore : OreType) -> String:
+	match ore:
+		OreType.IRON:
+			return "iron"
+		OreType.TITANIUM:
+			return "titanium"
+		OreType.SILLICIUM:
+			return "sillicium"
+		OreType.TUNGSTEN:
+			return "tungsten"
+		_:
+			return ""
