@@ -4,8 +4,6 @@
 [ext_resource type="Script" uid="uid://d3gn47wim1xkd" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://d0qsixhs4x7nf" path="res://World/World.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dqbniuv054ai1" path="res://HUD/hud.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://dngxpdrv7eh50" path="res://Buildings/Drills/drill.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://ctquw3vjfldvm" path="res://Buildings/Factory/factory.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://cge462m4fg0tl" path="res://Props/OreVein/ore_vein.tscn" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://c01uo1kbl6f1i" path="res://Props/BigOre/big_ore.tscn" id="8_5vw27"]
 
@@ -18,13 +16,6 @@ script = ExtResource("1_1bvp3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 10, 0)
 
 [node name="HUD" parent="." unique_id=594591012 instance=ExtResource("3_h2yge")]
-
-[node name="Drill" parent="." unique_id=243835565 instance=ExtResource("4_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54638034, 5.4950824, 7.564541)
-
-[node name="Factory" parent="." unique_id=125905545 instance=ExtResource("5_lquwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.6014395, 0)
-recipe = null
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=879743808]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.965537, -6.360722)
