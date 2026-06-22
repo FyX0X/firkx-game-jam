@@ -3,6 +3,7 @@ extends StaticBody3D
 
 @export var max_health: float = 100
 @export var regen: float = 2
+@export var indestructible: bool = false
 var health : float
 var process_speed : float = 0.5 #base_speed
 var buffer : float = 0.0
@@ -68,6 +69,8 @@ func _on_destroyed(player_inventory : Inventory) -> void :
 	queue_free()
 
 func take_damage(damage : float, player_inventory : Inventory):
+	if indestructible:
+		return
 	health -= damage
 	if health <= 0:
 		_on_destroyed(player_inventory)
