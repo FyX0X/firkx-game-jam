@@ -4,6 +4,10 @@ extends Node
 @onready var inventory_hud: InventoryHUD = $HUD/InventoryHUD
 @onready var player: Player = $Player
 @onready var building_placement: Placement = $Player/Placement
+@onready var spaceship: StaticBody3D = $SpaceShip
+@onready var science_table: ScienceTable = $SpaceShip/ScienceTable
+@onready var research_table: ResearchTable = $SpaceShip/ResearchTable
+
 
 enum GameState { INTRO, GAME, WON }
 var state: GameState = GameState.INTRO
@@ -16,6 +20,7 @@ func _ready() -> void:
 	building_placement.win_triggered.connect(_on_win)
 	building_placement.building_selection_changed.connect(_on_building_selection_change)
 	set_state(GameState.INTRO)
+	research_table.research_opened.connect(_on_research_opened)
 
 func set_state(new_state: GameState) -> void:
 	state = new_state
@@ -60,6 +65,7 @@ func _close_inventory() -> void:
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		_close_inventory()
+		_on_research_closed()
 		if state == GameState.INTRO:
 			hud_layer.skip_intro()
 		print("TODO: implement pause")
@@ -67,8 +73,11 @@ func _input(event):
 	if event.is_action_pressed("inventory"):
 		if inventory_hud.is_open:
 			_close_inventory()
+		elif hud_layer.research_ui.visible:
+			_on_research_closed()
 		else:
 			_open_inventory(player.get_inventory())
+		
 
 
 func _on_player_interacted(target: Node) -> void:
@@ -76,7 +85,9 @@ func _on_player_interacted(target: Node) -> void:
 	if target.has_method("interact"):
 		target.interact(player)
 	elif target.has_method("get_inventory"):
-		_open_inventory(player.get_inventory(), target.get_inventory())
+		var target_inv: Inventory = target.get_inventory()
+		if target_inv:
+			_open_inventory(player.get_inventory(), target.get_inventory())
 	else:
 		print("Interact failed: No suitable methods for target found.")
 
@@ -91,4 +102,13 @@ func _on_interaction_target_changed(target: Node, group: String) -> void:
 func _on_building_selection_change(building: Building) -> void:
 	hud_layer.show_popup_message("Left Click to place : " + building.name, 2)
 	hud_layer.show_build_recipe(building.cost)
+
+func _on_research_opened() -> void:
+	player.set_state(Player.State.UI_OPEN)
+	hud_layer.set_research_ui_visibility(true)
+
+func _on_research_closed() -> void:
+	player.set_state(Player.State.NORMAL)
+	hud_layer.set_research_ui_visibility(false)
+	
 	

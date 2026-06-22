@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dk5yhfhpkq63h"]
+
+[ext_resource type="Script" uid="uid://bw3shqlf0xt8x" path="res://UI/research_ui.gd" id="1_p0cvi"]
+[ext_resource type="Texture2D" uid="uid://bhaw2w17rxf6d" path="res://assets/images/dwarf.jpg" id="2_dlgyp"]
+
+[node name="ResearchUI" type="Control" unique_id=2031661573]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p0cvi")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=839282275]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer" unique_id=142816986]
+custom_minimum_size = Vector2(1000, 500)
+layout_mode = 2
+color = Color(0.16924527, 0.1692453, 0.16924527, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer" unique_id=184961773]
+custom_minimum_size = Vector2(800, 400)
+layout_mode = 2
+texture = ExtResource("2_dlgyp")
+expand_mode = 1
