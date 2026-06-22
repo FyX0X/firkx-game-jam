@@ -24,6 +24,7 @@ func _ready() -> void:
 	objects.append(preload("res://Buildings/Drills/drill.tscn"))
 	objects.append(preload("res://Buildings/Factory/factory.tscn"))
 	objects.append(preload("res://Buildings/SpinReactor/spin_reactor.tscn"))
+	objects.append(preload("res://Buildings/Pole/pole.tscn"))
 	hud_layer = get_tree().get_first_node_in_group("hud")
 	
 	assert(player is Player and player != null)

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://jjt12557r5ur"]
+
+[ext_resource type="PackedScene" uid="uid://ccafhp5bef5b3" path="res://Buildings/buildings.tscn" id="1_0rx1q"]
+[ext_resource type="Script" uid="uid://c0p7oxvv8ci0x" path="res://Buildings/Pole/pole.gd" id="2_ij4cs"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_4kxuq"]
+
+[node name="Pole" unique_id=243835565 groups=["electrical"] instance=ExtResource("1_0rx1q")]
+script = ExtResource("2_ij4cs")
+
+[node name="Mesh" type="Node3D" parent="." index="5" unique_id=966749754]
+
+[node name="ElectricalHook" type="MeshInstance3D" parent="Mesh" index="0" unique_id=1721476465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1740227, 0)
+mesh = SubResource("SphereMesh_4kxuq")
