@@ -3,7 +3,7 @@ extends Building
 
 @export var recipe : Dictionary = {} #ie my_recipe = {"input" : {ITEMS}, "output" : {ITEMS}, "time" : FLOAT}
 var outputs : Dictionary = {}
-@onready var DrillAudio: AudioStreamPlayer3D = $Drill/DrillAudio
+@onready var Audiofactory: AudioStreamPlayer3D = $Audiofactory
 
 
 const recipes : Dictionary = {
@@ -28,8 +28,8 @@ func _process(delta: float) -> void:
 		return
 	
 	if _can_process():
-		if DrillAudio and not DrillAudio.playing:
-			DrillAudio.play()
+		if Audiofactory and not Audiofactory.playing:
+			Audiofactory.play()
 		buffer += delta * process_speed
 		if (buffer >= recipe["time"]):
 			_finish_processing()

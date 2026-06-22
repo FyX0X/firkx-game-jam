@@ -20,3 +20,4 @@ inventory_name = "Drill Inventory"
 
 [node name="DrillAudio" type="AudioStreamPlayer3D" parent="." index="5" unique_id=413927254]
 stream = ExtResource("3_ng00e")
+volume_db = -45.025
