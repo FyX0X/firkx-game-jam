@@ -5,6 +5,7 @@ extends Node3D
 
 @onready var player: Player = get_parent()   # adjust path if needed
 @onready var beam: MeshInstance3D = $Beam
+@onready var pickup_audio: AudioStreamPlayer3D = $Beam/pickup_audio
 
 var _tick_timer: float = 0.0
 var _connected_target: Node  = null
@@ -55,5 +56,9 @@ func _disconnect_target() -> void:
 func _on_resource_yielded(ore_type: String, amount: int) -> void:
 	print("_on_resource_yielded()")
 	player.pickup_resource(ore_type, amount)
+	if pickup_audio:
+		if pickup_audio.playing:
+			pickup_audio.stop()
+		pickup_audio.play()
 	# or: inventory_changed.emit(ore_type, amount)
 	# or: InventoryManager.add(ore_type, amount)
