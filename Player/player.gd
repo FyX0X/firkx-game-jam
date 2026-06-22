@@ -38,7 +38,7 @@ var upgrades: Dictionary = {
 var fly_debug: bool = false
 var active: bool = true
 
-var science_points = 0
+var science_points = 100
 
 enum State{
 	NORMAL,
