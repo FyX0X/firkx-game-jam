@@ -2,6 +2,8 @@ class_name Drill
 extends Building
 
 @export var type : String = "iron"
+@onready var Audiofactory: AudioStreamPlayer3D = $Factory/Audiofactory
+
 
 const drill_cost : Dictionary = {
 	"iron" = {"iron" : 5},
@@ -26,6 +28,8 @@ func _process(delta: float) -> void:
 	super._process(delta)
 	if is_hologram:
 		return
+	if Audiofactory and not Audiofactory.playing:
+		Audiofactory.play()
 	
 	buffer += process_speed * delta
 	if (buffer >= 1):

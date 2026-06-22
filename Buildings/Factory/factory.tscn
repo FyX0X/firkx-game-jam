@@ -31,4 +31,3 @@ inventory_name = "Factory Inventory"
 
 [node name="Audiofactory" type="AudioStreamPlayer3D" parent="." index="5" unique_id=744107383]
 stream = ExtResource("3_4jq7f")
-max_distance = 10.0
