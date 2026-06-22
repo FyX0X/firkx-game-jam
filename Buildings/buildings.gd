@@ -3,6 +3,7 @@ extends StaticBody3D
 
 @export var max_health: float = 100
 @export var regen: float = 2
+@export var is_breakable: bool = true
 var health : float
 var process_speed : float = 0.5 #base_speed
 var buffer : float = 0.0
@@ -30,6 +31,9 @@ func is_not_clipping():
 func _ready() -> void:
 	health = max_health
 	print(health)
+	
+	if is_breakable:
+		add_to_group("breakable")
 
 func _process(delta: float) -> void:
 	health = minf(health + delta * regen, max_health)
@@ -68,6 +72,8 @@ func _on_destroyed(player_inventory : Inventory) -> void :
 	queue_free()
 
 func take_damage(damage : float, player_inventory : Inventory):
+	if not is_breakable:
+		return
 	health -= damage
 	if health <= 0:
 		_on_destroyed(player_inventory)

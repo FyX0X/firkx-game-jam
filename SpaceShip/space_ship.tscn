@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bpxsl54em2jul"]
+
+[ext_resource type="PackedScene" uid="uid://b7b1lwslmy3bv" path="res://Buildings/Science/science_table.tscn" id="1_lnddr"]
+[ext_resource type="PackedScene" uid="uid://det6o1erkma45" path="res://Buildings/Science/research_table.tscn" id="2_f6wkc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xvn3t"]
+size = Vector3(10, 1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kfkoq"]
+size = Vector3(10, 1, 5)
+
+[node name="SpaceShip" type="StaticBody3D" unique_id=1266918605]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1167502050]
+shape = SubResource("BoxShape3D_xvn3t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1397953288]
+mesh = SubResource("BoxMesh_kfkoq")
+
+[node name="ScienceTable" parent="." unique_id=243835565 instance=ExtResource("1_lnddr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2226858, 0.39990902, -1.301409)
+
+[node name="ResearchTable" parent="." unique_id=417381748 instance=ExtResource("2_f6wkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41456032, 0.3422873, -1.3328652)
+
+[node name="SpawnPoint" type="Node3D" parent="." unique_id=613995401 groups=["spawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74109995, 0)
