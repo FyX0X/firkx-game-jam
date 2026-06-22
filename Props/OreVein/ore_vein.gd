@@ -1,9 +1,8 @@
 class_name OreVein
-extends BaseProp
+extends Ore
 
-signal resource_yielded(ore_type: String, amount: int)
+signal resource_yielded(ore_type: Ore.OreType, amount: int)
 
-@export var ore_type: String = "iron"
 @export var total_yield: int = 8
 
 var remaining_yield: int
@@ -17,7 +16,7 @@ func yield_resource() -> void:
 	if remaining_yield <= 0:
 		return
 	remaining_yield -= 1
-	resource_yielded.emit(ore_type, 1)
+	resource_yielded.emit(OreType, 1)
 	if remaining_yield <= 0:
 		_deplete()
 
