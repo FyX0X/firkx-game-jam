@@ -13,7 +13,7 @@ albedo_color = Color(1, 0.23529412, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_qnjey"]
 size = Vector3(0.8, 0.8, 0.8)
 
-[node name="Buildings" type="StaticBody3D" unique_id=243835565 groups=["breakable", "interactable"]]
+[node name="Buildings" type="StaticBody3D" unique_id=243835565 groups=["interactable"]]
 script = ExtResource("1_ocqis")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=63273900]

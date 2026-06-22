@@ -8,7 +8,7 @@ albedo_color = Color(2.695322e-06, 0.77846557, 0.7185519, 1)
 
 [node name="ResearchTable" unique_id=243835565 instance=ExtResource("1_x3ujh")]
 script = ExtResource("2_k3wm6")
-indestructible = true
+is_breakable = false
 cost = {
 "iron": 1000000
 }
