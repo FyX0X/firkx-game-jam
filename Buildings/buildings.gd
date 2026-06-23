@@ -18,6 +18,9 @@ var buffer : float = 0.0
 var red_material: Material = preload("res://assets/Material/red.tres")
 var blue_material: Material = preload("res://assets/Material/blue.tres")
 
+var green_elec : Material = preload("res://assets/Material/red_elec.tres")
+var red_elec : Material = preload("res://assets/Material/green_elec.tres")
+
 var can_place: bool = false
 var is_hologram: bool = false
 
@@ -80,6 +83,9 @@ func get_inventory() -> Inventory:
 
 func set_powered(powered : bool) -> void:
 	is_powered = powered
+	var light = self.find_child("Light", true, false)
+	if light:
+		_override_mat(light, green_elec if powered else red_elec)
 
 func _on_destroyed(player_inventory : Inventory) -> void :
 	for item in inventory.get_all_items():
