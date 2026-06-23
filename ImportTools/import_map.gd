@@ -8,6 +8,9 @@ func _post_import(scene : Node):
 	var big_scene = preload("res://Props/BigOre/big_ore.tscn")
 	var vein_scene = preload("res://Props/OreVein/ore_vein.tscn")
 	
+	var regex = RegEx.new()
+	regex.compile("[0-9_]")
+	
 	if not bigs :
 		push_error("No big nodes found !")
 	if not veins:
@@ -15,7 +18,7 @@ func _post_import(scene : Node):
 	for big in bigs:
 		if big is not MeshInstance3D:
 			continue
-		var type = big.name.substr(4)
+		var type = regex.sub(big.name.substr(4),"",true)
 		print(type)
 		
 		var new_big = big_scene.instantiate()
@@ -39,11 +42,11 @@ func _post_import(scene : Node):
 		collision_node.shape = big.mesh.create_trimesh_shape()
 		new_big.add_child(collision_node)
 		collision_node.owner = scene
-	
+	print("vein")
 	for vein in veins:
 		if vein is not MeshInstance3D:
 			continue
-		var type = vein.name.substr(5)
+		var type = regex.sub(vein.name.substr(5),"",true)
 		print(type)
 		
 		var new_vein = vein_scene.instantiate()
@@ -70,7 +73,9 @@ func _post_import(scene : Node):
 	return scene
 
 func _add_collisions(node : Node, scene : Node):
+	print(node.name)
 	if node is MeshInstance3D and node.mesh != null:
+		print(node.name)
 		var corps = StaticBody3D.new()
 		node.add_child(corps)
 		corps.owner = scene

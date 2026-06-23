@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b6o4j0s36405x" path="res://assets/itchio_page/background.png" id="3_il6x7"]
 [ext_resource type="PackedScene" uid="uid://b7ufllxudj6l3" path="res://World/DamageZone/damage_zone.tscn" id="3_mlekv"]
-[ext_resource type="PackedScene" uid="uid://ca404idok1p6a" path="res://assets/modele/map_with_ore_test.glb" id="3_o14yy"]
+[ext_resource type="PackedScene" uid="uid://huss3in3yrjs" path="res://assets/modele/maptestvolume.glb" id="4_il6x7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mlekv"]
 size = Vector3(100, 100, 300)
@@ -23,6 +23,8 @@ sky = SubResource("Sky_il6x7")
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_qfhvn"]
 
 [node name="StaticBody3D" type="StaticBody3D" unique_id=1813780921 groups=["ground"]]
+collision_layer = 3
+collision_mask = 3
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=208955167]
 transform = Transform3D(0.67252964, 0.14786522, 0.7251481, -0.70823216, -0.15571494, 0.6885929, 0.21473533, -0.9766723, -4.371139e-08, -2.794342, 96.413185, 0)
@@ -45,7 +47,7 @@ shape = SubResource("BoxShape3D_il6x7")
 environment = SubResource("Environment_8lsb0")
 camera_attributes = SubResource("CameraAttributesPractical_qfhvn")
 
-[node name="map_with_ore_test" parent="." unique_id=973741539 instance=ExtResource("3_o14yy")]
+[node name="maptestvolume" parent="." unique_id=521608439 instance=ExtResource("4_il6x7")]
 
 [editable path="Desert"]
 [editable path="Cold"]

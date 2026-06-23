@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ca404idok1p6a"
-path="res://.godot/imported/map_with_ore_test.glb-c0264745336240427a87d05bbb6e5ec1.scn"
+uid="uid://duh5j1wnctsoq"
+path="res://.godot/imported/maptest_separateobject.glb-b3c8cd730bb5eb0f3129712fee9f0e53.scn"
 
 [deps]
 
-source_file="res://assets/modele/map_with_ore_test.glb"
-dest_files=["res://.godot/imported/map_with_ore_test.glb-c0264745336240427a87d05bbb6e5ec1.scn"]
+source_file="res://assets/modele/maptest_separateobject.glb"
+dest_files=["res://.godot/imported/maptest_separateobject.glb-b3c8cd730bb5eb0f3129712fee9f0e53.scn"]
 
 [params]
 
@@ -35,7 +35,7 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
-import_script/path=""
+import_script/path="uid://djvy7ylbo1jo7"
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
