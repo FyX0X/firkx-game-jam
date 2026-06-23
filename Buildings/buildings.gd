@@ -7,9 +7,8 @@ extends StaticBody3D
 var health : float
 var process_speed : float = 0.5 #base_speed
 var buffer : float = 0.0
-@export var cost : Dictionary = {"iron":5}
+@export var cost : Dictionary = {}
 @onready var inventory : Inventory = $Inventory
-
 
 @onready var model: MeshInstance3D = $MeshInstance3D
 @onready var collision_shape : CollisionShape3D = $CollisionShape3D
@@ -21,6 +20,11 @@ var blue_material: Material = preload("res://assets/Material/blue.tres")
 
 var can_place: bool = false
 var is_hologram: bool = false
+
+var energy : int = 0
+var is_powered : bool = true
+var current_grid = null
+var connected_cables : Array[Node3D] = []
 
 func is_placed() -> bool:
 	return not is_hologram
@@ -37,9 +41,6 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	health = minf(health + delta * regen, max_health)
-
-	
-	
 	# Uniquement actif pendant le mode hologramme
 	if not is_hologram:
 		return
@@ -57,11 +58,15 @@ func place() -> void:
 	model.material_override = null
 	clipping_hitbox.queue_free()
 	floating_hitbox.queue_free()
-	print(get_parent())
+	current_grid = PowerManager.create_new_grid()
+	current_grid.add_building(self)
+	PowerManager.connection(self)
 	
 func get_inventory() -> Inventory:
 	return inventory;
 
+func set_powered(powered : bool) -> void:
+	is_powered = powered
 
 func _on_destroyed(player_inventory : Inventory) -> void :
 	for item in inventory.get_all_items():
@@ -69,6 +74,8 @@ func _on_destroyed(player_inventory : Inventory) -> void :
 	for item in cost :
 		player_inventory.add_item(item, cost[item])
 	print("Batiment detruit")
+	if self.is_in_group("electrical"):
+		PowerManager.remove_building(self)
 	queue_free()
 
 func take_damage(damage : float, player_inventory : Inventory):

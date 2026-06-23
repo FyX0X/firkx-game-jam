@@ -7,7 +7,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hxtsf"]
 albedo_color = Color(0.9333836, 0.5322276, 5.7756904e-07, 1)
 
-[node name="Drill" unique_id=243835565 instance=ExtResource("1_p4g2w")]
+[node name="Drill" unique_id=243835565 groups=["electrical"] instance=ExtResource("1_p4g2w")]
 script = ExtResource("2_3rq8i")
 type = "iron"
 metadata/_edit_group_ = true

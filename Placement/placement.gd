@@ -18,12 +18,14 @@ var objects: Array[PackedScene] = []
 var red_material: Material = preload("res://assets/Material/red.tres")
 var blue_material: Material = preload("res://assets/Material/blue.tres")
 
+var preview_cables : Array[MeshInstance3D] = []
 
 var hud_layer : HUD
 func _ready() -> void:
 	objects.append(preload("res://Buildings/Drills/drill.tscn"))
 	objects.append(preload("res://Buildings/Factory/factory.tscn"))
 	objects.append(preload("res://Buildings/SpinReactor/spin_reactor.tscn"))
+	objects.append(preload("res://Buildings/Pole/pole.tscn"))
 	hud_layer = get_tree().get_first_node_in_group("hud")
 	
 	assert(player is Player and player != null)
@@ -38,6 +40,7 @@ func _process(_delta: float) -> void:
 		return
 
 	_update_hologram()
+	_update_preview_cables()
 
 
 func is_placeable(hologram : Building):
@@ -71,6 +74,39 @@ func _update_hologram() -> void:
 		elif not has_enough_resources():
 			hud_layer.show_popup_message("Not enough Resources")
 
+func _update_preview_cables() -> void:
+	clear_preview_cables()
+	if hologram == null or not hologram.is_in_group("electrical"):
+		return
+	
+	var pos_new = PowerManager.get_hook(hologram)
+	var all_nodes = get_tree().get_nodes_in_group("electrical")
+	var best_per_grid : Dictionary = {}
+	for node : Building in all_nodes:
+		if node.is_hologram:
+			continue
+		var pos_b = PowerManager.get_hook(node)
+		var dist = pos_new.distance_to(pos_b)
+ 
+		if dist <= PowerManager.max_distance:
+			var score = PowerManager.max_distance - dist
+			if node is Pole:
+				score += 100.0
+			var target_grid_id = node.current_grid.grid_id
+ 
+			if not best_per_grid.has(target_grid_id) or score > best_per_grid[target_grid_id]["score"]:
+				best_per_grid[target_grid_id] = { "node": node, "score": score }
+ 
+	for target_data in best_per_grid.values():
+		PowerManager.create_visual_cable(hologram, target_data["node"], true, preview_cables)
+		
+
+func clear_preview_cables():
+	for cable in preview_cables:
+		if is_instance_valid(cable):
+			cable.queue_free()
+	preview_cables.clear()
+
 func _update_drill_type(drill: Drill) -> void:
 	var collider = ray.get_collider()
 	if collider is not BigOre:
@@ -92,8 +128,6 @@ func _update_drill_type(drill: Drill) -> void:
 
 	drill.set_type(new_type)
 	building_selection_changed.emit(drill)
-
-
 
 func has_enough_resources() -> bool:
 	if hologram == null:
@@ -146,6 +180,7 @@ func spawn_hologram() -> void:
 
 func object_change(direction: int) -> void:
 	if hologram:
+		clear_preview_cables()
 		hologram.queue_free()
 		hologram = null
 	current_object_index = posmod(current_object_index + direction, objects.size())
@@ -163,6 +198,7 @@ func snap_to_grid(position: Vector3) -> Vector3:
 
 func clear_hologram() -> void:
 	if hologram:
+		clear_preview_cables()
 		print("clear hologram")
 		hologram.queue_free()
 		hologram = null
