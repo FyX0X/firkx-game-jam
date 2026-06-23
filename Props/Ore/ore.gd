@@ -7,7 +7,8 @@ enum OreType {
 	IRON,
 	TITANIUM,
 	SILLICIUM,
-	TUNGSTEN
+	TUNGSTEN,
+	NULL
 }
 
 @onready var mesh_instance : MeshInstance3D = $MeshInstance3D
@@ -64,3 +65,19 @@ func _get_string(ore : OreType) -> String:
 			return "tungsten"
 		_:
 			return ""
+
+func _set_type(string : String = "" , new_type : OreType = OreType.NULL):
+	if new_type != OreType.NULL:
+		type = new_type
+	elif string:
+		match string:
+			"iron":
+				type =  OreType.IRON
+			"titanium":
+				type = OreType.TITANIUM
+			"sillicium":
+				type = OreType.SILLICIUM
+			"tungsten":
+				type = OreType.TUNGSTEN
+			_:
+				type = OreType.NULL
