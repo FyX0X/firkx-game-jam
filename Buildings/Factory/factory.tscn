@@ -3,9 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://ccafhp5bef5b3" path="res://Buildings/buildings.tscn" id="1_7h7j1"]
 [ext_resource type="Script" uid="uid://b4ox2ex38d13q" path="res://Buildings/Factory/factory.gd" id="2_4jq7f"]
 [ext_resource type="AudioStream" uid="uid://v6jedtgfhbmp" path="res://assets/audio/Audiofactory.wav" id="3_4jq7f"]
+[ext_resource type="PackedScene" uid="uid://bn1f1umnqrjwg" path="res://assets/modele/smelter.glb" id="4_l5of0"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7h7j1"]
-albedo_color = Color(0.5102997, 0.51651025, 0.39885715, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_mm1bc"]
+size = Vector3(3.6378326, 4.3598633, 6.178589)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_62yky"]
+size = Vector3(1.7401428, 1.738678, 2.982788)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4kxuq"]
+size = Vector3(4.147949, 4.3142395, 10.131622)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mti6b"]
+size = Vector3(3.851097, 0.26430893, 9.095947)
 
 [node name="Factory" unique_id=243835565 instance=ExtResource("1_7h7j1")]
 script = ExtResource("2_4jq7f")
@@ -23,12 +33,30 @@ cost = {
 }
 metadata/_edit_group_ = true
 
-[node name="MeshInstance3D" parent="." index="1" unique_id=1292359159]
-surface_material_override/0 = SubResource("StandardMaterial3D_7h7j1")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=1294183724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0031967163, 2.1699219, 1.9408569)
+shape = SubResource("BoxShape3D_mm1bc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1" unique_id=967492364]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00050354004, 0.86061096, -2.6299064)
+shape = SubResource("BoxShape3D_62yky")
 
 [node name="Inventory" parent="." index="2" unique_id=1803995424]
 inventory_name = "Factory Inventory"
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ClippingHitbox" parent_id_path=PackedInt32Array(210735664) index="0" unique_id=784279623]
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, -0.006591643, 1.8535614, 0.47847044)
+shape = SubResource("BoxShape3D_4kxuq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FloatingHitbox" parent_id_path=PackedInt32Array(1390152168) index="0" unique_id=1387380629]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0027122498, -0.4524206, 0.44787598)
+shape = SubResource("BoxShape3D_mti6b")
+
 [node name="Audiofactory" type="AudioStreamPlayer3D" parent="." index="5" unique_id=744107383]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026404858, 2, 0.81864977)
 stream = ExtResource("3_4jq7f")
 volume_db = -28.251
+
+[node name="Mesh" parent="." index="6" unique_id=1062207485 instance=ExtResource("4_l5of0")]
+
+[editable path="Mesh"]
