@@ -20,6 +20,7 @@ var messages: Array[Control] = []
 func _ready() -> void:
 	intro_video = preload("res://assets/video/gamejam_animation_debut.ogv")
 	outro_video = preload("res://assets/video/gamejam_animation_outro.ogv")
+	close_all_ui()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,6 +31,7 @@ func play_cinematic(is_intro: bool, end_observer: Callable) -> void:
 	_is_intro = is_intro
 	popups.hide()
 	inventory_hud.hide()
+	research_ui.hide()
 	debug_panel.hide()
 	cinematic_player.show()
 	if is_intro:
@@ -80,7 +82,8 @@ func show_popup_message(text: String, time: float = 2.0) -> void:
 	if time > 0:
 		var timer := get_tree().create_timer(time)
 		timer.timeout.connect(func():
-			_remove_message(label)
+			if is_instance_valid(label):
+				_remove_message(label)
 		)
 
 func _remove_message(label: Control) -> void:
@@ -134,3 +137,8 @@ func show_build_recipe(recipe: Dictionary) -> void:
 
 func set_research_ui_visibility(shown: bool) -> void:
 	research_ui.visible = shown
+
+func close_all_ui() -> void:
+	set_research_ui_visibility(false)
+	inventory_hud.close()
+	build_cost_ui.hide()
