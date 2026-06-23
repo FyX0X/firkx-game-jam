@@ -53,8 +53,6 @@ func is_placeable(hologram : Building):
 		location = false
 	var ressources : bool = has_enough_resources()
 	var science = _enough_science(hologram)
-	if ray.get_collider():
-		print(ray.get_collider().is_in_group("ground"))
 	return hologram.is_not_clipping() and location and ressources and science
 
 func _update_hologram() -> void:

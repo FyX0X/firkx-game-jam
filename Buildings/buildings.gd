@@ -97,7 +97,7 @@ func take_damage(damage : float, player_inventory : Inventory):
 	health -= damage
 	if health <= 0:
 		_on_destroyed(player_inventory)
-	print("Building Damaged " + str(health))
+	#print("Building Damaged " + str(health))
 
 func set_speed(new_speed : float):
 	process_speed = new_speed
