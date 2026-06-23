@@ -3,9 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://ccafhp5bef5b3" path="res://Buildings/buildings.tscn" id="1_x3ujh"]
 [ext_resource type="Script" uid="uid://d3w21mhdb1jaq" path="res://Buildings/Science/research_table.gd" id="2_k3wm6"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qa22y"]
-albedo_color = Color(2.695322e-06, 0.77846557, 0.7185519, 1)
-
 [node name="ResearchTable" unique_id=243835565 instance=ExtResource("1_x3ujh")]
 script = ExtResource("2_k3wm6")
 is_breakable = false
@@ -13,8 +10,5 @@ cost = {
 "iron": 1000000
 }
 
-[node name="MeshInstance3D" parent="." index="1" unique_id=1292359159]
-surface_material_override/0 = SubResource("StandardMaterial3D_qa22y")
-
-[node name="Inventory" parent="." index="2" unique_id=1803995424]
+[node name="Inventory" parent="." index="0" unique_id=1803995424]
 inventory_name = "Research Table"

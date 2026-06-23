@@ -5,8 +5,6 @@ extends Node
 @onready var player: Player = $Player
 @onready var building_placement: Placement = $Player/Placement
 @onready var spaceship: StaticBody3D = $SpaceShip
-@onready var science_table: ScienceTable = $SpaceShip/ScienceTable
-@onready var research_table: ResearchTable = $SpaceShip/ResearchTable
 
 
 enum GameState { INTRO, GAME, WON }
@@ -14,6 +12,8 @@ var state: GameState = GameState.INTRO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var science_table: ScienceTable = find_child("ScienceTable",true,true)
+	var research_table: ResearchTable =find_child("ResearchTable",true,true)
 	player.interacted.connect(_on_player_interacted)
 	player.respawn()
 	player.interaction_target_changed.connect(_on_interaction_target_changed)

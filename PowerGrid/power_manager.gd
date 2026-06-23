@@ -57,11 +57,11 @@ func connection(new_building: Building) -> void:
 		var array = [new_building.current_grid,target_node.current_grid]
 		merge_grids(array)
 		create_visual_cable(new_building, target_node)
-			
 
 func get_hook(building: Building) -> Vector3:
-	if building.has_node("Mesh") and building.get_node("Mesh").has_node("ElectricalHook"):
-		return building.get_node("Mesh").get_node("ElectricalHook").global_position
+	var hook = building.find_child("ElectricalHook",true,false)
+	if hook:
+		return hook.global_position
 	return building.global_position
 
 func create_visual_cable(node_a: Building, node_b: Building, preview : bool = false, preview_cables : Array[MeshInstance3D] = []) -> void:

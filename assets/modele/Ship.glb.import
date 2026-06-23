@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bn1f1umnqrjwg"
-path="res://.godot/imported/smelter.glb-12f9be842cebdc3ae089af1f9cda3138.scn"
+uid="uid://ck1wu4mc4g1v8"
+path="res://.godot/imported/Ship.glb-2305f5727d947617e6008a57e7cd75bd.scn"
 
 [deps]
 
-source_file="res://assets/modele/smelter.glb"
-dest_files=["res://.godot/imported/smelter.glb-12f9be842cebdc3ae089af1f9cda3138.scn"]
+source_file="res://assets/modele/Ship.glb"
+dest_files=["res://.godot/imported/Ship.glb-2305f5727d947617e6008a57e7cd75bd.scn"]
 
 [params]
 
@@ -35,7 +35,7 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
-import_script/path=""
+import_script/path="uid://cu05ildfnatj6"
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""

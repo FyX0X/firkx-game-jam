@@ -3,15 +3,25 @@
 [ext_resource type="Script" uid="uid://dqi622av1kr1r" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://fsa4twm22msf" path="res://Inventory/inventory.tscn" id="2_4ntmi"]
 [ext_resource type="PackedScene" uid="uid://8j1ui6gsknnb" path="res://Placement/placement.tscn" id="3_btcbx"]
-[ext_resource type="PackedScene" uid="uid://bf0eexdenfl14" path="res://assets/modele/testcharagamejam.glb" id="4_gwnis"]
 [ext_resource type="PackedScene" uid="uid://w6q3hf7tffl8" path="res://LaserTool/laser_tool.tscn" id="5_k53q1"]
 [ext_resource type="AudioStream" uid="uid://spieyelhwx37" path="res://assets/audio/audiostep.wav" id="6_fhl08"]
+[ext_resource type="PackedScene" uid="uid://b2yjfp5jr5dy2" path="res://assets/modele/persoentier.glb" id="7_od3ui"]
 [ext_resource type="AudioStream" uid="uid://rwpvd1xpivrp" path="res://assets/audio/Audiojump.wav" id="7_vtle1"]
+[ext_resource type="Material" uid="uid://dbshsjjj7uvyd" path="res://assets/Material/casque.tres" id="8_od3ui"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8lsb0"]
 height = 1.6
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8lsb0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_00tjw"]
+resource_name = "Material.008"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+emission_enabled = true
+emission = Color(1, 0.089507766, 0.13637987, 1)
+emission_energy_multiplier = 1.31
 
 [node name="Player" type="CharacterBody3D" unique_id=1614768388]
 collision_layer = 2
@@ -26,8 +36,8 @@ visible = false
 mesh = SubResource("CapsuleMesh_8lsb0")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=794395096]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-spring_length = 5.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+spring_length = 3.0
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=2076138250]
 
@@ -41,9 +51,6 @@ inventory_name = "Backpack"
 
 [node name="Placement" parent="." unique_id=964907743 instance=ExtResource("3_btcbx")]
 
-[node name="testcharagamejam2" parent="." unique_id=739969826 instance=ExtResource("4_gwnis")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.8, 0)
-
 [node name="LaserTool" parent="." unique_id=717149006 instance=ExtResource("5_k53q1")]
 transform = Transform3D(0.92388326, 0, -0.38267443, 0.15465504, 0.914696, 0.37338057, 0.35003075, -0.4041426, 0.8450723, -0.5552398, 0.79946405, 0.05508995)
 
@@ -54,3 +61,14 @@ volume_db = -26.533
 [node name="Audiojump" type="AudioStreamPlayer3D" parent="." unique_id=2039150589]
 stream = ExtResource("7_vtle1")
 volume_db = -16.884
+
+[node name="persoentier" parent="." unique_id=1021698629 instance=ExtResource("7_od3ui")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.8, 0)
+
+[node name="Cube_001" parent="persoentier/RIG-Cloud_Human/Skeleton3D" parent_id_path=PackedInt32Array(1021698629, 1696562649) index="3" unique_id=1058054695]
+surface_material_override/0 = ExtResource("8_od3ui")
+
+[node name="Cube_008" parent="persoentier/RIG-Cloud_Human/Skeleton3D" parent_id_path=PackedInt32Array(1021698629, 1696562649) index="9" unique_id=1998589698]
+surface_material_override/1 = SubResource("StandardMaterial3D_00tjw")
+
+[editable path="persoentier"]

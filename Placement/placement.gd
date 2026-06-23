@@ -11,12 +11,12 @@ var win_sent: bool = false
 @onready var player: Player = get_parent()
 var hologram: Building = null
 var current_object_index: int = 0
-var grid_size: float = 0.1
+var grid_size: float = 0.005
 
 var objects: Array[PackedScene] = []
 
-var red_material: Material = preload("res://assets/Material/red.tres")
-var blue_material: Material = preload("res://assets/Material/blue.tres")
+var red_material: Material = preload("res://assets/Material/red_holo.tres")
+var blue_material: Material = preload("res://assets/Material/blue_holo.tres")
 
 var preview_cables : Array[MeshInstance3D] = []
 
@@ -24,8 +24,10 @@ var hud_layer : HUD
 func _ready() -> void:
 	objects.append(preload("res://Buildings/Drills/drill.tscn"))
 	objects.append(preload("res://Buildings/Factory/factory.tscn"))
-	objects.append(preload("res://Buildings/SpinReactor/spin_reactor.tscn"))
+	objects.append(preload("res://Buildings/WindTurbine/wind_turbine.tscn"))
 	objects.append(preload("res://Buildings/Pole/pole.tscn"))
+	objects.append(preload("res://Buildings/SpinReactor/spin_reactor.tscn"))
+	
 	hud_layer = get_tree().get_first_node_in_group("hud")
 	
 	assert(player is Player and player != null)
@@ -57,11 +59,10 @@ func is_placeable(hologram : Building) -> bool:
 
 func _update_hologram() -> void:
 	if ray.is_colliding():
-		var snap_pos := snap_to_grid(ray.get_collision_point())
-		hologram.global_position = hologram.global_position.lerp(snap_pos, 0.1)
+		var snap_pos = snap_to_grid(ray.get_collision_point()) + Vector3(0,-0.05,0)
+		hologram.global_position = hologram.global_position.lerp(snap_pos, 0.2)
 	else:
-		var snap_pos = ray.to_global(ray.target_position)
-		hologram.global_position = hologram.global_position.lerp(snap_pos, 0.1)
+		hologram.global_position = ray.to_global(ray.target_position)
 
 	if hologram is Drill:
 		_update_drill_type(hologram)
@@ -73,6 +74,10 @@ func _update_hologram() -> void:
 			hud_layer.show_popup_message("Not enough Science Points")
 		elif not has_enough_resources():
 			hud_layer.show_popup_message("Not enough Resources")
+	if Input.is_action_just_pressed("rotate"):
+		hologram.rotate_y(deg_to_rad(90))
+
+
 
 func _update_preview_cables() -> void:
 	clear_preview_cables()
@@ -99,7 +104,6 @@ func _update_preview_cables() -> void:
  
 	for target_data in best_per_grid.values():
 		PowerManager.create_visual_cable(hologram, target_data["node"], true, preview_cables)
-		
 
 func clear_preview_cables():
 	for cable in preview_cables:
@@ -144,8 +148,6 @@ func _enough_science(building: Building) -> bool:
 	if ray.get_collider() is not BigOre:
 		return false
 	return player.science_points >= ScienceTable.science_needed[building.type]
-	
-
 
 func _place_building() -> void:
 	print("tried placing building")
@@ -169,14 +171,11 @@ func _place_building() -> void:
 	hologram.queue_free()
 	hologram = null
 
-
-
 func spawn_hologram() -> void:
 	hologram = objects[current_object_index].instantiate()
 	get_parent().add_child(hologram)
 	hologram.global_position = ray.get_collision_point()
 	hologram.set_hologram_mode(true)
-
 
 func object_change(direction: int) -> void:
 	if hologram:
@@ -187,7 +186,6 @@ func object_change(direction: int) -> void:
 	print(current_object_index)
 	spawn_hologram()
 	building_selection_changed.emit(hologram)
-
 
 func snap_to_grid(position: Vector3) -> Vector3:
 	return Vector3(

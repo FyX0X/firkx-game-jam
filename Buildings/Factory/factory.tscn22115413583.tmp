@@ -28,6 +28,9 @@ recipe = {
 },
 "time": 1.5
 }
+max_health = null
+regen = null
+is_breakable = null
 cost = {
 "iron": 20
 }

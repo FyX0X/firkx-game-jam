@@ -31,14 +31,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.90471, 0, -0.4880829)
 transform = Transform3D(0.67252964, 0.14786522, 0.7251481, -0.70823216, -0.15571494, 0.6885929, 0.21473533, -0.9766723, -4.371139e-08, -2.794342, 96.413185, 0)
 
 [node name="Desert" parent="." unique_id=1738022576 instance=ExtResource("3_mlekv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.12327, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.87377, 0, 0)
 zone_type = "Desert"
 
 [node name="CollisionShape3D" parent="Desert" index="0" unique_id=1968634112]
 shape = SubResource("BoxShape3D_mlekv")
 
 [node name="Cold" parent="." unique_id=1000619642 instance=ExtResource("3_mlekv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.7997, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -138.92744, 0, 0)
 zone_type = "Cold"
 
 [node name="CollisionShape3D" parent="Cold" index="0" unique_id=1968634112]
