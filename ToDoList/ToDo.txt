@@ -29,10 +29,13 @@ Secondaires :
 	detruire les loot bags apres un certain temps ou quand ils sont vide 
 
 Martin:
-	death state.
+	fix lambda error with popup message
+	fix ui -> build mode transition
 Martin MAYBE DONE:
 	Etat transition inventaire -> normal<
 Martin DONE:
+	
+	death state.
 	BUILD COST UI (current task)
 	build mode : building label
 	build_health

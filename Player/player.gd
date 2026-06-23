@@ -182,6 +182,7 @@ func set_state(state: State) -> void:
 			# revive ?
 		State.UI_OPEN:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			hud_layer.close_all_ui()
 	
 	# handle new state
 	_current_state = state

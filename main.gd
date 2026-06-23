@@ -58,23 +58,20 @@ func _open_inventory(left: Inventory, right: Inventory = null) -> void:
 		
 	
 func _close_inventory() -> void:
-	inventory_hud.close()
+	# inventory_hud.close()
 	player.set_state(Player.State.NORMAL)
 
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
-		_close_inventory()
-		_on_research_closed()
+		hud_layer.close_all_ui()
 		if state == GameState.INTRO:
 			hud_layer.skip_intro()
 		print("TODO: implement pause")
 	
 	if event.is_action_pressed("inventory"):
-		if inventory_hud.is_open:
-			_close_inventory()
-		elif hud_layer.research_ui.visible:
-			_on_research_closed()
+		if player.get_state() == Player.State.UI_OPEN:
+			player.set_state(Player.State.NORMAL)
 		else:
 			_open_inventory(player.get_inventory())
 		
@@ -109,6 +106,6 @@ func _on_research_opened() -> void:
 
 func _on_research_closed() -> void:
 	player.set_state(Player.State.NORMAL)
-	hud_layer.set_research_ui_visibility(false)
+	# hud_layer.set_research_ui_visibility(false)
 	
 	
