@@ -10,8 +10,8 @@ var buffer : float = 0.0
 @export var cost : Dictionary = {}
 @onready var inventory : Inventory = $Inventory
 
-@onready var model: MeshInstance3D = $MeshInstance3D
-@onready var collision_shape : CollisionShape3D = $CollisionShape3D
+@onready var model : Node3D = $Mesh
+@onready var collision_shape : Array[CollisionShape3D]
 @onready var clipping_hitbox: Area3D = $ClippingHitbox
 @onready var floating_hitbox: Area3D = $FloatingHitbox
 
@@ -35,6 +35,9 @@ func is_not_clipping():
 func _ready() -> void:
 	health = max_health
 	print(health)
+	for child in get_children():
+		if child is CollisionShape3D:
+			collision_shape.append(child)
 	
 	if is_breakable:
 		add_to_group("breakable")
@@ -45,17 +48,25 @@ func _process(delta: float) -> void:
 	if not is_hologram:
 		return
 	can_place = get_parent().get_node("Placement").is_placeable(self)
-	model.material_override = blue_material if can_place else red_material
+	_override_mat(model,blue_material if can_place else red_material) 
 
 func set_hologram_mode(enabled: bool) -> void:
 	is_hologram = enabled
-	collision_shape.disabled = enabled
+	for collision in collision_shape:
+		collision.disabled = enabled
 	clipping_hitbox.monitoring = enabled
 	floating_hitbox.monitoring = enabled
 
+func _override_mat(node : Node3D, mat : Material):
+	if node is MeshInstance3D:
+		node.material_override = mat
+	for child in node.get_children():
+		if child is Node3D:
+			_override_mat(child,mat)
+
 func place() -> void:
 	set_hologram_mode(false)
-	model.material_override = null
+	_override_mat(model, null)
 	clipping_hitbox.queue_free()
 	floating_hitbox.queue_free()
 	current_grid = PowerManager.create_new_grid()

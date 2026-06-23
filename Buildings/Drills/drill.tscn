@@ -3,21 +3,49 @@
 [ext_resource type="PackedScene" uid="uid://ccafhp5bef5b3" path="res://Buildings/buildings.tscn" id="1_p4g2w"]
 [ext_resource type="Script" uid="uid://d2uouubruf6vf" path="res://Buildings/Drills/drill.gd" id="2_3rq8i"]
 [ext_resource type="AudioStream" uid="uid://d1nreb4lacrhl" path="res://assets/audio/Audiodrill.wav" id="3_ng00e"]
+[ext_resource type="PackedScene" uid="uid://cp770mviebndv" path="res://assets/modele/Foreuse1610.glb" id="4_6uugn"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hxtsf"]
-albedo_color = Color(0.9333836, 0.5322276, 5.7756904e-07, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_mm1bc"]
+size = Vector3(2.4506836, 5.2546387, 2.6556396)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_62yky"]
+size = Vector3(1.72406, 1.7404785, 2.5043335)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mti6b"]
+size = Vector3(1.9241028, 1.6591187, 5.369278)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4kxuq"]
+size = Vector3(2.8688354, 0.41351318, 5.9597015)
 
 [node name="Drill" unique_id=243835565 groups=["electrical"] instance=ExtResource("1_p4g2w")]
 script = ExtResource("2_3rq8i")
 type = "iron"
 metadata/_edit_group_ = true
 
-[node name="MeshInstance3D" parent="." index="1" unique_id=1292359159]
-surface_material_override/0 = SubResource("StandardMaterial3D_hxtsf")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=969416891]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004638672, 2.6733634, 1.2820435)
+shape = SubResource("BoxShape3D_mm1bc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1" unique_id=2053936869]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00015258789, 0.9068092, -1.2180364)
+shape = SubResource("BoxShape3D_62yky")
 
 [node name="Inventory" parent="." index="2" unique_id=1803995424]
 inventory_name = "Drill Inventory"
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ClippingHitbox" parent_id_path=PackedInt32Array(210735664) index="0" unique_id=740924004]
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, -7.633012e-05, 0.60723, 0.06412521)
+shape = SubResource("BoxShape3D_mti6b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FloatingHitbox" parent_id_path=PackedInt32Array(1390152168) index="0" unique_id=925755899]
+transform = Transform3D(0.8500002, 0, 0, 0, 0.8500002, 0, 0, 0, 0.8500002, 0.007911512, -0.38088128, 0.058424883)
+shape = SubResource("BoxShape3D_4kxuq")
+
 [node name="DrillAudio" type="AudioStreamPlayer3D" parent="." index="5" unique_id=413927254]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.3232517)
 stream = ExtResource("3_ng00e")
 volume_db = -16.884
+
+[node name="Mesh" parent="." index="6" unique_id=1520077276 instance=ExtResource("4_6uugn")]
+
+[editable path="Mesh"]
