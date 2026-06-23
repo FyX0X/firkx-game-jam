@@ -30,11 +30,10 @@ Secondaires :
 
 Martin:
 	fix lambda error with popup message
-	fix ui -> build mode transition
 Martin MAYBE DONE:
-	Etat transition inventaire -> normal<
+	Etat transition inventaire -> normal
 Martin DONE:
-	
+	fix ui -> build mode transition
 	death state.
 	BUILD COST UI (current task)
 	build mode : building label

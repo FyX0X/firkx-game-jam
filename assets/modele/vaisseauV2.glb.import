@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b3wbjn1dj3i4d"
-path="res://.godot/imported/Spaceship2.glb-d4caf1326bd3a2a434e4fb05ff5532e3.scn"
+uid="uid://bwf6r1olvgdfm"
+path="res://.godot/imported/vaisseauV2.glb-194629ae43bcbac15ca04b24afde51b7.scn"
 
 [deps]
 
-source_file="res://assets/modele/Spaceship2.glb"
-dest_files=["res://.godot/imported/Spaceship2.glb-d4caf1326bd3a2a434e4fb05ff5532e3.scn"]
+source_file="res://assets/modele/vaisseauV2.glb"
+dest_files=["res://.godot/imported/vaisseauV2.glb-194629ae43bcbac15ca04b24afde51b7.scn"]
 
 [params]
 
