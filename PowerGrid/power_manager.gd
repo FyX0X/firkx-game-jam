@@ -57,7 +57,6 @@ func connection(new_building: Building) -> void:
 		var array = [new_building.current_grid,target_node.current_grid]
 		merge_grids(array)
 		create_visual_cable(new_building, target_node)
-			
 
 func get_hook(building: Building) -> Vector3:
 	var hook = building.find_child("ElectricalHook",true,false)

@@ -19,6 +19,7 @@ const ores = ["iron", "titanium", "sillicium", "tungsten"]
 func _ready() -> void:
 	super._ready()
 	inventory.inventory_changed.connect(_on_inventory_changed)
+	energy = -5
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

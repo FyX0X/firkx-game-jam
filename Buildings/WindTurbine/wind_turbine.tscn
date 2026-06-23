@@ -2,6 +2,33 @@
 
 [ext_resource type="PackedScene" uid="uid://ccafhp5bef5b3" path="res://Buildings/buildings.tscn" id="1_byb1o"]
 [ext_resource type="Script" uid="uid://c41s2jn5jdkip" path="res://Buildings/WindTurbine/wind_turbine.gd" id="2_dcmt7"]
+[ext_resource type="PackedScene" uid="uid://dn0twlfskjwqk" path="res://assets/modele/eolienne.glb" id="3_qm4na"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qm4na"]
+height = 15.665161
+radius = 0.45
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4kxuq"]
+size = Vector3(0.6436615, 17.843811, 0.46142578)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mti6b"]
+size = Vector3(1, 0.3267212, 1.7479248)
 
 [node name="WindTurbine" unique_id=243835565 groups=["electrical"] instance=ExtResource("1_byb1o")]
 script = ExtResource("2_dcmt7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=2127245512]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.834656, 0)
+shape = SubResource("CylinderShape3D_qm4na")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ClippingHitbox" parent_id_path=PackedInt32Array(210735664) index="0" unique_id=1703697635]
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, -0.0057602287, 8.871191, -0.016357427)
+shape = SubResource("BoxShape3D_4kxuq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FloatingHitbox" parent_id_path=PackedInt32Array(1390152168) index="0" unique_id=1827341121]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.39493662, 0.00091552734)
+shape = SubResource("BoxShape3D_mti6b")
+
+[node name="Mesh" parent="." index="4" unique_id=2144392503 instance=ExtResource("3_qm4na")]
+
+[editable path="Mesh"]

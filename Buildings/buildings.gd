@@ -18,15 +18,15 @@ var buffer : float = 0.0
 var red_material: Material = preload("res://assets/Material/red_holo.tres")
 var blue_material: Material = preload("res://assets/Material/blue_holo.tres")
 
-var green_elec : Material = preload("res://assets/Material/red_elec.tres")
-var red_elec : Material = preload("res://assets/Material/green_elec.tres")
+var green_elec : Material = preload("res://assets/Material/green_elec.tres")
+var red_elec : Material = preload("res://assets/Material/red_elec.tres")
 
 var can_place: bool = false
 var is_hologram: bool = false
 
 var energy : int = 0
 var is_powered : bool = true
-var current_grid = null
+var current_grid : PowerGrid = null
 var connected_cables : Array[Node3D] = []
 
 func is_placed() -> bool:
@@ -65,6 +65,8 @@ func _override_mat(node : Node3D, mat : Material) -> void:
 		return
 	if node is MeshInstance3D:
 		node.material_override = mat
+		if (mat != red_material and mat != blue_material):
+			print("Application du mat: ", mat, " sur le node: ", node.name)
 	for child in node.get_children():
 		if child is Node3D:
 			_override_mat(child,mat)
@@ -82,10 +84,17 @@ func get_inventory() -> Inventory:
 	return inventory;
 
 func set_powered(powered : bool) -> void:
+	if is_hologram:
+		return
+	print("Is powered : " + str(powered))
 	is_powered = powered
 	var light = self.find_child("Light", true, false)
 	if light:
-		_override_mat(light, green_elec if powered else red_elec)
+		print("Light found")
+		if is_powered:
+			_override_mat(light, green_elec)
+		else:
+			_override_mat(light, red_elec)
 
 func _on_destroyed(player_inventory : Inventory) -> void :
 	for item in inventory.get_all_items():
