@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bpxsl54em2jul" path="res://SpaceShip/space_ship.tscn" id="7_5vw27"]
 [ext_resource type="PackedScene" uid="uid://cge462m4fg0tl" path="res://Props/OreVein/ore_vein.tscn" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://c01uo1kbl6f1i" path="res://Props/BigOre/big_ore.tscn" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://bwf6r1olvgdfm" path="res://assets/modele/vaisseauV2.glb" id="8_kek77"]
 
 [node name="Main" type="Node" unique_id=761649392]
 script = ExtResource("1_1bvp3")
@@ -61,5 +62,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1568756, -0.9434254, 0)
 [node name="ScienceTable" parent="SpaceShip" index="2" unique_id=243835565 groups=["breakable"]]
 
 [node name="ResearchTable" parent="SpaceShip" index="3" unique_id=417381748 groups=["breakable"]]
+
+[node name="vaisseauV2" parent="." unique_id=1070715994 instance=ExtResource("8_kek77")]
+transform = Transform3D(-1.2431576, 0, -0.8393803, 0, 1.5, 0, 0.8393803, 0, -1.2431576, -32.356026, 2.225221, -23.136255)
 
 [editable path="SpaceShip"]
