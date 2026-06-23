@@ -1,5 +1,5 @@
 @tool
-extends ResourceImporterScene
+extends EditorScenePostImport
 
 func _post_import(scene : Node):
 	var bigs : Array[Node] = scene.find_children("Big*","",true,false)
@@ -13,14 +13,21 @@ func _post_import(scene : Node):
 	if not veins:
 		push_error("No veins nodes found")
 	for big in bigs:
+		if big is not MeshInstance3D:
+			continue
 		var type = big.name.substr(4)
 		print(type)
 		
 		var new_big = big_scene.instantiate()
 		new_big.transform = big.transform
 		
+		var string = type.to_lower()
+		
+		new_big._set_type(string)
+		
 		var parent = big.get_parent()
 		parent.remove_child(big)
+		big.owner = null
 		parent.add_child(new_big)
 		new_big.owner = scene
 		
@@ -29,12 +36,14 @@ func _post_import(scene : Node):
 		big.owner = scene
 		
 		var collision_node = CollisionShape3D.new()
-		collision_node.shape = big.mesh.create_convex_shape(true,true)
+		collision_node.shape = big.mesh.create_trimesh_shape()
 		new_big.add_child(collision_node)
 		collision_node.owner = scene
 	
 	for vein in veins:
-		var type = vein.name.substr(4)
+		if vein is not MeshInstance3D:
+			continue
+		var type = vein.name.substr(5)
 		print(type)
 		
 		var new_vein = vein_scene.instantiate()
@@ -42,6 +51,7 @@ func _post_import(scene : Node):
 		
 		var parent = vein.get_parent()
 		parent.remove_child(vein)
+		vein.owner = null
 		parent.add_child(new_vein)
 		new_vein.owner = scene
 		
@@ -50,12 +60,12 @@ func _post_import(scene : Node):
 		vein.owner = scene
 		
 		var collision_node = CollisionShape3D.new()
-		collision_node.shape = vein.mesh.create_convex_shape(true,true)
+		collision_node.shape = vein.mesh.create_trimesh_shape()
 		new_vein.add_child(collision_node)
 		collision_node.owner = scene
 	
 	for node in scene.get_children(true):
-		if node.name.substr(0,2) != "Big" and node.name.substr(0,3) != "Vein":
+		if not node.name.begins_with("Big") and not node.name.begins_with("Vein"):
 			_add_collisions(node,scene)
 	return scene
 
