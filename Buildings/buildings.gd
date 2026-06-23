@@ -15,8 +15,8 @@ var buffer : float = 0.0
 @onready var clipping_hitbox: Area3D = $ClippingHitbox
 @onready var floating_hitbox: Area3D = $FloatingHitbox
 
-var red_material: Material = preload("res://assets/Material/red.tres")
-var blue_material: Material = preload("res://assets/Material/blue.tres")
+var red_material: Material = preload("res://assets/Material/red_holo.tres")
+var blue_material: Material = preload("res://assets/Material/blue_holo.tres")
 
 var green_elec : Material = preload("res://assets/Material/red_elec.tres")
 var red_elec : Material = preload("res://assets/Material/green_elec.tres")

@@ -17,7 +17,7 @@ size = Vector3(4.147949, 4.3142395, 10.131622)
 [sub_resource type="BoxShape3D" id="BoxShape3D_mti6b"]
 size = Vector3(3.851097, 0.26430893, 9.095947)
 
-[node name="Factory" unique_id=243835565 instance=ExtResource("1_7h7j1")]
+[node name="Factory" unique_id=243835565 groups=["electrical"] instance=ExtResource("1_7h7j1")]
 script = ExtResource("2_4jq7f")
 recipe = {
 "input": {

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://duh8f0bbkht2v"]
+
+[ext_resource type="PackedScene" uid="uid://ccafhp5bef5b3" path="res://Buildings/buildings.tscn" id="1_byb1o"]
+[ext_resource type="Script" uid="uid://c41s2jn5jdkip" path="res://Buildings/WindTurbine/wind_turbine.gd" id="2_dcmt7"]
+
+[node name="WindTurbine" unique_id=243835565 groups=["electrical"] instance=ExtResource("1_byb1o")]
+script = ExtResource("2_dcmt7")

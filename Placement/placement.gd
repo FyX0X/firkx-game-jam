@@ -15,8 +15,8 @@ var grid_size: float = 0.005
 
 var objects: Array[PackedScene] = []
 
-var red_material: Material = preload("res://assets/Material/red.tres")
-var blue_material: Material = preload("res://assets/Material/blue.tres")
+var red_material: Material = preload("res://assets/Material/red_holo.tres")
+var blue_material: Material = preload("res://assets/Material/blue_holo.tres")
 
 var preview_cables : Array[MeshInstance3D] = []
 
