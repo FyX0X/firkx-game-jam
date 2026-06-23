@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d0qsixhs4x7nf"]
 
 [ext_resource type="PackedScene" uid="uid://drwrj12eem6v6" path="res://assets/modele/map_test_1.glb" id="1_folwd"]
+[ext_resource type="Texture2D" uid="uid://b6o4j0s36405x" path="res://assets/itchio_page/background.png" id="3_il6x7"]
 [ext_resource type="PackedScene" uid="uid://b7ufllxudj6l3" path="res://World/DamageZone/damage_zone.tscn" id="3_mlekv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mlekv"]
@@ -9,13 +10,25 @@ size = Vector3(100, 100, 300)
 [sub_resource type="BoxShape3D" id="BoxShape3D_il6x7"]
 size = Vector3(100, 100, 300)
 
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_8lsb0"]
+panorama = ExtResource("3_il6x7")
+
+[sub_resource type="Sky" id="Sky_il6x7"]
+sky_material = SubResource("PanoramaSkyMaterial_8lsb0")
+
+[sub_resource type="Environment" id="Environment_8lsb0"]
+background_mode = 2
+sky = SubResource("Sky_il6x7")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_qfhvn"]
+
 [node name="StaticBody3D" type="StaticBody3D" unique_id=1813780921 groups=["ground"]]
 
 [node name="map_test_2" parent="." unique_id=254239541 groups=["ground"] instance=ExtResource("1_folwd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.90471, 0, -0.4880829)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=208955167]
-transform = Transform3D(1, 0, 0, 0, -0.8724122, 0.48877084, 0, -0.48877084, -0.8724122, 0, 157.70529, 0)
+transform = Transform3D(0.67252964, 0.14786522, 0.7251481, -0.70823216, -0.15571494, 0.6885929, 0.21473533, -0.9766723, -4.371139e-08, -2.794342, 96.413185, 0)
 
 [node name="Desert" parent="." unique_id=1738022576 instance=ExtResource("3_mlekv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.12327, 0, 0)
@@ -30,6 +43,10 @@ zone_type = "Cold"
 
 [node name="CollisionShape3D" parent="Cold" index="0" unique_id=1968634112]
 shape = SubResource("BoxShape3D_il6x7")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1598499828]
+environment = SubResource("Environment_8lsb0")
+camera_attributes = SubResource("CameraAttributesPractical_qfhvn")
 
 [editable path="Desert"]
 [editable path="Cold"]

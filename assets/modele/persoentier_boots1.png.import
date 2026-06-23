@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6o4j0s36405x"
-path.s3tc="res://.godot/imported/background.png-0f59e6a3a894b0ca68593b99d524fabb.s3tc.ctex"
+uid="uid://cplpedme88850"
+path.s3tc="res://.godot/imported/persoentier_boots1.png-00eadd9531306798cd34ceff7240c33f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "dee200832d4c55c84bcf28899fd9b7fb"
+}
 
 [deps]
 
-source_file="res://assets/itchio_page/background.png"
-dest_files=["res://.godot/imported/background.png-0f59e6a3a894b0ca68593b99d524fabb.s3tc.ctex"]
+source_file="res://assets/modele/persoentier_boots1.png"
+dest_files=["res://.godot/imported/persoentier_boots1.png-00eadd9531306798cd34ceff7240c33f.s3tc.ctex"]
 
 [params]
 
