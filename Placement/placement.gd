@@ -43,9 +43,9 @@ func _process(_delta: float) -> void:
 	_update_preview_cables()
 
 
-func is_placeable(hologram : Building):
+func is_placeable(hologram : Building) -> bool:
 	if hologram == null:
-		return
+		return false
 	var location : bool = true
 	if  (hologram is Drill and not ray.get_collider() is BigOre):
 		location = false
