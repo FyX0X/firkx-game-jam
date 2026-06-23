@@ -11,7 +11,7 @@ var win_sent: bool = false
 @onready var player: Player = get_parent()
 var hologram: Building = null
 var current_object_index: int = 0
-var grid_size: float = 0.1
+var grid_size: float = 0.005
 
 var objects: Array[PackedScene] = []
 
@@ -53,15 +53,16 @@ func is_placeable(hologram : Building):
 		location = false
 	var ressources : bool = has_enough_resources()
 	var science = _enough_science(hologram)
+	if ray.get_collider():
+		print(ray.get_collider().is_in_group("ground"))
 	return hologram.is_not_clipping() and location and ressources and science
 
 func _update_hologram() -> void:
 	if ray.is_colliding():
-		var snap_pos := snap_to_grid(ray.get_collision_point())
-		hologram.global_position = hologram.global_position.lerp(snap_pos, 0.1)
+		var snap_pos = snap_to_grid(ray.get_collision_point()) + Vector3(0,-0.05,0)
+		hologram.global_position = hologram.global_position.lerp(snap_pos, 0.2)
 	else:
-		var snap_pos = ray.to_global(ray.target_position)
-		hologram.global_position = hologram.global_position.lerp(snap_pos, 0.1)
+		hologram.global_position = ray.to_global(ray.target_position)
 
 	if hologram is Drill:
 		_update_drill_type(hologram)

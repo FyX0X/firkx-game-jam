@@ -57,7 +57,9 @@ func set_hologram_mode(enabled: bool) -> void:
 	clipping_hitbox.monitoring = enabled
 	floating_hitbox.monitoring = enabled
 
-func _override_mat(node : Node3D, mat : Material):
+func _override_mat(node : Node3D, mat : Material) -> void:
+	if node == null:
+		return
 	if node is MeshInstance3D:
 		node.material_override = mat
 	for child in node.get_children():

@@ -2,14 +2,36 @@
 
 [ext_resource type="PackedScene" uid="uid://ccafhp5bef5b3" path="res://Buildings/buildings.tscn" id="1_0rx1q"]
 [ext_resource type="Script" uid="uid://c0p7oxvv8ci0x" path="res://Buildings/Pole/pole.gd" id="2_ij4cs"]
+[ext_resource type="PackedScene" uid="uid://df25ioa2m347g" path="res://assets/modele/pole.glb" id="3_0n5a7"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_4kxuq"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_mm1bc"]
+size = Vector3(0.19372559, 6.261963, 0.19665527)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4kxuq"]
+size = Vector3(1.560936, 6.958027, 1.5203755)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mti6b"]
+size = Vector3(1.6865845, 0.14255835, 1.6494141)
 
 [node name="Pole" unique_id=243835565 groups=["electrical"] instance=ExtResource("1_0rx1q")]
 script = ExtResource("2_ij4cs")
 
-[node name="Mesh" type="Node3D" parent="." index="5" unique_id=966749754]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=805564521]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0026245117, 3.13562, 0.0044555664)
+shape = SubResource("BoxShape3D_mm1bc")
 
-[node name="ElectricalHook" type="MeshInstance3D" parent="Mesh" index="0" unique_id=1721476465]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1740227, 0)
-mesh = SubResource("SphereMesh_4kxuq")
+[node name="ClippingHitbox" parent="." index="2" unique_id=210735664]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 0, 0.9733597, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ClippingHitbox" index="0" unique_id=1373225064]
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, -0.0037500178, 2.4962106, 0.01013485)
+shape = SubResource("BoxShape3D_4kxuq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FloatingHitbox" parent_id_path=PackedInt32Array(1390152168) index="0" unique_id=2035858396]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00039672852, -0.46452338, -0.0014179721)
+shape = SubResource("BoxShape3D_mti6b")
+
+[node name="Mesh" parent="." index="4" unique_id=249159085 instance=ExtResource("3_0n5a7")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[editable path="Mesh"]
