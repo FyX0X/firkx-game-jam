@@ -4,10 +4,9 @@
 [ext_resource type="Script" uid="uid://d3gn47wim1xkd" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://d0qsixhs4x7nf" path="res://World/World.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dqbniuv054ai1" path="res://HUD/hud.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://bpxsl54em2jul" path="res://SpaceShip/space_ship.tscn" id="7_5vw27"]
 [ext_resource type="PackedScene" uid="uid://cge462m4fg0tl" path="res://Props/OreVein/ore_vein.tscn" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://c01uo1kbl6f1i" path="res://Props/BigOre/big_ore.tscn" id="8_5vw27"]
-[ext_resource type="PackedScene" uid="uid://bwf6r1olvgdfm" path="res://assets/modele/vaisseauV2.glb" id="8_kek77"]
+[ext_resource type="PackedScene" uid="uid://ck1wu4mc4g1v8" path="res://assets/modele/Ship.glb" id="8_kek77"]
 
 [node name="Main" type="Node" unique_id=761649392]
 script = ExtResource("1_1bvp3")
@@ -56,14 +55,8 @@ type = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3879948, 1.5890422, -10.860464)
 type = 3
 
-[node name="SpaceShip" parent="." unique_id=1266918605 instance=ExtResource("7_5vw27")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1568756, -0.9434254, 0)
+[node name="Ship" parent="." unique_id=1440037623 instance=ExtResource("8_kek77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3404274, -1.4328604, 7.8269577)
 
-[node name="ScienceTable" parent="SpaceShip" index="2" unique_id=243835565 groups=["breakable"]]
-
-[node name="ResearchTable" parent="SpaceShip" index="3" unique_id=417381748 groups=["breakable"]]
-
-[node name="vaisseauV2" parent="." unique_id=1070715994 instance=ExtResource("8_kek77")]
-transform = Transform3D(-1.2431576, 0, -0.8393803, 0, 1.5, 0, 0.8393803, 0, -1.2431576, -32.356026, 2.225221, -23.136255)
-
-[editable path="SpaceShip"]
+[node name="SpawnPoint" type="Node3D" parent="Ship" unique_id=1675619663 groups=["spawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
