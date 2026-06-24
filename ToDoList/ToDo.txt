@@ -29,6 +29,8 @@ Secondaires :
 	detruire les loot bags apres un certain temps ou quand ils sont vide 
 
 Martin:
+	show needed energy in spin reactor
+	fix inventory count label
 	fix lambda error with popup message
 Martin MAYBE DONE:
 	Etat transition inventaire -> normal
