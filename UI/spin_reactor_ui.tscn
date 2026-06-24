@@ -61,11 +61,11 @@ text = "Titanium deposited : "
 [node name="TitaniumProgressBar" type="ProgressBar" parent="CenterContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=1302413020]
 layout_mode = 2
 
-[node name="SiliciumLabel" type="Label" parent="CenterContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=307604612]
+[node name="CopperLabel" type="Label" parent="CenterContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=307604612]
 layout_mode = 2
-text = "Sillicium Deposited : "
+text = "Copper Deposited : "
 
-[node name="SiliciumProgressBar" type="ProgressBar" parent="CenterContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=494231391]
+[node name="CopperProgressBar" type="ProgressBar" parent="CenterContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=494231391]
 layout_mode = 2
 
 [node name="TungstenLabel" type="Label" parent="CenterContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=1780116475]

@@ -18,7 +18,6 @@ func _ready() -> void:
 	player.interacted.connect(_on_player_interacted)
 	player.respawn()
 	player.interaction_target_changed.connect(_on_interaction_target_changed)
-	building_placement.win_triggered.connect(_on_win)
 	spin_reactor.spin_reactor_built.connect(_on_win)
 	building_placement.building_selection_changed.connect(_on_building_selection_change)
 	set_state(GameState.INTRO)

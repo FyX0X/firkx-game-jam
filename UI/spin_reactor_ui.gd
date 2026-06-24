@@ -6,13 +6,13 @@ extends Control
 
 @onready var iron_progress: ProgressBar = $CenterContainer/ColorRect/MarginContainer/VBoxContainer/IronProgressBar 
 @onready var titanium_progress: ProgressBar = $CenterContainer/ColorRect/MarginContainer/VBoxContainer/TitaniumProgressBar 
-@onready var silicium_progress: ProgressBar = $CenterContainer/ColorRect/MarginContainer/VBoxContainer/SiliciumProgressBar
+@onready var copper_progress: ProgressBar = $CenterContainer/ColorRect/MarginContainer/VBoxContainer/CopperProgressBar
 @onready var tungsten_progress: ProgressBar = $CenterContainer/ColorRect/MarginContainer/VBoxContainer/TungstenProgressBar
 @onready var electricity_progress: ProgressBar = $CenterContainer/ColorRect/MarginContainer/VBoxContainer/ElectricityProgressBar
 
 @onready var iron_label: Label = $CenterContainer/ColorRect/MarginContainer/VBoxContainer/IronLabel 
 @onready var titanium_label: Label = $CenterContainer/ColorRect/MarginContainer/VBoxContainer/TitaniumLabel 
-@onready var silicium_label: Label = $CenterContainer/ColorRect/MarginContainer/VBoxContainer/SiliciumLabel
+@onready var copper_label: Label = $CenterContainer/ColorRect/MarginContainer/VBoxContainer/CopperLabel
 @onready var tungsten_label: Label = $CenterContainer/ColorRect/MarginContainer/VBoxContainer/TungstenLabel
 @onready var electricity_label: Label = $CenterContainer/ColorRect/MarginContainer/VBoxContainer/ElectricityLabel
 
@@ -28,7 +28,7 @@ func _ready() -> void:
 	# init progress bars
 	iron_progress.max_value = spin_reactor.construction_cost["iron"]
 	titanium_progress.max_value = spin_reactor.construction_cost["titanium"]
-	silicium_progress.max_value = spin_reactor.construction_cost["silicium"]
+	copper_progress.max_value = spin_reactor.construction_cost["copper"]
 	tungsten_progress.max_value = spin_reactor.construction_cost["tungsten"]
 	
 	_refresh()
@@ -46,10 +46,10 @@ func _on_resize() -> void:
 func _refresh() -> void:
 	iron_progress.value = spin_reactor.deposited["iron"]
 	titanium_progress.value = spin_reactor.deposited["titanium"]
-	silicium_progress.value = spin_reactor.deposited["silicium"]
+	copper_progress.value = spin_reactor.deposited["copper"]
 	tungsten_progress.value = spin_reactor.deposited["tungsten"]
 	
 	iron_label.text = "Iron Deposited: " + str(spin_reactor.deposited["iron"]) + "/" + str(spin_reactor.construction_cost["iron"])
 	titanium_label.text = "titanium Deposited: " + str(spin_reactor.deposited["titanium"]) + "/" + str(spin_reactor.construction_cost["titanium"])
-	silicium_label.text = "Silicium Deposited: " + str(spin_reactor.deposited["silicium"]) + "/" + str(spin_reactor.construction_cost["silicium"])
+	copper_label.text = "copper Deposited: " + str(spin_reactor.deposited["copper"]) + "/" + str(spin_reactor.construction_cost["copper"])
 	tungsten_label.text = "Tungsten Deposited: " + str(spin_reactor.deposited["tungsten"]) + "/" + str(spin_reactor.construction_cost["tungsten"])

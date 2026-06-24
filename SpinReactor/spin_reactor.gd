@@ -11,26 +11,32 @@ signal deposit_changed
 
 @export var process_speed: float = 10.0
 var progress: float = 0
-@export var electricity_consumption: float = 100
 @export var construction_cost: Dictionary = {
 	"iron" : 100,
 	"titanium" : 80,
-	"silicium" : 60,
+	"copper" : 60,
 	"tungsten" : 50
 }
 var deposited: Dictionary = {
 	"iron" : 0,
 	"titanium" : 0,
-	"silicium" : 0,
+	"copper" : 0,
 	"tungsten" : 0
 }
+@export var electricity_consumption: float = 100
+var energy : int = 0
+var is_powered : bool = true
+var current_grid : PowerGrid = null
+var connected_cables : Array[Node3D] = []
 
-var is_built: bool = false
-
+var has_material: bool = false
+var is_complete: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	current_grid = PowerManager.create_new_grid()
+	current_grid.add_building(self)
+	PowerManager.connection(self)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,10 +49,10 @@ func _process(delta: float) -> void:
 		_consume_item()
 		progress = 0
 	
-	if _get_missing_materials().is_empty() and not is_built:
+	if has_material and is_powered and not is_complete:
+		is_complete = true
 		spin_reactor_built.emit()
-		is_built = true
-		print("spin reactor is built : electricity not yet implemented")
+		print("spin reactor is complete : electricity not yet implemented")
 
 func _consume_item() -> void:
 	# if Audioscience and not Audioscience.playing:
@@ -59,6 +65,7 @@ func _consume_item() -> void:
 			inventory.remove_item(item, 1)
 			deposited[item] += 1
 			deposit_changed.emit()
+			_update_material()
 			return
 
 func _get_missing_materials() -> Array:
@@ -69,4 +76,22 @@ func _get_missing_materials() -> Array:
 		if deposited[item] < construction_cost[item]:
 			missing.append(item)
 	return missing
-	
+
+func _update_material() -> void:
+	has_material = _get_missing_materials().is_empty()
+
+
+
+func set_powered(powered : bool) -> void:
+
+	print("spin_reactor: Is powered : " + str(powered))
+	is_powered = powered
+	var light = self.find_child("Light", true, false)
+	if light:
+		print("Light found")
+		if is_powered:
+			print("spin reactor: set powered WIP")
+			# _override_mat(light, green_elec)
+		else:
+			print("spin reactor: set powered WIP")
+			# _override_mat(light, red_elec)

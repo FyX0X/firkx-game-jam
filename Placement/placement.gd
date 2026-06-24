@@ -85,8 +85,8 @@ func _update_preview_cables() -> void:
 	var pos_new = PowerManager.get_hook(hologram)
 	var all_nodes = get_tree().get_nodes_in_group("electrical")
 	var best_per_grid : Dictionary = {}
-	for node : Building in all_nodes:
-		if node.is_hologram:
+	for node in all_nodes:
+		if node is Building and node.is_hologram:
 			continue
 		var pos_b = PowerManager.get_hook(node)
 		var dist = pos_new.distance_to(pos_b)

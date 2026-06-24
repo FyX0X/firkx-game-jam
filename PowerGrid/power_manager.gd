@@ -29,14 +29,14 @@ func merge_grids(grids_to_merge : Array):
 			grids_to_merge[0].add_building(building)
 		grids.erase(grid)
 
-func connection(new_building: Building) -> void:
+func connection(new_building: Node3D) -> void:
 	var best_per_grid : Dictionary = {}
 	
 	var all_nodes = get_tree().get_nodes_in_group("electrical")
 	var pos_new = get_hook(new_building)
 	
-	for node : Building in all_nodes:
-		if node == new_building or node.is_hologram:
+	for node in all_nodes:
+		if node is Building and (node == new_building or node.is_hologram):
 			continue
 		print(node, new_building)
 		var pos_b = get_hook(node)
@@ -58,13 +58,13 @@ func connection(new_building: Building) -> void:
 		merge_grids(array)
 		create_visual_cable(new_building, target_node)
 
-func get_hook(building: Building) -> Vector3:
-	var hook = building.find_child("ElectricalHook",true,false)
+func get_hook(object: Node3D) -> Vector3:
+	var hook = object.find_child("ElectricalHook",true,false)
 	if hook:
 		return hook.global_position
-	return building.global_position
+	return object.global_position
 
-func create_visual_cable(node_a: Building, node_b: Building, preview : bool = false, preview_cables : Array[MeshInstance3D] = []) -> void:
+func create_visual_cable(node_a: Node3D, node_b: Node3D, preview : bool = false, preview_cables : Array[MeshInstance3D] = []) -> void:
 	var mesh_instance = MeshInstance3D.new()
 	var cylinder_mesh = CylinderMesh.new()
 	cylinder_mesh.top_radius = 0.05
@@ -101,7 +101,7 @@ func create_visual_cable(node_a: Building, node_b: Building, preview : bool = fa
 	else:
 		preview_cables.append(mesh_instance)
 
-func remove_building(building_to_remove: Building) -> void:
+func remove_building(building_to_remove: Node3D) -> void:
 	building_to_remove.remove_from_group("electrical")
 	var old_grid = building_to_remove.current_grid
 	if old_grid == null:

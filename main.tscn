@@ -63,4 +63,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.13884, 24.429157, -63.495
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21749878, 13.084766, 0)
 
 [node name="SpinReactor" parent="." unique_id=931180037 instance=ExtResource("8_4c57u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.510778, 0, 8.952337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.10897, 27.291338, -78.419304)
