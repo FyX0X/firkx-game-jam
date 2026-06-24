@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var damage_overlay: ColorRect = $DamageOverlay
 @onready var build_cost_ui: BuildCostUI = $BuildCostUI
 @onready var research_ui: ResearchUI = $ResearchUI
+@onready var spin_reactor_ui: SpinReactorUI = $SpinReactorUI
 
 var intro_video: VideoStreamTheora
 var outro_video: VideoStreamTheora
@@ -140,5 +141,9 @@ func set_research_ui_visibility(shown: bool) -> void:
 
 func close_all_ui() -> void:
 	set_research_ui_visibility(false)
+	set_spin_reactor_ui_visibility(false)
 	inventory_hud.close()
 	build_cost_ui.hide()
+
+func set_spin_reactor_ui_visibility(shown: bool) -> void:
+	spin_reactor_ui.visible = shown
