@@ -24,6 +24,7 @@ emission = Color(1, 0.089507766, 0.13637987, 1)
 emission_energy_multiplier = 1.31
 
 [node name="Player" type="CharacterBody3D" unique_id=1614768388]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 collision_layer = 2
 script = ExtResource("1_l8h54")
 metadata/_edit_group_ = true
@@ -55,10 +56,12 @@ inventory_name = "Backpack"
 transform = Transform3D(0.92388326, 0, -0.38267443, 0.15465504, 0.914696, 0.37338057, 0.35003075, -0.4041426, 0.8450723, -0.5552398, 0.79946405, 0.05508995)
 
 [node name="Audiostep" type="AudioStreamPlayer3D" parent="." unique_id=864115961]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
 stream = ExtResource("6_fhl08")
 volume_db = -26.533
 
 [node name="Audiojump" type="AudioStreamPlayer3D" parent="." unique_id=2039150589]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
 stream = ExtResource("7_vtle1")
 volume_db = -16.884
 
@@ -70,5 +73,8 @@ surface_material_override/0 = ExtResource("8_od3ui")
 
 [node name="Cube_008" parent="persoentier/RIG-Cloud_Human/Skeleton3D" parent_id_path=PackedInt32Array(1021698629, 1696562649) index="9" unique_id=1998589698]
 surface_material_override/1 = SubResource("StandardMaterial3D_00tjw")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="." unique_id=675292511]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 
 [editable path="persoentier"]
