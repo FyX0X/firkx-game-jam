@@ -54,5 +54,8 @@ script = ExtResource("3_il6x7")
 
 [node name="map_every_ore" parent="." unique_id=330625379 instance=ExtResource("3_o14yy")]
 
+[node name="@StaticBody3D@64945" parent="map_every_ore/tearrain" parent_id_path=PackedInt32Array(330625379, 1204225850) index="0" unique_id=837673627 groups=["ground"]]
+
 [editable path="Desert"]
 [editable path="Cold"]
+[editable path="map_every_ore"]
