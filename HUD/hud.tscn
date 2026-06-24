@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://br2mjt0381f5f" path="res://UI/inventory_hud.tscn" id="2_mi5n8"]
 [ext_resource type="PackedScene" uid="uid://cx303wd8t3lfy" path="res://UI/build_cost_ui.tscn" id="4_jvmdh"]
 [ext_resource type="PackedScene" uid="uid://dk5yhfhpkq63h" path="res://UI/research_ui.tscn" id="5_1rsjr"]
+[ext_resource type="PackedScene" uid="uid://citor265fbgqv" path="res://UI/biome_ui.tscn" id="6_ncsg0"]
 [ext_resource type="PackedScene" uid="uid://cvenbpftn8p1x" path="res://UI/spin_reactor_ui.tscn" id="6_tnm0g"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1757733813 groups=["hud"]]
@@ -43,6 +44,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="BiomeUI" parent="." unique_id=1225038517 instance=ExtResource("6_ncsg0")]
 
 [node name="CinematicPlayer" type="VideoStreamPlayer" parent="." unique_id=1299268508]
 anchors_preset = 15

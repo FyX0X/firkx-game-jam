@@ -10,6 +10,7 @@ extends CanvasLayer
 @onready var research_ui: ResearchUI = $ResearchUI
 @onready var spin_reactor_ui: SpinReactorUI = $SpinReactorUI
 @onready var build_label : Label = $BuildLabel
+@onready var biome_ui: BiomeUI = $BiomeUI
 
 var intro_video: VideoStreamTheora
 var outro_video: VideoStreamTheora
@@ -52,11 +53,6 @@ func set_damage_overlay(health_normalized: float) -> void:
 	# health_normalized is 0.0 (dead) to 1.0 (full)
 	var alpha = (1.0 - health_normalized) * 0.6   # max 60% opacity at 0 health
 	damage_overlay.color = Color(1, 0, 0, alpha)
-
-func flash_damage() -> void:
-	var tween = create_tween()
-	tween.tween_property(damage_overlay, "color:a", 0.5, 0.05)
-	tween.tween_property(damage_overlay, "color:a", 0.0, 0.3)
 
 func show_popup_message(text: String, time: float = 2.0) -> void:
 	if time <= 0:

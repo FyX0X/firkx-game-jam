@@ -2,9 +2,16 @@ class_name DamageZone
 extends Area3D
 
 @export var damage_per_second: float = 20.0
-@export var zone_type: String = "desert"  # just a label for UI
 @export var grace_period: float = 5
 
+@export var zone_type: Type = Type.HOT
+@export var biome_name: String = "biome name"
+@export var biome_description: String = "biome description"
+
+enum Type{
+	HOT,
+	COLD
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

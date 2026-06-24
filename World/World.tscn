@@ -35,14 +35,17 @@ transform = Transform3D(0.67252964, 0.14786522, 0.7251481, -0.70823216, -0.15571
 
 [node name="Desert" parent="." unique_id=1738022576 instance=ExtResource("3_mlekv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.87377, 0, 0)
-zone_type = "Desert"
+biome_name = "Desert"
+biome_description = "Extreme heat detected. Seek cover as soon as possible."
 
 [node name="CollisionShape3D" parent="Desert" index="0" unique_id=1968634112]
 shape = SubResource("BoxShape3D_mlekv")
 
 [node name="Cold" parent="." unique_id=1000619642 instance=ExtResource("3_mlekv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -138.92744, 0, 0)
-zone_type = "Cold"
+zone_type = 1
+biome_name = "Icy Wasteland"
+biome_description = "You can no longer feel your fingers. Find shelter in a warmer area."
 
 [node name="CollisionShape3D" parent="Cold" index="0" unique_id=1968634112]
 shape = SubResource("BoxShape3D_il6x7")
@@ -53,8 +56,6 @@ camera_attributes = SubResource("CameraAttributesPractical_qfhvn")
 script = ExtResource("3_il6x7")
 
 [node name="map_every_ore" parent="." unique_id=330625379 instance=ExtResource("3_o14yy")]
-
-[node name="@StaticBody3D@64945" parent="map_every_ore/tearrain" parent_id_path=PackedInt32Array(330625379, 1204225850) index="0" unique_id=837673627 groups=["ground"]]
 
 [editable path="Desert"]
 [editable path="Cold"]
