@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c2kdxjpj3ksci"]
+
+[ext_resource type="Script" uid="uid://dacg4skqsjjnm" path="res://AttentionGrabber/attention_grabber.gd" id="1_g3omr"]
+[ext_resource type="Texture2D" uid="uid://cjmtk4l5fvbe6" path="res://assets/images/attention.png" id="1_slqv5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qfhvn"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_slqv5")
+billboard_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_8lsb0"]
+material = SubResource("StandardMaterial3D_qfhvn")
+
+[node name="AttentionGrabber" type="Node3D" unique_id=754601093]
+script = ExtResource("1_g3omr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2036891005]
+mesh = SubResource("QuadMesh_8lsb0")
