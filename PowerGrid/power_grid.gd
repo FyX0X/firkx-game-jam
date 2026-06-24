@@ -6,6 +6,7 @@ var energy : int = 0
 
 var demand: int = 0
 var production: int = 0
+var operational: bool = false
 
 var connected_buildings : Array[Node3D] = []
 
@@ -26,8 +27,13 @@ func _recalculate_power():
 		energy += building.energy
 		production += maxi(building.energy, 0)
 		demand += maxi(-building.energy, 0)
-	print("energy: %d, demand: %d, production: %d" % [energy, demand, production])
 	assert(energy == (production - demand))
-	var powered = energy >= 0
+	operational = energy >= 0
 	for building in connected_buildings:
-		building.set_powered(powered)
+		building.set_powered(operational)
+
+func get_power_grid_info_string() -> String:
+	var info: String = "Power Grid Status : "
+	info += "Operational" if operational else "Underpowered"
+	info += " (%d/%d)" % [demand, production]
+	return info
