@@ -73,6 +73,7 @@ func _close_inventory() -> void:
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		hud_layer.close_all_ui()
+		player.set_state(Player.State.NORMAL)
 		if state == GameState.INTRO:
 			hud_layer.skip_intro()
 		print("TODO: implement pause")
