@@ -28,6 +28,9 @@ func _ready() -> void:
 	
 	hud_layer = get_tree().get_first_node_in_group("hud")
 	
+	if hud_layer:
+		building_selection_changed.connect(hud_layer.update_building_info)
+	
 	assert(player is Player and player != null)
 	assert(not objects.is_empty())
 
@@ -50,6 +53,7 @@ func is_placeable(hologram : Building) -> bool:
 	if  (hologram is Drill and not ray.get_collider() is BigOre):
 		location = false
 	if (hologram is not Drill and ray.get_collider() and not ray.get_collider().is_in_group("ground")):
+		print(ray.get_collider().get_groups())
 		location = false
 	var ressources : bool = has_enough_resources()
 	var science = _enough_science(hologram)
@@ -74,8 +78,6 @@ func _update_hologram() -> void:
 			hud_layer.show_popup_message("Not enough Resources")
 	if Input.is_action_just_pressed("rotate"):
 		hologram.rotate_y(deg_to_rad(90))
-
-
 
 func _update_preview_cables() -> void:
 	clear_preview_cables()
@@ -191,6 +193,8 @@ func snap_to_grid(position: Vector3) -> Vector3:
 
 func clear_hologram() -> void:
 	if hologram:
+		building_selection_changed.emit(null)
+		print(self.get_signal_connection_list("building_selection_changed"))
 		clear_preview_cables()
 		print("clear hologram")
 		hologram.queue_free()

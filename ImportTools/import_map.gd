@@ -1,6 +1,8 @@
 @tool
 extends EditorScenePostImport
 
+### IMPORTANT : DONT FORGET TO SET THE SATIC BODY OF TERRAIN IN GROUP GROUND !!!
+
 func _post_import(scene : Node):
 	var bigs : Array[Node] = scene.find_children("Big*","",true,false)
 	var veins : Array[Node] = scene.find_children("Vein*","",true,false)

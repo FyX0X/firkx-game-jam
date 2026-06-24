@@ -22,6 +22,7 @@ const dico_speed : Dictionary = {
 func _ready() -> void:
 	super._ready()
 	process_speed = 10
+	energy = -5
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
