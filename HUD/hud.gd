@@ -163,4 +163,4 @@ func update_building_info(building : Building) -> void:
 		elif building.energy < 0:
 			build_label.text += "Consommation: " + str(building.energy) + " MW"
 		else:
-			build_label.text = ""
+			build_label.text += ""
