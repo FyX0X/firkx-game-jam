@@ -8,14 +8,14 @@ extends Building
 const drill_cost : Dictionary = {
 	"iron" = {"iron" : 5},
 	"titanium" = {"iron": 50},
-	"sillicium" = {"iron" : 100, "titanium": 20},
-	"tungsten" = {"iron" : 100, "titanium": 20, "sillicium":30}
+	"copper" = {"iron" : 100, "titanium": 20},
+	"tungsten" = {"iron" : 100, "titanium": 20, "copper":30}
 }
 
 const dico_speed : Dictionary = {
 	"iron" = 10,
 	"titanium" = 10,
-	"sillicium" = 10,
+	"copper" = 10,
 	"tungsten" = 10
 }
 # Called when the node enters the scene tree for the first time.
