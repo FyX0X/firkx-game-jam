@@ -42,7 +42,7 @@ func _post_import(scene : Node):
 		collision_node.shape = big.mesh.create_trimesh_shape()
 		new_big.add_child(collision_node)
 		collision_node.owner = scene
-	print("vein")
+	
 	for vein in veins:
 		if vein is not MeshInstance3D:
 			continue
@@ -51,6 +51,9 @@ func _post_import(scene : Node):
 		
 		var new_vein = vein_scene.instantiate()
 		new_vein.transform = vein.transform
+		
+		var string = type.to_lower()
+		new_vein._set_type(string)
 		
 		var parent = vein.get_parent()
 		parent.remove_child(vein)
@@ -73,9 +76,7 @@ func _post_import(scene : Node):
 	return scene
 
 func _add_collisions(node : Node, scene : Node):
-	print(node.name)
 	if node is MeshInstance3D and node.mesh != null:
-		print(node.name)
 		var corps = StaticBody3D.new()
 		node.add_child(corps)
 		corps.owner = scene

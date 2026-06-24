@@ -29,7 +29,11 @@ var ore_data : Dictionary = {
 	OreType.TUNGSTEN: {
 		"display_name": "Tungsten", 
 		"color": Color(0.328, 0.489, 0.945, 1.0) 
-	} 
+	},
+	OreType.NULL: {
+		"display_name": "NULL", 
+		"color": Color(0.858, 0.873, 0.869, 1.0)
+	}
 }
 var current_name : String
 

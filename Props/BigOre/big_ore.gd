@@ -1,4 +1,4 @@
-@tool
+@tool #Dont touch it is for the map import
 class_name BigOre
 extends Ore
 

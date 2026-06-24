@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b6o4j0s36405x" path="res://assets/itchio_page/background.png" id="3_il6x7"]
 [ext_resource type="PackedScene" uid="uid://b7ufllxudj6l3" path="res://World/DamageZone/damage_zone.tscn" id="3_mlekv"]
-[ext_resource type="PackedScene" uid="uid://huss3in3yrjs" path="res://assets/modele/maptestvolume.glb" id="4_il6x7"]
+[ext_resource type="PackedScene" uid="uid://btimjnuwshcfv" path="res://assets/modele/map_every_ore.glb" id="3_o14yy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mlekv"]
 size = Vector3(100, 100, 300)
@@ -45,7 +45,7 @@ shape = SubResource("BoxShape3D_il6x7")
 environment = SubResource("Environment_8lsb0")
 camera_attributes = SubResource("CameraAttributesPractical_qfhvn")
 
-[node name="maptestvolume" parent="." unique_id=521608439 instance=ExtResource("4_il6x7")]
+[node name="map_every_ore" parent="." unique_id=330625379 instance=ExtResource("3_o14yy")]
 
 [editable path="Desert"]
 [editable path="Cold"]
