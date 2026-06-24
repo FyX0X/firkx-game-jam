@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://d0qsixhs4x7nf"]
 
-[ext_resource type="Texture2D" uid="uid://b6o4j0s36405x" path="res://assets/itchio_page/background.png" id="3_il6x7"]
+[ext_resource type="Script" uid="uid://dg0en308l7jmg" path="res://World/world_environment.gd" id="3_il6x7"]
 [ext_resource type="PackedScene" uid="uid://b7ufllxudj6l3" path="res://World/DamageZone/damage_zone.tscn" id="3_mlekv"]
 [ext_resource type="PackedScene" uid="uid://btimjnuwshcfv" path="res://assets/modele/map_every_ore.glb" id="3_o14yy"]
+[ext_resource type="Shader" uid="uid://bad8et5axb6uq" path="res://World/space_sky.gdshader" id="4_il6x7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mlekv"]
 size = Vector3(100, 100, 300)
@@ -10,11 +11,16 @@ size = Vector3(100, 100, 300)
 [sub_resource type="BoxShape3D" id="BoxShape3D_il6x7"]
 size = Vector3(100, 100, 300)
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_8lsb0"]
-panorama = ExtResource("3_il6x7")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_il6x7"]
+shader = ExtResource("4_il6x7")
+shader_parameter/bg_color = Color(0.02, 0.01, 0.05, 1)
+shader_parameter/nebula_color1 = Color(0.5, 0.1, 0.6, 1)
+shader_parameter/nebula_color2 = Color(0.1, 0.4, 0.7, 1)
+shader_parameter/star_density = 200.0
+shader_parameter/star_threshold = 0.98
 
 [sub_resource type="Sky" id="Sky_il6x7"]
-sky_material = SubResource("PanoramaSkyMaterial_8lsb0")
+sky_material = SubResource("ShaderMaterial_il6x7")
 
 [sub_resource type="Environment" id="Environment_8lsb0"]
 background_mode = 2
@@ -41,9 +47,10 @@ zone_type = "Cold"
 [node name="CollisionShape3D" parent="Cold" index="0" unique_id=1968634112]
 shape = SubResource("BoxShape3D_il6x7")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1598499828]
+[node name="SpaceSky" type="WorldEnvironment" parent="." unique_id=1598499828]
 environment = SubResource("Environment_8lsb0")
 camera_attributes = SubResource("CameraAttributesPractical_qfhvn")
+script = ExtResource("3_il6x7")
 
 [node name="map_every_ore" parent="." unique_id=330625379 instance=ExtResource("3_o14yy")]
 

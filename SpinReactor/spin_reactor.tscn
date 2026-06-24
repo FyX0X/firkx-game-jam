@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c5kxy87xltamr" path="res://SpinReactor/computer.gd" id="4_pkuqk"]
 [ext_resource type="PackedScene" uid="uid://m4wofuwbthib" path="res://assets/modele/spin_reactor.glb" id="5_we15e"]
 [ext_resource type="PackedScene" uid="uid://bnu3bwdr8orig" path="res://assets/modele/spin_reactor_computer.glb" id="6_eajpp"]
+[ext_resource type="AudioStream" uid="uid://cr6vr4v7qpqvf" path="res://assets/audio/spin_reactor_startup.mp3" id="8_eajpp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8lsb0"]
 size = Vector3(5, 15, 5)
@@ -17,8 +18,41 @@ size = Vector3(5, 15, 5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_qfhvn"]
 size = Vector3(2, 1, 2)
 
+[sub_resource type="Gradient" id="Gradient_eajpp"]
+colors = PackedColorArray(1, 0.8352941, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_eajpp"]
+gradient = SubResource("Gradient_eajpp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_eajpp"]
+spread = 20.0
+initial_velocity_min = 90.0
+initial_velocity_max = 110.0
+color = Color(1, 0.2901961, 0, 1)
+color_ramp = SubResource("GradientTexture1D_eajpp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pk2ri"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_72vm2"]
+material = SubResource("StandardMaterial3D_pk2ri")
+
 [node name="SpinReactor" type="StaticBody3D" unique_id=931180037 groups=["electrical", "spin_reactor"]]
 script = ExtResource("1_861fv")
+construction_cost = {
+"copper": 0,
+"iron": 1,
+"titanium": 0,
+"tungsten": 0
+}
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1946570796]
@@ -57,5 +91,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0040283203, 0.8980713, -1.2
 shape = SubResource("BoxShape3D_qfhvn")
 
 [node name="spin_reactor" parent="." unique_id=1878275658 instance=ExtResource("5_we15e")]
+
+[node name="ReactorAudio" type="AudioStreamPlayer3D" parent="." unique_id=1262629124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.723866, -21.618114)
+stream = ExtResource("8_eajpp")
+volume_db = 10.0
+
+[node name="Flame" type="GPUParticles3D" parent="." unique_id=937425068]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 37.620335, -20.7679)
+emitting = false
+amount = 400
+lifetime = 0.5
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_eajpp")
+draw_pass_1 = SubResource("QuadMesh_72vm2")
 
 [editable path="Computer/spin_reactor_computer"]

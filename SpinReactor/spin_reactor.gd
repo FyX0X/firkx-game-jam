@@ -8,7 +8,8 @@ signal powered_changed
 @onready var deposit: StaticBody3D = $Deposit
 @onready var inventory: Inventory = $Deposit/Inventory
 @onready var computer: StaticBody3D = $Computer
-
+@onready var reactor_audio: AudioStreamPlayer3D = $ReactorAudio
+@onready var flame_particle: GPUParticles3D = $Flame
 
 @export var process_speed: float = 10.0
 var progress: float = 0
@@ -53,6 +54,8 @@ func _process(delta: float) -> void:
 	if has_material and is_powered and not is_complete:
 		is_complete = true
 		spin_reactor_built.emit()
+		reactor_audio.play()
+		flame_particle.emitting = true
 		print("spin reactor is complete : electricity not yet implemented")
 
 func _consume_item() -> void:
