@@ -263,7 +263,8 @@ func respawn() -> void:
 
 func enter_zone(zone: DamageZone) -> void:
 	_active_zones[zone] = 0.0
-	print("player: enter_zone()" +  str(zone) + ", " + zone.zone_type)
+	hud_layer.biome_ui.show_biome_entry(zone)
+	print("player: enter_zone()" +  str(zone) + ", " + zone.biome_name)
 
 func exit_zone(zone: DamageZone) -> void:
 	_active_zones.erase(zone)
@@ -282,6 +283,6 @@ func _apply_zone_damage(delta: float) -> void:
 func _get_zone_resistance(zone: DamageZone) -> float:
 	# 0.0 = no resistance, 0.5 = grace period +50%
 	match zone.zone_type:
-		"desert": return upgrades.get("heat_resistance", 0.0)
-		"cold":   return upgrades.get("cold_resistance", 0.0)
-		_:        return 0.0
+		DamageZone.Type.HOT:	return upgrades.get("heat_resistance", 0.0)
+		DamageZone.Type.COLD:	return upgrades.get("cold_resistance", 0.0)
+		_:						return 0.0
