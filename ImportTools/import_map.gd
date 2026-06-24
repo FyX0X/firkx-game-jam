@@ -21,7 +21,6 @@ func _post_import(scene : Node):
 		if big is not MeshInstance3D:
 			continue
 		var type = regex.sub(big.name.substr(4),"",true)
-		print(type)
 		
 		var new_big = big_scene.instantiate()
 		new_big.transform = big.transform
@@ -49,7 +48,6 @@ func _post_import(scene : Node):
 		if vein is not MeshInstance3D:
 			continue
 		var type = regex.sub(vein.name.substr(5),"",true)
-		print(type)
 		
 		var new_vein = vein_scene.instantiate()
 		new_vein.transform = vein.transform
@@ -64,8 +62,16 @@ func _post_import(scene : Node):
 		new_vein.owner = scene
 		
 		new_vein.add_child(vein)
-		vein.transform = Transform3D.IDENTITY
 		vein.owner = scene
+		
+		var true_center = vein.mesh.get_aabb().get_center()
+		new_vein.translate(true_center)
+		vein.position = -true_center
+		
+		var dummy_mesh = new_vein.get_node_or_null("MeshInstance3D")
+		if dummy_mesh:
+			dummy_mesh.free()
+		vein.name = "MeshInstance3D"
 		
 		var collision_node = CollisionShape3D.new()
 		collision_node.shape = vein.mesh.create_trimesh_shape()
@@ -74,6 +80,7 @@ func _post_import(scene : Node):
 	
 	for node in scene.get_children(true):
 		if not node.name.begins_with("Big") and not node.name.begins_with("Vein"):
+			print(node.name)
 			_add_collisions(node,scene)
 	return scene
 

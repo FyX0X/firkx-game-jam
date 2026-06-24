@@ -7,19 +7,34 @@ signal resource_yielded(ore_type: Ore.OreType, amount: int)
 @export var total_yield: int = 8
 
 var remaining_yield: int
+@onready var mesh : MeshInstance3D = $MeshInstance3D
+@onready var visual_scale = $MeshInstance3D.scale
 
 func _ready() -> void:
 	super()
 	remaining_yield = total_yield
 	add_to_group("minable")
+	
 
+	
 func yield_resource() -> void:
 	if remaining_yield <= 0:
 		return
 	remaining_yield -= 1
 	resource_yielded.emit(_get_string(type), 1)
+	_resize()
 	if remaining_yield <= 0:
 		_deplete()
+
+func _resize():
+	var ratio = 0.75
+	var tween = create_tween()
+	var initial_scale = visual_scale
+	var new_scale = initial_scale * ratio
+	tween.tween_property(mesh,"scale",new_scale,0.05).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	
+	tween.tween_property(mesh,"scale",initial_scale,0.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	
 
 func _deplete() -> void:
 	# override to do something before freeing
