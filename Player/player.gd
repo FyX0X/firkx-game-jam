@@ -30,6 +30,8 @@ var _active_zones: Dictionary = {}  # Damage -> time_spent
 
 var loot_bag_scene: PackedScene = preload("res://Props/LootBag/loot_bag.tscn")
 
+@onready var anim : AnimationPlayer = $mesh/AnimationPlayer
+
 ## resistance are bonus : 0.5 -> + 50% of grace period
 var upgrades: Dictionary = {
 	"heat_resistance": 0.0,
@@ -38,7 +40,7 @@ var upgrades: Dictionary = {
 var fly_debug: bool = false
 var active: bool = true
 
-var science_points = 100
+var science_points = 0
 
 enum State{
 	NORMAL,
@@ -59,6 +61,7 @@ func _ready() -> void:
 	spawnpoint = get_tree().get_first_node_in_group("spawn")
 	print("player _ready: REMOVE FREE RESOURCES")
 	inventory.add_item("iron", 20)
+	science_points += 100
 	
 	assert(hud_layer != null)
 	assert(debug_panel != null)
@@ -81,6 +84,8 @@ func _physics_process(delta: float) -> void:
 	_apply_zone_damage(delta)
 	_process_health(delta)
 	raycast_check()
+	if not anim.is_playing():
+		anim.play("RIG-Cloud_HumanAction")
 
 func _process_movement(delta: float) -> void:
 	if _current_state == State.DEAD:
