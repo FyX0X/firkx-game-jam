@@ -47,7 +47,7 @@ zone_type = "Cold"
 [node name="CollisionShape3D" parent="Cold" index="0" unique_id=1968634112]
 shape = SubResource("BoxShape3D_il6x7")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1598499828]
+[node name="SpaceSky" type="WorldEnvironment" parent="." unique_id=1598499828]
 environment = SubResource("Environment_8lsb0")
 camera_attributes = SubResource("CameraAttributesPractical_qfhvn")
 script = ExtResource("3_il6x7")

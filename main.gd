@@ -5,6 +5,7 @@ extends Node
 @onready var player: Player = $Player
 @onready var building_placement: Placement = $Player/Placement
 @onready var spin_reactor: SpinReactor = $SpinReactor
+@onready var space_sky_environment: SpaceSkyEnvironment = $World/SpaceSky
 
 
 enum GameState { INTRO, GAME, WON }
@@ -44,6 +45,11 @@ func _on_outro_finished() -> void:
 	pass
 
 func _on_win() -> void:
+	# make this smooth
+	space_sky_environment.start_rotation()
+	# play spin reactor animation
+	
+	await get_tree().create_timer(10).timeout
 	set_state(GameState.WON)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
