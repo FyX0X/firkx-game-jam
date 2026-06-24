@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ccafhp5bef5b3" path="res://Buildings/buildings.tscn" id="1_x3ujh"]
 [ext_resource type="Script" uid="uid://d3w21mhdb1jaq" path="res://Buildings/Science/research_table.gd" id="2_k3wm6"]
+[ext_resource type="PackedScene" uid="uid://c2kdxjpj3ksci" path="res://AttentionGrabber/attention_grabber.tscn" id="3_qa22y"]
 
 [node name="ResearchTable" unique_id=243835565 instance=ExtResource("1_x3ujh")]
 script = ExtResource("2_k3wm6")
@@ -12,3 +13,6 @@ cost = {
 
 [node name="Inventory" parent="." index="0" unique_id=1803995424]
 inventory_name = "Research Table"
+
+[node name="AttentionGrabber" parent="." index="3" unique_id=754601093 instance=ExtResource("3_qa22y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0)

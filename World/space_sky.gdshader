@@ -36,11 +36,20 @@ void sky() {
     vec3 final_color = mix(bg_color.rgb, nebula, 0.6);
     
     // 2. Generate Procedural Stars
-    float star_noise = hash(floor(dir * star_density));
+    vec3 star_grid = floor(dir * star_density); // Store the grid position
+    float star_noise = hash(star_grid);
+    
     if (star_noise > star_threshold) {
         // Give stars slight brightness variations
         float intensity = (star_noise - star_threshold) / (1.0 - star_threshold);
-        final_color += vec3(intensity);
+        
+        // FIX: Use the star_grid here so the entire star shares the same random seed!
+        float rand = hash(star_grid + vec3(1.0)); 
+        
+        // Calculate twinkle using TIME
+        float twinkle = 0.4 + 0.6 * sin(TIME * (rand) + rand * 10.0);
+        
+        final_color += vec3(intensity) * twinkle;
     }
     
     COLOR = final_color;
