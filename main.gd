@@ -104,6 +104,8 @@ func _on_interaction_target_changed(target: Node, group: String) -> void:
 		hud_layer.show_popup_message("Left Click to Mine", 2)
 
 func _on_building_selection_change(building: Building) -> void:
+	if building == null:
+		return
 	hud_layer.show_popup_message("Left Click to place : " + building.name, 2)
 	hud_layer.show_build_recipe(building.cost)
 

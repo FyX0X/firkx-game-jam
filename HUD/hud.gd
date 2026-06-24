@@ -9,6 +9,7 @@ extends CanvasLayer
 @onready var build_cost_ui: BuildCostUI = $BuildCostUI
 @onready var research_ui: ResearchUI = $ResearchUI
 @onready var spin_reactor_ui: SpinReactorUI = $SpinReactorUI
+@onready var build_label : Label = $BuildLabel
 
 var intro_video: VideoStreamTheora
 var outro_video: VideoStreamTheora
@@ -144,6 +145,22 @@ func close_all_ui() -> void:
 	set_spin_reactor_ui_visibility(false)
 	inventory_hud.close()
 	build_cost_ui.hide()
+	update_building_info(null)
 
 func set_spin_reactor_ui_visibility(shown: bool) -> void:
 	spin_reactor_ui.visible = shown
+
+func update_building_info(building : Building) -> void:
+	if building == null:
+		build_label.visible = false
+		return
+	build_label.visible = true
+	
+	if building.is_in_group("electrical"):
+		build_label.text = building.name + "\n"
+		if building.energy > 0:
+			build_label.text += "Production: " + str(building.energy) + " MW"
+		elif building.energy < 0:
+			build_label.text += "Consommation: " + str(building.energy) + " MW"
+		else:
+			build_label.text = ""
