@@ -22,6 +22,8 @@ grow_vertical = 0
 
 [node name="BuildLabel" type="Label" parent="VBoxContainer" unique_id=626198370]
 layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
 text = "Building Cost :"
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer" unique_id=1135812167]

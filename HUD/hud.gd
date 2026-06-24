@@ -71,6 +71,10 @@ func show_popup_message(text: String, time: float = 2.0) -> void:
 	var label := Label.new()
 	label.text = text
 	label.modulate.a = 1.0  # already visible
+	label.add_theme_font_size_override("font_size", 24)
+	# Add a Black Outline
+	label.add_theme_color_override("font_outline_color", Color.BLACK) # Set color to black
+	label.add_theme_constant_override("outline_size", 8)              # Thickness in pixels
 
 	popups.add_child(label)
 	messages.append(label)
@@ -161,6 +165,6 @@ func update_building_info(building : Building) -> void:
 		if building.energy > 0:
 			build_label.text += "Production: " + str(building.energy) + " MW"
 		elif building.energy < 0:
-			build_label.text += "Consommation: " + str(building.energy) + " MW"
+			build_label.text += "Consommation: " + str(-building.energy) + " MW"
 		else:
 			build_label.text += ""
