@@ -100,6 +100,10 @@ func _on_player_interacted(target: Node) -> void:
 func _on_interaction_target_changed(target: Node, group: String) -> void:
 	if target == null:
 		return
+	if target.has_method("get_custom_interaction_message"):
+		hud_layer.show_popup_message(target.get_custom_interaction_message(), 2)
+		return
+	
 	if group == "interactable":
 		hud_layer.show_popup_message("Press E to Interact")
 	if group == "mineable":
