@@ -20,9 +20,6 @@ size = Vector3(4, 2, 4)
 
 [node name="SpinReactor" type="StaticBody3D" unique_id=931180037 groups=["electrical", "spin_reactor"]]
 script = ExtResource("1_861fv")
-process_speed = null
-construction_cost = null
-electricity_consumption = null
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1946570796]

@@ -19,6 +19,6 @@ func _recalculate_power():
 	energy = 0
 	for building in connected_buildings:
 		energy += building.energy
-	var powered = energy > 0
+	var powered = energy >= 0
 	for building in connected_buildings:
 		building.set_powered(powered)

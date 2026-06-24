@@ -32,7 +32,8 @@ func _ready() -> void:
 	tungsten_progress.max_value = spin_reactor.construction_cost["tungsten"]
 	
 	_refresh()
-	spin_reactor.deposit_changed.connect(_refresh)
+	spin_reactor.deposit_changed.connect(_refresh_material)
+	spin_reactor.powered_changed.connect(_refresh_electricity)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -44,6 +45,14 @@ func _on_resize() -> void:
 	color_rect.custom_minimum_size = viewport_size * 0.8
 
 func _refresh() -> void:
+	_refresh_material()
+	_refresh_electricity()
+
+func _refresh_electricity() -> void:
+	electricity_progress.value = electricity_progress.max_value if spin_reactor.is_powered else 0
+	electricity_label.text = "Electricity Supplied : Powered" if spin_reactor.is_powered else "Electricity Supplied : Unpowered"
+
+func _refresh_material() -> void:
 	iron_progress.value = spin_reactor.deposited["iron"]
 	titanium_progress.value = spin_reactor.deposited["titanium"]
 	copper_progress.value = spin_reactor.deposited["copper"]

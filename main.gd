@@ -4,7 +4,6 @@ extends Node
 @onready var inventory_hud: InventoryHUD = $HUD/InventoryHUD
 @onready var player: Player = $Player
 @onready var building_placement: Placement = $Player/Placement
-@onready var spaceship: StaticBody3D = $SpaceShip
 @onready var spin_reactor: SpinReactor = $SpinReactor
 
 

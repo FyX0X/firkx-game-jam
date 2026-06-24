@@ -3,6 +3,7 @@ extends StaticBody3D
 
 signal spin_reactor_built
 signal deposit_changed
+signal powered_changed
 
 @onready var deposit: StaticBody3D = $Deposit
 @onready var inventory: Inventory = $Deposit/Inventory
@@ -24,8 +25,8 @@ var deposited: Dictionary = {
 	"tungsten" : 0
 }
 @export var electricity_consumption: float = 100
-var energy : int = 0
-var is_powered : bool = true
+@export var energy : int = -10
+var is_powered : bool = false
 var current_grid : PowerGrid = null
 var connected_cables : Array[Node3D] = []
 
@@ -86,6 +87,7 @@ func set_powered(powered : bool) -> void:
 
 	print("spin_reactor: Is powered : " + str(powered))
 	is_powered = powered
+	powered_changed.emit()
 	var light = self.find_child("Light", true, false)
 	if light:
 		print("Light found")
