@@ -26,7 +26,7 @@ var deposited: Dictionary = {
 	"tungsten" : 0
 }
 @export var electricity_consumption: float = 100
-@export var energy : int = -10
+@export var energy : int = -5
 var is_powered : bool = false
 var current_grid : PowerGrid = null
 var connected_cables : Array[Node3D] = []
