@@ -4,7 +4,7 @@ extends Node
 @onready var inventory_hud: InventoryHUD = $HUD/InventoryHUD
 @onready var player: Player = $Player
 @onready var building_placement: Placement = $Player/Placement
-@onready var spaceship: StaticBody3D = $SpaceShip
+@onready var spin_reactor: SpinReactor = $SpinReactor
 
 
 enum GameState { INTRO, GAME, WON }
@@ -17,10 +17,11 @@ func _ready() -> void:
 	player.interacted.connect(_on_player_interacted)
 	player.respawn()
 	player.interaction_target_changed.connect(_on_interaction_target_changed)
-	building_placement.win_triggered.connect(_on_win)
+	spin_reactor.spin_reactor_built.connect(_on_win)
 	building_placement.building_selection_changed.connect(_on_building_selection_change)
 	set_state(GameState.INTRO)
 	research_table.research_opened.connect(_on_research_opened)
+	spin_reactor.computer.spin_reactor_open_ui.connect(_on_spin_reactor_opened)
 
 func set_state(new_state: GameState) -> void:
 	state = new_state
@@ -107,5 +108,7 @@ func _on_research_opened() -> void:
 func _on_research_closed() -> void:
 	player.set_state(Player.State.NORMAL)
 	# hud_layer.set_research_ui_visibility(false)
-	
-	
+
+func _on_spin_reactor_opened() -> void:
+	player.set_state(Player.State.UI_OPEN)
+	hud_layer.set_spin_reactor_ui_visibility(true)

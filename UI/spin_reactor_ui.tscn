@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://cvenbpftn8p1x"]
+
+[ext_resource type="Script" uid="uid://3u670st34v8l" path="res://UI/spin_reactor_ui.gd" id="1_6oir1"]
+
+[node name="SpinReactorUI" type="Control" unique_id=606762906]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6oir1")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1442113550]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer" unique_id=114186998]
+custom_minimum_size = Vector2(500, 600)
+layout_mode = 2
+color = Color(0.446777, 0.44677705, 0.44677705, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/ColorRect" unique_id=226254896]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/ColorRect/MarginContainer" unique_id=1984629861]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=507888886]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/ColorRect/MarginContainer/VBoxContainer/CenterContainer" unique_id=743975903]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Spin Reactor Construction"
+
+[node name="IronLabel" type="Label" parent="CenterContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=748387097]
+layout_mode = 2
+text = "Iron Deposited : "
+
+[node name="IronProgressBar" type="ProgressBar" parent="CenterContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=154912105]
+layout_mode = 2
+
+[node name="TitaniumLabel" type="Label" parent="CenterContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=1396447088]
+layout_mode = 2
+text = "Titanium deposited : "
+
+[node name="TitaniumProgressBar" type="ProgressBar" parent="CenterContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=1302413020]
+layout_mode = 2
+
+[node name="CopperLabel" type="Label" parent="CenterContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=307604612]
+layout_mode = 2
+text = "Copper Deposited : "
+
+[node name="CopperProgressBar" type="ProgressBar" parent="CenterContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=494231391]
+layout_mode = 2
+
+[node name="TungstenLabel" type="Label" parent="CenterContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=1780116475]
+layout_mode = 2
+text = "Tungsten Deposited : "
+
+[node name="TungstenProgressBar" type="ProgressBar" parent="CenterContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=1551974699]
+layout_mode = 2
+
+[node name="ElectricityLabel" type="Label" parent="CenterContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=633832031]
+layout_mode = 2
+text = "Electrity Supplied : "
+
+[node name="ElectricityProgressBar" type="ProgressBar" parent="CenterContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=1728080151]
+layout_mode = 2

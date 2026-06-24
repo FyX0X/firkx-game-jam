@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d0qsixhs4x7nf" path="res://World/World.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dqbniuv054ai1" path="res://HUD/hud.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://cge462m4fg0tl" path="res://Props/OreVein/ore_vein.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://bjs046nlul1cb" path="res://SpinReactor/spin_reactor.tscn" id="8_4c57u"]
 [ext_resource type="PackedScene" uid="uid://c01uo1kbl6f1i" path="res://Props/BigOre/big_ore.tscn" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://ck1wu4mc4g1v8" path="res://assets/modele/Ship.glb" id="8_kek77"]
 
@@ -60,3 +61,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.13884, 24.429157, -63.495
 
 [node name="SpawnPoint" type="Node3D" parent="Ship" unique_id=1675619663 groups=["spawn"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21749878, 13.084766, 0)
+
+[node name="SpinReactor" parent="." unique_id=931180037 instance=ExtResource("8_4c57u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.10897, 27.291338, -78.419304)

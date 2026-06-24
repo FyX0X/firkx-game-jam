@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://br2mjt0381f5f" path="res://UI/inventory_hud.tscn" id="2_mi5n8"]
 [ext_resource type="PackedScene" uid="uid://cx303wd8t3lfy" path="res://UI/build_cost_ui.tscn" id="4_jvmdh"]
 [ext_resource type="PackedScene" uid="uid://dk5yhfhpkq63h" path="res://UI/research_ui.tscn" id="5_1rsjr"]
+[ext_resource type="PackedScene" uid="uid://cvenbpftn8p1x" path="res://UI/spin_reactor_ui.tscn" id="6_tnm0g"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1757733813 groups=["hud"]]
 script = ExtResource("1_yu8mg")
@@ -16,6 +17,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0, 0, 0)
+
+[node name="SpinReactorUI" parent="." unique_id=606762906 instance=ExtResource("6_tnm0g")]
 
 [node name="ResearchUI" parent="." unique_id=2031661573 instance=ExtResource("5_1rsjr")]
 anchors_preset = 8

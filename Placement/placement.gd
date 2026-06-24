@@ -3,7 +3,6 @@ extends Node3D
 
 signal building_selection_changed(building: Building)
 signal building_placed(building: Building)
-signal win_triggered
 var win_sent: bool = false
 
 @onready var camera: Camera3D = get_parent().get_node("SpringArm3D/Camera3D")
@@ -26,7 +25,6 @@ func _ready() -> void:
 	objects.append(preload("res://Buildings/Factory/factory.tscn"))
 	objects.append(preload("res://Buildings/WindTurbine/wind_turbine.tscn"))
 	objects.append(preload("res://Buildings/Pole/pole.tscn"))
-	objects.append(preload("res://Buildings/SpinReactor/spin_reactor.tscn"))
 	
 	hud_layer = get_tree().get_first_node_in_group("hud")
 	
@@ -87,8 +85,8 @@ func _update_preview_cables() -> void:
 	var pos_new = PowerManager.get_hook(hologram)
 	var all_nodes = get_tree().get_nodes_in_group("electrical")
 	var best_per_grid : Dictionary = {}
-	for node : Building in all_nodes:
-		if node.is_hologram:
+	for node in all_nodes:
+		if node is Building and node.is_hologram:
 			continue
 		var pos_b = PowerManager.get_hook(node)
 		var dist = pos_new.distance_to(pos_b)
@@ -164,9 +162,6 @@ func _place_building() -> void:
 	
 	instance.place()
 	building_placed.emit(instance)
-	if instance.is_in_group("win_condition") and not win_sent:
-		win_sent = true
-		win_triggered.emit()
 	
 	hologram.queue_free()
 	hologram = null

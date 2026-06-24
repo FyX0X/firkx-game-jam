@@ -14,7 +14,7 @@ extends Control
 var player: Player
 var player_inventory: Inventory
 
-const ITEMS = ["iron_ore", "coal", "copper_ore", "stone", "wood", "iron_ingot", "gear"]
+const ITEMS = ["iron", "copper", "titanium", "tungsten", "iron_bar"]
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
