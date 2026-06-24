@@ -18,15 +18,25 @@ const science_needed : Dictionary = {
 	"tungsten" : 250,
 }
 
+@onready var attention_grabber: AttentionGrabber = $AttentionGrabber
+var already_interacted: bool = false
+
+func get_inventory() -> Inventory:
+	if not already_interacted:
+		already_interacted = true
+		attention_grabber.queue_free()
+	return super.get_inventory() # or return inventory
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
 	process_speed = 10
+	attention_grabber.show()
 
 
 func _process(delta: float) -> void:
 	super._process(delta)
-	if get_inventory().is_empty():
+	if inventory.is_empty():
 		return
 		
 	if is_hologram:
@@ -38,7 +48,6 @@ func _process(delta: float) -> void:
 		buffer -= 1
 
 func _consume_item() -> void:
-	var inventory = get_inventory()
 	var item = inventory.get_all_items().keys()[0]
 	if Audioscience and not Audioscience.playing:
 		Audioscience.play()
