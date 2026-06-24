@@ -7,14 +7,14 @@ extends Building
 const science_values : Dictionary = {
 	"iron": 1,
 	"titanium": 2,
-	"sillicium": 3,
+	"copper": 3,
 	"tungsten": 5
 }
 
 const science_needed : Dictionary = {
 	"iron" : 0,
 	"titanium" : 50,
-	"sillicium" : 100,
+	"copper" : 100,
 	"tungsten" : 250,
 }
 

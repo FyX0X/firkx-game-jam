@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://drmtmf61xxwd3"
-path="res://.godot/imported/foreuseanimtestlundi.glb-0ed258492dbfd29f96566896c6ecad94.scn"
+uid="uid://m4wofuwbthib"
+path="res://.godot/imported/spin_reactor.glb-c7fb784f70f1cbf91f560a6c467f8897.scn"
 
 [deps]
 
-source_file="res://assets/modele/foreuseanimtestlundi.glb"
-dest_files=["res://.godot/imported/foreuseanimtestlundi.glb-0ed258492dbfd29f96566896c6ecad94.scn"]
+source_file="res://assets/modele/spin_reactor.glb"
+dest_files=["res://.godot/imported/spin_reactor.glb-c7fb784f70f1cbf91f560a6c467f8897.scn"]
 
 [params]
 

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d2bh8etqbfbgh"
-path="res://.godot/imported/foreuse.glb-1013cdad02ea89f40aa003c348b08d90.scn"
+uid="uid://btimjnuwshcfv"
+path="res://.godot/imported/map_every_ore.glb-3ac345bc766ee665f9054e7eb08f9c3f.scn"
 
 [deps]
 
-source_file="res://assets/modele/foreuse.glb"
-dest_files=["res://.godot/imported/foreuse.glb-1013cdad02ea89f40aa003c348b08d90.scn"]
+source_file="res://assets/modele/map_every_ore.glb"
+dest_files=["res://.godot/imported/map_every_ore.glb-3ac345bc766ee665f9054e7eb08f9c3f.scn"]
 
 [params]
 
@@ -35,7 +35,7 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
-import_script/path=""
+import_script/path="uid://djvy7ylbo1jo7"
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""

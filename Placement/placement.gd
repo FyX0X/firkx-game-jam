@@ -120,7 +120,7 @@ func _update_drill_type(drill: Drill) -> void:
 		BigOre.OreType.IRON:      new_type = "iron"
 		BigOre.OreType.TITANIUM:  new_type = "titanium"
 		BigOre.OreType.TUNGSTEN:  new_type = "tungsten"
-		BigOre.OreType.SILLICIUM: new_type = "sillicium"
+		BigOre.OreType.COPPER : new_type = "copper"
 		_:
 			print("Error: unknown ore type")
 			return

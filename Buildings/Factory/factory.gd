@@ -9,11 +9,11 @@ var outputs : Dictionary = {}
 const recipes : Dictionary = {
 	"iron" : {"input" : {"iron" : 2}, "output" : {"iron_bar" : 1}, "time" : 3},
 	"titanium" : {"input" : {"titanium" : 2}, "output" : {"titanium_bar" : 1}, "time" : 4},
-	"sillicium" : {"input": {"sillicium" : 2}, "output" : {"sillicium_bar" : 1}, "time" : 3},
+	"copper" : {"input": {"copper" : 2}, "output" : {"copper_bar" : 1}, "time" : 3},
 	"tungsten" :{"input" : {"tungsten" : 2}, "output" : {"tungsten_bar" : 1}, "time" : 3},
 }
 
-const ores = ["iron", "titanium", "sillicium", "tungsten"]
+const ores = ["iron", "titanium", "copper", "tungsten"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -15,7 +15,7 @@ script = ExtResource("1_1bvp3")
 [node name="World" parent="." unique_id=1479313556 instance=ExtResource("2_h2yge")]
 
 [node name="Player" parent="." unique_id=1614768388 groups=["player"] instance=ExtResource("1_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 10, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.715773, 28.416573, -3.8758326)
 
 [node name="HUD" parent="." unique_id=594591012 instance=ExtResource("3_h2yge")]
 
@@ -27,40 +27,40 @@ omni_range = 574.584
 [node name="Props" type="Node3D" parent="." unique_id=921321307]
 
 [node name="BaseProp" parent="Props" unique_id=1569469946 instance=ExtResource("7_272bh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.123375, 1.5077637, -8.23032)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.123375, 66.26909, -8.23032)
 
 [node name="BaseProp2" parent="Props" unique_id=1484541983 instance=ExtResource("7_272bh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.546055, 1.6876893, -7.876866)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.546055, 66.44901, -7.876866)
 type = 1
 
 [node name="BaseProp3" parent="Props" unique_id=1020009003 instance=ExtResource("7_272bh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7409916, 1.56357, -8.023069)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7409916, 66.3249, -8.023069)
 type = 2
 
 [node name="BaseProp4" parent="Props" unique_id=720013084 instance=ExtResource("7_272bh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5128582, 1.5339929, -8.023148)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5128582, 66.29532, -8.023148)
 type = 3
 
 [node name="BigOre" parent="." unique_id=471333196 instance=ExtResource("8_5vw27")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5890422, -10.860464)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 65.203156, -10.860464)
 
 [node name="BigOre2" parent="." unique_id=107770490 instance=ExtResource("8_5vw27")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7966747, 1.5890422, -10.860464)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7966747, 65.203156, -10.860464)
 type = 2
 
 [node name="BigOre3" parent="." unique_id=1001745808 instance=ExtResource("8_5vw27")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5911655, 1.5890422, -10.860464)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5911655, 65.203156, -10.860464)
 type = 1
 
 [node name="BigOre4" parent="." unique_id=1180993615 instance=ExtResource("8_5vw27")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3879948, 1.5890422, -10.860464)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3879948, 65.203156, -10.860464)
 type = 3
 
 [node name="Ship" parent="." unique_id=1440037623 instance=ExtResource("8_kek77")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3404274, -1.4328604, 7.8269577)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.13884, 24.429157, -63.495857)
 
 [node name="SpawnPoint" type="Node3D" parent="Ship" unique_id=1675619663 groups=["spawn"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21749878, 13.084766, 0)
 
 [node name="SpinReactor" parent="." unique_id=931180037 instance=ExtResource("8_4c57u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.510778, 0, 8.952337)

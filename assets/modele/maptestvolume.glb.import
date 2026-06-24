@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c5qt88lergi4y"
-path="res://.godot/imported/foreusetestlundi2.glb-42f0dfe921322ada2ee3636437b8ddb3.scn"
+uid="uid://huss3in3yrjs"
+path="res://.godot/imported/maptestvolume.glb-4a92fe4df0a993c73ffdb84bd91f091b.scn"
 
 [deps]
 
-source_file="res://assets/modele/foreusetestlundi2.glb"
-dest_files=["res://.godot/imported/foreusetestlundi2.glb-42f0dfe921322ada2ee3636437b8ddb3.scn"]
+source_file="res://assets/modele/maptestvolume.glb"
+dest_files=["res://.godot/imported/maptestvolume.glb-4a92fe4df0a993c73ffdb84bd91f091b.scn"]
 
 [params]
 
@@ -35,7 +35,7 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
-import_script/path=""
+import_script/path="uid://djvy7ylbo1jo7"
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
