@@ -8,9 +8,14 @@ size = Vector3(100, 100, 100)
 [node name="DamageZone" type="Area3D" unique_id=1738022576]
 collision_mask = 2
 script = ExtResource("1_71tig")
+ambience_sounds = Array[AudioStream]([null])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1968634112]
 shape = SubResource("BoxShape3D_vbaju")
+
+[node name="AmbienceTimer" type="Timer" parent="." unique_id=1284422830]
+
+[node name="AmbiencePlayer" type="AudioStreamPlayer" parent="." unique_id=1604297854]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
