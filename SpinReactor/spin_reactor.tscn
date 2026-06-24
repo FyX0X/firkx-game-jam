@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://c5kxy87xltamr" path="res://SpinReactor/computer.gd" id="4_pkuqk"]
 [ext_resource type="PackedScene" uid="uid://m4wofuwbthib" path="res://assets/modele/spin_reactor.glb" id="5_we15e"]
 [ext_resource type="PackedScene" uid="uid://bnu3bwdr8orig" path="res://assets/modele/spin_reactor_computer.glb" id="6_eajpp"]
-[ext_resource type="AudioStream" uid="uid://cr6vr4v7qpqvf" path="res://assets/audio/spin_reactor_startup.mp3" id="8_eajpp"]
+[ext_resource type="AudioStream" uid="uid://bkkattlu57845" path="res://assets/audio/spin_reactor_startup.wav" id="8_eajpp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8lsb0"]
 size = Vector3(5, 15, 5)

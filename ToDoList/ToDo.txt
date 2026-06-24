@@ -29,6 +29,7 @@ Secondaires :
 	detruire les loot bags apres un certain temps ou quand ils sont vide 
 
 Martin:
+	fix escape doesn't set mode normal
 	fix lambda error with popup message
 Martin MAYBE DONE:
 	Etat transition inventaire -> normal

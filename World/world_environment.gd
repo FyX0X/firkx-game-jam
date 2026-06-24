@@ -1,7 +1,7 @@
 class_name SpaceSkyEnvironment
 extends WorldEnvironment
 
-@export var max_rotation_speed: float = 0.02 # The target speed
+@export var max_rotation_speed: float = 0.08 # The target speed
 @export var rotation_axis: Vector3 = Vector3.LEFT
 @export var spin_up_time: float = 3.0 # How many seconds to take to reach max speed
 

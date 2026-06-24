@@ -36,6 +36,7 @@ func set_state(new_state: GameState) -> void:
 			player.set_state(Player.State.NORMAL)
 		GameState.WON:
 			player.active = false
+			spin_reactor.reactor_audio.stop()
 			hud_layer.play_cinematic(false, _on_outro_finished)
 
 func _on_intro_finished() -> void:
@@ -49,7 +50,7 @@ func _on_win() -> void:
 	space_sky_environment.start_rotation()
 	# play spin reactor animation
 	
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(20).timeout
 	set_state(GameState.WON)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
