@@ -11,36 +11,45 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_01lok")
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1681394017]
+[node name="Timer" type="Timer" parent="." unique_id=642873761]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=783735081]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -68.0
+offset_right = 150.0
+offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0, -1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=783735081]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=560636449]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
-[node name="HSeparator2" type="HSeparator" parent="CenterContainer/VBoxContainer" unique_id=660747711]
-layout_mode = 2
-
-[node name="BiomeLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=508322085]
+[node name="BiomeLabel" type="Label" parent="VBoxContainer" unique_id=508322085]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "BIOME NAME"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer" unique_id=560636449]
-custom_minimum_size = Vector2(300, 0)
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer" unique_id=660747711]
 layout_mode = 2
 
-[node name="DescriptionLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1311539457]
+[node name="DescriptionLabel" type="Label" parent="VBoxContainer" unique_id=1311539457]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 24
 text = "short description of the biome"
 autowrap_mode = 2
 
-[node name="Timer" type="Timer" parent="." unique_id=642873761]
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer" unique_id=55361714]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2

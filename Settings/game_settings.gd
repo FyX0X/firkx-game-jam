@@ -1,6 +1,23 @@
 extends Node
 
-var challenge_mode: bool = false
+enum Difficulty {
+	NORMAL,
+	CHALLENGE,
+	HARDCORE
+}
+
+const time_limit: Dictionary = {
+	Difficulty.NORMAL: -1,
+	Difficulty.CHALLENGE: 600,
+	Difficulty.HARDCORE: 300
+}
+const hologram_msg: Dictionary = {
+	Difficulty.NORMAL: "Please proceed to activate the spin reactor.",
+	Difficulty.CHALLENGE: "Please proceed to activate the spin reactor. Corporate doesn't like to wait.",
+	Difficulty.HARDCORE: "Please proceed to activate the spin reactor. Do NOT disapoint corporate."
+}
+
+var difficulty: Difficulty = Difficulty.NORMAL
 var _master_volume: float = 1
 
 func get_master_volume() -> float:

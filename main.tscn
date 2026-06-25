@@ -4,8 +4,12 @@
 [ext_resource type="Script" uid="uid://d3gn47wim1xkd" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://d0qsixhs4x7nf" path="res://World/World.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dqbniuv054ai1" path="res://HUD/hud.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://cs70tj0ip3v0t" path="res://SpinReactor/hologram_timer.tscn" id="6_272bh"]
 [ext_resource type="PackedScene" uid="uid://bjs046nlul1cb" path="res://SpinReactor/spin_reactor.tscn" id="8_4c57u"]
 [ext_resource type="PackedScene" uid="uid://ck1wu4mc4g1v8" path="res://assets/modele/Ship.glb" id="8_kek77"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_272bh"]
+size = Vector2(1.5, 1.5)
 
 [node name="Main" type="Node" unique_id=761649392]
 script = ExtResource("1_1bvp3")
@@ -28,5 +32,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.13884, 24.429157, -63.495
 [node name="SpawnPoint" type="Node3D" parent="Ship" unique_id=1675619663 groups=["spawn"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21749878, 13.084766, 0)
 
+[node name="OuterHologram" parent="Ship" unique_id=859679615 instance=ExtResource("6_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.25856, 0)
+
+[node name="InnerHologram" parent="Ship" unique_id=480370057 instance=ExtResource("6_272bh")]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 4.127201, 3.1585789, 0)
+billboard = false
+
+[node name="MeshInstance3D" parent="Ship/InnerHologram" index="0" unique_id=1989442769]
+mesh = SubResource("QuadMesh_272bh")
+
 [node name="SpinReactor" parent="." unique_id=931180037 instance=ExtResource("8_4c57u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.10897, 27.291338, -78.419304)
+
+[editable path="Ship/InnerHologram"]
