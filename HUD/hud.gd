@@ -12,7 +12,7 @@ extends CanvasLayer
 @onready var build_label : Label = $BuildLabel
 @onready var biome_ui: BiomeUI = $BiomeUI
 @onready var pause_menu: PauseMenu = $PauseMenu
-
+@onready var skill_check : SkillCheck = $SkillCheck
 
 var intro_video: VideoStreamTheora
 var outro_video: VideoStreamTheora
@@ -31,6 +31,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func trigger_skill_check(callable_result : Callable) -> void:
+	skill_check.skill_check_result.connect(callable_result, CONNECT_ONE_SHOT)
+	skill_check.start_check()
 
 func play_cinematic(is_intro: bool, end_observer: Callable) -> void:
 	_is_intro = is_intro
