@@ -6,6 +6,8 @@ extends Ore
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# set parent class mesh instance
+	mesh_instance = $Big/Big_Copper
 	super._ready()
 
 

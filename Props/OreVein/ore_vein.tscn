@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://l8e50w5f82cg" path="res://Props/BaseProp.tscn" id="1_2quyu"]
 [ext_resource type="Script" uid="uid://dgd0a3r1yus3f" path="res://Props/OreVein/ore_vein.gd" id="2_n77vr"]
+[ext_resource type="PackedScene" uid="uid://iodevsuc4y8y" path="res://assets/modele/Vein.glb" id="3_tnkf8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n77vr"]
 vertex_color_is_srgb = true
@@ -10,11 +11,21 @@ metallic = 1.0
 metallic_specular = 0.35
 roughness = 0.3
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_me81e"]
+radius = 1.0776284
+
 [node name="OreVein" unique_id=1569469946 groups=["mineable"] instance=ExtResource("1_2quyu")]
 script = ExtResource("2_n77vr")
 total_yield = 8
 type = 0
 
-[node name="Dummy" parent="." index="0" unique_id=42334917]
+[node name="Vein" parent="." index="0" unique_id=1607454836 instance=ExtResource("3_tnkf8")]
+
+[node name="Dummy" parent="." index="1" unique_id=42334917]
 visible = false
 surface_material_override/0 = SubResource("StandardMaterial3D_n77vr")
+
+[node name="CollisionShape3D" parent="." index="2" unique_id=1109386413]
+shape = SubResource("SphereShape3D_me81e")
+
+[editable path="Vein"]

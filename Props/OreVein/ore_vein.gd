@@ -19,14 +19,15 @@ var damage_threshold : float
 
 
 func _ready() -> void:
+	# set parent class mesh instance
+	mesh_instance = $Vein/Vein_copper
+	
 	super()
 	remaining_yield = total_yield
 	add_to_group("minable")
-	$MeshInstance3D.material_override = null
+
 	damage_threshold = health / total_yield
-	# si ca crash ici : reimport la map :
-	# maptestvolume.glb
-	
+ 
 
 func yield_resource() -> void:
 	if remaining_yield <= 0:

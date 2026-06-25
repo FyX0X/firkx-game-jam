@@ -2,21 +2,26 @@
 
 [ext_resource type="PackedScene" uid="uid://l8e50w5f82cg" path="res://Props/BaseProp.tscn" id="1_il81f"]
 [ext_resource type="Script" uid="uid://c5qkb1sbwayrh" path="res://Props/BigOre/big_ore.gd" id="2_k8fdt"]
+[ext_resource type="PackedScene" uid="uid://b0mq46dqhb2l3" path="res://assets/modele/Big.glb" id="3_qi4mp"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_k8fdt"]
 size = Vector3(3, 1, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qnjey"]
-size = Vector3(0.56103516, 0.049316406, 0.54211426)
+size = Vector3(8.724869, 1.0868225, 8.721146)
 
 [node name="BigOre" unique_id=1569469946 groups=["BigOre"] instance=ExtResource("1_il81f")]
 script = ExtResource("2_k8fdt")
 type = 0
 
-[node name="Dummy" parent="." index="0" unique_id=42334917]
+[node name="Big" parent="." index="0" unique_id=1827454691 instance=ExtResource("3_qi4mp")]
+
+[node name="Dummy" parent="." index="1" unique_id=42334917]
 visible = false
 mesh = SubResource("BoxMesh_k8fdt")
 
-[node name="CollisionShape3D" parent="." index="1" unique_id=1109386413]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2194824, -0.4753418, 0.2098999)
+[node name="CollisionShape3D" parent="." index="2" unique_id=1109386413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07810211, -0.38539124, 0.079704285)
 shape = SubResource("BoxShape3D_qnjey")
+
+[editable path="Big"]

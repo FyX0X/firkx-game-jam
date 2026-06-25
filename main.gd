@@ -5,9 +5,9 @@ extends Node
 @onready var inventory_hud: InventoryHUD = $HUD/InventoryHUD
 @onready var player: Player = $Player
 @onready var building_placement: Placement = $Player/Placement
-@onready var spin_reactor: SpinReactor = $SpinReactor
-@onready var outer_hologram_timer: HologramTimer = $Ship/OuterHologram
-@onready var inner_hologram_timer: HologramTimer = $Ship/InnerHologram
+@onready var spin_reactor: SpinReactor = $World/SpinReactor
+@onready var outer_hologram_timer: HologramTimer = $World/Ship/OuterHologram
+@onready var inner_hologram_timer: HologramTimer = $World/Ship/InnerHologram
 @onready var space_sky_environment: SpaceSkyEnvironment = $World/SpaceSky
 
 
