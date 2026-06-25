@@ -12,13 +12,15 @@ var remaining_yield: int
 
 var ratio = 0.75
 
-
 func _ready() -> void:
+	# set parent class mesh instance
+	mesh_instance = $Vein/Vein_copper
+	
 	super()
 	remaining_yield = total_yield
 	add_to_group("minable")
-	print("add material")
-	# $MeshInstance3D.material_override = null
+	
+	# print("add material")
 	# si ca crash ici : reimport la map :
 	# maptestvolume.glb
 	

@@ -29,6 +29,7 @@ Secondaires :
 	detruire les loot bags apres un certain temps ou quand ils sont vide 
 
 Martin:
+	camera clipping
 	failed scene
 	ok nickel, faudra pas oublier de changer les recettes et faire en sorte que le spin reactor prenne des bar
 	disable focus in hud
