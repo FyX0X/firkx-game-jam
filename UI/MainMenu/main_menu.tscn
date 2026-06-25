@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cir77ytt0v47o"]
 
 [ext_resource type="Script" uid="uid://f8otvdb68u3j" path="res://UI/MainMenu/main_menu.gd" id="1_jld46"]
+[ext_resource type="PackedScene" uid="uid://cc3kdkfism2xe" path="res://UI/SettingsMenu/settings_menu.tscn" id="2_t17p2"]
 
 [node name="MainMenu" type="Control" unique_id=230631934]
 layout_mode = 3
@@ -71,6 +72,9 @@ grow_vertical = 2
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "Challenge Mode"
+
+[node name="SettingsMenu" parent="." unique_id=1845977164 instance=ExtResource("2_t17p2")]
+layout_mode = 1
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

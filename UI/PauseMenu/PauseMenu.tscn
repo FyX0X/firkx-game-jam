@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bgbl4fnikudkj"]
 
 [ext_resource type="Script" uid="uid://c44oel4a8cp6w" path="res://UI/PauseMenu/pause_menu.gd" id="1_3oydc"]
+[ext_resource type="PackedScene" uid="uid://cc3kdkfism2xe" path="res://UI/SettingsMenu/settings_menu.tscn" id="2_s70p5"]
 
 [node name="PauseMenu" type="Control" unique_id=367750826]
 process_mode = 2
@@ -60,6 +61,9 @@ grow_horizontal = 2
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 48
 text = "PAUSE"
+
+[node name="SettingsMenu" parent="." unique_id=1845977164 instance=ExtResource("2_s70p5")]
+layout_mode = 1
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
