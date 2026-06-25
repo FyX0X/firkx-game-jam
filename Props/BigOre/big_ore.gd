@@ -2,7 +2,7 @@
 class_name BigOre
 extends Ore
 
-
+## Do not assign onready in this file use the ready function !!
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

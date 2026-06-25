@@ -2,6 +2,8 @@
 class_name OreVein
 extends Ore
 
+## Do not assign onready in this file use the ready function !!
+
 signal resource_yielded(ore_type: Ore.OreType, amount: int)
 
 @export var total_yield: int = 8
@@ -13,6 +15,7 @@ func _ready() -> void:
 	super()
 	remaining_yield = total_yield
 	add_to_group("minable")
+	$MeshInstance3D.material_override = null
 	
 
 	

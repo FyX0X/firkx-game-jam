@@ -49,6 +49,7 @@ func _post_import(scene : Node):
 		if vein is not MeshInstance3D:
 			continue
 		var type = regex.sub(vein.name.substr(5),"",true)
+		print("vein " + type)
 		
 		var new_vein = vein_scene.instantiate()
 		new_vein.transform = vein.transform
@@ -76,7 +77,7 @@ func _post_import(scene : Node):
 	
 	for node in scene.get_children(true):
 		if not node.name.begins_with("Big") and not node.name.begins_with("Vein"):
-			print(node.name)
+			#print(node.name)
 			_add_collisions(node,scene)
 	return scene
 

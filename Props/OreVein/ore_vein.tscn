@@ -15,5 +15,6 @@ script = ExtResource("2_n77vr")
 total_yield = 8
 type = 0
 
-[node name="MeshInstance3D" parent="." index="0" unique_id=42334917]
+[node name="Dummy" parent="." index="0" unique_id=42334917]
+visible = false
 surface_material_override/0 = SubResource("StandardMaterial3D_n77vr")
