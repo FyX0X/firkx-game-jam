@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://deg2og0gct1yk"]
 
 [ext_resource type="Script" uid="uid://cxxfhmatvvsim" path="res://UI/MainMenu/instructions_ui.gd" id="1_wetnh"]
+[ext_resource type="Texture2D" uid="uid://lhuwdu035je6" path="res://assets/images/instructions/ore_veins.png" id="2_45i68"]
 
 [node name="InstructionsUI" type="Control" unique_id=1497742735]
 layout_mode = 3
@@ -34,9 +35,10 @@ theme_override_constants/margin_bottom = 20
 
 [node name="TabContainer" type="TabContainer" parent="ColorRect/MarginContainer" unique_id=1221961982]
 layout_mode = 2
-current_tab = 0
+current_tab = 1
 
 [node name="Keybinds" type="MarginContainer" parent="ColorRect/MarginContainer/TabContainer" unique_id=1211052850]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -67,10 +69,30 @@ text = "[font_size=18]General[/font_size]
 [font_size=18]Tools[/font_size]
 • [b]Left Mouse Button[/b] — Mine / Destroy"
 
-[node name="Game Tips" type="Control" parent="ColorRect/MarginContainer/TabContainer" unique_id=1576184328]
-visible = false
+[node name="Game Tips" type="MarginContainer" parent="ColorRect/MarginContainer/TabContainer" unique_id=255971684]
 layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 metadata/_tab_index = 1
+
+[node name="OreVeins" type="VBoxContainer" parent="ColorRect/MarginContainer/TabContainer/Game Tips" unique_id=1075236898]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/TabContainer/Game Tips/OreVeins" unique_id=1232416185]
+layout_mode = 2
+text = "Mine the Ore Veins to start Gathering Resources"
+autowrap_mode = 2
+justification_flags = 162
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/TabContainer/Game Tips/OreVeins" unique_id=739122341]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+texture = ExtResource("2_45i68")
+expand_mode = 2
 
 [node name="InstructionTitle" type="Label" parent="." unique_id=398441776]
 layout_mode = 1
