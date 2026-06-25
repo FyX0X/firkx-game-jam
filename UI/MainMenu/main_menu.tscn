@@ -11,6 +11,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jld46")
 
+[node name="GameTitle" type="Label" parent="." unique_id=1559636216]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -226.0
+offset_top = 70.0
+offset_right = 226.0
+offset_bottom = 158.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 64
+text = "Planet Spinner"
+
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1389716761]
 layout_mode = 1
 anchors_preset = 15
@@ -21,12 +35,6 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=154428084]
 layout_mode = 2
-
-[node name="GameTitle" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1559636216]
-layout_mode = 2
-theme_override_constants/outline_size = 16
-theme_override_font_sizes/font_size = 64
-text = "Planet Spinner"
 
 [node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1970942898]
 layout_mode = 2
@@ -48,7 +56,24 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "QUIT"
 
+[node name="ChallengeToggle" type="CheckBox" parent="." unique_id=772537096]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -276.0
+offset_top = -26.5
+offset_bottom = 26.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Challenge Mode"
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/InstructionButton" to="." method="_on_instruction_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="toggled" from="ChallengeToggle" to="." method="_on_challenge_toggle_toggled"]

@@ -1,5 +1,6 @@
 extends Control
 
+@onready var challenge_toggle: CheckBox = $ChallengeToggle
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,3 +26,7 @@ func _on_instruction_button_pressed() -> void:
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_challenge_toggle_toggled(toggled_on: bool) -> void:
+	GameSettings.challenge_mode = toggled_on
