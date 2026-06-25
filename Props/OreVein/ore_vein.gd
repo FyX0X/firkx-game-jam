@@ -39,14 +39,13 @@ func yield_resource() -> void:
 		_deplete()
 
 func _resize():
-	var mesh : MeshInstance3D = $MeshInstance3D
-	var visual_scale = $MeshInstance3D.scale
+	var visual_scale = mesh_instance.scale
 	var tween = create_tween()
 	var initial_scale = visual_scale
 	var new_scale = initial_scale * ratio
-	tween.tween_property(mesh,"scale",new_scale,0.05).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(mesh_instance,"scale",new_scale,0.05).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	
-	tween.tween_property(mesh,"scale",initial_scale,0.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(mesh_instance,"scale",initial_scale,0.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	
 
 func take_damage_ore(dmg : float):
