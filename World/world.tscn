@@ -44,8 +44,12 @@ size = Vector2(1.5, 1.5)
 
 [node name="World" type="Node3D" unique_id=10638356]
 
-[node name="Map" parent="." unique_id=1357227159 instance=ExtResource("1_eidgh")]
+[node name="Map" parent="." unique_id=1357227159 groups=["ground"] instance=ExtResource("1_eidgh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4197885, 0, -2.2512207)
+
+[node name="Plane" parent="Map" index="0" unique_id=588477509 groups=["ground"]]
+
+[node name="StaticBody3D" parent="Map/Plane" index="0" unique_id=1464626534 groups=["ground"]]
 
 [node name="Desert" parent="." unique_id=1738022576 instance=ExtResource("2_oe8m4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -234.0416, 0, 0)
@@ -221,6 +225,7 @@ type = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.190353, 4.266261, -6.123665)
 type = 3
 
+[editable path="Map"]
 [editable path="Desert"]
 [editable path="Cold"]
 [editable path="Ship/InnerHologram"]

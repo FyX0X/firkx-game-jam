@@ -55,9 +55,7 @@ func is_placeable(hologram : Building) -> bool:
 	if (hologram is not Drill and ray.get_collider() and not ray.get_collider().is_in_group("ground")):
 		print(ray.get_collider().get_groups())
 		location = false
-	var ressources : bool = has_enough_resources()
-	var science = _enough_science(hologram)
-	return hologram.is_not_clipping() and location and ressources and science
+	return hologram.is_not_clipping() and location
 
 func _update_hologram() -> void:
 	if ray.is_colliding():
@@ -70,7 +68,7 @@ func _update_hologram() -> void:
 		_update_drill_type(hologram)
 
 	if Input.is_action_just_pressed("attack"):
-		if is_placeable(hologram):
+		if is_placeable(hologram) and has_enough_resources() and _enough_science(hologram):
 			_place_building()
 		elif not _enough_science(hologram):
 			hud_layer.show_popup_message("Not enough Science Points")

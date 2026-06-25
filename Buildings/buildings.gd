@@ -17,6 +17,7 @@ var buffer : float = 0.0
 
 var red_material: Material = preload("res://assets/Material/red_holo.tres")
 var blue_material: Material = preload("res://assets/Material/blue_holo.tres")
+var orange_material : Material = preload("res://assets/Material/orange_holo.tres")
 
 var green_elec : Material = preload("res://assets/Material/green_elec.tres")
 var red_elec : Material = preload("res://assets/Material/red_elec.tres")
@@ -51,7 +52,14 @@ func _process(delta: float) -> void:
 	if not is_hologram:
 		return
 	can_place = get_parent().get_node("Placement").is_placeable(self)
-	_override_mat(model,blue_material if can_place else red_material) 
+	var science = get_parent().get_node("Placement")._enough_science(self)
+	var ressources = get_parent().get_node("Placement").has_enough_resources()
+	if not can_place:
+		_override_mat(model, red_material)
+	elif not science or not ressources:
+		_override_mat(model, orange_material)
+	else:
+		_override_mat(model, blue_material)
 
 func set_hologram_mode(enabled: bool) -> void:
 	is_hologram = enabled
