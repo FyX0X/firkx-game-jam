@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://47s5l2hrkdmh"]
+
+[ext_resource type="PackedScene" uid="uid://bkw5b4elo2oi2" path="res://assets/modele/Map.glb" id="1_eidgh"]
+[ext_resource type="PackedScene" uid="uid://b7ufllxudj6l3" path="res://World/DamageZone/damage_zone.tscn" id="2_oe8m4"]
+[ext_resource type="AudioStream" uid="uid://cg8iycqbpb2d8" path="res://assets/audio/desert/desert1.wav" id="3_w47uh"]
+[ext_resource type="AudioStream" uid="uid://cl7ahp8x3jkw3" path="res://assets/audio/desert/desert2.wav" id="4_lo5ox"]
+[ext_resource type="AudioStream" uid="uid://u6jlo2tnpufk" path="res://assets/audio/desert/desert3.wav" id="5_h2aik"]
+[ext_resource type="AudioStream" uid="uid://cs2e87btih4uw" path="res://assets/audio/desert/desert4.wav" id="6_0wqet"]
+[ext_resource type="AudioStream" uid="uid://cbigjp5slmjjj" path="res://assets/audio/desert/desert5.wav" id="7_awrha"]
+[ext_resource type="AudioStream" uid="uid://cr1rv702n8x38" path="res://assets/audio/dragon-studio-bitter-cold-wind-482876.mp3" id="8_f23eu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oeat8"]
+size = Vector3(163, 214, 676)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5xkvv"]
+size = Vector3(200, 369.168, 600)
+
+[node name="World" type="Node3D" unique_id=10638356]
+
+[node name="Map" parent="." unique_id=1357227159 instance=ExtResource("1_eidgh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4197885, 0, -2.2512207)
+
+[node name="Desert" parent="." unique_id=1738022576 instance=ExtResource("2_oe8m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -234.0416, 0, 0)
+biome_name = "Desert"
+biome_description = "Extreme heat detected. Seek cover as soon as possible."
+ambience_sounds = Array[AudioStream]([ExtResource("3_w47uh"), ExtResource("4_lo5ox"), ExtResource("5_h2aik"), ExtResource("6_0wqet"), ExtResource("7_awrha")])
+
+[node name="CollisionShape3D" parent="Desert" index="0" unique_id=1968634112]
+shape = SubResource("BoxShape3D_oeat8")
+
+[node name="Cold" parent="." unique_id=830234227 instance=ExtResource("2_oe8m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.24712, 0, 0)
+zone_type = 1
+biome_name = "Icy Wasteland"
+biome_description = "You can no longer feel your fingers. Find shelter in a warmer area."
+ambience_sounds = Array[AudioStream]([ExtResource("8_f23eu")])
+
+[node name="CollisionShape3D" parent="Cold" index="0" unique_id=1968634112]
+shape = SubResource("BoxShape3D_5xkvv")
+
+[editable path="Desert"]
+[editable path="Cold"]
