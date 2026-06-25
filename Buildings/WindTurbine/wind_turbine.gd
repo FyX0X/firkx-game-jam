@@ -5,9 +5,7 @@ extends Building
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
-	energy = 5
-	pass # Replace with function body.
-
+	# energy = 5 in export
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

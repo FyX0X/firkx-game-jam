@@ -32,6 +32,7 @@ func _ready():
 	_refresh()
 	main = get_tree().current_scene
 	assert(main != null)
+	hide()
 
 func _input(event):
 	if event.is_action_pressed("debug"):   # bind F3 in InputMap

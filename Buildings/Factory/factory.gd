@@ -19,8 +19,7 @@ const ores = ["iron", "titanium", "copper", "tungsten"]
 func _ready() -> void:
 	super._ready()
 	inventory.inventory_changed.connect(_on_inventory_changed)
-	energy = -5
-	pass
+	# energy = -5 in export
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

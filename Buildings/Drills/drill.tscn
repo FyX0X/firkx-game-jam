@@ -19,7 +19,7 @@ size = Vector3(2.8688354, 0.41351318, 5.9597015)
 
 [node name="Drill" unique_id=243835565 groups=["electrical"] instance=ExtResource("1_p4g2w")]
 script = ExtResource("2_3rq8i")
-type = "iron"
+type = "undefined"
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=969416891]
@@ -48,16 +48,16 @@ volume_db = -16.884
 
 [node name="Mesh" parent="." index="6" unique_id=1520077276 instance=ExtResource("4_6uugn")]
 
-[node name="Plane_001" parent="Mesh/Volume" parent_id_path=PackedInt32Array(1520077276, 2013045183) index="5" unique_id=2119029219]
+[node name="Plane_001" parent="Mesh/Volume" parent_id_path=PackedInt32Array(1520077276, 516275674) index="5" unique_id=1729102522]
 transform = Transform3D(0.21368165, -2.4228443e-08, -0.017038615, -1.8739936e-08, -0.21435982, 6.979601e-08, -0.017038615, -6.808559e-08, -0.21368165, 0, 3.6436436, 1.3207856)
 
-[node name="Cube_003" parent="Mesh/Volume/Plane_002" parent_id_path=PackedInt32Array(1520077276, 599936598) index="0" unique_id=1380845530]
+[node name="Cube_003" parent="Mesh/Volume/Plane_002" parent_id_path=PackedInt32Array(1520077276, 51512688) index="0" unique_id=1457319358]
 transform = Transform3D(0.663543, 0.5987303, 0.3569256, -0.6910127, 0.62971854, 0.22829618, -0.09151833, -0.41368982, 0.86408836, -1.2531849, 7.8238373, 0.85905147)
 
-[node name="Cube_004" parent="Mesh/Volume/Plane_002" parent_id_path=PackedInt32Array(1520077276, 599936598) index="1" unique_id=604248403]
+[node name="Cube_004" parent="Mesh/Volume/Plane_002" parent_id_path=PackedInt32Array(1520077276, 51512688) index="1" unique_id=218138494]
 transform = Transform3D(-0.69383436, -0.65580827, 0.121130414, -0.65117013, 0.6284575, -0.32738644, 0.14399543, -0.31799325, -0.8968329, 1.373483, 7.8238373, 0.64960563)
 
-[node name="Cube_005" parent="Mesh/Volume/Plane_002" parent_id_path=PackedInt32Array(1520077276, 599936598) index="2" unique_id=710418374]
+[node name="Cube_005" parent="Mesh/Volume/Plane_002" parent_id_path=PackedInt32Array(1520077276, 51512688) index="2" unique_id=1837375629]
 transform = Transform3D(-0.95932883, 0.054090273, -0.054090172, 1.093462e-07, 0.6805012, 0.68050045, 0.07649515, 0.6783474, -0.67834806, -0.11526195, 7.8238363, -1.4455053)
 
 [editable path="Mesh"]

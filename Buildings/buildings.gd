@@ -24,7 +24,7 @@ var red_elec : Material = preload("res://assets/Material/red_elec.tres")
 var can_place: bool = false
 var is_hologram: bool = false
 
-var energy : int = 0
+@export var energy : int = 0
 var is_powered : bool = true
 var current_grid : PowerGrid = null
 var connected_cables : Array[Node3D] = []
