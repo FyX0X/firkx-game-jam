@@ -9,11 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://m4wofuwbthib" path="res://assets/modele/spin_reactor.glb" id="5_we15e"]
 [ext_resource type="PackedScene" uid="uid://bnu3bwdr8orig" path="res://assets/modele/spin_reactor_computer.glb" id="6_eajpp"]
 [ext_resource type="AudioStream" uid="uid://bkkattlu57845" path="res://assets/audio/spin_reactor_startup.wav" id="8_eajpp"]
+[ext_resource type="PackedScene" uid="uid://cs70tj0ip3v0t" path="res://SpinReactor/hologram_timer.tscn" id="10_72vm2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8lsb0"]
-size = Vector3(5, 15, 5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_8lsb0"]
 size = Vector3(5, 15, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qfhvn"]
@@ -58,13 +56,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1946570796]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 0)
-visible = false
 shape = SubResource("BoxShape3D_8lsb0")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=429405409]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 0)
-visible = false
-mesh = SubResource("BoxMesh_8lsb0")
 
 [node name="Deposit" type="StaticBody3D" parent="." unique_id=1622068551 groups=["interactable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8628471, 0, 3.5662522)
@@ -112,5 +104,8 @@ lifetime = 0.5
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_eajpp")
 draw_pass_1 = SubResource("QuadMesh_72vm2")
+
+[node name="HologramTimer" parent="." unique_id=859679615 instance=ExtResource("10_72vm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.825932, -16.511087)
 
 [editable path="Computer/spin_reactor_computer"]

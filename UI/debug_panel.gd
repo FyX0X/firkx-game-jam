@@ -12,8 +12,12 @@ extends Control
 @onready var player_state_value_label: Label = $Categories/Information/PlayerStateValue
 @onready var challenge_value_label: Label = $Categories/Information/ChallengeValue
 
+@onready var time_slider: HSlider = $"Categories/Time Management/TimeSlider"
+@onready var time_value_label: Label = $"Categories/Time Management/TimeValue"
+
 var player: Player
 var player_inventory: Inventory
+var main: MainManager = null
 
 const ITEMS = ["iron", "copper", "titanium", "tungsten", "iron_bar"]
 
@@ -26,6 +30,8 @@ func _ready():
 	print("player.speed =", player.speed, " type=", typeof(player.speed))
 	speed_slider.value = player.speed
 	_refresh()
+	main = get_tree().current_scene
+	assert(main != null)
 
 func _input(event):
 	if event.is_action_pressed("debug"):   # bind F3 in InputMap
@@ -55,4 +61,12 @@ func set_player_state(state: Player.State) -> void:
 	player_state_value_label.text = Player.State.find_key(state)
 
 func _refresh() -> void:
-	challenge_value_label.text = str(GameSettings.challenge_mode)
+	challenge_value_label.text = GameSettings.Difficulty.find_key(GameSettings.difficulty)
+
+
+func _on_time_slider_value_changed(value: float) -> void:
+	time_value_label.text = "time: %.1f [s]" % value
+
+
+func _on_time_button_pressed() -> void:
+	main.time_left += time_slider.value

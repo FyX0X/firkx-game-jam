@@ -29,6 +29,10 @@ Secondaires :
 	detruire les loot bags apres un certain temps ou quand ils sont vide 
 
 Martin:
+	vaisseau timer
+	disable focus in hud
+	sur le main le vaisseau est repare l'origine de la science table est bonne et il a mis un bac
+	Container.glb le bac
 	show needed energy in spin reactor
 	fix inventory count label
 	fix lambda error with popup message
