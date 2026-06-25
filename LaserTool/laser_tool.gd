@@ -14,13 +14,70 @@ var _connected_target: Node  = null
 var qte_bonus_time : float = 0.0
 
 var _qte_active : bool = false
-var bonus_duration : float = 0.3
+var bonus_duration : float = 0.25
+
+var laser_material : Material = preload("res://assets/Material/purple_laser.tres")
+var subdivisions : int = 50
+var thickness : float = 0.3
+
+var im_mesh : ImmediateMesh 
+
+var line_count = 5
+func _ready() -> void:
+	im_mesh = ImmediateMesh.new()
+	beam.mesh = im_mesh
+	beam.material_override = laser_material
 
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("attack"):
 		_do_laser(delta)
 	else:
 		_stop_laser()
+
+func create_curved_laser(delta :float):
+	var start : Vector3 = player.find_child("Laser",true,false).global_position
+	var end : Vector3 = player.raycast.get_collision_point()
+	if not player.raycast.is_colliding():
+		return
+	start = beam.to_local(start)
+	end = beam.to_local(end)
+	im_mesh.clear_surfaces()	
+	im_mesh.surface_begin(Mesh.PRIMITIVE_LINES)
+	#var time_scale = Time.get_ticks_msec() * 0.01
+	var direction = end - start
+	var total_distance = direction.length()
+	var previous_point = start
+
+	for line_index in range(line_count):
+			var line_speed_modifier = 1.0 + sin(line_index) * 0.5 # Vitesse unique
+			var time_scale = Time.get_ticks_msec() * 0.01 * line_speed_modifier
+			
+			previous_point = start
+			
+			for i in range(1, subdivisions + 1):
+				var t = float(i) / subdivisions
+				var base_point = start.lerp(end, t)
+				
+				var wave_frequency = 3.0 + cos(line_index) * 1.5
+				var wave = (t * total_distance * wave_frequency) - time_scale
+				
+				var offset_x = cos(wave + line_index) * 0.25
+				var offset_y = sin(wave + line_index) * 0.25
+				
+				var fade_edges = t
+				offset_x *= fade_edges
+				offset_y *= fade_edges
+				
+				var current_point = base_point + Vector3(offset_x, offset_y, 0.0)
+				
+				# On dessine le segment de cette ligne
+				im_mesh.surface_add_vertex(previous_point)
+				im_mesh.surface_add_vertex(current_point)
+				
+				previous_point = current_point
+		
+	im_mesh.surface_end()
+	
 
 func _do_laser(delta: float) -> void:
 	var damage = 0
@@ -41,6 +98,7 @@ func _do_laser(delta: float) -> void:
 			target.resource_yielded.connect(_on_resource_yielded)
 			
 	beam.visible = true
+	create_curved_laser(delta)
 	if player._current_state == Player.State.NORMAL:
 		player.set_state(Player.State.ATTACKING)
 	
