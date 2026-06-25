@@ -34,16 +34,6 @@ sky = SubResource("Sky_il6x7")
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_qfhvn"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s53j1"]
-albedo_color = Color(0.7, 0.4, 0.3, 1)
-metallic = 0.8
-roughness = 0.4
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ecnql"]
-albedo_color = Color(0.382, 0.595, 0.184, 1)
-metallic = 0.8
-roughness = 0.4
-
 [node name="StaticBody3D" type="StaticBody3D" unique_id=1813780921 groups=["ground"]]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=208955167]
@@ -74,12 +64,6 @@ camera_attributes = SubResource("CameraAttributesPractical_qfhvn")
 script = ExtResource("3_il6x7")
 
 [node name="maptestvolume" parent="." unique_id=272792454 instance=ExtResource("10_s53j1")]
-
-[node name="MeshInstance3D" parent="maptestvolume/Vein_Iron_007/OreVein" parent_id_path=PackedInt32Array(272792454, 1332491170) index="3" unique_id=681568298]
-material_override = SubResource("StandardMaterial3D_s53j1")
-
-[node name="MeshInstance3D" parent="maptestvolume/OreVein" parent_id_path=PackedInt32Array(272792454, 1399205610) index="3" unique_id=1993668815]
-material_override = SubResource("StandardMaterial3D_ecnql")
 
 [editable path="Desert"]
 [editable path="Cold"]

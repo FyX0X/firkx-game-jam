@@ -2,11 +2,13 @@ extends Control
 
 @onready var difficulty_selector: OptionButton = $VBoxContainer/DifficulySelector
 @onready var settings_menu: Control = $SettingsMenu
-
+@onready var instructions: Control = $InstructionsUI
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	_populate_difficulty()
+	settings_menu.hide()
+	instructions.hide()
 
 
 func _populate_difficulty() -> void:
@@ -31,7 +33,7 @@ func _on_options_button_pressed() -> void:
 	settings_menu.show()
 
 func _on_instruction_button_pressed() -> void:
-	pass # Replace with function body.
+	instructions.show()
 
 
 func _on_quit_button_pressed() -> void:

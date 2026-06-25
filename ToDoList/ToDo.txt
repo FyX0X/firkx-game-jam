@@ -29,6 +29,8 @@ Secondaires :
 	detruire les loot bags apres un certain temps ou quand ils sont vide 
 
 Martin:
+	failed scene
+	ok nickel, faudra pas oublier de changer les recettes et faire en sorte que le spin reactor prenne des bar
 	disable focus in hud
 	show needed energy in spin reactor
 	fix inventory count label

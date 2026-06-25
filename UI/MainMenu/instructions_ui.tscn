@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://deg2og0gct1yk"]
+
+[ext_resource type="Script" uid="uid://cxxfhmatvvsim" path="res://UI/MainMenu/instructions_ui.gd" id="1_wetnh"]
+
+[node name="InstructionsUI" type="Control" unique_id=1497742735]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wetnh")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1837519403]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.40832946, 0.40832946, 0.40832946, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect" unique_id=700011632]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="TabContainer" type="TabContainer" parent="ColorRect/MarginContainer" unique_id=1221961982]
+layout_mode = 2
+current_tab = 0
+
+[node name="Keybinds" type="MarginContainer" parent="ColorRect/MarginContainer/TabContainer" unique_id=1211052850]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+metadata/_tab_index = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/MarginContainer/TabContainer/Keybinds" unique_id=93083252]
+layout_mode = 2
+bbcode_enabled = true
+text = "[font_size=18]General[/font_size]
+• [b]Escape[/b] — Close menu / Back / Pause game
+
+[font_size=18]Movement[/font_size]
+• [b]W A S D[/b] — Move
+• [b]Space[/b] — Jump
+• [b]Shift[/b] — Sprint
+
+[font_size=18]Interaction[/font_size]
+• [b]E[/b] — Interact with objects
+• [b]Tab[/b] — Open/Close Inventory
+
+[font_size=18]Building[/font_size]
+• [b]B[/b] — Enter / Exit Build Mode
+• [b]Mouse Wheel[/b] — Select building
+• [b]R[/b] — Rotate building
+
+[font_size=18]Tools[/font_size]
+• [b]Left Mouse Button[/b] — Mine / Destroy"
+
+[node name="Game Tips" type="Control" parent="ColorRect/MarginContainer/TabContainer" unique_id=1576184328]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="InstructionTitle" type="Label" parent="." unique_id=398441776]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -139.0
+offset_top = 19.0
+offset_right = 139.0
+offset_bottom = 86.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 48
+text = "Instructions"
+
+[node name="ExitButton" type="Button" parent="." unique_id=1425381973]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -108.0
+offset_top = 26.0
+offset_right = -43.0
+offset_bottom = 79.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 32
+text = "Exit"
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
