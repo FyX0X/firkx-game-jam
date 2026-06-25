@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 		_stop_laser()
 
 func _do_laser(delta: float) -> void:
-	if player.get_state() != Player.State.NORMAL:
+	if  player.get_state() == Player.State.UI_OPEN or player.get_state() == Player.State.BUILDING:
 		_stop_laser()
 		return
 	
@@ -58,7 +58,8 @@ func _stop_laser() -> void:
 	_disconnect_target()
 	if laser_audio and laser_audio.playing:
 		laser_audio.stop()
-	player.set_state(Player.State.NORMAL)
+	if player.get_state() == Player.State.ATTACKING:
+		player.set_state(Player.State.NORMAL)
 
 func _disconnect_target() -> void:
 	if _connected_target != null:

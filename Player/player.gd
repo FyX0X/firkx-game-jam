@@ -97,6 +97,7 @@ func _update_animation() -> void:
 			anim.play("gunidle")
 		else:
 			anim.play("gun")
+			anim.queue("gunidle")
 		return
 	elif not on_ground:
 		anim.play("jump")
