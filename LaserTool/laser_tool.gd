@@ -22,6 +22,7 @@ var thickness : float = 0.3
 
 var im_mesh : ImmediateMesh 
 
+var line_count = 5
 func _ready() -> void:
 	im_mesh = ImmediateMesh.new()
 	beam.mesh = im_mesh
@@ -41,38 +42,39 @@ func create_curved_laser(delta :float):
 	start = beam.to_local(start)
 	end = beam.to_local(end)
 	im_mesh.clear_surfaces()	
-	im_mesh.surface_begin(Mesh.PRIMITIVE_TRIANGLE_STRIP)
-	var time_scale = Time.get_ticks_msec() * 0.01
+	im_mesh.surface_begin(Mesh.PRIMITIVE_LINES)
+	#var time_scale = Time.get_ticks_msec() * 0.01
 	var direction = end - start
 	var total_distance = direction.length()
-	
-	var camera = get_viewport().get_camera_3d()
 	var previous_point = start
-	if not camera: return
-	var cam_pos = beam.to_local(camera.global_position)
-	
-	for i in range(1, subdivisions + 1):
-		var t = float(i) / subdivisions
-		
-		var base_point = start.lerp(end, t)
-	
-		var offset_y = sin((t * total_distance * 5.0)- time_scale) * 0.2
-		var offset_x = sin((t * total_distance * 5.0)-time_scale) * 0.2 
-		
-		var current_point = base_point + Vector3(offset_x, offset_y, 0.0)
-		
-		var to_cam = (cam_pos - current_point).normalized()
-		
-		# Produit vectoriel (Cross) pour trouver l'axe gauche/droite perpendiculaire à la caméra
-		var width_axis = direction.cross(to_cam).normalized() * (thickness / 2.0)
-		
-		# Sécurité si on regarde le laser de face parfaitement (évite un crash de rendu)
-		if width_axis.is_zero_approx():
-			width_axis = Vector3.UP * (thickness / 2.0)
-		
-		# On ajoute 2 sommets (un à gauche, un à droite) pour former le ruban
-		im_mesh.surface_add_vertex(current_point - width_axis)
-		im_mesh.surface_add_vertex(current_point + width_axis)
+
+	for line_index in range(line_count):
+			var line_speed_modifier = 1.0 + sin(line_index) * 0.5 # Vitesse unique
+			var time_scale = Time.get_ticks_msec() * 0.01 * line_speed_modifier
+			
+			previous_point = start
+			
+			for i in range(1, subdivisions + 1):
+				var t = float(i) / subdivisions
+				var base_point = start.lerp(end, t)
+				
+				var wave_frequency = 3.0 + cos(line_index) * 1.5
+				var wave = (t * total_distance * wave_frequency) - time_scale
+				
+				var offset_x = cos(wave + line_index) * 0.25
+				var offset_y = sin(wave + line_index) * 0.25
+				
+				var fade_edges = t
+				offset_x *= fade_edges
+				offset_y *= fade_edges
+				
+				var current_point = base_point + Vector3(offset_x, offset_y, 0.0)
+				
+				# On dessine le segment de cette ligne
+				im_mesh.surface_add_vertex(previous_point)
+				im_mesh.surface_add_vertex(current_point)
+				
+				previous_point = current_point
 		
 	im_mesh.surface_end()
 	

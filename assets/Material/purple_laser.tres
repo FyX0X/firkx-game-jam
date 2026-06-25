@@ -3,7 +3,10 @@
 [resource]
 resource_name = "Material.001"
 cull_mode = 2
-albedo_color = Color(0.6727956, 0.23716295, 0.99132866, 1)
+albedo_color = Color(6.7383053e-06, 0.6016707, 0.8402584, 1)
 roughness = 0.5
 emission_enabled = true
-emission = Color(0.6745098, 0.23529412, 0.99215686, 1)
+emission = Color(0, 0.6, 0.8392157, 1)
+emission_energy_multiplier = 10.0
+emission_operator = 1
+emission_on_uv2 = true
