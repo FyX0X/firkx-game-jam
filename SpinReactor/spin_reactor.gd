@@ -14,16 +14,16 @@ signal powered_changed
 @export var process_speed: float = 10.0
 var progress: float = 0
 @export var construction_cost: Dictionary = {
-	"iron" : 100,
-	"titanium" : 80,
-	"copper" : 60,
-	"tungsten" : 50
+	"iron_bar" : 200,
+	"titanium_bar" : 100,
+	"copper_bar" : 100,
+	"tungsten_bar" : 50
 }
 var deposited: Dictionary = {
-	"iron" : 0,
-	"titanium" : 0,
-	"copper" : 0,
-	"tungsten" : 0
+	"iron_bar" : 0,
+	"titanium_bar" : 0,
+	"copper_bar" : 0,
+	"tungsten_bar" : 0
 }
 @export var electricity_consumption: float = 100
 @export var energy : int = -5
@@ -36,6 +36,7 @@ var is_complete: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	assert(deposited.keys() == construction_cost.keys())
 	current_grid = PowerManager.create_new_grid()
 	current_grid.add_building(self)
 	PowerManager.connection(self)

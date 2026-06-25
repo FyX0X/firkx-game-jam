@@ -26,10 +26,10 @@ func _ready() -> void:
 	_on_resize()
 	
 	# init progress bars
-	iron_progress.max_value = spin_reactor.construction_cost["iron"]
-	titanium_progress.max_value = spin_reactor.construction_cost["titanium"]
-	copper_progress.max_value = spin_reactor.construction_cost["copper"]
-	tungsten_progress.max_value = spin_reactor.construction_cost["tungsten"]
+	iron_progress.max_value = spin_reactor.construction_cost["iron_bar"]
+	titanium_progress.max_value = spin_reactor.construction_cost["titanium_bar"]
+	copper_progress.max_value = spin_reactor.construction_cost["copper_bar"]
+	tungsten_progress.max_value = spin_reactor.construction_cost["tungsten_bar"]
 	
 	_refresh()
 	spin_reactor.deposit_changed.connect(_refresh_material)
@@ -53,12 +53,12 @@ func _refresh_electricity() -> void:
 	electricity_label.text = "Electricity Supplied : Powered" if spin_reactor.is_powered else "Electricity Supplied : Unpowered"
 
 func _refresh_material() -> void:
-	iron_progress.value = spin_reactor.deposited["iron"]
-	titanium_progress.value = spin_reactor.deposited["titanium"]
-	copper_progress.value = spin_reactor.deposited["copper"]
-	tungsten_progress.value = spin_reactor.deposited["tungsten"]
+	iron_progress.value = spin_reactor.deposited["iron_bar"]
+	titanium_progress.value = spin_reactor.deposited["titanium_bar"]
+	copper_progress.value = spin_reactor.deposited["copper_bar"]
+	tungsten_progress.value = spin_reactor.deposited["tungsten_bar"]
 	
-	iron_label.text = "Iron Deposited: " + str(spin_reactor.deposited["iron"]) + "/" + str(spin_reactor.construction_cost["iron"])
-	titanium_label.text = "titanium Deposited: " + str(spin_reactor.deposited["titanium"]) + "/" + str(spin_reactor.construction_cost["titanium"])
-	copper_label.text = "copper Deposited: " + str(spin_reactor.deposited["copper"]) + "/" + str(spin_reactor.construction_cost["copper"])
-	tungsten_label.text = "Tungsten Deposited: " + str(spin_reactor.deposited["tungsten"]) + "/" + str(spin_reactor.construction_cost["tungsten"])
+	iron_label.text = "Iron Bar Deposited: " + str(spin_reactor.deposited["iron_bar"]) + "/" + str(spin_reactor.construction_cost["iron_bar"])
+	titanium_label.text = "Titanium Bar Deposited: " + str(spin_reactor.deposited["titanium_bar"]) + "/" + str(spin_reactor.construction_cost["titanium_bar"])
+	copper_label.text = "Topper Bar Deposited: " + str(spin_reactor.deposited["copper_bar"]) + "/" + str(spin_reactor.construction_cost["copper_bar"])
+	tungsten_label.text = "Tungsten Bar Deposited: " + str(spin_reactor.deposited["tungsten_bar"]) + "/" + str(spin_reactor.construction_cost["tungsten_bar"])

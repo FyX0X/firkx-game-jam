@@ -45,12 +45,6 @@ material = SubResource("StandardMaterial3D_pk2ri")
 
 [node name="SpinReactor" type="StaticBody3D" unique_id=931180037 groups=["electrical", "spin_reactor"]]
 script = ExtResource("1_861fv")
-construction_cost = {
-"copper": 0,
-"iron": 1,
-"titanium": 0,
-"tungsten": 0
-}
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1946570796]
