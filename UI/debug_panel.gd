@@ -10,6 +10,7 @@ extends Control
 @onready var speed_label: Label = $Categories/Movement/SpeedLabel
 
 @onready var player_state_value_label: Label = $Categories/Information/PlayerStateValue
+@onready var challenge_value_label: Label = $Categories/Information/ChallengeValue
 
 var player: Player
 var player_inventory: Inventory
@@ -24,10 +25,12 @@ func _ready():
 	amount_slider.value_changed.connect(func(v): amount_label.text = str(int(v)))
 	print("player.speed =", player.speed, " type=", typeof(player.speed))
 	speed_slider.value = player.speed
+	_refresh()
 
 func _input(event):
 	if event.is_action_pressed("debug"):   # bind F3 in InputMap
 		visible = !visible
+		_refresh()
 
 func _on_add_button_pressed() -> void:
 	var item = ITEMS[item_option.selected]
@@ -50,3 +53,6 @@ func _on_speed_slider_value_changed(value: float) -> void:
 
 func set_player_state(state: Player.State) -> void:
 	player_state_value_label.text = Player.State.find_key(state)
+
+func _refresh() -> void:
+	challenge_value_label.text = str(GameSettings.challenge_mode)

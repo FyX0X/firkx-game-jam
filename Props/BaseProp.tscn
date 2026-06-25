@@ -10,7 +10,7 @@
 script = ExtResource("1_0df6i")
 metadata/_edit_group_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=42334917]
+[node name="Dummy" type="MeshInstance3D" parent="." unique_id=42334917]
 mesh = SubResource("SphereMesh_qfhvn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1109386413]

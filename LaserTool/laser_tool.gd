@@ -21,6 +21,7 @@ func _do_laser(delta: float) -> void:
 	if player.get_state() != Player.State.NORMAL:
 		_stop_laser()
 		return
+	
 		
 	var target = player._current_target
 	if target == null or not (target.is_in_group("minable") or target.is_in_group("breakable")):

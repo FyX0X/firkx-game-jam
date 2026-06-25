@@ -1,8 +1,6 @@
 class_name Ore
 extends BaseProp
 
-@export var type : OreType = OreType.IRON
-
 enum OreType {
 	IRON,
 	TITANIUM,
@@ -11,28 +9,25 @@ enum OreType {
 	NULL
 }
 
+@export var type : OreType = OreType.IRON
+
 @onready var mesh_instance : MeshInstance3D = $MeshInstance3D
 
 var ore_data : Dictionary = {
 	OreType.IRON: {
 		"display_name": "Iron", 
-		"color": Color(0.7, 0.4, 0.3) # Rougeâtre / Rouille
 	},
 	OreType.COPPER: {
-		"display_name": "copper", 
-		"color": Color(0.671, 0.667, 0.643, 1.0) # Orange
+		"display_name": "Copper", 
 	},
 	OreType.TITANIUM: {
 		"display_name": "Titanium", 
-		"color": Color(0.382, 0.595, 0.184, 1.0) 
 	},
 	OreType.TUNGSTEN: {
 		"display_name": "Tungsten", 
-		"color": Color(0.328, 0.489, 0.945, 1.0) 
 	},
 	OreType.NULL: {
 		"display_name": "NULL", 
-		"color": Color(0.858, 0.873, 0.869, 1.0)
 	}
 }
 var current_name : String
@@ -41,21 +36,12 @@ var current_name : String
 func _ready() -> void:
 	var data = ore_data[type]
 	current_name = data["display_name"]
-	_set_ore_color(data["color"])
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-func _set_ore_color(new_color : Color) -> void:
-	var new_mat = StandardMaterial3D.new()
-	new_mat.albedo_color = new_color
-
-	new_mat.metallic = 0.8
-	new_mat.roughness = 0.4
-
-	mesh_instance.material_override = new_mat
 
 func _get_string(ore : OreType) -> String:
 	match ore:

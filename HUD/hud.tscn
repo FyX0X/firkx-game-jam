@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dk5yhfhpkq63h" path="res://UI/research_ui.tscn" id="5_1rsjr"]
 [ext_resource type="PackedScene" uid="uid://citor265fbgqv" path="res://UI/biome_ui.tscn" id="6_ncsg0"]
 [ext_resource type="PackedScene" uid="uid://cvenbpftn8p1x" path="res://UI/spin_reactor_ui.tscn" id="6_tnm0g"]
+[ext_resource type="PackedScene" uid="uid://bgbl4fnikudkj" path="res://UI/PauseMenu/PauseMenu.tscn" id="8_6dvid"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1757733813 groups=["hud"]]
 script = ExtResource("1_yu8mg")
@@ -73,5 +74,7 @@ offset_right = 93.0
 offset_bottom = -77.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 24
+
+[node name="PauseMenu" parent="." unique_id=367750826 instance=ExtResource("8_6dvid")]
 
 [connection signal="finished" from="CinematicPlayer" to="." method="_on_cinematic_player_finished"]

@@ -11,6 +11,8 @@ extends CanvasLayer
 @onready var spin_reactor_ui: SpinReactorUI = $SpinReactorUI
 @onready var build_label : Label = $BuildLabel
 @onready var biome_ui: BiomeUI = $BiomeUI
+@onready var pause_menu: PauseMenu = $PauseMenu
+
 
 var intro_video: VideoStreamTheora
 var outro_video: VideoStreamTheora
@@ -164,3 +166,6 @@ func update_building_info(building : Building) -> void:
 			build_label.text += "Consommation: " + str(-building.energy) + " MW"
 		else:
 			build_label.text += ""
+
+func set_pause_menu_visibility(shown: bool) -> void:
+	pause_menu.visible = shown
