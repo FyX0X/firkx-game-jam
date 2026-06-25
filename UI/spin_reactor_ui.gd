@@ -31,7 +31,7 @@ func _ready() -> void:
 	copper_progress.max_value = spin_reactor.construction_cost["copper_bar"]
 	tungsten_progress.max_value = spin_reactor.construction_cost["tungsten_bar"]
 	
-	_refresh()
+	electricity_progress.max_value = absi(spin_reactor.energy)
 	spin_reactor.deposit_changed.connect(_refresh_material)
 	spin_reactor.powered_changed.connect(_refresh_electricity)
 
@@ -49,8 +49,17 @@ func _refresh() -> void:
 	_refresh_electricity()
 
 func _refresh_electricity() -> void:
-	electricity_progress.value = electricity_progress.max_value if spin_reactor.is_powered else 0
-	electricity_label.text = "Electricity Supplied : Powered" if spin_reactor.is_powered else "Electricity Supplied : Unpowered"
+	var spin_consumption: int = -spin_reactor.energy
+	var grid: PowerGrid = spin_reactor.current_grid
+	var grid_deficit: int = grid.demand - grid.production
+	var power_in_spin_reactor: int = spin_consumption - grid_deficit
+	power_in_spin_reactor = maxi(power_in_spin_reactor, 0)
+	power_in_spin_reactor = mini(power_in_spin_reactor, spin_consumption)
+	assert(spin_reactor.is_powered == (power_in_spin_reactor == spin_consumption))
+	electricity_progress.value = power_in_spin_reactor
+	var power_string: String = "Electricity Supplied : Powered" if spin_reactor.is_powered else "Electricity Supplied : Unpowered"
+	power_string += " (%d/%d [MW])" % [power_in_spin_reactor, spin_consumption]
+	electricity_label.text = power_string
 
 func _refresh_material() -> void:
 	iron_progress.value = spin_reactor.deposited["iron_bar"]

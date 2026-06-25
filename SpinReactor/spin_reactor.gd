@@ -25,8 +25,12 @@ var deposited: Dictionary = {
 	"copper_bar" : 0,
 	"tungsten_bar" : 0
 }
+
+var current_mat: Material = null
+var green_elec : Material = preload("res://assets/Material/green_elec.tres")
+var red_elec : Material = preload("res://assets/Material/red_elec.tres")
 @export var electricity_consumption: float = 100
-@export var energy : int = -5
+@export var energy : int = -200
 var is_powered : bool = false
 var current_grid : PowerGrid = null
 var connected_cables : Array[Node3D] = []
@@ -88,16 +92,30 @@ func _update_material() -> void:
 
 
 func set_powered(powered : bool) -> void:
-
 	print("spin_reactor: Is powered : " + str(powered))
 	is_powered = powered
 	powered_changed.emit()
-	var light = self.find_child("Light", true, false)
+	var light = self.find_child("Light*", true, false)
 	if light:
-		print("Light found")
+		print("Spin Reactor: Light found")
 		if is_powered:
 			print("spin reactor: set powered WIP")
-			# _override_mat(light, green_elec)
+			_override_mat(light, green_elec)
 		else:
 			print("spin reactor: set powered WIP")
-			# _override_mat(light, red_elec)
+			_override_mat(light, red_elec)
+
+func _override_mat(node: Node3D, mat: Material) -> void:
+	if mat == current_mat: 
+		return
+	current_mat = mat
+	_override_mat_recursive(node, mat)
+
+func _override_mat_recursive(node : Node3D, mat : Material) -> void:
+	if node == null:
+		return
+	if node is MeshInstance3D:
+		node.material_override = mat
+	for child in node.get_children():
+		if child is Node3D:
+			_override_mat_recursive(child,mat)

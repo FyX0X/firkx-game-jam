@@ -34,12 +34,11 @@ Martin:
 	broken_drill
 	failed scene
 	disable focus in hud
-	show needed energy in spin reactor
 	fix inventory count label
 	fix lambda error with popup message
-Martin MAYBE DONE:
-	Etat transition inventaire -> normal
 Martin DONE:
+	Etat transition inventaire -> normal
+	show needed energy in spin reactor
 	camera clipping
 	ok nickel, faudra pas oublier de changer les recettes et faire en sorte que le spin reactor prenne des bar
 	vaisseau timer
