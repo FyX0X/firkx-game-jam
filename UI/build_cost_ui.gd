@@ -6,6 +6,8 @@ extends Control
 
 var slots: Array[InventorySlot]
 
+@onready var player : Player = get_parent().get_parent().find_child("Player", true)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for i in grid.get_child_count():
@@ -26,7 +28,10 @@ func set_build_cost(recipe: Dictionary):
 	var keys = recipe.keys()
 	for i in size:
 		slots[i].set_item(keys[i], recipe[keys[i]])
+		if not player.get_inventory().has_item(keys[i], recipe[keys[i]]):
+			slots[i].self_modulate = Color(1, 0, 0, 0.5)
 
 func _clear_recipe() -> void:
 	for i in 5:
 		slots[i].clear()
+		slots[i].self_modulate = Color.WHITE
