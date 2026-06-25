@@ -30,7 +30,8 @@ var _active_zones: Dictionary = {}  # Damage -> time_spent
 
 var loot_bag_scene: PackedScene = preload("res://Props/LootBag/loot_bag.tscn")
 
-@onready var anim : AnimationPlayer = $mesh/AnimationPlayer
+@onready var tree : AnimationTree = $AnimationTree
+@onready var playback: AnimationNodeStateMachinePlayback = tree.get("parameters/playback")
 
 ## resistance are bonus : 0.5 -> + 50% of grace period
 var upgrades: Dictionary = {
@@ -84,7 +85,20 @@ func _physics_process(delta: float) -> void:
 	_apply_zone_damage(delta)
 	_process_health(delta)
 	raycast_check()
+	_update_animation()
 
+func _update_animation() -> void:
+	var on_ground := is_on_floor()
+	var moving := Vector2(velocity.x, velocity.z).length() > 0.05
+	var laser := (_current_state == State.ATTACKING)
+	tree.set("parameters/conditions/moving", on_ground and moving)
+	tree.set("parameters/conditions/idle", on_ground and not moving)
+	
+	tree.set("parameters/conditions/jumping", not on_ground)
+	
+	tree.set("parameters/conditions/laser_on", laser)
+	tree.set("parameters/conditions/laser_off", not laser)
+		
 func _process_movement(delta: float) -> void:
 	if _current_state == State.DEAD:
 		if Audiostep.playing:
@@ -151,6 +165,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		if event.is_action_pressed("interact") and _current_target != null:
+			playback.travel("interact")
 			interacted.emit(_current_target)
 		if event.is_action_pressed("build"):
 			if _current_state == State.BUILDING:
