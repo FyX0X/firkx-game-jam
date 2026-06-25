@@ -10,6 +10,8 @@ signal resource_yielded(ore_type: Ore.OreType, amount: int)
 
 var remaining_yield: int
 
+var ratio = 0.75
+
 
 func _ready() -> void:
 	super()
@@ -31,7 +33,6 @@ func yield_resource() -> void:
 func _resize():
 	var mesh : MeshInstance3D = $MeshInstance3D
 	var visual_scale = $MeshInstance3D.scale
-	var ratio = 0.75
 	var tween = create_tween()
 	var initial_scale = visual_scale
 	var new_scale = initial_scale * ratio
