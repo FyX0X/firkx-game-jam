@@ -31,17 +31,6 @@ horizontal_alignment = 1
 [node name="EndSound" type="AudioStreamPlayer" parent="." unique_id=1875584184]
 stream = ExtResource("2_eh40q")
 
-[node name="CinematicPlayer" type="VideoStreamPlayer" parent="." unique_id=1782411875]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stream = ExtResource("3_25usx")
-autoplay = true
-expand = true
-
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1686921837]
 layout_mode = 1
 anchors_preset = 8
@@ -61,11 +50,22 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Main Menu"
 
-[node name="RageQuitButton" type="Button" parent="VBoxContainer" unique_id=177359198]
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=177359198]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Quit"
 
-[connection signal="finished" from="CinematicPlayer" to="." method="_on_failed_video_finished"]
+[node name="CinematicPlayer" type="VideoStreamPlayer" parent="." unique_id=1782411875]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("3_25usx")
+autoplay = true
+expand = true
+
 [connection signal="pressed" from="VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/RageQuitButton" to="." method="_on_rage_quit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="finished" from="CinematicPlayer" to="." method="_on_cinematic_player_finished"]
