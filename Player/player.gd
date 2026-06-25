@@ -84,8 +84,6 @@ func _physics_process(delta: float) -> void:
 	_apply_zone_damage(delta)
 	_process_health(delta)
 	raycast_check()
-	if not anim.is_playing():
-		anim.play("idle")
 
 func _process_movement(delta: float) -> void:
 	if _current_state == State.DEAD:
