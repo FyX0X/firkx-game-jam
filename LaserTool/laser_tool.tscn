@@ -21,6 +21,7 @@ script = ExtResource("1_jn3ic")
 metadata/_edit_group_ = true
 
 [node name="Gun" type="MeshInstance3D" parent="." unique_id=748669666]
+visible = false
 mesh = SubResource("BoxMesh_8lsb0")
 
 [node name="Beam" type="MeshInstance3D" parent="." unique_id=939976280]

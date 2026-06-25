@@ -36,6 +36,8 @@ sky_material = SubResource("ShaderMaterial_h2aik")
 [sub_resource type="Environment" id="Environment_0wqet"]
 background_mode = 2
 sky = SubResource("Sky_il6x7")
+glow_enabled = true
+glow_intensity = 8.0
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_awrha"]
 
