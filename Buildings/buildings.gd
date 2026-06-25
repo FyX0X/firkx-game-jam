@@ -30,6 +30,8 @@ var is_powered : bool = true
 var current_grid : PowerGrid = null
 var connected_cables : Array[Node3D] = []
 
+var current_mat: Material = null
+
 func is_placed() -> bool:
 	return not is_hologram
 
@@ -68,16 +70,21 @@ func set_hologram_mode(enabled: bool) -> void:
 	clipping_hitbox.monitoring = enabled
 	floating_hitbox.monitoring = enabled
 
-func _override_mat(node : Node3D, mat : Material) -> void:
+func _override_mat(node: Node3D, mat: Material) -> void:
+	if mat == current_mat: 
+		return
+	current_mat = mat
+	_override_mat_recursive(node, mat)
+
+func _override_mat_recursive(node : Node3D, mat : Material) -> void:
 	if node == null:
 		return
 	if node is MeshInstance3D:
 		node.material_override = mat
-		if (mat != red_material and mat != blue_material):
-			print("Application du mat: ", mat, " sur le node: ", node.name)
 	for child in node.get_children():
 		if child is Node3D:
-			_override_mat(child,mat)
+			_override_mat_recursive(child,mat)
+	
 
 func place() -> void:
 	set_hologram_mode(false)
