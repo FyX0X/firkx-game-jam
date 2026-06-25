@@ -6,7 +6,8 @@ extends Node
 @onready var player: Player = $Player
 @onready var building_placement: Placement = $Player/Placement
 @onready var spin_reactor: SpinReactor = $SpinReactor
-@onready var hologram_timer: HologramTimer = $SpinReactor/HologramTimer
+@onready var outer_hologram_timer: HologramTimer = $Ship/OuterHologram
+@onready var inner_hologram_timer: HologramTimer = $Ship/InnerHologram
 @onready var space_sky_environment: SpaceSkyEnvironment = $World/SpaceSky
 
 
@@ -40,9 +41,11 @@ func _ready() -> void:
 
 func setup_difficulty_parameters() -> void:
 	time_left = GameSettings.time_limit[GameSettings.difficulty]
-	hologram_timer.set_message(GameSettings.hologram_msg[GameSettings.difficulty])
+	inner_hologram_timer.set_message(GameSettings.hologram_msg[GameSettings.difficulty])
+	outer_hologram_timer.set_message(GameSettings.hologram_msg[GameSettings.difficulty])
 	if GameSettings.difficulty == GameSettings.Difficulty.NORMAL:
-		hologram_timer.set_time_visibility(false)
+		inner_hologram_timer.set_time_visibility(false)
+		outer_hologram_timer.set_time_visibility(false)
 	
 
 func set_state(new_state: GameState) -> void:
@@ -86,10 +89,11 @@ func _process(delta: float) -> void:
 	if time_left <= 0:
 		_on_challenge_fail()
 	
-	if not low_sent and time_left <= low_time:
-		low_time = true
+	if (not low_sent) and (time_left <= low_time):
+		low_sent = true
+		print("emit")
 		time_low_signal.emit()
-	if not critical_sent and time_left <= critical_time:
+	if (not critical_sent) and (time_left <= critical_time):
 		critical_sent = true
 		time_critical_signal.emit()
 		

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cqx6t3s8a5xtc"]
 
 [ext_resource type="AudioStream" uid="uid://bc26q1ir1rv55" path="res://assets/audio/gameover.wav" id="1_4hltb"]
+[ext_resource type="Script" uid="uid://bdopv724nnndl" path="res://EndScene/failed_scene.gd" id="1_xo3tr"]
 
 [node name="FailedScene" type="Control" unique_id=1874490453]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_xo3tr")
 
 [node name="Label" type="Label" parent="." unique_id=1875298127]
 layout_mode = 1

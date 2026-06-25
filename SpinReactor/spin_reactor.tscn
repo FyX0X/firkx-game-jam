@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://m4wofuwbthib" path="res://assets/modele/spin_reactor.glb" id="5_we15e"]
 [ext_resource type="PackedScene" uid="uid://bnu3bwdr8orig" path="res://assets/modele/spin_reactor_computer.glb" id="6_eajpp"]
 [ext_resource type="AudioStream" uid="uid://bkkattlu57845" path="res://assets/audio/spin_reactor_startup.wav" id="8_eajpp"]
-[ext_resource type="PackedScene" uid="uid://cs70tj0ip3v0t" path="res://SpinReactor/hologram_timer.tscn" id="10_72vm2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8lsb0"]
 size = Vector3(5, 15, 5)
@@ -104,8 +103,5 @@ lifetime = 0.5
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_eajpp")
 draw_pass_1 = SubResource("QuadMesh_72vm2")
-
-[node name="HologramTimer" parent="." unique_id=859679615 instance=ExtResource("10_72vm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.825932, -16.511087)
 
 [editable path="Computer/spin_reactor_computer"]

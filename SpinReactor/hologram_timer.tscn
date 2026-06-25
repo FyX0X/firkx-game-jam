@@ -4,15 +4,17 @@
 [ext_resource type="Shader" uid="uid://bygv2ph58708f" path="res://SpinReactor/hologram_timer.gdshader" id="2_yyoi7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yyoi7"]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("2_yyoi7")
 shader_parameter/hologram_color = Color(1, 1, 1, 1)
+shader_parameter/billboard = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_qfhvn"]
-size = Vector2(16, 16)
+size = Vector2(12, 12)
 
 [node name="HologramTimer" type="Node3D" unique_id=859679615]
 script = ExtResource("1_y52be")
+metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1989442769]
 material_override = SubResource("ShaderMaterial_yyoi7")

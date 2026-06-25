@@ -7,10 +7,13 @@ extends Node3D
 @onready var message_label: Label = $SubViewport/TimerUI/VBoxContainer/Message
 var main: MainManager = null
 
+@export var billboard: bool = true
+
 @export var default_color: Color = Color.CYAN
 @export var low_color: Color = Color.YELLOW
 @export var critical_color: Color = Color.RED
 
+var shader_mat: ShaderMaterial = null
 
 func _ready() -> void:
 	main = get_tree().current_scene
@@ -21,16 +24,25 @@ func _ready() -> void:
 	main.time_low_signal.connect(_on_time_low)
 	main.time_critical_signal.connect(_on_time_critical)
 	
-	var mat := mesh.material_override as ShaderMaterial
-	mat.set_shader_parameter("screen_tex", viewport.get_texture())
+	mesh.material_override = mesh.material_override.duplicate()
+	shader_mat = mesh.material_override
+	
+	shader_mat.set_shader_parameter("screen_tex", viewport.get_texture())
 	set_hologram_color(default_color)
+	set_glitch(0, 0)
+	shader_mat.set_shader_parameter("billboard", billboard)
+	
 
 func _on_time_low() -> void:
 	set_hologram_color(low_color)
+	set_glitch(0.3)
+	print("low")
 
 
 func _on_time_critical() -> void:
+	print("critical")
 	set_hologram_color(critical_color)
+	set_glitch(0.8)
 
 func _process(_delta):
 	var t = main.time_left
@@ -40,9 +52,15 @@ func set_time_visibility(shown: bool) -> void:
 	time_label.visible = shown
 
 
+func set_glitch(strengh: float, speed: float = 1.0):
+	print("hologram_timer: glitch not implemented")
+	return
+	shader_mat.set_shader_parameter("glitch_strengh", strengh)
+	shader_mat.set_shader_parameter("glitch_speed", speed)
+
+
 func set_hologram_color(color: Color) -> void:
-	var mat: ShaderMaterial = mesh.material_override
-	mat.set_shader_parameter("hologram_color", color)
+	shader_mat.set_shader_parameter("hologram_color", color)
 
 
 func set_message(msg: String) -> void:
