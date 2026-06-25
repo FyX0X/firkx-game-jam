@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://daff6phjq1x1n"
-path="res://.godot/imported/Testanim.glb-08684a29d6079f300c7a91f83e997907.scn"
+uid="uid://uo10e1hfwtwj"
+path="res://.godot/imported/foreuseanim.glb-82e93feb7db786c5b6ddb32363563d7f.scn"
 
 [deps]
 
-source_file="res://assets/modele/Testanim.glb"
-dest_files=["res://.godot/imported/Testanim.glb-08684a29d6079f300c7a91f83e997907.scn"]
+source_file="res://assets/modele/foreuseanim.glb"
+dest_files=["res://.godot/imported/foreuseanim.glb-82e93feb7db786c5b6ddb32363563d7f.scn"]
 
 [params]
 

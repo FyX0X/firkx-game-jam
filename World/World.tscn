@@ -65,6 +65,8 @@ script = ExtResource("3_il6x7")
 
 [node name="maptestvolume" parent="." unique_id=272792454 instance=ExtResource("10_s53j1")]
 
+[node name="@StaticBody3D@122839" parent="maptestvolume/tearrain" parent_id_path=PackedInt32Array(272792454, 2080732606) index="0" unique_id=803719401 groups=["ground"]]
+
 [editable path="Desert"]
 [editable path="Cold"]
 [editable path="maptestvolume"]

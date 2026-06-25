@@ -18,11 +18,10 @@ func _process(delta: float) -> void:
 		_stop_laser()
 
 func _do_laser(delta: float) -> void:
-	if player.get_state() != Player.State.NORMAL:
+	if  player.get_state() == Player.State.UI_OPEN or player.get_state() == Player.State.BUILDING:
 		_stop_laser()
 		return
 	
-		
 	var target = player._current_target
 	if target == null or not (target.is_in_group("minable") or target.is_in_group("breakable")):
 		_stop_laser()
@@ -36,6 +35,8 @@ func _do_laser(delta: float) -> void:
 			target.resource_yielded.connect(_on_resource_yielded)
 			
 	beam.visible = true
+	if player._current_state == Player.State.NORMAL:
+		player.set_state(Player.State.ATTACKING)
 	
 	if laser_audio and not laser_audio.playing:
 		laser_audio.play()
@@ -57,6 +58,8 @@ func _stop_laser() -> void:
 	_disconnect_target()
 	if laser_audio and laser_audio.playing:
 		laser_audio.stop()
+	if player.get_state() == Player.State.ATTACKING:
+		player.set_state(Player.State.NORMAL)
 
 func _disconnect_target() -> void:
 	if _connected_target != null:
