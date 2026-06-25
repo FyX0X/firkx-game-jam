@@ -103,7 +103,7 @@ func _update_animation() -> void:
 		anim.play("idle")
 		return
 	elif moving and not anim.current_animation == "interact":
-		anim.play("walk")
+		anim.play("run")
 	elif not anim.current_animation == "interact":
 		anim.play("idle")
 		
