@@ -19,7 +19,7 @@ var player: Player
 var player_inventory: Inventory
 var main: MainManager = null
 
-const ITEMS = ["iron", "copper", "titanium", "tungsten", "iron_bar"]
+const ITEMS = ["iron", "copper", "titanium", "tungsten", "iron_bar", "copper_bar", "titanium_bar", "tungsten_bar"]
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")

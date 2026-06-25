@@ -14,19 +14,23 @@ signal powered_changed
 @export var process_speed: float = 10.0
 var progress: float = 0
 @export var construction_cost: Dictionary = {
-	"iron" : 100,
-	"titanium" : 80,
-	"copper" : 60,
-	"tungsten" : 50
+	"iron_bar" : 200,
+	"titanium_bar" : 100,
+	"copper_bar" : 100,
+	"tungsten_bar" : 50
 }
 var deposited: Dictionary = {
-	"iron" : 0,
-	"titanium" : 0,
-	"copper" : 0,
-	"tungsten" : 0
+	"iron_bar" : 0,
+	"titanium_bar" : 0,
+	"copper_bar" : 0,
+	"tungsten_bar" : 0
 }
+
+var current_mat: Material = null
+var green_elec : Material = preload("res://assets/Material/green_elec.tres")
+var red_elec : Material = preload("res://assets/Material/red_elec.tres")
 @export var electricity_consumption: float = 100
-@export var energy : int = -5
+@export var energy : int = -200
 var is_powered : bool = false
 var current_grid : PowerGrid = null
 var connected_cables : Array[Node3D] = []
@@ -36,6 +40,7 @@ var is_complete: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	assert(deposited.keys() == construction_cost.keys())
 	current_grid = PowerManager.create_new_grid()
 	current_grid.add_building(self)
 	PowerManager.connection(self)
@@ -87,16 +92,30 @@ func _update_material() -> void:
 
 
 func set_powered(powered : bool) -> void:
-
 	print("spin_reactor: Is powered : " + str(powered))
 	is_powered = powered
 	powered_changed.emit()
-	var light = self.find_child("Light", true, false)
+	var light = self.find_child("Light*", true, false)
 	if light:
-		print("Light found")
+		print("Spin Reactor: Light found")
 		if is_powered:
 			print("spin reactor: set powered WIP")
-			# _override_mat(light, green_elec)
+			_override_mat(light, green_elec)
 		else:
 			print("spin reactor: set powered WIP")
-			# _override_mat(light, red_elec)
+			_override_mat(light, red_elec)
+
+func _override_mat(node: Node3D, mat: Material) -> void:
+	if mat == current_mat: 
+		return
+	current_mat = mat
+	_override_mat_recursive(node, mat)
+
+func _override_mat_recursive(node : Node3D, mat : Material) -> void:
+	if node == null:
+		return
+	if node is MeshInstance3D:
+		node.material_override = mat
+	for child in node.get_children():
+		if child is Node3D:
+			_override_mat_recursive(child,mat)

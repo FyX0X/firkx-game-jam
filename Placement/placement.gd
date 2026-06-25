@@ -54,7 +54,7 @@ func is_placeable(hologram : Building) -> bool:
 	if  (hologram is Drill and not ray.get_collider() is BigOre):
 		location = false
 	if (hologram is not Drill and ray.get_collider() and not ray.get_collider().is_in_group("ground")):
-		print(ray.get_collider().get_groups())
+		# print(ray.get_collider().get_groups())
 		location = false
 	return hologram.is_not_clipping() and location
 

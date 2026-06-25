@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bfx3jwp0wsnfd"]
+
+[ext_resource type="PackedScene" uid="uid://cqx6t3s8a5xtc" path="res://EndScene/end_scene.tscn" id="1_h3fmx"]
+[ext_resource type="VideoStream" uid="uid://4qgj1l81xrsa" path="res://assets/video/gamejam_animation_outro.ogv" id="2_eq24g"]
+[ext_resource type="AudioStream" uid="uid://1s4nbr3ln0hb" path="res://assets/audio/winning.wav" id="3_eq24g"]
+
+[node name="EndScene" unique_id=1874490453 instance=ExtResource("1_h3fmx")]
+cinematic = ExtResource("2_eq24g")
+sound = ExtResource("3_eq24g")
