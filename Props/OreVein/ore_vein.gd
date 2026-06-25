@@ -17,7 +17,8 @@ func _ready() -> void:
 	super()
 	remaining_yield = total_yield
 	add_to_group("minable")
-	$MeshInstance3D.material_override = null
+	print("add material")
+	# $MeshInstance3D.material_override = null
 	# si ca crash ici : reimport la map :
 	# maptestvolume.glb
 	
