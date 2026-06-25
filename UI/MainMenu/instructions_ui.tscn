@@ -1,10 +1,7 @@
 [gd_scene format=3 uid="uid://deg2og0gct1yk"]
 
 [ext_resource type="Script" uid="uid://cxxfhmatvvsim" path="res://UI/MainMenu/instructions_ui.gd" id="1_wetnh"]
-[ext_resource type="Texture2D" uid="uid://lhuwdu035je6" path="res://assets/images/instructions/ore_veins.png" id="2_45i68"]
-[ext_resource type="Texture2D" uid="uid://b3jhbhd2mkwfh" path="res://assets/images/instructions/drill_big_ore.png" id="3_004kh"]
-[ext_resource type="Texture2D" uid="uid://cki8whmidoa3e" path="res://assets/images/instructions/wind_turbin_connection.png" id="4_cijin"]
-[ext_resource type="Texture2D" uid="uid://c010ynnj12w83" path="res://assets/images/instructions/science_table.png" id="5_cijin"]
+[ext_resource type="Texture2D" uid="uid://tiwyumqe8dgv" path="res://assets/images/instructions/combined.png" id="2_45i68"]
 
 [node name="InstructionsUI" type="Control" unique_id=1497742735]
 layout_mode = 3
@@ -38,10 +35,9 @@ theme_override_constants/margin_bottom = 20
 
 [node name="TabContainer" type="TabContainer" parent="ColorRect/MarginContainer" unique_id=1221961982]
 layout_mode = 2
-current_tab = 1
+current_tab = 0
 
 [node name="Keybinds" type="MarginContainer" parent="ColorRect/MarginContainer/TabContainer" unique_id=1211052850]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -73,6 +69,7 @@ text = "[font_size=18]General[/font_size]
 • [b]Left Mouse Button[/b] — Mine / Destroy"
 
 [node name="Game Tips" type="MarginContainer" parent="ColorRect/MarginContainer/TabContainer" unique_id=255971684]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -80,96 +77,11 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 metadata/_tab_index = 1
 
-[node name="FlowContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/TabContainer/Game Tips" unique_id=244012182]
+[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/TabContainer/Game Tips" unique_id=1941585972]
 layout_mode = 2
-
-[node name="OreVeins" type="VBoxContainer" parent="ColorRect/MarginContainer/TabContainer/Game Tips/FlowContainer" unique_id=1075236898]
-layout_mode = 2
-size_flags_horizontal = 2
-
-[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/TabContainer/Game Tips/FlowContainer/OreVeins" unique_id=739122341]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 4.0
 texture = ExtResource("2_45i68")
 expand_mode = 2
 stretch_mode = 5
-
-[node name="Label" type="Label" parent="ColorRect/MarginContainer/TabContainer/Game Tips/FlowContainer/OreVeins/TextureRect" unique_id=1232416185]
-layout_mode = 0
-offset_top = 272.0
-offset_right = 1.0
-offset_bottom = 477.0
-size_flags_vertical = 3
-text = "Mine the Ore Veins to start Gathering Resources"
-autowrap_mode = 2
-justification_flags = 162
-
-[node name="Drill" type="VBoxContainer" parent="ColorRect/MarginContainer/TabContainer/Game Tips/FlowContainer" unique_id=492117670]
-layout_mode = 2
-size_flags_horizontal = 2
-
-[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/TabContainer/Game Tips/FlowContainer/Drill" unique_id=1518715058]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 4.0
-texture = ExtResource("3_004kh")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="ColorRect/MarginContainer/TabContainer/Game Tips/FlowContainer/Drill/TextureRect" unique_id=794511321]
-layout_mode = 0
-offset_top = -313.0
-offset_right = 1.0
-offset_bottom = -4.0
-size_flags_vertical = 6
-text = "Place your drill on the large ore veins to mine resources automatically."
-autowrap_mode = 2
-justification_flags = 162
-
-[node name="WindTurbin" type="VBoxContainer" parent="ColorRect/MarginContainer/TabContainer/Game Tips/FlowContainer" unique_id=1145059416]
-layout_mode = 2
-size_flags_horizontal = 2
-
-[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/TabContainer/Game Tips/FlowContainer/WindTurbin" unique_id=1295845599]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 4.0
-texture = ExtResource("4_cijin")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="ColorRect/MarginContainer/TabContainer/Game Tips/FlowContainer/WindTurbin/TextureRect" unique_id=447529104]
-layout_mode = 0
-offset_top = 324.0
-offset_right = 1.0
-offset_bottom = 477.0
-size_flags_vertical = 6
-text = "Power your buildings using wind turbins."
-autowrap_mode = 2
-justification_flags = 162
-
-[node name="Drill2" type="VBoxContainer" parent="ColorRect/MarginContainer/TabContainer/Game Tips/FlowContainer" unique_id=2109292434]
-layout_mode = 2
-size_flags_horizontal = 2
-
-[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/TabContainer/Game Tips/FlowContainer/Drill2" unique_id=876065397]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 4.0
-texture = ExtResource("5_cijin")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="ColorRect/MarginContainer/TabContainer/Game Tips/FlowContainer/Drill2/TextureRect" unique_id=1873826741]
-layout_mode = 0
-offset_top = -261.0
-offset_right = 1.0
-offset_bottom = -4.0
-size_flags_vertical = 6
-text = "Not enough Science ? Use the science table to gather more."
-autowrap_mode = 2
-justification_flags = 162
 
 [node name="InstructionTitle" type="Label" parent="." unique_id=398441776]
 layout_mode = 1
