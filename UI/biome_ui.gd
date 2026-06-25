@@ -1,8 +1,8 @@
 class_name BiomeUI
 extends Control
 
-@onready var biome_label: Label = $CenterContainer/VBoxContainer/BiomeLabel
-@onready var description_label: Label = $CenterContainer/VBoxContainer/DescriptionLabel
+@onready var biome_label: Label = $VBoxContainer/BiomeLabel
+@onready var description_label: Label = $VBoxContainer/DescriptionLabel
 @onready var timer: Timer = $Timer
 
 func show_biome_entry(biome: DamageZone, time: float = 4) -> void:
