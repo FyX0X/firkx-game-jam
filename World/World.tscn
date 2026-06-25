@@ -3,13 +3,13 @@
 [ext_resource type="AudioStream" uid="uid://cg8iycqbpb2d8" path="res://assets/audio/desert/desert1.wav" id="2_4sj48"]
 [ext_resource type="Script" uid="uid://dg0en308l7jmg" path="res://World/world_environment.gd" id="3_il6x7"]
 [ext_resource type="PackedScene" uid="uid://b7ufllxudj6l3" path="res://World/DamageZone/damage_zone.tscn" id="3_mlekv"]
-[ext_resource type="PackedScene" uid="uid://btimjnuwshcfv" path="res://assets/modele/map_every_ore.glb" id="3_o14yy"]
 [ext_resource type="AudioStream" uid="uid://cl7ahp8x3jkw3" path="res://assets/audio/desert/desert2.wav" id="3_s53j1"]
 [ext_resource type="AudioStream" uid="uid://u6jlo2tnpufk" path="res://assets/audio/desert/desert3.wav" id="4_ecnql"]
 [ext_resource type="Shader" uid="uid://bad8et5axb6uq" path="res://World/space_sky.gdshader" id="4_il6x7"]
 [ext_resource type="AudioStream" uid="uid://cs2e87btih4uw" path="res://assets/audio/desert/desert4.wav" id="5_v0w7q"]
 [ext_resource type="AudioStream" uid="uid://cr1rv702n8x38" path="res://assets/audio/dragon-studio-bitter-cold-wind-482876.mp3" id="6_4sj48"]
 [ext_resource type="AudioStream" uid="uid://cbigjp5slmjjj" path="res://assets/audio/desert/desert5.wav" id="6_l2bp3"]
+[ext_resource type="PackedScene" uid="uid://huss3in3yrjs" path="res://assets/modele/maptestvolume.glb" id="10_s53j1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mlekv"]
 size = Vector3(100, 100, 300)
@@ -33,6 +33,16 @@ background_mode = 2
 sky = SubResource("Sky_il6x7")
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_qfhvn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s53j1"]
+albedo_color = Color(0.7, 0.4, 0.3, 1)
+metallic = 0.8
+roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ecnql"]
+albedo_color = Color(0.382, 0.595, 0.184, 1)
+metallic = 0.8
+roughness = 0.4
 
 [node name="StaticBody3D" type="StaticBody3D" unique_id=1813780921 groups=["ground"]]
 
@@ -63,8 +73,14 @@ environment = SubResource("Environment_8lsb0")
 camera_attributes = SubResource("CameraAttributesPractical_qfhvn")
 script = ExtResource("3_il6x7")
 
-[node name="map_every_ore" parent="." unique_id=330625379 instance=ExtResource("3_o14yy")]
+[node name="maptestvolume" parent="." unique_id=272792454 instance=ExtResource("10_s53j1")]
+
+[node name="MeshInstance3D" parent="maptestvolume/Vein_Iron_007/OreVein" parent_id_path=PackedInt32Array(272792454, 1332491170) index="3" unique_id=681568298]
+material_override = SubResource("StandardMaterial3D_s53j1")
+
+[node name="MeshInstance3D" parent="maptestvolume/OreVein" parent_id_path=PackedInt32Array(272792454, 1399205610) index="3" unique_id=1993668815]
+material_override = SubResource("StandardMaterial3D_ecnql")
 
 [editable path="Desert"]
 [editable path="Cold"]
-[editable path="map_every_ore"]
+[editable path="maptestvolume"]
