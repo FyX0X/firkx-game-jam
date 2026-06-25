@@ -35,8 +35,8 @@ func _do_laser(delta: float) -> void:
 			target.resource_yielded.connect(_on_resource_yielded)
 			
 	beam.visible = true
-	
-	player._current_state = Player.State.ATTACKING
+	if player._current_state == Player.State.NORMAL:
+		player.set_state(Player.State.ATTACKING)
 	
 	if laser_audio and not laser_audio.playing:
 		laser_audio.play()
@@ -58,7 +58,7 @@ func _stop_laser() -> void:
 	_disconnect_target()
 	if laser_audio and laser_audio.playing:
 		laser_audio.stop()
-	player._current_state = Player.State.NORMAL
+	player.set_state(Player.State.NORMAL)
 
 func _disconnect_target() -> void:
 	if _connected_target != null:
