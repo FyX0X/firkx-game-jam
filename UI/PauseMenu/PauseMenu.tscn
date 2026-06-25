@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://bgbl4fnikudkj"]
+
+[ext_resource type="Script" uid="uid://c44oel4a8cp6w" path="res://UI/PauseMenu/pause_menu.gd" id="1_3oydc"]
+
+[node name="PauseMenu" type="Control" unique_id=367750826]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3oydc")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=958584696]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1101624810]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=766810068]
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=447123161]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Continue"
+
+[node name="OptionsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2056926901]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Options"
+
+[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=36693358]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Quit to Main Menu (no save)"
+
+[node name="PauseLabel" type="Label" parent="." unique_id=1248964335]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = 87.0
+offset_right = 50.0
+offset_bottom = 132.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 48
+text = "PAUSE"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
