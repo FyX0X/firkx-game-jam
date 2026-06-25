@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cs70tj0ip3v0t"]
+
+[ext_resource type="Script" uid="uid://droxg74mymehc" path="res://SpinReactor/hologram_timer.gd" id="1_y52be"]
+[ext_resource type="Shader" uid="uid://bygv2ph58708f" path="res://SpinReactor/hologram_timer.gdshader" id="2_yyoi7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yyoi7"]
+render_priority = 1
+shader = ExtResource("2_yyoi7")
+shader_parameter/hologram_color = Color(1, 1, 1, 1)
+shader_parameter/billboard = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_qfhvn"]
+size = Vector2(12, 12)
+
+[node name="HologramTimer" type="Node3D" unique_id=859679615]
+script = ExtResource("1_y52be")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1989442769]
+material_override = SubResource("ShaderMaterial_yyoi7")
+mesh = SubResource("QuadMesh_qfhvn")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1646164580]
+transparent_bg = true
+size = Vector2i(1024, 1024)
+
+[node name="TimerUI" type="Control" parent="SubViewport" unique_id=151996379]
+custom_maximum_size = Vector2(1024, 1024)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/TimerUI" unique_id=1478354069]
+layout_mode = 0
+offset_right = 395.0
+offset_bottom = 520.0
+
+[node name="Time" type="Label" parent="SubViewport/TimerUI/VBoxContainer" unique_id=1375733020]
+custom_maximum_size = Vector2(1024, -1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "timer
+"
+autowrap_mode = 2
+
+[node name="Message" type="Label" parent="SubViewport/TimerUI/VBoxContainer" unique_id=886603104]
+custom_maximum_size = Vector2(1024, -1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "message"
+autowrap_mode = 2

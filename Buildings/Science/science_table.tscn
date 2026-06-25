@@ -19,4 +19,4 @@ inventory_name = "Science Table"
 stream = ExtResource("3_wqs34")
 
 [node name="AttentionGrabber" parent="." index="4" unique_id=754601093 instance=ExtResource("4_556th")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

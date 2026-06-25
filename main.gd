@@ -1,3 +1,4 @@
+class_name MainManager
 extends Node
 
 @onready var hud_layer: HUD = $HUD
@@ -5,11 +6,22 @@ extends Node
 @onready var player: Player = $Player
 @onready var building_placement: Placement = $Player/Placement
 @onready var spin_reactor: SpinReactor = $SpinReactor
+@onready var outer_hologram_timer: HologramTimer = $Ship/OuterHologram
+@onready var inner_hologram_timer: HologramTimer = $Ship/InnerHologram
 @onready var space_sky_environment: SpaceSkyEnvironment = $World/SpaceSky
 
 
 enum GameState { INTRO, GAME, WON }
 var state: GameState = GameState.INTRO
+
+var timer_running: bool = false
+var time_left: float = -1
+signal time_low_signal
+signal time_critical_signal
+var low_sent: bool = false
+var critical_sent: bool = false
+@export var low_time: float = 90
+@export var critical_time: float = 30
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,18 +36,32 @@ func _ready() -> void:
 	research_table.research_opened.connect(_on_research_opened)
 	spin_reactor.computer.spin_reactor_open_ui.connect(_on_spin_reactor_opened)
 	hud_layer.pause_menu.unpaused.connect(_toggle_pause)
+	setup_difficulty_parameters()
+
+
+func setup_difficulty_parameters() -> void:
+	time_left = GameSettings.time_limit[GameSettings.difficulty]
+	inner_hologram_timer.set_message(GameSettings.hologram_msg[GameSettings.difficulty])
+	outer_hologram_timer.set_message(GameSettings.hologram_msg[GameSettings.difficulty])
+	if GameSettings.difficulty == GameSettings.Difficulty.NORMAL:
+		inner_hologram_timer.set_time_visibility(false)
+		outer_hologram_timer.set_time_visibility(false)
+	
 
 func set_state(new_state: GameState) -> void:
 	state = new_state
 	match state:
 		GameState.INTRO:
+			timer_running = false
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			player.active = false
 			hud_layer.play_cinematic(true, _on_intro_finished)
 		GameState.GAME:
+			timer_running = GameSettings.difficulty != GameSettings.Difficulty.NORMAL
 			player.active = true
 			player.set_state(Player.State.NORMAL)
 		GameState.WON:
+			timer_running = false
 			player.active = false
 			spin_reactor.reactor_audio.stop()
 			hud_layer.play_cinematic(false, _on_outro_finished)
@@ -47,7 +73,7 @@ func _on_outro_finished() -> void:
 	pass
 
 func _on_win() -> void:
-	# make this smooth
+	timer_running = false
 	space_sky_environment.start_rotation()
 	# play spin reactor animation
 	
@@ -56,7 +82,30 @@ func _on_win() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if not timer_running:
+		return
+	
+	time_left -= delta
+	if time_left <= 0:
+		_on_challenge_fail()
+	
+	if (not low_sent) and (time_left <= low_time):
+		low_sent = true
+		print("emit")
+		time_low_signal.emit()
+	if (not critical_sent) and (time_left <= critical_time):
+		critical_sent = true
+		time_critical_signal.emit()
+		
+
+func _on_challenge_fail() -> void:
+	timer_running = false
+	time_left = 0
+	print("YOU LOOSE")
+	
+	get_tree().create_timer(10).timeout.connect(func():
+		get_tree().change_scene_to_file("res://EndScene/failed_scene.tscn")
+		)
 
 func _open_inventory(left: Inventory, right: Inventory = null) -> void:
 	player.set_state(Player.State.UI_OPEN)

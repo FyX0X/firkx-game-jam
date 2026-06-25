@@ -16,6 +16,26 @@ offset_left = -171.0
 offset_bottom = 164.0
 grow_horizontal = 0
 
+[node name="Time Management" type="VBoxContainer" parent="Categories" unique_id=54125678]
+layout_mode = 2
+
+[node name="TimeLabel" type="Label" parent="Categories/Time Management" unique_id=693559072]
+layout_mode = 2
+text = "Time Management:"
+
+[node name="TimeSlider" type="HSlider" parent="Categories/Time Management" unique_id=187311712]
+layout_mode = 2
+min_value = -60.0
+max_value = 60.0
+
+[node name="TimeValue" type="Label" parent="Categories/Time Management" unique_id=5245927]
+layout_mode = 2
+text = "time: 0.0 [s]"
+
+[node name="TimeButton" type="Button" parent="Categories/Time Management" unique_id=165890592]
+layout_mode = 2
+text = "Change Time"
+
 [node name="Information" type="VBoxContainer" parent="Categories" unique_id=737397673]
 layout_mode = 2
 
@@ -28,7 +48,7 @@ layout_mode = 2
 
 [node name="ChallengeHeader" type="Label" parent="Categories/Information" unique_id=668001156]
 layout_mode = 2
-text = "Challenge ?"
+text = "Difficulty:"
 
 [node name="ChallengeValue" type="Label" parent="Categories/Information" unique_id=983764135]
 layout_mode = 2
@@ -76,6 +96,8 @@ text = "Speed: ?"
 [node name="FlyButton" type="CheckButton" parent="Categories/Movement" unique_id=820070979]
 layout_mode = 2
 
+[connection signal="value_changed" from="Categories/Time Management/TimeSlider" to="." method="_on_time_slider_value_changed"]
+[connection signal="pressed" from="Categories/Time Management/TimeButton" to="." method="_on_time_button_pressed"]
 [connection signal="pressed" from="Categories/Inventory/AddButton" to="." method="_on_add_button_pressed"]
 [connection signal="pressed" from="Categories/Inventory/RemoveButton" to="." method="_on_remove_button_pressed"]
 [connection signal="value_changed" from="Categories/Movement/SpeedSlider" to="." method="_on_speed_slider_value_changed"]
