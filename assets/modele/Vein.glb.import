@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://i3d3h7nlrh38"
-path="res://.godot/imported/testanim5.glb-2c1880c2cfb3adac1c8d6d3f0a285642.scn"
+uid="uid://iodevsuc4y8y"
+path="res://.godot/imported/Vein.glb-0ac71d562ce699e2005cab0043fa6e84.scn"
 
 [deps]
 
-source_file="res://assets/modele/testanim5.glb"
-dest_files=["res://.godot/imported/testanim5.glb-2c1880c2cfb3adac1c8d6d3f0a285642.scn"]
+source_file="res://assets/modele/Vein.glb"
+dest_files=["res://.godot/imported/Vein.glb-0ac71d562ce699e2005cab0043fa6e84.scn"]
 
 [params]
 
