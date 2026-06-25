@@ -31,6 +31,7 @@ var _active_zones: Dictionary = {}  # Damage -> time_spent
 var loot_bag_scene: PackedScene = preload("res://Props/LootBag/loot_bag.tscn")
 
 @onready var anim : AnimationPlayer = $mesh/AnimationPlayer
+@onready var mesh : Node3D = $mesh
 
 ## resistance are bonus : 0.5 -> + 50% of grace period
 var upgrades: Dictionary = {
@@ -90,23 +91,20 @@ func _update_animation() -> void:
 	var on_ground := is_on_floor()
 	var moving := Vector2(velocity.x, velocity.z).length() > 0.05
 	var laser := (_current_state == State.ATTACKING)
-	var ui := (_current_state == State.UI_OPEN)
 	
-	if laser:
+	if laser and not anim.current_animation == "interact":
 		if anim.is_playing() and anim.current_animation == "gunidle":
 			anim.play("gunidle")
 		else:
 			anim.play("gun")
 			anim.queue("gunidle")
 		return
-	elif not on_ground:
+	elif not on_ground and not anim.current_animation == "interact":
 		anim.play("jump")
 		return
-	elif moving:
+	elif moving and not anim.current_animation == "interact":
 		anim.play("walk")
-	elif ui:
-		anim.play("interact")
-	else:
+	elif not anim.current_animation == "interact":
 		anim.play("idle")
 		
 	
@@ -133,6 +131,10 @@ func _process_movement(delta: float) -> void:
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
+		
+		var target_angle = atan2(velocity.x,velocity.z)
+		mesh.global_rotation.y = lerp_angle(mesh.global_rotation.y, target_angle, 10.0 * delta)
+		
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)

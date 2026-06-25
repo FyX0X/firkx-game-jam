@@ -151,8 +151,10 @@ func _toggle_pause() -> void:
 func _on_player_interacted(target: Node) -> void:
 	print("debug: on_player_interacted - " + str(target))
 	if target.has_method("interact"):
+		player.anim.play("interact")
 		target.interact(player)
 	elif target.has_method("get_inventory"):
+		player.anim.play("interact")
 		var target_inv: Inventory = target.get_inventory()
 		if target_inv:
 			_open_inventory(player.get_inventory(), target.get_inventory())
