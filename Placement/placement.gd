@@ -24,6 +24,7 @@ func _ready() -> void:
 	objects.append(preload("res://Buildings/Drills/drill.tscn"))
 	objects.append(preload("res://Buildings/Factory/factory.tscn"))
 	objects.append(preload("res://Buildings/WindTurbine/wind_turbine.tscn"))
+	objects.append(preload("res://Buildings/WindTurbine/small_wind_turbine.tscn"))
 	objects.append(preload("res://Buildings/Pole/pole.tscn"))
 	
 	hud_layer = get_tree().get_first_node_in_group("hud")
@@ -112,6 +113,8 @@ func clear_preview_cables():
 func _update_drill_type(drill: Drill) -> void:
 	var collider = ray.get_collider()
 	if collider is not BigOre:
+		drill.set_type("undefined")
+		building_selection_changed.emit(drill)
 		return
 
 	var ore: BigOre = collider

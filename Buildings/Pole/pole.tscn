@@ -15,6 +15,9 @@ size = Vector3(1.6865845, 0.14255835, 1.6494141)
 
 [node name="Pole" unique_id=243835565 groups=["electrical"] instance=ExtResource("1_0rx1q")]
 script = ExtResource("2_ij4cs")
+cost = {
+"copper_bar": 5
+}
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=805564521]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0026245117, 3.13562, 0.0044555664)

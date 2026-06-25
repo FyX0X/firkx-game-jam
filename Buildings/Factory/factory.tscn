@@ -29,8 +29,9 @@ recipe = {
 "time": 1.5
 }
 cost = {
-"iron": 20
+"iron": 30
 }
+energy = -5
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=1294183724]

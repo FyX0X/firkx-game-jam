@@ -16,6 +16,11 @@ size = Vector3(1, 0.3267212, 1.7479248)
 
 [node name="WindTurbine" unique_id=243835565 groups=["electrical"] instance=ExtResource("1_byb1o")]
 script = ExtResource("2_dcmt7")
+cost = {
+"copper_bar": 10,
+"iron_bar": 15
+}
+energy = 60
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=2127245512]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.834656, 0)

@@ -29,7 +29,8 @@ Secondaires :
 	detruire les loot bags apres un certain temps ou quand ils sont vide 
 
 Martin:
-	camera clipping
+	build_cost_ui: red item if missing
+	broken_drill
 	failed scene
 	ok nickel, faudra pas oublier de changer les recettes et faire en sorte que le spin reactor prenne des bar
 	disable focus in hud
@@ -39,6 +40,7 @@ Martin:
 Martin MAYBE DONE:
 	Etat transition inventaire -> normal
 Martin DONE:
+	camera clipping
 	vaisseau timer
 	sur le main le vaisseau est repare l'origine de la science table est bonne et il a mis un bac
 	Container.glb le bac
