@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://47s5l2hrkdmh"]
+[gd_scene format=3 uid="uid://uf7ty78xegu4"]
 
 [ext_resource type="PackedScene" uid="uid://bkw5b4elo2oi2" path="res://assets/modele/Map.glb" id="1_eidgh"]
 [ext_resource type="PackedScene" uid="uid://b7ufllxudj6l3" path="res://World/DamageZone/damage_zone.tscn" id="2_oe8m4"]

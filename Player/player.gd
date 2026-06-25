@@ -100,7 +100,7 @@ func _update_animation() -> void:
 			anim.queue("gunidle")
 		return
 	elif not on_ground and not anim.current_animation == "interact":
-		anim.play("jump")
+		anim.play("idle")
 		return
 	elif moving and not anim.current_animation == "interact":
 		anim.play("walk")
