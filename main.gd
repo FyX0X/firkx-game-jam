@@ -11,7 +11,7 @@ extends Node
 @onready var space_sky_environment: SpaceSkyEnvironment = $World/SpaceSky
 
 
-enum GameState { INTRO, GAME, WON }
+enum GameState { INTRO, GAME }
 var state: GameState = GameState.INTRO
 
 var timer_running: bool = false
@@ -60,11 +60,6 @@ func set_state(new_state: GameState) -> void:
 			timer_running = GameSettings.difficulty != GameSettings.Difficulty.NORMAL
 			player.active = true
 			player.set_state(Player.State.NORMAL)
-		GameState.WON:
-			timer_running = false
-			player.active = false
-			spin_reactor.reactor_audio.stop()
-			hud_layer.play_cinematic(false, _on_outro_finished)
 
 func _on_intro_finished() -> void:
 	set_state(GameState.GAME)
@@ -78,7 +73,7 @@ func _on_win() -> void:
 	# play spin reactor animation
 	
 	await get_tree().create_timer(20).timeout
-	set_state(GameState.WON)
+	get_tree().change_scene_to_file("res://EndScene/win_scene.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -104,7 +99,7 @@ func _on_challenge_fail() -> void:
 	print("YOU LOOSE")
 	
 	get_tree().create_timer(10).timeout.connect(func():
-		get_tree().change_scene_to_file("res://EndScene/failed_scene.tscn")
+		get_tree().change_scene_to_file("res://EndScene/lose_scene.tscn")
 		)
 
 func _open_inventory(left: Inventory, right: Inventory = null) -> void:
