@@ -26,6 +26,13 @@ text = "PlayerState:"
 [node name="PlayerStateValue" type="Label" parent="Categories/Information" unique_id=959006580]
 layout_mode = 2
 
+[node name="ChallengeHeader" type="Label" parent="Categories/Information" unique_id=668001156]
+layout_mode = 2
+text = "Challenge ?"
+
+[node name="ChallengeValue" type="Label" parent="Categories/Information" unique_id=983764135]
+layout_mode = 2
+
 [node name="Inventory" type="VBoxContainer" parent="Categories" unique_id=1679755685]
 layout_mode = 2
 

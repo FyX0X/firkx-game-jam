@@ -23,6 +23,7 @@ func _ready() -> void:
 	set_state(GameState.INTRO)
 	research_table.research_opened.connect(_on_research_opened)
 	spin_reactor.computer.spin_reactor_open_ui.connect(_on_spin_reactor_opened)
+	hud_layer.pause_menu.unpaused.connect(_toggle_pause)
 
 func set_state(new_state: GameState) -> void:
 	state = new_state
@@ -72,19 +73,31 @@ func _close_inventory() -> void:
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
-		hud_layer.close_all_ui()
-		player.set_state(Player.State.NORMAL)
+		get_viewport().set_input_as_handled()
+		
 		if state == GameState.INTRO:
 			hud_layer.skip_intro()
-		print("TODO: implement pause")
-	
+			return
+		if player.get_state() == Player.State.NORMAL:
+			_toggle_pause()
+			return
+		
+		hud_layer.close_all_ui()
+		player.set_state(Player.State.NORMAL)
+		
 	if event.is_action_pressed("inventory"):
+		get_viewport().set_input_as_handled()
 		if player.get_state() == Player.State.UI_OPEN:
 			player.set_state(Player.State.NORMAL)
 		else:
 			_open_inventory(player.get_inventory())
 		
 
+func _toggle_pause() -> void:
+	var tree: SceneTree = get_tree()
+	tree.paused = not tree.paused
+	hud_layer.set_pause_menu_visibility(tree.paused)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if tree.paused else Input.MOUSE_MODE_CAPTURED
 
 func _on_player_interacted(target: Node) -> void:
 	print("debug: on_player_interacted - " + str(target))
