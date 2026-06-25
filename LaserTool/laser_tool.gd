@@ -1,8 +1,6 @@
 extends Node3D
 
 @export var damage_per_second: float = 30.0
-@export var resource_tick: float = 1.5
-
 @onready var player: Player = get_parent()   # adjust path if needed
 @onready var beam: MeshInstance3D = $Beam
 @onready var pickup_audio: AudioStreamPlayer3D = $Beam/pickup_audio
@@ -11,6 +9,13 @@ extends Node3D
 var _tick_timer: float = 0.0
 var _connected_target: Node  = null
 
+@export var qte_chance : float = 0.3
+@export var qte_bonus_dmg : float = 2.0
+var qte_bonus_time : float = 0.0
+
+var _qte_active : bool = false
+var bonus_duration : float = 0.3
+
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("attack"):
 		_do_laser(delta)
@@ -18,6 +23,7 @@ func _process(delta: float) -> void:
 		_stop_laser()
 
 func _do_laser(delta: float) -> void:
+	var damage = 0
 	if  player.get_state() == Player.State.UI_OPEN or player.get_state() == Player.State.BUILDING:
 		_stop_laser()
 		return
@@ -46,10 +52,31 @@ func _do_laser(delta: float) -> void:
 		target.take_damage(damage_per_second * delta, player.get_inventory())
 
 	_tick_timer += delta
-	if _tick_timer >= resource_tick:
-		_tick_timer = 0.0
-		if target.has_method("yield_resource"):
-			target.yield_resource()
+	if qte_bonus_time > 0:
+		qte_bonus_time -= delta
+		
+	if target.has_method("take_damage_ore"):
+		if not _qte_active and randf() < qte_chance * delta:
+			_start_qte()
+		
+		if qte_bonus_time > 0:
+			damage = damage_per_second * qte_bonus_dmg
+		else:
+			damage = damage_per_second
+		target.take_damage_ore(damage* delta )
+
+func _start_qte() -> void:
+	_qte_active = true
+	player.hud_layer.trigger_skill_check(_on_qte_finished)
+
+func _on_qte_finished(success: bool) -> void:
+	_qte_active = false
+	if success:
+		print("QTE Réussi ! Dégâts bonus !")
+		if _connected_target :
+			qte_bonus_time += bonus_duration
+			
+			# if pickup_audio: pickup_audio.play()
 
 # Nouvelle fonction centralisée pour éteindre le laser et son audio
 func _stop_laser() -> void:
@@ -60,6 +87,9 @@ func _stop_laser() -> void:
 		laser_audio.stop()
 	if player.get_state() == Player.State.ATTACKING:
 		player.set_state(Player.State.NORMAL)
+	if _qte_active:
+		player.hud_layer.skill_check.cancel()
+		_qte_active = false
 
 func _disconnect_target() -> void:
 	if _connected_target != null:
