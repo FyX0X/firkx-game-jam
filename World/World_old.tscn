@@ -25,12 +25,12 @@ shader_parameter/nebula_color2 = Color(0.1, 0.4, 0.7, 1)
 shader_parameter/star_density = 200.0
 shader_parameter/star_threshold = 0.98
 
-[sub_resource type="Sky" id="Sky_il6x7"]
+[sub_resource type="Sky" id="Sky_rci5n"]
 sky_material = SubResource("ShaderMaterial_il6x7")
 
 [sub_resource type="Environment" id="Environment_8lsb0"]
 background_mode = 2
-sky = SubResource("Sky_il6x7")
+sky = SubResource("Sky_rci5n")
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_qfhvn"]
 

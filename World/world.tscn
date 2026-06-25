@@ -8,12 +8,37 @@
 [ext_resource type="AudioStream" uid="uid://cs2e87btih4uw" path="res://assets/audio/desert/desert4.wav" id="6_0wqet"]
 [ext_resource type="AudioStream" uid="uid://cbigjp5slmjjj" path="res://assets/audio/desert/desert5.wav" id="7_awrha"]
 [ext_resource type="AudioStream" uid="uid://cr1rv702n8x38" path="res://assets/audio/dragon-studio-bitter-cold-wind-482876.mp3" id="8_f23eu"]
+[ext_resource type="Shader" uid="uid://bad8et5axb6uq" path="res://World/space_sky.gdshader" id="9_w47uh"]
+[ext_resource type="Script" uid="uid://dg0en308l7jmg" path="res://World/world_environment.gd" id="10_lo5ox"]
+[ext_resource type="PackedScene" uid="uid://bjs046nlul1cb" path="res://SpinReactor/spin_reactor.tscn" id="11_lo5ox"]
+[ext_resource type="PackedScene" uid="uid://ck1wu4mc4g1v8" path="res://assets/modele/Ship.glb" id="12_0wqet"]
+[ext_resource type="PackedScene" uid="uid://cs70tj0ip3v0t" path="res://SpinReactor/hologram_timer.tscn" id="13_awrha"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oeat8"]
 size = Vector3(163, 214, 676)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5xkvv"]
 size = Vector3(200, 369.168, 600)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h2aik"]
+shader = ExtResource("9_w47uh")
+shader_parameter/bg_color = Color(0.02, 0.01, 0.05, 1)
+shader_parameter/nebula_color1 = Color(0.5, 0.1, 0.6, 1)
+shader_parameter/nebula_color2 = Color(0.1, 0.4, 0.7, 1)
+shader_parameter/star_density = 200.0
+shader_parameter/star_threshold = 0.98
+
+[sub_resource type="Sky" id="Sky_il6x7"]
+sky_material = SubResource("ShaderMaterial_h2aik")
+
+[sub_resource type="Environment" id="Environment_0wqet"]
+background_mode = 2
+sky = SubResource("Sky_il6x7")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_awrha"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_f23eu"]
+size = Vector2(1.5, 1.5)
 
 [node name="World" type="Node3D" unique_id=10638356]
 
@@ -39,5 +64,41 @@ ambience_sounds = Array[AudioStream]([ExtResource("8_f23eu")])
 [node name="CollisionShape3D" parent="Cold" index="0" unique_id=1968634112]
 shape = SubResource("BoxShape3D_5xkvv")
 
+[node name="SpaceSky" type="WorldEnvironment" parent="." unique_id=1973343510]
+environment = SubResource("Environment_0wqet")
+camera_attributes = SubResource("CameraAttributesPractical_awrha")
+script = ExtResource("10_lo5ox")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=320533893]
+transform = Transform3D(0.9104929, 0.20018484, -0.3618408, 0.35339975, 0.07770003, 0.93224, 0.2147353, -0.9766723, 6.564273e-08, -2.794342, 96.413185, 0)
+
+[node name="SpinReactor" parent="." unique_id=931180037 instance=ExtResource("11_lo5ox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.627487, 2.5598578, -95.53719)
+
+[node name="Ship" parent="." unique_id=1746031010 instance=ExtResource("12_0wqet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.13884, 0.679379, -67.5786)
+
+[node name="SpawnPoint" type="Node3D" parent="Ship" unique_id=98376075 groups=["spawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21749878, 13.084766, 0)
+
+[node name="OuterHologram" parent="Ship" unique_id=859679615 instance=ExtResource("13_awrha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.25856, 0)
+
+[node name="InnerHologram" parent="Ship" unique_id=698073666 instance=ExtResource("13_awrha")]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 4.127201, 3.1585789, 0)
+billboard = false
+
+[node name="MeshInstance3D" parent="Ship/InnerHologram" index="0" unique_id=1989442769]
+mesh = SubResource("QuadMesh_f23eu")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1555436626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.994904, -9.192863, 0)
+omni_range = 7.401886
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=2058504926]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.567226, -7.401975, -3.311842)
+omni_range = 7.401886
+
 [editable path="Desert"]
 [editable path="Cold"]
+[editable path="Ship/InnerHologram"]
