@@ -58,7 +58,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 [node name="mesh" parent="." unique_id=2054055575 instance=ExtResource("7_od3ui")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.8, 0)
 
-[node name="Skeleton3D" parent="mesh/RIG-Cloud_Human" parent_id_path=PackedInt32Array(2054055575, 631244103) index="1" unique_id=227701510]
+[node name="Skeleton3D" parent="mesh/RIG-Cloud_Human" parent_id_path=PackedInt32Array(2054055575, 751369930) index="1" unique_id=1952088681]
 bones/2/position = Vector3(-0.3880613, 0.061234668, 0.5650014)
 bones/2/scale = Vector3(0, 0, 0)
 bones/4/rotation = Quaternion(0.7071068, 0, 0, 0.7071068)

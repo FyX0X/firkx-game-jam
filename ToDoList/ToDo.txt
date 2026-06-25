@@ -32,11 +32,11 @@ Martin:
 	jetpack
 	build_cost_ui: red item if missing
 	broken_drill
-	failed scene
 	disable focus in hud
 	fix inventory count label
 	fix lambda error with popup message
 Martin DONE:
+	failed scene
 	Etat transition inventaire -> normal
 	show needed energy in spin reactor
 	camera clipping
