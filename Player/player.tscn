@@ -12,8 +12,6 @@
 radius = 0.45
 height = 1.6
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_8lsb0"]
-
 [node name="Player" type="CharacterBody3D" unique_id=1614768388]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 collision_layer = 2
@@ -23,20 +21,18 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1953526512]
 shape = SubResource("CapsuleShape3D_8lsb0")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1795848299]
-visible = false
-mesh = SubResource("CapsuleMesh_8lsb0")
-
 [node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=794395096]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0.7, 0)
 spring_length = 3.0
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=2076138250]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="SpringArm3D/Camera3D" unique_id=167313293]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, 0)
 target_position = Vector3(0, 0, -10)
 debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
 
 [node name="Inventory" parent="." unique_id=1803995424 instance=ExtResource("2_4ntmi")]
 inventory_name = "Backpack"
@@ -62,7 +58,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 [node name="mesh" parent="." unique_id=2054055575 instance=ExtResource("7_od3ui")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.8, 0)
 
-[node name="Skeleton3D" parent="mesh/RIG-Cloud_Human" parent_id_path=PackedInt32Array(2054055575, 631244103) index="1" unique_id=227701510]
+[node name="Skeleton3D" parent="mesh/RIG-Cloud_Human" parent_id_path=PackedInt32Array(2054055575, 751369930) index="1" unique_id=1952088681]
 bones/2/position = Vector3(-0.33336332, -0.4578912, 1.0051249)
 bones/2/rotation = Quaternion(0.37674537, 0.402017, -0.2505155, 0.7960447)
 bones/2/scale = Vector3(1.0005536, 1.0006235, 1.0085073)
