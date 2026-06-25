@@ -84,9 +84,33 @@ func _physics_process(delta: float) -> void:
 	_apply_zone_damage(delta)
 	_process_health(delta)
 	raycast_check()
-	if not anim.is_playing():
-		anim.play("idle")
+	_update_animation()
 
+func _update_animation() -> void:
+	var on_ground := is_on_floor()
+	var moving := Vector2(velocity.x, velocity.z).length() > 0.05
+	var laser := (_current_state == State.ATTACKING)
+	var ui := (_current_state == State.UI_OPEN)
+	
+	if laser:
+		if anim.is_playing() and anim.current_animation == "gunidle":
+			anim.play("gunidle")
+		else:
+			anim.play("gun")
+			anim.queue("gunidle")
+		return
+	elif not on_ground:
+		anim.play("jump")
+		return
+	elif moving:
+		anim.play("walk")
+	elif ui:
+		anim.play("interact")
+	else:
+		anim.play("idle")
+		
+	
+		
 func _process_movement(delta: float) -> void:
 	if _current_state == State.DEAD:
 		if Audiostep.playing:
