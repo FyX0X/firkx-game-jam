@@ -85,7 +85,7 @@ func _physics_process(delta: float) -> void:
 	_process_health(delta)
 	raycast_check()
 	if not anim.is_playing():
-		anim.play("RIG-Cloud_HumanAction")
+		anim.play("idle")
 
 func _process_movement(delta: float) -> void:
 	if _current_state == State.DEAD:

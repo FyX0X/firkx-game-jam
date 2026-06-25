@@ -38,6 +38,7 @@ func _post_import(scene : Node):
 		new_big.add_child(big)
 		big.transform = Transform3D.IDENTITY
 		big.owner = scene
+		big.name = "MeshInstance3D"
 		
 		var collision_node = CollisionShape3D.new()
 		collision_node.shape = big.mesh.create_trimesh_shape()
@@ -62,20 +63,15 @@ func _post_import(scene : Node):
 		new_vein.owner = scene
 		
 		new_vein.add_child(vein)
+		vein.transform = Transform3D.IDENTITY
 		vein.owner = scene
-		
-		var true_center = vein.mesh.get_aabb().get_center()
-		new_vein.translate(true_center)
-		vein.position = -true_center
-		
-		var dummy_mesh = new_vein.get_node_or_null("MeshInstance3D")
-		if dummy_mesh:
-			dummy_mesh.free()
 		vein.name = "MeshInstance3D"
 		
+		print(new_vein.get_children(true))
 		var collision_node = CollisionShape3D.new()
 		collision_node.shape = vein.mesh.create_trimesh_shape()
 		new_vein.add_child(collision_node)
+		
 		collision_node.owner = scene
 	
 	for node in scene.get_children(true):

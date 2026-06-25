@@ -49,6 +49,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _set_ore_color(new_color : Color) -> void:
+	return
 	var new_mat = StandardMaterial3D.new()
 	new_mat.albedo_color = new_color
 
