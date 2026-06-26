@@ -222,7 +222,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.18227, -6.8204875, -14.559
 type = 3
 
 [node name="Broken" type="Node3D" parent="Features" unique_id=2131178746]
-transform = Transform3D(-0.93036205, 0, 0.36664215, 0, 1, 0, -0.36664215, 0, -0.93036205, -52.97913, 1.2542391, -76.47773)
+transform = Transform3D(0.15310088, 0, -0.98821056, 0, 1, 0, 0.98821056, 0, 0.15310088, -24.464775, 0.54141426, -41.774654)
 
 [node name="BigOre" parent="Features/Broken" unique_id=833031385 instance=ExtResource("15_oeat8")]
 
