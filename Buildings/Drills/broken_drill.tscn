@@ -143,29 +143,31 @@ type = "iron"
 [node name="DrillAudio" parent="." index="5" unique_id=413927254]
 stream = null
 
-[node name="ElectricalHook" parent="Mesh/Volume" parent_id_path=PackedInt32Array(1520077276, 516275674) index="3" unique_id=617599161]
-visible = false
+[node name="Cube_010" parent="Mesh/Volume" parent_id_path=PackedInt32Array(1543309737, 1970394209) index="2" unique_id=54793008]
+transform = Transform3D(0.6035392, 0, 0, 0, 0.5973534, 0.086188085, 0, -0.086188085, 0.5973534, 0, 5.855544, 2.3772695)
 
-[node name="Light" parent="Mesh/Volume" parent_id_path=PackedInt32Array(1520077276, 516275674) index="4" unique_id=1692434283]
+[node name="Light" parent="Mesh/Volume" parent_id_path=PackedInt32Array(1543309737, 1970394209) index="3" unique_id=1953064139]
 material_override = ExtResource("2_qefha")
 
-[node name="Plane_001" parent="Mesh/Volume" parent_id_path=PackedInt32Array(1520077276, 516275674) index="5" unique_id=1729102522]
-transform = Transform3D(0.21368167, -2.4228443e-08, -0.017038617, -1.8739938e-08, -0.21435982, 6.979601e-08, -0.017038617, -6.808559e-08, -0.21368167, 0, 3.6436436, 1.3207856)
+[node name="Plane_001" parent="Mesh/Volume" parent_id_path=PackedInt32Array(1543309737, 1970394209) index="4" unique_id=1630020599]
+transform = Transform3D(0.21331853, -0.01164371, -0.01760127, -0.012482364, -0.21376853, -0.009866156, -0.017016806, 0.010843157, -0.21340814, 0, 3.6436436, 2.382558)
 
-[node name="Cube_003" parent="Mesh/Volume/Plane_002" parent_id_path=PackedInt32Array(1520077276, 51512688) index="0" unique_id=1457319358]
-transform = Transform3D(0.66354305, 0.5987303, 0.3569256, -0.6910127, 0.6297186, 0.22829618, -0.09151836, -0.41368982, 0.86408836, -1.2531849, 7.8238373, 0.85905147)
+[node name="poteau" parent="Mesh/Volume" parent_id_path=PackedInt32Array(1543309737, 1970394209) index="5" unique_id=752323512]
+transform = Transform3D(0.21351543, -0.008178963, -0.017157687, -0.008428758, -0.21417579, -0.002793715, -0.017036365, 0.00345736, -0.21365376, 0, 1.9200947, 2.390123)
+
+[node name="elice1" parent="Mesh/Volume/poteau" index="0" unique_id=1433508949]
 visible = false
 
-[node name="Cube_004" parent="Mesh/Volume/Plane_002" parent_id_path=PackedInt32Array(1520077276, 51512688) index="1" unique_id=218138494]
-transform = Transform3D(-0.69383436, -0.65580827, 0.121130414, -0.6511701, 0.6284575, -0.32738644, 0.14399542, -0.31799325, -0.8968329, 1.373483, 7.8238373, 0.64960563)
-
-[node name="Cube_005" parent="Mesh/Volume/Plane_002" parent_id_path=PackedInt32Array(1520077276, 51512688) index="2" unique_id=1837375629]
+[node name="elice2" parent="Mesh/Volume/poteau" index="1" unique_id=811340163]
 visible = false
 
-[node name="Screen" parent="Mesh/Volume" parent_id_path=PackedInt32Array(1520077276, 516275674) index="7" unique_id=1860243271]
+[node name="Screen" parent="Mesh/Volume" parent_id_path=PackedInt32Array(1543309737, 1970394209) index="6" unique_id=2123919279]
 mesh = SubResource("ArrayMesh_pm3dt")
 
-[node name="AnimationPlayer" parent="Mesh" parent_id_path=PackedInt32Array(1520077276) index="1" unique_id=771683237]
+[node name="ElectricalHook" parent="Mesh" parent_id_path=PackedInt32Array(1543309737) index="1" unique_id=812961183]
+visible = false
+
+[node name="AnimationPlayer" parent="Mesh" parent_id_path=PackedInt32Array(1543309737) index="2" unique_id=1915873300]
 active = false
 speed_scale = 0.0
 
