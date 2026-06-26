@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ccafhp5bef5b3" path="res://Buildings/buildings.tscn" id="1_7h7j1"]
 [ext_resource type="Script" uid="uid://b4ox2ex38d13q" path="res://Buildings/Factory/factory.gd" id="2_4jq7f"]
 [ext_resource type="AudioStream" uid="uid://v6jedtgfhbmp" path="res://assets/audio/Audiofactory.wav" id="3_4jq7f"]
-[ext_resource type="PackedScene" uid="uid://bn1f1umnqrjwg" path="res://assets/modele/smelter.glb" id="4_l5of0"]
+[ext_resource type="PackedScene" uid="uid://dmlw55plhv0qu" path="res://assets/modele/smelter_sansanim_final.glb" id="4_l5of0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mm1bc"]
 size = Vector3(3.6378326, 4.3598633, 6.178589)
@@ -58,6 +58,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026404858, 2, 0.81864977)
 stream = ExtResource("3_4jq7f")
 volume_db = -28.251
 
-[node name="Mesh" parent="." index="6" unique_id=1062207485 instance=ExtResource("4_l5of0")]
+[node name="Mesh" parent="." index="6" unique_id=952997184 instance=ExtResource("4_l5of0")]
 
 [editable path="Mesh"]

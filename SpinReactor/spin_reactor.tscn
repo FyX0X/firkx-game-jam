@@ -4,11 +4,11 @@
 [ext_resource type="Script" uid="uid://df765ig0pu71p" path="res://SpinReactor/deposit.gd" id="2_832gf"]
 [ext_resource type="PackedScene" uid="uid://fsa4twm22msf" path="res://Inventory/inventory.tscn" id="2_cdrdq"]
 [ext_resource type="Script" uid="uid://c5kxy87xltamr" path="res://SpinReactor/computer.gd" id="4_pkuqk"]
-[ext_resource type="PackedScene" uid="uid://bhcojlehwu5b4" path="res://assets/modele/Container.glb" id="5_72vm2"]
+[ext_resource type="PackedScene" uid="uid://cheijsn2xiive" path="res://assets/modele/Container_final.glb" id="5_72vm2"]
 [ext_resource type="PackedScene" uid="uid://c2kdxjpj3ksci" path="res://AttentionGrabber/attention_grabber.tscn" id="5_pk2ri"]
-[ext_resource type="PackedScene" uid="uid://m4wofuwbthib" path="res://assets/modele/spin_reactor.glb" id="5_we15e"]
 [ext_resource type="PackedScene" uid="uid://bnu3bwdr8orig" path="res://assets/modele/spin_reactor_computer.glb" id="6_eajpp"]
 [ext_resource type="AudioStream" uid="uid://bkkattlu57845" path="res://assets/audio/spin_reactor_startup.wav" id="8_eajpp"]
+[ext_resource type="PackedScene" uid="uid://bgi52tyh28kef" path="res://assets/modele/spin_reactor_final.glb" id="9_pk2ri"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8lsb0"]
 size = Vector3(5, 15, 5.647949)
@@ -88,7 +88,7 @@ inventory_name = "Spin Reactor Construction"
 [node name="AttentionGrabber" parent="Deposit" unique_id=754601093 instance=ExtResource("5_pk2ri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9110721, 0)
 
-[node name="Container" parent="Deposit" unique_id=2036084752 instance=ExtResource("5_72vm2")]
+[node name="Container_final" parent="Deposit" unique_id=692137883 instance=ExtResource("5_72vm2")]
 
 [node name="Computer" type="StaticBody3D" parent="." unique_id=275352322 groups=["interactable"]]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.4019923, 0, -2.5204854)
@@ -104,8 +104,6 @@ shape = SubResource("BoxShape3D_qfhvn")
 [node name="AttentionGrabber" parent="Computer" unique_id=335341805 instance=ExtResource("5_pk2ri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5260506, -0.84044224)
 
-[node name="spin_reactor" parent="." unique_id=1878275658 instance=ExtResource("5_we15e")]
-
 [node name="ReactorAudio" type="AudioStreamPlayer3D" parent="." unique_id=1262629124]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.723866, -21.618114)
 stream = ExtResource("8_eajpp")
@@ -119,5 +117,7 @@ lifetime = 0.5
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_eajpp")
 draw_pass_1 = SubResource("QuadMesh_72vm2")
+
+[node name="spin_reactor_final" parent="." unique_id=811252781 instance=ExtResource("9_pk2ri")]
 
 [editable path="Computer/spin_reactor_computer"]
