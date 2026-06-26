@@ -98,7 +98,7 @@ func _on_challenge_fail() -> void:
 	time_left = 0
 	print("YOU LOOSE")
 	
-	get_tree().create_timer(10).timeout.connect(func():
+	get_tree().create_timer(3).timeout.connect(func():
 		get_tree().change_scene_to_file("res://EndScene/lose_scene.tscn")
 		)
 

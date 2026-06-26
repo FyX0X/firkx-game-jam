@@ -34,6 +34,7 @@ func _ready() -> void:
 	electricity_progress.max_value = absi(spin_reactor.energy)
 	spin_reactor.deposit_changed.connect(_refresh_material)
 	spin_reactor.powered_changed.connect(_refresh_electricity)
+	_refresh_material()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -69,5 +70,5 @@ func _refresh_material() -> void:
 	
 	iron_label.text = "Iron Bar Deposited: " + str(spin_reactor.deposited["iron_bar"]) + "/" + str(spin_reactor.construction_cost["iron_bar"])
 	titanium_label.text = "Titanium Bar Deposited: " + str(spin_reactor.deposited["titanium_bar"]) + "/" + str(spin_reactor.construction_cost["titanium_bar"])
-	copper_label.text = "Topper Bar Deposited: " + str(spin_reactor.deposited["copper_bar"]) + "/" + str(spin_reactor.construction_cost["copper_bar"])
+	copper_label.text = "Copper Bar Deposited: " + str(spin_reactor.deposited["copper_bar"]) + "/" + str(spin_reactor.construction_cost["copper_bar"])
 	tungsten_label.text = "Tungsten Bar Deposited: " + str(spin_reactor.deposited["tungsten_bar"]) + "/" + str(spin_reactor.construction_cost["tungsten_bar"])

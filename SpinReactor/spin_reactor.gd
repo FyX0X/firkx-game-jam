@@ -14,10 +14,10 @@ signal powered_changed
 @export var process_speed: float = 10.0
 var progress: float = 0
 @export var construction_cost: Dictionary = {
-	"iron_bar" : 200,
-	"titanium_bar" : 100,
-	"copper_bar" : 100,
-	"tungsten_bar" : 50
+	"iron_bar" :  20,#20
+	"titanium_bar" : 15 ,#15
+	"copper_bar" : 15  ,# 15
+	"tungsten_bar" : 10 #10
 }
 var deposited: Dictionary = {
 	"iron_bar" : 0,
@@ -30,7 +30,7 @@ var current_mat: Material = null
 var green_elec : Material = preload("res://assets/Material/green_elec.tres")
 var red_elec : Material = preload("res://assets/Material/red_elec.tres")
 @export var electricity_consumption: float = 100
-@export var energy : int = -200
+@export var energy : int = -150 #200
 var is_powered : bool = false
 var current_grid : PowerGrid = null
 var connected_cables : Array[Node3D] = []

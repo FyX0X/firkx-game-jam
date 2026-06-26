@@ -23,7 +23,7 @@ var messages: Array[Control] = []
 @export var MAX_MESSAGES: int = 5
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	intro_video = preload("res://assets/video/gamejam_animation_debut.ogv")
+	intro_video = preload("res://assets/video/gamejam_animation_debut_final.ogv")
 	outro_video = preload("res://assets/video/gamejam_animation_outro.ogv")
 	close_all_ui()
 

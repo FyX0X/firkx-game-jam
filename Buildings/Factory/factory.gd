@@ -26,6 +26,8 @@ func _process(delta: float) -> void:
 	super._process(delta)
 	if is_hologram:
 		return
+	if not is_powered:
+		return
 	
 	if _can_process():
 		if Audiofactory and not Audiofactory.playing:
@@ -49,7 +51,6 @@ func _update_recipe() -> void:
 				recipe = test_recipe
 				return
 				
-	recipe = {}
 
 func _can_process() -> bool:
 	return _can_process_recipe(recipe)
