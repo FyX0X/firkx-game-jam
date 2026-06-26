@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b3yoll13aqy0m" path="res://assets/modele/vaisseau_final.glb" id="15_5xkvv"]
 [ext_resource type="PackedScene" uid="uid://c01uo1kbl6f1i" path="res://Props/BigOre/big_ore.tscn" id="15_oeat8"]
 [ext_resource type="PackedScene" uid="uid://cg7ubplrxa222" path="res://Buildings/Drills/broken_drill.tscn" id="16_oeat8"]
+[ext_resource type="PackedScene" uid="uid://c112vxis08c5q" path="res://assets/modele/tombstone.glb" id="17_5xkvv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oeat8"]
 size = Vector3(100.74121, 232.99731, 527.8711)
@@ -285,6 +286,9 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -91.
 spot_range = 56.248714
 spot_attenuation = 0.5
 spot_angle = 36.1795
+
+[node name="tombstone" parent="." unique_id=1210451525 instance=ExtResource("17_5xkvv")]
+transform = Transform3D(-0.5754229, 0.31818467, 0.7534236, 0.44028148, 0.8968535, -0.04249544, -0.68923205, 0.30726564, -0.65616095, 46.746014, -10.480927, -3.5024729)
 
 [editable path="Map"]
 [editable path="Desert"]
