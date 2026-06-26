@@ -102,6 +102,17 @@ func _physics_process(delta: float) -> void:
 	_process_health(delta)
 	raycast_check()
 	_update_animation()
+	_update_sound()
+
+func _update_sound() -> void:
+	# walking sound:
+	var is_moving := Vector2(velocity.x, velocity.z).length() > 0.05
+	if is_on_floor() and is_moving:
+		if not audio_step.playing:
+			audio_step.play()
+	else:
+		if audio_step.playing:
+			audio_step.stop()
 
 func _update_animation() -> void:
 	var on_ground := is_on_floor()
@@ -168,13 +179,6 @@ func _process_movement(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, current_speed)
 		velocity.z = move_toward(velocity.z, 0, current_speed)
 
-	var est_en_mouvement := Vector2(velocity.x, velocity.z).length() > 0.1
-	if is_on_floor() and est_en_mouvement:
-		if not audio_step.playing:
-			audio_step.play()
-	else:
-		if audio_step.playing:
-			audio_step.stop()
 
 func _update_jetpack() -> void:
 	if jetpack_active:
