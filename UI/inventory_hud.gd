@@ -6,6 +6,8 @@ extends Control
 @onready var cursor_label: Label = $CursorLabel   # floating label that follows mouse
 var is_open: bool = false
 
+@onready var science_label: Label = $Science
+
 # Grab state
 var _grabbed_item: String = ""
 var _grabbed_from: Inventory = null
@@ -16,17 +18,30 @@ var _grabbed_count: int = 0
 func _ready():
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	cursor_label.hide()
+	science_label.hide()
 	left_ui.slot_picked.connect(_on_slot_picked)
 	left_ui.slot_dropped.connect(_on_slot_dropped)
 	right_ui.slot_picked.connect(_on_slot_picked)
 	right_ui.slot_dropped.connect(_on_slot_dropped)
+	GlobalSignals.science_generated.connect(_on_science_generated)
 	hide()
+
+func update_science(inv : Inventory) -> void:
+	_on_science_generated()
+
+func _on_science_generated() -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		science_label.text = "Science : " + str(player.science_points)
+		
 
 func open_single(inv: Inventory) -> void:
 	is_open = true
 	left_ui.setup(inv)
 	right_ui.hide()
 	left_ui.show()
+	update_science(inv)
+	science_label.show()
 	show()
 	_set_ui_mode(true)
 
@@ -36,6 +51,8 @@ func open_transfer(left_inv: Inventory, right_inv: Inventory) -> void:
 	right_ui.setup(right_inv)
 	left_ui.show()
 	right_ui.show()
+	update_science(left_inv)
+	science_label.show()
 	show()
 	_set_ui_mode(true)
 
@@ -45,6 +62,7 @@ func close() -> void:
 	is_open = false
 	left_ui.teardown()   # disconnect signals
 	right_ui.teardown()
+	science_label.hide()
 	_cancel_grab()
 	hide()
 	_set_ui_mode(false)
