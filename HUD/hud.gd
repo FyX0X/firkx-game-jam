@@ -15,8 +15,6 @@ extends CanvasLayer
 @onready var skill_check : SkillCheck = $SkillCheck
 
 var intro_video: VideoStreamTheora
-var outro_video: VideoStreamTheora
-var _is_intro: bool = true
 var end_callable: Callable = Callable()
 
 var messages: Array[Control] = []
@@ -24,7 +22,6 @@ var messages: Array[Control] = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	intro_video = preload("res://assets/video/gamejam_animation_debut_final.ogv")
-	outro_video = preload("res://assets/video/gamejam_animation_outro.ogv")
 	close_all_ui()
 
 
@@ -36,17 +33,13 @@ func trigger_skill_check(callable_result : Callable) -> void:
 	skill_check.skill_check_result.connect(callable_result, CONNECT_ONE_SHOT)
 	skill_check.start_check()
 
-func play_cinematic(is_intro: bool, end_observer: Callable) -> void:
-	_is_intro = is_intro
+func play_cinematic(end_observer: Callable) -> void:
 	popups.hide()
 	inventory_hud.hide()
 	research_ui.hide()
 	debug_panel.show_debug_panel(false)
 	cinematic_player.show()
-	if is_intro:
-		cinematic_player.stream = intro_video
-	else:
-		cinematic_player.stream = outro_video
+	cinematic_player.stream = intro_video
 	cinematic_player.play()
 	end_callable = end_observer
 	
@@ -131,9 +124,7 @@ func _on_cinematic_player_finished() -> void:
 	if (end_callable.is_valid()):
 		end_callable.call()
 		end_callable = Callable()
-	if not _is_intro:
-		print("hud: _on_cinematic_player_finished: outro finished keeps video shown")
-		return
+
 	popups.show()
 	inventory_hud.show()
 	cinematic_player.hide()

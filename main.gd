@@ -58,7 +58,7 @@ func set_state(new_state: GameState) -> void:
 			timer_running = false
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			player.active = false
-			hud_layer.play_cinematic(true, _on_intro_finished)
+			hud_layer.play_cinematic(_on_intro_finished)
 		GameState.GAME:
 			timer_running = GameSettings.difficulty != GameSettings.Difficulty.EASY
 			player.active = true
