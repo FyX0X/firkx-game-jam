@@ -9,29 +9,31 @@ const drill_cost : Dictionary = {
 	"iron" = {"iron" : 5},
 	"titanium" = {"iron_bar": 30, "titanium_bar": 5},
 	"copper" = {"iron_bar" : 30, "copper_bar": 5},
-	"tungsten" = {"iron_bar" : 75, "titanium_bar": 25, "copper_bar":25, "tungsten_bar": 5}
+	"tungsten" = {"iron_bar" : 75, "titanium_bar": 25, "copper_bar":25, "tungsten_bar": 5},
+	"broken" = {"iron" : 5},
 }
 
 const dico_speed : Dictionary = {
 	"iron" = 1,
 	"titanium" = 1,
 	"copper" = 1,
-	"tungsten" = 1
+	"tungsten" = 1,
+	"broken" = 0
 }
 
 const energy_cost : Dictionary = {
 	"iron" = -5,
 	"titanium" = -15,
 	"copper" = -15,
-	"tungsten" = -30
+	"tungsten" = -30,
+	"broken" = 0
 }
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
-	process_speed = 10
+	# process_speed = 10
 	# energy = -5 : now in export
-	set_type("undefined")
 	
 	assert(dico_speed.keys() == energy_cost.keys() and dico_speed.keys() == drill_cost.keys())
 
