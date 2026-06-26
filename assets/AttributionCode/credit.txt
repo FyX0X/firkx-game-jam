@@ -1,3 +1,13 @@
+# Authors
+
+Hakibara
+squ1q
+PotatoesAreFruits
+andy
+nitramnibus
+
+# Music
+
 "Space Jazz" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/
@@ -28,11 +38,16 @@ http://creativecommons.org/licenses/by/4.0
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/
 
-Stress ? 
-"Rynos Theme" Kevin MacLeod (incompetech.com)
-Licensed under Creative Commons: By Attribution 4.0 License
-http://creativecommons.org/licenses/by/4.0/
-
+Stress
 "Hot Pursuit" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/
+
+# Sound Effects
+Large Rocket Engine : Zovex (Freesound)
+https://pixabay.com/sound-effects/film-special-effects-large-rocket-engine-86240/
+Cold Wind Sound: https://pixabay.com/sound-effects/nature-bitter-cold-wind-482876/
+various desert sounds: https://mixkit.co/free-sound-effects/desert/
+winning Sound: https://mixkit.co/free-sound-effects/win/
+jetpack: https://pixabay.com/sound-effects/film-special-effects-good-jetpack-sound-loop-96693/
+
