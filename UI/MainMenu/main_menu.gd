@@ -3,12 +3,14 @@ extends Control
 @onready var difficulty_selector: OptionButton = $VBoxContainer/DifficulySelector
 @onready var settings_menu: Control = $SettingsMenu
 @onready var instructions: Control = $InstructionsUI
+@onready var credits_menu: Control = $Credits
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	_populate_difficulty()
 	settings_menu.hide()
 	instructions.hide()
+	credits_menu.hide()
 
 
 func _populate_difficulty() -> void:
@@ -48,3 +50,7 @@ func _on_difficuly_selector_item_selected(index: int) -> void:
 	# Cast it back to the enum type
 	var difficulty: GameSettings.Difficulty = selected_id as GameSettings.Difficulty
 	GameSettings.difficulty = difficulty
+
+
+func _on_credits_button_pressed() -> void:
+	credits_menu.show()

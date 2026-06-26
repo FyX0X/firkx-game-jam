@@ -4,6 +4,7 @@ extends Control
 @onready var end_sound_player: AudioStreamPlayer = $EndSound
 @onready var title_label: Label = $Label
 @onready var quit_button: Button = $VBoxContainer/QuitButton
+@onready var credits_menu: Control = $Credits
 
 @export var title: String = "You Win !"
 @export var quit_button_text: String = "Quit"
@@ -26,3 +27,7 @@ func _on_main_menu_button_pressed() -> void:
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_credit_button_pressed() -> void:
+	credits_menu.show()

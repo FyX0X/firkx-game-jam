@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bdopv724nnndl" path="res://EndScene/end_scene.gd" id="1_rq2kn"]
 [ext_resource type="AudioStream" uid="uid://bc26q1ir1rv55" path="res://assets/audio/gameover.wav" id="2_eh40q"]
+[ext_resource type="PackedScene" uid="uid://bbh31pem6iexf" path="res://UI/MainMenu/credit.tscn" id="3_rq2kn"]
 
 [node name="EndScene" type="Control" unique_id=1874490453]
 layout_mode = 3
@@ -50,10 +51,19 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Main Menu"
 
+[node name="CreditButton" type="Button" parent="VBoxContainer" unique_id=463156284]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Main Menu"
+
 [node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=177359198]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Quit"
 
+[node name="Credits" parent="." unique_id=688799154 instance=ExtResource("3_rq2kn")]
+layout_mode = 1
+
 [connection signal="pressed" from="VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditButton" to="." method="_on_credit_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

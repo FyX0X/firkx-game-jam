@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bbh31pem6iexf"]
+
+[ext_resource type="Script" uid="uid://b820alu3tbke3" path="res://UI/MainMenu/credit.gd" id="1_xnitg"]
+[ext_resource type="Texture2D" uid="uid://b6o4j0s36405x" path="res://assets/itchio_page/background.png" id="1_y32eu"]
+
+[node name="Credits" type="Control" unique_id=688799154]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xnitg")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1016723559]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_y32eu")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1480360619]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "
+
+
+[center][font_size=36]CREDITS[/font_size]
+
+[font_size=24]Development[/font_size]
+Martin Ergo (Hakibara)
+Nitramnibus
+
+[font_size=24]3D Modeling[/font_size]
+Squ1q
+
+[font_size=24]Sound Design Lead[/font_size]
+PotatoesAreFruits
+
+[font_size=24]Pitch and Concepts[/font_size]
+Andy
+
+[font_size=18]
+Thank you to all playtesters.
+[/font_size][/center]"
+
+[node name="ExitButton" type="Button" parent="." unique_id=1802506748]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -97.0
+offset_top = 25.0
+offset_right = -32.0
+offset_bottom = 78.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 32
+text = "Exit"
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

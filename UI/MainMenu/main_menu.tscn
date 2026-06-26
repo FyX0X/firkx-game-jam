@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://f8otvdb68u3j" path="res://UI/MainMenu/main_menu.gd" id="1_jld46"]
 [ext_resource type="PackedScene" uid="uid://cc3kdkfism2xe" path="res://UI/SettingsMenu/settings_menu.tscn" id="2_t17p2"]
 [ext_resource type="PackedScene" uid="uid://deg2og0gct1yk" path="res://UI/MainMenu/instructions_ui.tscn" id="3_3jj5y"]
+[ext_resource type="PackedScene" uid="uid://bbh31pem6iexf" path="res://UI/MainMenu/credit.tscn" id="4_h8rmy"]
 
 [node name="MainMenu" type="Control" unique_id=230631934]
 layout_mode = 3
@@ -53,6 +54,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "INSTRUCTION"
 
+[node name="CreditsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2029505559]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "INSTRUCTION"
+
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=42044626]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
@@ -91,8 +97,13 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="Credits" parent="." unique_id=688799154 instance=ExtResource("4_h8rmy")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/InstructionButton" to="." method="_on_instruction_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="item_selected" from="VBoxContainer/DifficulySelector" to="." method="_on_difficuly_selector_item_selected"]
