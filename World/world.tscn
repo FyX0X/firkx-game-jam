@@ -248,6 +248,11 @@ transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, -0.7
 area_range = 15.0
 area_size = Vector2(3.5105095, 4.3157196)
 
+[node name="AreaLight3D2" type="AreaLight3D" parent="Ship" unique_id=1570050124]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.9441223, 4.1492724, -0.4109497)
+area_range = 15.0
+area_size = Vector2(4.9192963, 6.6328278)
+
 [node name="Walls" type="StaticBody3D" parent="." unique_id=856979905]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls" unique_id=1377804024]
@@ -269,6 +274,17 @@ shape = SubResource("BoxShape3D_4kxuq")
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Walls" unique_id=1785812289]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1899414, 234.55498, 11.407959)
 shape = SubResource("BoxShape3D_mti6b")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=101332404]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 29.778996, -110.604294)
+spot_range = 56.248714
+spot_attenuation = 0.5
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=1176282246]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -91.77907, 26.26839, -110.60429)
+spot_range = 56.248714
+spot_attenuation = 0.5
+spot_angle = 36.1795
 
 [editable path="Map"]
 [editable path="Desert"]
