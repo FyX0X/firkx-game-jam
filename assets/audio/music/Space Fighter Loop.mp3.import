@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cfg2ho02cfhw5"
+path="res://.godot/imported/Space Fighter Loop.mp3-232ed21a590035e62f7e505867f1c299.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/Space Fighter Loop.mp3"
+dest_files=["res://.godot/imported/Space Fighter Loop.mp3-232ed21a590035e62f7e505867f1c299.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

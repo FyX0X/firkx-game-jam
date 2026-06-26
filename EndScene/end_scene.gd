@@ -19,6 +19,8 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _on_main_menu_button_pressed() -> void:
+	MusicManager.stop(1)
+	MusicManager.schedule_next()
 	get_tree().change_scene_to_file("res://UI/MainMenu/main_menu.tscn")
 
 

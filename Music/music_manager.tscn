@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bit3bwqamb6ho"]
+
+[ext_resource type="Script" uid="uid://vhxbgdkq63oe" path="res://Music/music_manager.gd" id="1_wto64"]
+
+[node name="MusicManager" type="Node" unique_id=1576594746]
+script = ExtResource("1_wto64")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=564222065]
+bus = &"Music"
+
+[node name="Timer" type="Timer" parent="." unique_id=584547769]
+one_shot = true

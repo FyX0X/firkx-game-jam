@@ -4,6 +4,14 @@
 [ext_resource type="Script" uid="uid://dgd0a3r1yus3f" path="res://Props/OreVein/ore_vein.gd" id="2_n77vr"]
 [ext_resource type="PackedScene" uid="uid://iodevsuc4y8y" path="res://assets/modele/Vein.glb" id="3_tnkf8"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tnkf8"]
+resource_name = "Material.008"
+transparency = 4
+cull_mode = 2
+albedo_color = Color(0.33534276, 0.18761069, 0.13413711, 0.4969325)
+metallic = 0.5092025
+roughness = 0.5
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n77vr"]
 vertex_color_is_srgb = true
 albedo_color = Color(0.58431375, 0.654902, 0.60784316, 1)
@@ -21,11 +29,17 @@ type = 0
 
 [node name="Vein" parent="." index="0" unique_id=1607454836 instance=ExtResource("3_tnkf8")]
 
+[node name="Vein_copper" parent="Vein" index="0" unique_id=1098123895]
+surface_material_override/1 = SubResource("StandardMaterial3D_tnkf8")
+
 [node name="Dummy" parent="." index="1" unique_id=42334917]
 visible = false
 surface_material_override/0 = SubResource("StandardMaterial3D_n77vr")
 
 [node name="CollisionShape3D" parent="." index="2" unique_id=1109386413]
 shape = SubResource("SphereShape3D_me81e")
+
+[node name="AudioStreamPlayer3D" parent="." index="3" unique_id=1511737486]
+bus = &"SFX"
 
 [editable path="Vein"]

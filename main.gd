@@ -23,6 +23,8 @@ var critical_sent: bool = false
 @export var low_time: float = 90
 @export var critical_time: float = 30
 
+var stress_music: AudioStream = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var science_table: ScienceTable = find_child("ScienceTable",true,true)
@@ -37,6 +39,7 @@ func _ready() -> void:
 	spin_reactor.computer.spin_reactor_open_ui.connect(_on_spin_reactor_opened)
 	hud_layer.pause_menu.unpaused.connect(_toggle_pause)
 	setup_difficulty_parameters()
+	stress_music = preload("res://assets/audio/music/Hot Pursuit.mp3")
 
 
 func setup_difficulty_parameters() -> void:
@@ -63,6 +66,7 @@ func set_state(new_state: GameState) -> void:
 
 func _on_intro_finished() -> void:
 	set_state(GameState.GAME)
+	MusicManager.schedule_next()
 
 func _on_outro_finished() -> void:
 	pass
@@ -86,7 +90,7 @@ func _process(delta: float) -> void:
 	
 	if (not low_sent) and (time_left <= low_time):
 		low_sent = true
-		print("emit")
+		MusicManager.crossfade(stress_music)
 		time_low_signal.emit()
 	if (not critical_sent) and (time_left <= critical_time):
 		critical_sent = true

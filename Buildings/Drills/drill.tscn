@@ -45,6 +45,7 @@ shape = SubResource("BoxShape3D_4kxuq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.3232517)
 stream = ExtResource("3_ng00e")
 volume_db = -16.884
+bus = &"SFX"
 
 [node name="Mesh" parent="." index="6" unique_id=1543309737 instance=ExtResource("4_6uugn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.0643823)

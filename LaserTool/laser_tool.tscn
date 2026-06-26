@@ -33,8 +33,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_jn3ic")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00080543756, -0.41004688, -1.7923718e-08)
 stream = ExtResource("3_ci1qa")
 volume_db = -45.662
+bus = &"SFX"
 
 [node name="pickup_audio" type="AudioStreamPlayer3D" parent="Beam" unique_id=1193076557]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00080543756, -0.41004688, -1.7923718e-08)
 stream = ExtResource("2_3xf76")
 volume_db = 10.159
+bus = &"SFX"
