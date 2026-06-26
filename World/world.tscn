@@ -18,10 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://cg7ubplrxa222" path="res://Buildings/Drills/broken_drill.tscn" id="16_oeat8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oeat8"]
-size = Vector3(163, 214, 676)
+size = Vector3(100.74121, 232.99731, 527.8711)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5xkvv"]
-size = Vector3(200, 369.168, 600)
+size = Vector3(126.06348, 189.4424, 531.07214)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h2aik"]
 shader = ExtResource("9_w47uh")
@@ -45,6 +45,12 @@ glow_intensity = 3.0
 [sub_resource type="QuadMesh" id="QuadMesh_f23eu"]
 size = Vector2(1.5, 1.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_4kxuq"]
+size = Vector3(550.33417, 244.6051, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mti6b"]
+size = Vector3(562.0415, 1, 566.18896)
+
 [node name="World" type="Node3D" unique_id=10638356]
 
 [node name="Map" parent="." unique_id=1357227159 groups=["ground"] instance=ExtResource("1_eidgh")]
@@ -61,6 +67,7 @@ biome_description = "Extreme heat detected. Seek cover as soon as possible."
 ambience_sounds = Array[AudioStream]([ExtResource("3_w47uh"), ExtResource("4_lo5ox"), ExtResource("5_h2aik"), ExtResource("6_0wqet"), ExtResource("7_awrha")])
 
 [node name="CollisionShape3D" parent="Desert" index="0" unique_id=1968634112]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.129395, 116.98328, 11.375977)
 shape = SubResource("BoxShape3D_oeat8")
 
 [node name="Cold" parent="." unique_id=830234227 instance=ExtResource("2_oe8m4")]
@@ -71,6 +78,7 @@ biome_description = "You can no longer feel your fingers. Find shelter in a warm
 ambience_sounds = Array[AudioStream]([ExtResource("8_f23eu")])
 
 [node name="CollisionShape3D" parent="Cold" index="0" unique_id=1968634112]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.96826, 89.8628, 11.903748)
 shape = SubResource("BoxShape3D_5xkvv")
 
 [node name="SpaceSky" type="WorldEnvironment" parent="." unique_id=1973343510]
@@ -234,6 +242,33 @@ billboard = false
 
 [node name="MeshInstance3D" parent="Ship/InnerHologram" index="0" unique_id=1989442769]
 mesh = SubResource("QuadMesh_f23eu")
+
+[node name="AreaLight3D" type="AreaLight3D" parent="Ship" unique_id=1308295437]
+transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, -0.77508545, 5.0402403, 0)
+area_range = 15.0
+area_size = Vector2(3.5105095, 4.3157196)
+
+[node name="Walls" type="StaticBody3D" parent="." unique_id=856979905]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls" unique_id=1377804024]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4064941, 122.48053, -252.27023)
+shape = SubResource("BoxShape3D_4kxuq")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Walls" unique_id=2001374471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34109497, 120.81444, 273.90494)
+shape = SubResource("BoxShape3D_4kxuq")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Walls" unique_id=1580511128]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 247.87979, 120.81444, 12.675575)
+shape = SubResource("BoxShape3D_4kxuq")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Walls" unique_id=430306839]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -251.30447, 120.81444, 10.440651)
+shape = SubResource("BoxShape3D_4kxuq")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Walls" unique_id=1785812289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1899414, 234.55498, 11.407959)
+shape = SubResource("BoxShape3D_mti6b")
 
 [editable path="Map"]
 [editable path="Desert"]
