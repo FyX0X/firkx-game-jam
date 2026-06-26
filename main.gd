@@ -170,7 +170,7 @@ func _on_interaction_target_changed(target: Node, group: String) -> void:
 	if group == "interactable":
 		hud_layer.show_popup_message("Press E to Interact")
 	if group == "mineable":
-		hud_layer.show_popup_message("Left Click to Mine", 2)
+		hud_layer.show_popup_message("Hold Left Click to Mine", 2)
 
 func _on_building_selection_change(building: Building) -> void:
 	if building == null:
