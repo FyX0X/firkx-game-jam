@@ -9,7 +9,8 @@ const drill_cost : Dictionary = {
 	"iron" = {"iron" : 5},
 	"titanium" = {"iron_bar": 10, "titanium_bar": 3},
 	"copper" = {"iron_bar" : 10, "copper_bar": 3},
-	"tungsten" = {"iron_bar" : 20, "titanium_bar": 5, "copper_bar":5, "tungsten_bar": 3}
+	"tungsten" = {"iron_bar" : 20, "titanium_bar": 5, "copper_bar":5, "tungsten_bar": 3},
+	"broken" = {}
 }
 
 const dico_speed : Dictionary = {
