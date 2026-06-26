@@ -3,7 +3,7 @@ extends CanvasLayer
 
 @onready var popups: Control = $PopupRoot
 @onready var cinematic_player: VideoStreamPlayer = $CinematicPlayer
-@onready var debug_panel: Control = $DebugPanel
+@onready var debug_panel: DebugPanel = $DebugPanel
 @onready var inventory_hud: Control = $InventoryHUD
 @onready var damage_overlay: ColorRect = $DamageOverlay
 @onready var build_cost_ui: BuildCostUI = $BuildCostUI
@@ -41,7 +41,7 @@ func play_cinematic(is_intro: bool, end_observer: Callable) -> void:
 	popups.hide()
 	inventory_hud.hide()
 	research_ui.hide()
-	debug_panel.hide()
+	debug_panel.show_debug_panel(false)
 	cinematic_player.show()
 	if is_intro:
 		cinematic_player.stream = intro_video
@@ -136,7 +136,6 @@ func _on_cinematic_player_finished() -> void:
 		return
 	popups.show()
 	inventory_hud.show()
-	debug_panel.show()
 	cinematic_player.hide()
 
 func show_build_recipe(recipe: Dictionary) -> void:
