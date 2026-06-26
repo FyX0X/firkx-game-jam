@@ -7,10 +7,10 @@ var outputs : Dictionary = {}
 
 
 const recipes : Dictionary = {
-	"iron" : {"input" : {"iron" : 2}, "output" : {"iron_bar" : 1}, "time" : 1.5},
-	"titanium" : {"input" : {"titanium" : 2}, "output" : {"titanium_bar" : 1}, "time" : 1.5},
-	"copper" : {"input": {"copper" : 2}, "output" : {"copper_bar" : 1}, "time" : 1.5},
-	"tungsten" :{"input" : {"tungsten" : 2}, "output" : {"tungsten_bar" : 1}, "time" : 1.5},
+	"iron" : {"input" : {"iron" : 2}, "output" : {"iron_bar" : 1}, "time" : 0.5},
+	"titanium" : {"input" : {"titanium" : 2}, "output" : {"titanium_bar" : 1}, "time" : 0.5},
+	"copper" : {"input": {"copper" : 2}, "output" : {"copper_bar" : 1}, "time" : 0.5},
+	"tungsten" :{"input" : {"tungsten" : 2}, "output" : {"tungsten_bar" : 1}, "time" : 0.5},
 }
 
 const ores = ["iron", "titanium", "copper", "tungsten"]
