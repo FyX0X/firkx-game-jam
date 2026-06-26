@@ -44,6 +44,9 @@ var _active_zones: Dictionary = {}
 
 var loot_bag_scene: PackedScene = preload("res://Props/LootBag/loot_bag.tscn")
 
+var skillcheck_active :bool = false
+var time_since_skill : float = 0.0
+
 var upgrades: Dictionary = {
 	"heat_resistance": 0.0,
 	"cold_resistance": 0.0,
@@ -85,6 +88,8 @@ func _on_building_placed(building: Building) -> void:
 		inventory.remove_item(item, building.cost[item])
 
 func _physics_process(delta: float) -> void:
+	if time_since_skill > 0:
+		time_since_skill -= delta
 	if not active:
 		return
 
@@ -130,7 +135,7 @@ func _process_movement(delta: float) -> void:
 		velocity += get_gravity() * delta
 	
 	# Tap = instant jump (free, no fuel)
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor() and not skillcheck_active and time_since_skill <= 0:
 		velocity.y = jump_velocity
 		audio_jump.play()
 

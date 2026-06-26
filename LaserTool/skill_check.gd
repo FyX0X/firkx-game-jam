@@ -9,6 +9,7 @@ var rotation_speed : float = 150.0
 var success_start: float = 0.0
 var success_end: float = 0.0
 
+@onready var player : Player = get_parent().get_parent().find_child("Player",true)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hide()
@@ -32,6 +33,7 @@ func start_check() -> void:
 	success_end = success_start + 20.0
 	
 	active = true
+	player.skillcheck_active = true
 	show()
 	set_process(true)
 
@@ -43,6 +45,8 @@ func _input(event: InputEvent) -> void:
 
 func _finish(success : bool) -> void:
 	active = false
+	player.skillcheck_active = false
+	player.time_since_skill = 0.2
 	hide()
 	set_process(false)
 	skill_check_result.emit(success)
