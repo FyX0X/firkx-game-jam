@@ -38,9 +38,14 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 20
 
 [node name="Science" type="Label" parent="." unique_id=9643831]
-layout_mode = 0
-offset_left = 3.0
-offset_top = 455.0
-offset_right = 169.0
-offset_bottom = 495.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 166.0
+grow_vertical = 0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "Science Label"
 horizontal_alignment = 1
