@@ -140,6 +140,9 @@ shadow_mesh = SubResource("ArrayMesh_t7q20")
 script = ExtResource("2_pm3dt")
 type = "iron"
 
+[node name="Inventory" parent="." index="2" unique_id=1803995424]
+inventory_name = "Broken Drill"
+
 [node name="DrillAudio" parent="." index="5" unique_id=413927254]
 stream = null
 
