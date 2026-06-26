@@ -49,6 +49,11 @@ func close() -> void:
 	hide()
 	_set_ui_mode(false)
 
+func _update_cursor_label(show: bool) -> void:
+	cursor_label.text = _grabbed_item + "  ×" + str(_grabbed_count) if _grabbed_item != "" else ""
+	cursor_label.visible = show
+
+
 # ── grab / drop ─────────────────────────────────────────────────────
 func _on_slot_picked(from_inv: Inventory, item_id: String, mouse_button: MouseButton, slot: Panel) -> void:
 	if slot == _grabbed_slot:
@@ -56,6 +61,7 @@ func _on_slot_picked(from_inv: Inventory, item_id: String, mouse_button: MouseBu
 			_cancel_grab()
 		elif mouse_button == MOUSE_BUTTON_RIGHT:
 			_grabbed_count = min(_grabbed_count + 1, from_inv.get_amount(item_id))
+			_update_cursor_label(true)
 	elif _grabbed_item == "":
 		# First click: grab
 		_grabbed_item = item_id
@@ -64,8 +70,7 @@ func _on_slot_picked(from_inv: Inventory, item_id: String, mouse_button: MouseBu
 		var total := from_inv.get_amount(item_id)
 		_grabbed_count = total if mouse_button == MOUSE_BUTTON_LEFT else 1
 		slot.set_selected(true)
-		cursor_label.text = item_id
-		cursor_label.show()
+		_update_cursor_label(true)
 	else:
 		# Second click on a slot that has an item — could be same inv or other
 		if from_inv == _grabbed_from and item_id == _grabbed_item:
@@ -96,7 +101,8 @@ func _cancel_grab() -> void:
 	_grabbed_from = null
 	_grabbed_slot = null
 	_grabbed_count = 0
-	cursor_label.hide()
+	_update_cursor_label(false)
+
 
 # ── cursor label follows mouse ───────────────────────────────────────
 func _process(_delta: float) -> void:
