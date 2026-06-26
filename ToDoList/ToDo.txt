@@ -25,17 +25,18 @@ Secondaires :
 	Astéroides avec vaisseau
 	Systeme Energetique
 	Convoyeur ? 
-	Son de laser quand on detruit / mine
+	Son de laser quand on detruit / mine (ok)
 	detruire les loot bags apres un certain temps ou quand ils sont vide 
 
 Martin:
-	jetpack
-	build_cost_ui: red item if missing
+	
 	broken_drill
 	disable focus in hud
 	fix inventory count label
 	fix lambda error with popup message
 Martin DONE:
+	jetpack
+	build_cost_ui: red item if missing
 	failed scene
 	Etat transition inventaire -> normal
 	show needed energy in spin reactor
