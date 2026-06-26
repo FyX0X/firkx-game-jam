@@ -22,6 +22,9 @@ var _master_volume: float = 1
 var _music_volume: float = 0.5
 var _sfx_volume: float = 1
 
+func _ready() -> void:
+	_apply_audio()
+
 func get_master_volume() -> float:
 	return _master_volume
 
