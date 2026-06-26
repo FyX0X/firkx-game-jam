@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GlobalSignals="*uid://b065htlq3swpc"
 PowerManager="*uid://ear7df81rs55"
 GameSettings="*uid://c1jaxnffettwi"
+MusicManager="*uid://bit3bwqamb6ho"
 
 [input]
 
