@@ -9,8 +9,13 @@ var _current_target: Node = null
 @onready var camera_arm: SpringArm3D = $SpringArm3D
 @onready var raycast: RayCast3D = $SpringArm3D/Camera3D/RayCast3D
 @onready var placement: Placement = $Placement
-@onready var Audiostep: AudioStreamPlayer3D = $Audiostep
-@onready var Audiojump: AudioStreamPlayer3D = $Audiojump
+@onready var audio_step: AudioStreamPlayer3D = $Audiostep
+@onready var audio_jump: AudioStreamPlayer3D = $Audiojump
+@onready var audio_jetpack: AudioStreamPlayer3D = $Anchor/JetPack/Audio
+@onready var jetpack_flame: GPUParticles3D = $Anchor/JetPack/Flame
+@onready var anim : AnimationPlayer = $Anchor/mesh/AnimationPlayer
+@onready var mesh : Node3D = $Anchor/mesh
+@onready var anchor: Node3D = $Anchor
 
 var hud_layer: HUD
 var debug_panel: DebugPanel
@@ -33,13 +38,11 @@ var _time_since_damage: float = 0
 @export var jetpack_drain_rate: float = 20.0   # fuel/sec while thrusting
 @export var jetpack_regen_rate: float = 15.0   # fuel/sec while on ground
 var jetpack_fuel: float
+var jetpack_active: bool = false
 
 var _active_zones: Dictionary = {}
 
 var loot_bag_scene: PackedScene = preload("res://Props/LootBag/loot_bag.tscn")
-
-@onready var anim : AnimationPlayer = $mesh/AnimationPlayer
-@onready var mesh : Node3D = $mesh
 
 var upgrades: Dictionary = {
 	"heat_resistance": 0.0,
@@ -118,8 +121,8 @@ func _update_animation() -> void:
 
 func _process_movement(delta: float) -> void:
 	if _current_state == State.DEAD:
-		if Audiostep.playing:
-			Audiostep.stop()
+		if audio_step.playing:
+			audio_step.stop()
 		return
 
 	# Gravity
@@ -129,12 +132,16 @@ func _process_movement(delta: float) -> void:
 	# Tap = instant jump (free, no fuel)
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
-		Audiojump.play()
+		audio_jump.play()
 
 	# Hold = jetpack thrust (costs fuel, works mid-air)
 	if Input.is_action_pressed("jump") and not is_on_floor() and jetpack_fuel > 0.0:
 		velocity.y += jetpack_thrust * delta
 		jetpack_fuel = maxf(jetpack_fuel - jetpack_drain_rate * delta, 0.0)
+		jetpack_active = true
+	else:
+		jetpack_active = false
+	_update_jetpack()
 
 	# Fuel regenerates only on the ground
 	if is_on_floor():
@@ -146,20 +153,29 @@ func _process_movement(delta: float) -> void:
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
-		var target_angle = atan2(velocity.x, velocity.z)
-		mesh.global_rotation.y = lerp_angle(mesh.global_rotation.y, target_angle, 10.0 * delta)
+		var target_angle = atan2(-velocity.x, -velocity.z)
+		anchor.global_rotation.y = lerp_angle(anchor.global_rotation.y, target_angle, 10.0 * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 
 	var est_en_mouvement := Vector2(velocity.x, velocity.z).length() > 0.1
 	if is_on_floor() and est_en_mouvement:
-		if not Audiostep.playing:
-			Audiostep.play()
+		if not audio_step.playing:
+			audio_step.play()
 	else:
-		if Audiostep.playing:
-			Audiostep.stop()
+		if audio_step.playing:
+			audio_step.stop()
 
+func _update_jetpack() -> void:
+	if jetpack_active:
+		if not audio_jetpack.playing:
+			audio_jetpack.play()
+		jetpack_flame.emitting = true
+	else:
+		if audio_jetpack.playing:
+			audio_jetpack.stop()
+		jetpack_flame.emitting = false
 
 func raycast_check() -> void:
 	if raycast.is_colliding():

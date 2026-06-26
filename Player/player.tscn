@@ -7,10 +7,36 @@
 [ext_resource type="AudioStream" uid="uid://spieyelhwx37" path="res://assets/audio/audiostep.wav" id="6_fhl08"]
 [ext_resource type="PackedScene" uid="uid://curw0f4sdaajn" path="res://assets/modele/1.glb" id="7_od3ui"]
 [ext_resource type="AudioStream" uid="uid://rwpvd1xpivrp" path="res://assets/audio/Audiojump.wav" id="7_vtle1"]
+[ext_resource type="AudioStream" uid="uid://dm1b2w66tfaoi" path="res://assets/audio/desert/jetpack.wav" id="8_od3ui"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8lsb0"]
 radius = 0.45
 height = 1.6
+
+[sub_resource type="Gradient" id="Gradient_od3ui"]
+offsets = PackedFloat32Array(0, 0.25, 1)
+colors = PackedColorArray(1, 0.8235294, 0.5294118, 1, 0.99607843, 0.83137256, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kfkoq"]
+gradient = SubResource("Gradient_od3ui")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xvn3t"]
+lifetime_randomness = 0.33
+direction = Vector3(0, -1, 0)
+spread = 20.0
+initial_velocity_min = 3.0
+initial_velocity_max = 7.0
+color_ramp = SubResource("GradientTexture1D_kfkoq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qfhvn"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_8lsb0"]
+material = SubResource("StandardMaterial3D_qfhvn")
+size = Vector2(0.25, 0.25)
 
 [node name="Player" type="CharacterBody3D" unique_id=1614768388]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
@@ -55,10 +81,12 @@ volume_db = -16.884
 [node name="AudioListener3D" type="AudioListener3D" parent="." unique_id=675292511]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 
-[node name="mesh" parent="." unique_id=2054055575 instance=ExtResource("7_od3ui")]
+[node name="Anchor" type="Node3D" parent="." unique_id=886751371]
+
+[node name="mesh" parent="Anchor" unique_id=2054055575 instance=ExtResource("7_od3ui")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.8, 0)
 
-[node name="Skeleton3D" parent="mesh/RIG-Cloud_Human" parent_id_path=PackedInt32Array(2054055575, 751369930) index="1" unique_id=1952088681]
+[node name="Skeleton3D" parent="Anchor/mesh/RIG-Cloud_Human" parent_id_path=PackedInt32Array(2054055575, 751369930) index="1" unique_id=1952088681]
 bones/2/position = Vector3(-0.3880613, 0.061234668, 0.5650014)
 bones/2/scale = Vector3(0, 0, 0)
 bones/4/rotation = Quaternion(0.7071068, 0, 0, 0.7071068)
@@ -748,4 +776,18 @@ bones/519/rotation = Quaternion(0.99913335, 0.011794345, -0.023701712, -0.032121
 bones/521/position = Vector3(-0.15058051, 0.024898544, 0.108597785)
 bones/521/rotation = Quaternion(0.7938572, -0.012721711, -0.008879651, 0.6079063)
 
-[editable path="mesh"]
+[node name="JetPack" type="Node3D" parent="Anchor" unique_id=1865559583]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.27675992)
+
+[node name="Flame" type="GPUParticles3D" parent="Anchor/JetPack" unique_id=1860763298]
+amount = 50
+lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_xvn3t")
+draw_pass_1 = SubResource("QuadMesh_8lsb0")
+
+[node name="Audio" type="AudioStreamPlayer3D" parent="Anchor/JetPack" unique_id=2018569435]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
+stream = ExtResource("8_od3ui")
+volume_db = -4.156
+
+[editable path="Anchor/mesh"]
