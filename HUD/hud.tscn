@@ -24,9 +24,26 @@ color = Color(1, 0, 0, 0)
 
 [node name="TaskUI" parent="." unique_id=1609663277 instance=ExtResource("2_2q3se")]
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=585950824]
+custom_maximum_size = Vector2(3, 3)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.5019608)
+
 [node name="SpinReactorUI" parent="." unique_id=606762906 instance=ExtResource("6_tnm0g")]
+visible = false
 
 [node name="ResearchUI" parent="." unique_id=2031661573 instance=ExtResource("5_1rsjr")]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -34,6 +51,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 
 [node name="InventoryHUD" parent="." unique_id=1233354875 instance=ExtResource("2_mi5n8")]
+visible = false
 
 [node name="PopupRoot" type="Control" parent="." unique_id=1000566685]
 layout_mode = 3
@@ -51,6 +69,7 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="BiomeUI" parent="." unique_id=1225038517 instance=ExtResource("6_ncsg0")]
+visible = false
 
 [node name="CinematicPlayer" type="VideoStreamPlayer" parent="." unique_id=1299268508]
 anchors_preset = 15
@@ -67,6 +86,7 @@ anchor_right = 1.0
 grow_horizontal = 0
 
 [node name="BuildLabel" type="Label" parent="." unique_id=470062400]
+visible = false
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 1.0
@@ -80,7 +100,9 @@ theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 24
 
 [node name="PauseMenu" parent="." unique_id=367750826 instance=ExtResource("8_6dvid")]
+visible = false
 
 [node name="SkillCheck" parent="." unique_id=731756043 instance=ExtResource("9_y0nqa")]
+visible = false
 
 [connection signal="finished" from="CinematicPlayer" to="." method="_on_cinematic_player_finished"]
