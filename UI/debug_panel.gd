@@ -19,9 +19,16 @@ var player: Player
 var player_inventory: Inventory
 var main: MainManager = null
 
+var debug_enabled: bool = false
+
 const ITEMS = ["iron", "copper", "titanium", "tungsten", "iron_bar", "copper_bar", "titanium_bar", "tungsten_bar"]
 
 func _ready():
+	debug_enabled = OS.has_feature("debug")
+	if not debug_enabled:
+		hide()
+		return
+		
 	player = get_tree().get_first_node_in_group("player")
 	player_inventory = player.get_node("Inventory")
 	for item in ITEMS:
@@ -34,8 +41,11 @@ func _ready():
 	assert(main != null)
 	hide()
 
+func show_debug_panel(shown: bool) -> void:
+	visible = shown and debug_enabled
+
 func _input(event):
-	if event.is_action_pressed("debug"):   # bind F3 in InputMap
+	if event.is_action_pressed("debug") and debug_enabled:   # bind F3 in InputMap
 		visible = !visible
 		_refresh()
 
