@@ -49,12 +49,12 @@ grow_vertical = 2
 [node name="MainMenuButton" type="Button" parent="VBoxContainer" unique_id=257923491]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Main Menu"
+text = " Main Menu "
 
 [node name="CreditButton" type="Button" parent="VBoxContainer" unique_id=463156284]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Main Menu"
+text = "Credits"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=177359198]
 layout_mode = 2
@@ -62,6 +62,7 @@ theme_override_font_sizes/font_size = 32
 text = "Quit"
 
 [node name="Credits" parent="." unique_id=688799154 instance=ExtResource("3_rq2kn")]
+visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

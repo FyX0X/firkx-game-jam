@@ -52,12 +52,12 @@ text = "OPTIONS"
 [node name="InstructionButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1699694542]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "INSTRUCTION"
+text = " INSTRUCTIONS "
 
 [node name="CreditsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2029505559]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "INSTRUCTION"
+text = "CREDITS"
 
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=42044626]
 layout_mode = 2
