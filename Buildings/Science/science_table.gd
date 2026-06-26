@@ -13,9 +13,9 @@ const science_values : Dictionary = {
 
 const science_needed : Dictionary = {
 	"iron" : 0,
-	"titanium" : 50,
-	"copper" : 100,
-	"tungsten" : 250,
+	"titanium" : 75,
+	"copper" : 50,
+	"tungsten" : 150,
 }
 
 @onready var attention_grabber: AttentionGrabber = $AttentionGrabber

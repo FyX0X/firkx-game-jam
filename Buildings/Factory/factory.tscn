@@ -29,7 +29,7 @@ recipe = {
 "time": 1.5
 }
 cost = {
-"iron": 30
+"iron": 20
 }
 energy = -5
 metadata/_edit_group_ = true

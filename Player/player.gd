@@ -21,7 +21,7 @@ var hud_layer: HUD
 var debug_panel: DebugPanel
 var spawnpoint: Node3D
 
-@export var speed = 5.0
+@export var speed = 6.5
 @export var jump_velocity = 4.5
 @export var mouse_sensitivity: float = 0.003
 @export var tilt_limit = deg_to_rad(75)
@@ -155,14 +155,18 @@ func _process_movement(delta: float) -> void:
 	# Horizontal movement
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	var current_speed = speed
+	if jetpack_active:
+		current_speed = speed * 2
 	if direction:
-		velocity.x = direction.x * speed
-		velocity.z = direction.z * speed
+		velocity.x = direction.x * current_speed
+		velocity.z = direction.z * current_speed
 		var target_angle = atan2(-velocity.x, -velocity.z)
 		anchor.global_rotation.y = lerp_angle(anchor.global_rotation.y, target_angle, 10.0 * delta)
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		velocity.z = move_toward(velocity.z, 0, speed)
+		velocity.x = move_toward(velocity.x, 0, current_speed)
+		velocity.z = move_toward(velocity.z, 0, current_speed)
 
 	var est_en_mouvement := Vector2(velocity.x, velocity.z).length() > 0.1
 	if is_on_floor() and est_en_mouvement:

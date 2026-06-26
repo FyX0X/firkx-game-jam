@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ccafhp5bef5b3" path="res://Buildings/buildings.tscn" id="1_p4g2w"]
 [ext_resource type="Script" uid="uid://d2uouubruf6vf" path="res://Buildings/Drills/drill.gd" id="2_3rq8i"]
 [ext_resource type="AudioStream" uid="uid://d1nreb4lacrhl" path="res://assets/audio/Audiodrill.wav" id="3_ng00e"]
-[ext_resource type="PackedScene" uid="uid://cp770mviebndv" path="res://assets/modele/Foreuse1610.glb" id="4_6uugn"]
+[ext_resource type="PackedScene" uid="uid://uo10e1hfwtwj" path="res://assets/modele/foreuseanim.glb" id="4_6uugn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mm1bc"]
 size = Vector3(2.4506836, 5.2546387, 2.6556396)
@@ -46,18 +46,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.3232517)
 stream = ExtResource("3_ng00e")
 volume_db = -16.884
 
-[node name="Mesh" parent="." index="6" unique_id=1520077276 instance=ExtResource("4_6uugn")]
+[node name="Mesh" parent="." index="6" unique_id=1747559233 instance=ExtResource("4_6uugn")]
 
-[node name="Plane_001" parent="Mesh/Volume" parent_id_path=PackedInt32Array(1520077276, 516275674) index="5" unique_id=1729102522]
-transform = Transform3D(0.21368165, -2.4228443e-08, -0.017038615, -1.8739936e-08, -0.21435982, 6.979601e-08, -0.017038615, -6.808559e-08, -0.21368165, 0, 3.6436436, 1.3207856)
+[node name="poteau" parent="Mesh/Volume" parent_id_path=PackedInt32Array(1747559233, 97112742) index="5" unique_id=593998237]
+transform = Transform3D(0.21368161, -3.3198915e-09, -0.01703859, 3.3198917e-09, -0.21435982, 8.340194e-08, -0.017038587, -8.3401936e-08, -0.21368161, 1.3080316e-14, 3.680205, 2.390123)
 
-[node name="Cube_003" parent="Mesh/Volume/Plane_002" parent_id_path=PackedInt32Array(1520077276, 51512688) index="0" unique_id=1457319358]
-transform = Transform3D(0.663543, 0.5987303, 0.3569256, -0.6910127, 0.62971854, 0.22829618, -0.09151833, -0.41368982, 0.86408836, -1.2531849, 7.8238373, 0.85905147)
+[node name="elice1" parent="Mesh/Volume/poteau" index="0" unique_id=1205222969]
+transform = Transform3D(0.66354305, 0.5987303, 0.35692558, -0.6910126, 0.6297186, 0.22829618, -0.09151836, -0.41368982, 0.86408836, -1.2531849, 7.8238373, 0.85905147)
 
-[node name="Cube_004" parent="Mesh/Volume/Plane_002" parent_id_path=PackedInt32Array(1520077276, 51512688) index="1" unique_id=218138494]
-transform = Transform3D(-0.69383436, -0.65580827, 0.121130414, -0.65117013, 0.6284575, -0.32738644, 0.14399543, -0.31799325, -0.8968329, 1.373483, 7.8238373, 0.64960563)
+[node name="elice2" parent="Mesh/Volume/poteau" index="1" unique_id=1351743244]
+transform = Transform3D(-0.95932883, 0.054090276, -0.054090157, 9.859085e-08, 0.68050104, 0.6805006, 0.07649514, 0.67834765, -0.6783479, -0.11526194, 7.8238363, -1.4455062)
 
-[node name="Cube_005" parent="Mesh/Volume/Plane_002" parent_id_path=PackedInt32Array(1520077276, 51512688) index="2" unique_id=1837375629]
-transform = Transform3D(-0.95932883, 0.054090273, -0.054090172, 1.093462e-07, 0.6805012, 0.68050045, 0.07649515, 0.6783474, -0.67834806, -0.11526195, 7.8238363, -1.4455053)
+[node name="elice3" parent="Mesh/Volume/poteau" index="2" unique_id=1978218081]
+transform = Transform3D(-0.69383436, -0.6558084, 0.121130414, -0.65117025, 0.62845737, -0.3273865, 0.14399554, -0.31799328, -0.8968329, 1.3734825, 7.823837, 0.6496038)
 
 [editable path="Mesh"]

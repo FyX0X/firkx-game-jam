@@ -7,10 +7,10 @@ var outputs : Dictionary = {}
 
 
 const recipes : Dictionary = {
-	"iron" : {"input" : {"iron" : 2}, "output" : {"iron_bar" : 1}, "time" : 3},
-	"titanium" : {"input" : {"titanium" : 2}, "output" : {"titanium_bar" : 1}, "time" : 4},
-	"copper" : {"input": {"copper" : 2}, "output" : {"copper_bar" : 1}, "time" : 3},
-	"tungsten" :{"input" : {"tungsten" : 2}, "output" : {"tungsten_bar" : 1}, "time" : 3},
+	"iron" : {"input" : {"iron" : 2}, "output" : {"iron_bar" : 1}, "time" : 1.5},
+	"titanium" : {"input" : {"titanium" : 2}, "output" : {"titanium_bar" : 1}, "time" : 1.5},
+	"copper" : {"input": {"copper" : 2}, "output" : {"copper_bar" : 1}, "time" : 1.5},
+	"tungsten" :{"input" : {"tungsten" : 2}, "output" : {"tungsten_bar" : 1}, "time" : 1.5},
 }
 
 const ores = ["iron", "titanium", "copper", "tungsten"]
@@ -36,18 +36,23 @@ func _process(delta: float) -> void:
 			
 
 func _on_inventory_changed():
-	var keys = inventory.get_all_items().keys()
-	for item in keys:
-		if item in ores:
-			recipe = recipes[item]
-			return
+	_update_recipe()
+
+func _update_recipe() -> void:
+	if not recipe.is_empty() and _can_process_recipe(recipe):
+		return
+		
+	for ore in ores:
+		if recipes.has(ore):
+			var test_recipe = recipes[ore]
+			if _can_process_recipe(test_recipe):
+				recipe = test_recipe
+				return
+				
+	recipe = {}
 
 func _can_process() -> bool:
-	for item in recipe["input"]:
-		var amount_needed = recipe["input"][item]
-		if not inventory.get_all_items().has(item) or inventory.get_all_items()[item] < amount_needed:
-			return false
-	return true
+	return _can_process_recipe(recipe)
 
 func _finish_processing() -> void:
 	for item in recipe["input"]:
@@ -56,7 +61,18 @@ func _finish_processing() -> void:
 	for item in recipe["output"]:
 		inventory.add_item(item, recipe["output"][item])
 	buffer -= recipe["time"]
-
+func _can_process_recipe(r: Dictionary) -> bool:
+	if r.is_empty() or not r.has("input"):
+		return false
+		
+	var items = inventory.get_all_items()
+	for item in r["input"]:
+		var amount_needed = r["input"][item]
+		# On vérifie si l'item est présent ET si sa quantité est suffisante
+		if not items.has(item) or items[item] < amount_needed:
+			return false
+	return true
+	
 func set_recipe(new_recipe : Dictionary):
 	recipe = new_recipe
 	

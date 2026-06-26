@@ -6,7 +6,7 @@ extends Ore
 
 signal resource_yielded(ore_type: Ore.OreType, amount: int)
 
-@export var total_yield: int = 8
+@export var total_yield: int = 15
 
 var remaining_yield: int
 
