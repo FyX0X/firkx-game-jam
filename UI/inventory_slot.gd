@@ -3,19 +3,19 @@ extends Panel
 
 signal slot_clicked(item_id: String, mouse_button: MouseButton)
 
-@onready var icon_label: Label = $VBoxContainer/Icon
-@onready var count_label: Label = $VBoxContainer/Count
+@onready var icon_label: Label = $Icon
+@onready var count_label: Label = $Count
 
 var index: int = 0
 var current_item: String = ""
 
 func _ready():
-	custom_minimum_size = Vector2(64, 64)
+	# custom_minimum_size = Vector2(64, 64)
 	count_label.text = ""
 
 func set_item(item_id: String, amount: int):
 	current_item = item_id
-	icon_label.text = item_id
+	icon_label.text = StringUtils.get_pretty_string(item_id)
 	count_label.text = "×" + str(amount)
 	modulate.a = 1.0
 

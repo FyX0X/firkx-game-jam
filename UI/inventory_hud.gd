@@ -50,7 +50,9 @@ func close() -> void:
 	_set_ui_mode(false)
 
 func _update_cursor_label(show: bool) -> void:
-	cursor_label.text = _grabbed_item + "  ×" + str(_grabbed_count) if _grabbed_item != "" else ""
+	cursor_label.text = StringUtils.get_pretty_string(_grabbed_item)
+	if _grabbed_count > 0:
+		cursor_label.text += "  ×" + str(_grabbed_count)
 	cursor_label.visible = show
 
 
