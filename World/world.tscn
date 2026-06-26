@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cs70tj0ip3v0t" path="res://SpinReactor/hologram_timer.tscn" id="13_awrha"]
 [ext_resource type="PackedScene" uid="uid://cge462m4fg0tl" path="res://Props/OreVein/ore_vein.tscn" id="14_f23eu"]
 [ext_resource type="PackedScene" uid="uid://c01uo1kbl6f1i" path="res://Props/BigOre/big_ore.tscn" id="15_oeat8"]
+[ext_resource type="PackedScene" uid="uid://cg7ubplrxa222" path="res://Buildings/Drills/broken_drill.tscn" id="16_oeat8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oeat8"]
 size = Vector3(163, 214, 676)
@@ -49,9 +50,9 @@ size = Vector2(1.5, 1.5)
 [node name="Map" parent="." unique_id=1357227159 groups=["ground"] instance=ExtResource("1_eidgh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4197885, 0, -2.2512207)
 
-[node name="Plane" parent="Map" index="0" unique_id=588477509 groups=["ground"]]
+[node name="Plane" parent="Map" index="0" unique_id=347656506 groups=["ground"]]
 
-[node name="StaticBody3D" parent="Map/Plane" index="0" unique_id=1464626534 groups=["ground"]]
+[node name="StaticBody3D" parent="Map/Plane" index="0" unique_id=183575665 groups=["ground"]]
 
 [node name="Desert" parent="." unique_id=1738022576 instance=ExtResource("2_oe8m4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -234.0416, 0, 0)
@@ -226,6 +227,13 @@ type = 3
 [node name="BigOre3" parent="Features/BigOres/TungstenClump" unique_id=2083619418 instance=ExtResource("15_oeat8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.18227, -6.8204875, -14.559631)
 type = 3
+
+[node name="Broken" type="Node3D" parent="Features" unique_id=2131178746]
+transform = Transform3D(-0.93036205, 0, 0.36664215, 0, 1, 0, -0.36664215, 0, -0.93036205, -52.97913, 1.2542391, -76.47773)
+
+[node name="BigOre" parent="Features/Broken" unique_id=833031385 instance=ExtResource("15_oeat8")]
+
+[node name="BrokenDrill" parent="Features/Broken" unique_id=243835565 instance=ExtResource("16_oeat8")]
 
 [editable path="Map"]
 [editable path="Desert"]
