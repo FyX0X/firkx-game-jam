@@ -39,7 +39,7 @@ func _ready() -> void:
 	spin_reactor.computer.spin_reactor_open_ui.connect(_on_spin_reactor_opened)
 	hud_layer.pause_menu.unpaused.connect(_toggle_pause)
 	setup_difficulty_parameters()
-	stress_music = preload("res://assets/audio/desert/jetpack.wav")
+	stress_music = preload("res://assets/audio/music/Hot Pursuit.mp3")
 
 
 func setup_difficulty_parameters() -> void:
@@ -66,6 +66,7 @@ func set_state(new_state: GameState) -> void:
 
 func _on_intro_finished() -> void:
 	set_state(GameState.GAME)
+	MusicManager.schedule_next()
 
 func _on_outro_finished() -> void:
 	pass

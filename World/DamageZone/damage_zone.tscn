@@ -17,6 +17,7 @@ shape = SubResource("BoxShape3D_vbaju")
 [node name="AmbienceTimer" type="Timer" parent="." unique_id=1284422830]
 
 [node name="AmbiencePlayer" type="AudioStreamPlayer" parent="." unique_id=1604297854]
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -17,3 +17,4 @@ mesh = SubResource("SphereMesh_qfhvn")
 shape = SubResource("SphereShape3D_8lsb0")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1511737486]
+bus = &"SFX"

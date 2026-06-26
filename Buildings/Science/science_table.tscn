@@ -17,6 +17,7 @@ inventory_name = "Science Table"
 
 [node name="Audioscience" type="AudioStreamPlayer3D" parent="." index="3" unique_id=908845961]
 stream = ExtResource("3_wqs34")
+bus = &"SFX"
 
 [node name="AttentionGrabber" parent="." index="4" unique_id=754601093 instance=ExtResource("4_556th")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -4,30 +4,33 @@ extends Node
 @onready var timer: Timer = $Timer
 
 @export var idle_delay_min: float = 5.0   # min silence before next random track
-@export var idle_delay_max: float = 15.0  # max silence before next random track
+@export var idle_delay_max: float = 10.0  # max silence before next random track
 
 var _current_stream: AudioStream = null
 var _playlist: Array[AudioStream] = []
 
 
 func _ready() -> void:
-	audio_player.finished.connect(_schedule_next)
+	audio_player.finished.connect(schedule_next)
 	timer.timeout.connect(_play_next_random)
 	
 	# load playlist
-	_playlist.append(preload("res://assets/audio/Audiodrill.wav"))
-	_playlist.append(preload("res://assets/audio/desert/desert1.wav"))
-	_playlist.append(preload("res://assets/audio/gameover.wav"))
-	_playlist.append(preload("res://assets/audio/miningsound.wav"))
+	_playlist.append(preload("res://assets/audio/music/Half Mystery.mp3"))
+	# _playlist.append(preload("res://assets/audio/music/Hot Pursuit.mp3"))
+	_playlist.append(preload("res://assets/audio/music/Newer Wave.mp3"))
+	_playlist.append(preload("res://assets/audio/music/Odyssey.mp3"))
+	# _playlist.append(preload("res://assets/audio/music/Rynos Theme.mp3"))
+	_playlist.append(preload("res://assets/audio/music/Space Jazz.mp3"))
+	_playlist.append(preload("res://assets/audio/music/Super Power Cool Dude.mp3"))
+	_playlist.append(preload("res://assets/audio/music/Vibing Over Venus.mp3"))
 	
-	
-	# start random playlist
-	_schedule_next()
 
 
 func play(stream: AudioStream, fade_in: float = 0.0) -> void:
 	if stream == _current_stream:
 		return  # already playing this track, do nothing
+	
+	print("now playing: " + str(stream))
 	
 	_current_stream = stream
 	audio_player.stream = stream
@@ -50,13 +53,13 @@ func stop(fade_out: float = 0.0) -> void:
 func crossfade(stream: AudioStream, duration: float = 1.0) -> void:
 	if stream == _current_stream:
 		return
-	stop(duration / 2.0)
+	stop(duration / 3.0)
 	await get_tree().create_timer(duration / 2.0).timeout
-	play(stream, duration / 2.0)
+	play(stream, duration / 3.0)
 
 # --- Internals ---
 
-func _schedule_next() -> void:
+func schedule_next() -> void:
 	print("schedule next")
 	_current_stream = null
 	var delay := randf_range(idle_delay_min, idle_delay_max)

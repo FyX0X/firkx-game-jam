@@ -109,6 +109,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5260506, -0.84044224)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.723866, -21.618114)
 stream = ExtResource("8_eajpp")
 volume_db = 10.0
+bus = &"SFX"
 
 [node name="Flame" type="GPUParticles3D" parent="." unique_id=937425068]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 37.620335, -20.7679)

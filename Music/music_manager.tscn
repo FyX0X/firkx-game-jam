@@ -6,5 +6,7 @@
 script = ExtResource("1_wto64")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=564222065]
+bus = &"Music"
 
 [node name="Timer" type="Timer" parent="." unique_id=584547769]
+one_shot = true
