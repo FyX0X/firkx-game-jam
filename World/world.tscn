@@ -11,9 +11,9 @@
 [ext_resource type="Shader" uid="uid://bad8et5axb6uq" path="res://World/space_sky.gdshader" id="9_w47uh"]
 [ext_resource type="Script" uid="uid://dg0en308l7jmg" path="res://World/world_environment.gd" id="10_lo5ox"]
 [ext_resource type="PackedScene" uid="uid://bjs046nlul1cb" path="res://SpinReactor/spin_reactor.tscn" id="11_lo5ox"]
-[ext_resource type="PackedScene" uid="uid://ck1wu4mc4g1v8" path="res://assets/modele/Ship.glb" id="12_0wqet"]
 [ext_resource type="PackedScene" uid="uid://cs70tj0ip3v0t" path="res://SpinReactor/hologram_timer.tscn" id="13_awrha"]
 [ext_resource type="PackedScene" uid="uid://cge462m4fg0tl" path="res://Props/OreVein/ore_vein.tscn" id="14_f23eu"]
+[ext_resource type="PackedScene" uid="uid://b3yoll13aqy0m" path="res://assets/modele/vaisseau_final.glb" id="15_5xkvv"]
 [ext_resource type="PackedScene" uid="uid://c01uo1kbl6f1i" path="res://Props/BigOre/big_ore.tscn" id="15_oeat8"]
 [ext_resource type="PackedScene" uid="uid://cg7ubplrxa222" path="res://Buildings/Drills/broken_drill.tscn" id="16_oeat8"]
 
@@ -83,22 +83,6 @@ transform = Transform3D(0.9104929, 0.20018484, -0.3618408, 0.35339975, 0.0777000
 
 [node name="SpinReactor" parent="." unique_id=931180037 instance=ExtResource("11_lo5ox")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.627487, 2.5598578, -95.53719)
-
-[node name="Ship" parent="." unique_id=1746031010 instance=ExtResource("12_0wqet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.13884, 0.679379, -67.5786)
-
-[node name="SpawnPoint" type="Node3D" parent="Ship" unique_id=98376075 groups=["spawn"]]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.21749878, 2.3163395, 0)
-
-[node name="OuterHologram" parent="Ship" unique_id=859679615 instance=ExtResource("13_awrha")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.25856, 0)
-
-[node name="InnerHologram" parent="Ship" unique_id=698073666 instance=ExtResource("13_awrha")]
-transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 4.127201, 3.1585789, 0)
-billboard = false
-
-[node name="MeshInstance3D" parent="Ship/InnerHologram" index="0" unique_id=1989442769]
-mesh = SubResource("QuadMesh_f23eu")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1555436626]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.994904, -9.192863, 0)
@@ -235,7 +219,24 @@ transform = Transform3D(-0.93036205, 0, 0.36664215, 0, 1, 0, -0.36664215, 0, -0.
 
 [node name="BrokenDrill" parent="Features/Broken" unique_id=243835565 instance=ExtResource("16_oeat8")]
 
+[node name="Ship" parent="." unique_id=1310550304 instance=ExtResource("15_5xkvv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.139, 0.679, -67.579)
+
+[node name="SpawnPoint" type="Node3D" parent="Ship" unique_id=98376075 groups=["spawn"]]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.21733856, 2.3167186, 0.0004043579)
+
+[node name="OuterHologram" parent="Ship" unique_id=859679615 instance=ExtResource("13_awrha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00016021729, 17.258938, 0.0004043579)
+
+[node name="InnerHologram" parent="Ship" unique_id=698073666 instance=ExtResource("13_awrha")]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 4.1273613, 3.158958, 0.0004043579)
+billboard = false
+
+[node name="MeshInstance3D" parent="Ship/InnerHologram" index="0" unique_id=1989442769]
+mesh = SubResource("QuadMesh_f23eu")
+
 [editable path="Map"]
 [editable path="Desert"]
 [editable path="Cold"]
+[editable path="Ship"]
 [editable path="Ship/InnerHologram"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ccafhp5bef5b3" path="res://Buildings/buildings.tscn" id="1_0rx1q"]
 [ext_resource type="Script" uid="uid://c0p7oxvv8ci0x" path="res://Buildings/Pole/pole.gd" id="2_ij4cs"]
-[ext_resource type="PackedScene" uid="uid://df25ioa2m347g" path="res://assets/modele/pole.glb" id="3_0n5a7"]
+[ext_resource type="PackedScene" uid="uid://ltwfeyyhw7og" path="res://assets/modele/poteaux_final.glb" id="3_0n5a7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mm1bc"]
 size = Vector3(0.19372559, 6.261963, 0.19665527)
@@ -34,7 +34,6 @@ shape = SubResource("BoxShape3D_4kxuq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00039672852, -0.46452338, -0.0014179721)
 shape = SubResource("BoxShape3D_mti6b")
 
-[node name="Mesh" parent="." index="4" unique_id=249159085 instance=ExtResource("3_0n5a7")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+[node name="Mesh" parent="." index="4" unique_id=738996262 instance=ExtResource("3_0n5a7")]
 
 [editable path="Mesh"]
