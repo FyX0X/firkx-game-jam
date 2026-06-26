@@ -87,7 +87,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.627487, 2.5598578, -95.53
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.13884, 0.679379, -67.5786)
 
 [node name="SpawnPoint" type="Node3D" parent="Ship" unique_id=98376075 groups=["spawn"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21749878, 13.084766, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.21749878, 2.3163395, 0)
 
 [node name="OuterHologram" parent="Ship" unique_id=859679615 instance=ExtResource("13_awrha")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.25856, 0)

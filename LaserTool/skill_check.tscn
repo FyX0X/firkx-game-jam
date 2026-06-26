@@ -13,3 +13,19 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_k7vuq")
+
+[node name="Label" type="Label" parent="." unique_id=11448941]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.000008
+offset_top = 43.0
+offset_right = 53.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press space"
+horizontal_alignment = 1

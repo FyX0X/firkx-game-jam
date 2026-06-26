@@ -23,6 +23,7 @@ func _populate_difficulty() -> void:
 		
 		# Add the item to the dropdown, using the enum value as its ID
 		difficulty_selector.add_item(display_name, enum_value)
+	difficulty_selector.select(GameSettings.difficulty)
 	
 
 func _on_play_button_pressed() -> void:

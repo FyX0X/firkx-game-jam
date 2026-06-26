@@ -43,7 +43,7 @@ func setup_difficulty_parameters() -> void:
 	time_left = GameSettings.time_limit[GameSettings.difficulty]
 	inner_hologram_timer.set_message(GameSettings.hologram_msg[GameSettings.difficulty])
 	outer_hologram_timer.set_message(GameSettings.hologram_msg[GameSettings.difficulty])
-	if GameSettings.difficulty == GameSettings.Difficulty.NORMAL:
+	if GameSettings.difficulty == GameSettings.Difficulty.EASY:
 		inner_hologram_timer.set_time_visibility(false)
 		outer_hologram_timer.set_time_visibility(false)
 	
@@ -57,7 +57,7 @@ func set_state(new_state: GameState) -> void:
 			player.active = false
 			hud_layer.play_cinematic(true, _on_intro_finished)
 		GameState.GAME:
-			timer_running = GameSettings.difficulty != GameSettings.Difficulty.NORMAL
+			timer_running = GameSettings.difficulty != GameSettings.Difficulty.EASY
 			player.active = true
 			player.set_state(Player.State.NORMAL)
 

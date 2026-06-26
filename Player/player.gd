@@ -309,6 +309,7 @@ func die() -> void:
 func respawn() -> void:
 	set_state(State.NORMAL)
 	global_position = spawnpoint.global_position
+	global_rotate(Vector3(0,1,0),-deg_to_rad(90))
 	health = max_health
 	jetpack_fuel = jetpack_max_fuel   # refuel on respawn
 	_time_since_damage = heal_time
