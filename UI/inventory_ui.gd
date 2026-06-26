@@ -4,7 +4,7 @@ signal slot_picked(inventory: Inventory, item_id: String, mouse_button: MouseBut
 signal slot_dropped(inventory: Inventory, item_id: String, mouse_button: MouseButton)
 
 @onready var grid: GridContainer = $VBoxContainer/GridContainer
-@onready var detail_label: Label = $VBoxContainer/DetailLabel
+# @onready var detail_label: Label = $VBoxContainer/DetailLabel
 @onready var title_label: Label = $VBoxContainer/TitleLabel
 
 var inventory: Inventory
@@ -49,13 +49,15 @@ func clear_selection() -> void:
 func _on_inventory_changed():
 	refresh()
 
+# func set_detail_label(text: String) -> void:
+#	detail_label.text = text
+
 func _on_slot_clicked(item_id: String, mouse_button: MouseButton, slot: InventorySlot) -> void:
 	print("inventory:", inventory)
 	print("valid:", is_instance_valid(inventory))
 	print("class:", inventory.get_class() if is_instance_valid(inventory) else "invalid")
 	print("script:", inventory.get_script() if is_instance_valid(inventory) else "invalid")
-	if detail_label:
-		detail_label.text = item_id + "  ×" + str(inventory.get_amount(item_id)) if item_id != "" else ""
+	#	set_detail_label(item_id)
 	if item_id != "":
 		slot_picked.emit(inventory, item_id, mouse_button, slot)
 	else:

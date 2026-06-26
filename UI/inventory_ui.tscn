@@ -57,8 +57,3 @@ layout_mode = 2
 
 [node name="InventorySlot10" parent="VBoxContainer/GridContainer" unique_id=480803677 instance=ExtResource("2_l6l0t")]
 layout_mode = 2
-
-[node name="DetailLabel" type="Label" parent="VBoxContainer" unique_id=1339500203]
-layout_mode = 2
-offset_transform_enabled = true
-text = "Label"

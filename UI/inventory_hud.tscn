@@ -12,11 +12,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ux8e0")
 
-[node name="CursorLabel" type="Label" parent="." unique_id=1160100410]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
 [node name="LeftInventoryUI" parent="." unique_id=1944066177 instance=ExtResource("2_f0n0s")]
 layout_mode = 1
 anchors_preset = 4
@@ -34,3 +29,10 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="CursorLabel" type="Label" parent="." unique_id=1160100410]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
