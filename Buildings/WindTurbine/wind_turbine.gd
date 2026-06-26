@@ -11,7 +11,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	super(delta)
 	if not is_hologram and not anim.is_playing():
-		anim.play("eliceanimAction")
+		anim.play("Windturbine")
 	pass
 
 func interact(player: Player) -> void:
