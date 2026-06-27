@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://d3gn47wim1xkd" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dqbniuv054ai1" path="res://HUD/hud.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://uf7ty78xegu4" path="res://World/world.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bos2p10lk843e" path="res://Tasks/task_manager.tscn" id="5_lquwl"]
 
 [node name="Main" type="Node" unique_id=761649392]
 script = ExtResource("1_1bvp3")
@@ -12,5 +13,8 @@ script = ExtResource("1_1bvp3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.715773, 28.416573, -3.8758326)
 
 [node name="HUD" parent="." unique_id=594591012 instance=ExtResource("3_h2yge")]
+MAX_MESSAGES = 5
 
 [node name="World" parent="." unique_id=10638356 instance=ExtResource("4_1bvp3")]
+
+[node name="TaskManager" parent="." unique_id=352262385 instance=ExtResource("5_lquwl")]

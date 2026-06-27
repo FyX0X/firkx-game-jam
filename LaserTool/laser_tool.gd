@@ -1,4 +1,7 @@
+class_name LaserTool
 extends Node3D
+
+signal mined_resource(type: String, amount: int)
 
 @export var damage_per_second: float = 30.0
 @onready var player: Player = get_parent()   # adjust path if needed
@@ -159,6 +162,7 @@ func _disconnect_target() -> void:
 func _on_resource_yielded(ore_type: String, amount: int) -> void:
 	print("_on_resource_yielded()")
 	player.pickup_resource(ore_type, amount)
+	mined_resource.emit(ore_type, amount)
 	if pickup_audio:
 		if pickup_audio.playing:
 			pickup_audio.stop()

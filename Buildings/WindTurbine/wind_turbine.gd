@@ -1,3 +1,4 @@
+class_name WindTurbin
 extends Building
 
 @onready var anim : AnimationPlayer = find_child("AnimationPlayer")

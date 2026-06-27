@@ -16,6 +16,7 @@ var _current_target: Node = null
 @onready var anim : AnimationPlayer = $Anchor/mesh/AnimationPlayer
 @onready var mesh : Node3D = $Anchor/mesh
 @onready var anchor: Node3D = $Anchor
+@onready var laser_tool: LaserTool = $LaserTool
 
 var hud_layer: HUD
 var debug_panel: DebugPanel

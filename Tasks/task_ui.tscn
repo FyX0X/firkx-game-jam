@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d1jty8busx8bj"]
+
+[ext_resource type="Script" uid="uid://22w3an68rqtm" path="res://Tasks/task_ui.gd" id="1_f6646"]
+
+[node name="TaskUI" type="PanelContainer" unique_id=1609663277 groups=["task_ui"]]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -252.0
+offset_bottom = 57.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_f6646")
+
+[node name="TaskList" type="VBoxContainer" parent="." unique_id=505840530]
+layout_mode = 2

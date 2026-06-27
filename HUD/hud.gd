@@ -13,6 +13,7 @@ extends CanvasLayer
 @onready var biome_ui: BiomeUI = $BiomeUI
 @onready var pause_menu: PauseMenu = $PauseMenu
 @onready var skill_check : SkillCheck = $SkillCheck
+@onready var task_ui: TaskUI = $TaskUI
 
 const _INTRO_VIDEO: VideoStreamTheora = preload("res://assets/video/intro_long.ogv")
 var end_callable: Callable = Callable()

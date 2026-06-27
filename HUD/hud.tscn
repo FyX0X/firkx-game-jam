@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://s6v8ha85bmj1" path="res://UI/debug_panel.tscn" id="1_h61sl"]
 [ext_resource type="Script" uid="uid://cinlkav6p42d3" path="res://HUD/hud.gd" id="1_yu8mg"]
+[ext_resource type="PackedScene" uid="uid://d1jty8busx8bj" path="res://Tasks/task_ui.tscn" id="2_2q3se"]
 [ext_resource type="PackedScene" uid="uid://br2mjt0381f5f" path="res://UI/inventory_hud.tscn" id="2_mi5n8"]
 [ext_resource type="PackedScene" uid="uid://cx303wd8t3lfy" path="res://UI/build_cost_ui.tscn" id="4_jvmdh"]
 [ext_resource type="PackedScene" uid="uid://dk5yhfhpkq63h" path="res://UI/research_ui.tscn" id="5_1rsjr"]
@@ -20,6 +21,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0, 0, 0)
+
+[node name="TaskUI" parent="." unique_id=1609663277 instance=ExtResource("2_2q3se")]
 
 [node name="SpinReactorUI" parent="." unique_id=606762906 instance=ExtResource("6_tnm0g")]
 
