@@ -19,7 +19,7 @@ const hologram_msg: Dictionary = {
 
 var difficulty: Difficulty = Difficulty.NORMAL
 var _master_volume: float = 1
-var _music_volume: float = 0.5
+var _music_volume: float = 0.25
 var _sfx_volume: float = 1
 
 var crosshair_enabled: bool = false
