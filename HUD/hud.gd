@@ -14,14 +14,13 @@ extends CanvasLayer
 @onready var pause_menu: PauseMenu = $PauseMenu
 @onready var skill_check : SkillCheck = $SkillCheck
 
-var intro_video: VideoStreamTheora
+const _INTRO_VIDEO: VideoStreamTheora = preload("res://assets/video/intro_long.ogv")
 var end_callable: Callable = Callable()
 
 var messages: Array[Control] = []
 @export var MAX_MESSAGES: int = 5
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	intro_video = preload("res://assets/video/intro_long.ogv")
 	close_all_ui()
 
 
@@ -39,7 +38,7 @@ func play_cinematic(end_observer: Callable) -> void:
 	research_ui.hide()
 	debug_panel.show_debug_panel(false)
 	cinematic_player.show()
-	cinematic_player.stream = intro_video
+	cinematic_player.stream = _INTRO_VIDEO
 	cinematic_player.play()
 	end_callable = end_observer
 	

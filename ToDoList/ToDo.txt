@@ -29,10 +29,11 @@ Secondaires :
 	detruire les loot bags apres un certain temps ou quand ils sont vide 
 
 Martin:
-	fix end scene not playing
+	flame particle disapearing
 	disable focus in hud
 	fix lambda error with popup message
 Martin DONE:
+	fix end scene not playing in release mode
 	faster factory
 	augment skill check time
 	remove srpint instruction

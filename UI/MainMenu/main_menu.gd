@@ -4,6 +4,8 @@ extends Control
 @onready var settings_menu: Control = $SettingsMenu
 @onready var instructions: Control = $InstructionsUI
 @onready var credits_menu: Control = $Credits
+
+const _MAIN_SCENE: PackedScene = preload("res://main.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -29,7 +31,7 @@ func _populate_difficulty() -> void:
 	
 
 func _on_play_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://main.tscn")
+	get_tree().change_scene_to_packed(_MAIN_SCENE)
 
 
 func _on_options_button_pressed() -> void:

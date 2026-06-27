@@ -23,6 +23,9 @@ var critical_sent: bool = false
 @export var low_time: float = 90
 @export var critical_time: float = 30
 
+const _LOSE_SCENE = preload("res://EndScene/lose_scene.tscn")
+const _WIN_SCENE = preload("res://EndScene/win_scene.tscn")
+
 var stress_music: AudioStream = null
 
 # Called when the node enters the scene tree for the first time.
@@ -76,8 +79,8 @@ func _on_win() -> void:
 	space_sky_environment.start_rotation()
 	# play spin reactor animation
 	
-	await get_tree().create_timer(20).timeout
-	get_tree().change_scene_to_file("res://EndScene/win_scene.tscn")
+	await get_tree().create_timer(15).timeout
+	get_tree().change_scene_to_packed(_WIN_SCENE)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -103,7 +106,7 @@ func _on_challenge_fail() -> void:
 	print("YOU LOOSE")
 	
 	get_tree().create_timer(3).timeout.connect(func():
-		get_tree().change_scene_to_file("res://EndScene/lose_scene.tscn")
+		get_tree().change_scene_to_packed(_LOSE_SCENE)
 		)
 
 func _open_inventory(left: Inventory, right: Inventory = null) -> void:

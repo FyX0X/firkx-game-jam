@@ -1,11 +1,9 @@
 [gd_scene format=3 uid="uid://bmipxpffjwbj3"]
 
 [ext_resource type="PackedScene" uid="uid://cqx6t3s8a5xtc" path="res://EndScene/end_scene.tscn" id="1_k61xy"]
-[ext_resource type="VideoStream" uid="uid://drm25t8k5r3ra" path="res://assets/video/failed.ogv" id="2_yfncm"]
 [ext_resource type="AudioStream" uid="uid://bc26q1ir1rv55" path="res://assets/audio/gameover.wav" id="3_qxr6c"]
 
 [node name="EndScene" unique_id=1874490453 instance=ExtResource("1_k61xy")]
 title = "You Lose :("
 quit_button_text = "Give up :/"
-cinematic = ExtResource("2_yfncm")
 sound = ExtResource("3_qxr6c")
