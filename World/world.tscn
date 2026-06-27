@@ -314,6 +314,21 @@ type = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.399025, -6.9556794, -22.121586)
 type = 2
 
+[node name="CopperClump2" type="Node3D" parent="Features/BigOres" unique_id=1828746974]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -108.15942, 8.924683, 88.38495)
+
+[node name="BigOre" parent="Features/BigOres/CopperClump2" unique_id=1368484753 instance=ExtResource("15_oeat8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.300568, -7.1650753, -30.680294)
+type = 2
+
+[node name="BigOre2" parent="Features/BigOres/CopperClump2" unique_id=108778909 instance=ExtResource("15_oeat8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.319344, -7.3088474, -8.174164)
+type = 2
+
+[node name="BigOre3" parent="Features/BigOres/CopperClump2" unique_id=344646544 instance=ExtResource("15_oeat8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.399025, -6.9556794, -22.121586)
+type = 2
+
 [node name="TitaniumClump" type="Node3D" parent="Features/BigOres" unique_id=569415809]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.48613, 6.19366, 58.122528)
 
@@ -356,8 +371,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -201.80252, 6.9475718, 23.209
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.03517, -6.608485, -4.3463917)
 type = 3
 
+[node name="BigOre4" parent="Features/BigOres/TungstenClump" unique_id=2128897097 instance=ExtResource("15_oeat8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.03517, -6.608485, 23.464676)
+type = 3
+
 [node name="BigOre2" parent="Features/BigOres/TungstenClump" unique_id=531281222 instance=ExtResource("15_oeat8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.87581, -6.4890585, 19.859138)
+type = 3
+
+[node name="BigOre5" parent="Features/BigOres/TungstenClump" unique_id=839301055 instance=ExtResource("15_oeat8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.718445, -5.3393774, 19.859138)
 type = 3
 
 [node name="BigOre3" parent="Features/BigOres/TungstenClump" unique_id=2083619418 instance=ExtResource("15_oeat8")]
