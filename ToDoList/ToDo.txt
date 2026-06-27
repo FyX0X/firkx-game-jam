@@ -29,7 +29,9 @@ Secondaires :
 	detruire les loot bags apres un certain temps ou quand ils sont vide 
 
 Martin:
-	
+	augment skill check time
+	fix end scene not playing
+	remove srpint instruction
 	disable focus in hud
 	fix lambda error with popup message
 Martin DONE:

@@ -6,13 +6,13 @@ extends Ore
 
 signal resource_yielded(ore_type: Ore.OreType, amount: int)
 
-@export var total_yield: int = 15
+var total_yield: int = 15
 
 var remaining_yield: int
 
 var ratio = 0.75
 
-var health = 300.0
+var health = 500.0
 var current_health = health
 var accumulated_damage = 0.0
 var damage_threshold : float
@@ -22,7 +22,7 @@ func _ready() -> void:
 	# set parent class mesh instance
 	mesh_instance = $Vein/Vein_copper
 	
-	super()
+	super._ready()
 	remaining_yield = total_yield
 	add_to_group("minable")
 

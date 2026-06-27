@@ -23,5 +23,3 @@ mesh = SubResource("BoxMesh_k8fdt")
 [node name="CollisionShape3D" parent="." index="2" unique_id=1109386413]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07810211, -0.38539124, 0.079704285)
 shape = SubResource("BoxShape3D_qnjey")
-
-[editable path="Big"]
