@@ -117,6 +117,48 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5271587, 0.16387177, 4.547
 [node name="OreVein3" parent="Features/OreVeins/IronVeins" unique_id=129961330 instance=ExtResource("14_f23eu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.963942, 2.0164785, -2.3951492)
 
+[node name="IronVeins2" type="Node3D" parent="Features/OreVeins" unique_id=1126056597]
+transform = Transform3D(0.91977406, -0.012182772, -0.39225936, 0.07722985, 0.985592, 0.1504789, 0.38477445, -0.1687007, 0.9074628, -91.58924, -0.323534, -187.13692)
+
+[node name="OreVein" parent="Features/OreVeins/IronVeins2" unique_id=340497269 instance=ExtResource("14_f23eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.243401, -11.315193)
+
+[node name="OreVein2" parent="Features/OreVeins/IronVeins2" unique_id=1188169957 instance=ExtResource("14_f23eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5271587, 0.16387177, 4.547146)
+
+[node name="OreVein3" parent="Features/OreVeins/IronVeins2" unique_id=1276067367 instance=ExtResource("14_f23eu")]
+transform = Transform3D(0.26329803, -0.08893699, 0.9606062, 0.2017612, 0.97879755, 0.03531935, -0.9433803, 0.18451354, 0.27565935, 9.9639435, 2.0164795, -2.3951569)
+
+[node name="IronVeins3" type="Node3D" parent="Features/OreVeins" unique_id=1208612332]
+transform = Transform3D(0.91977406, -0.012182772, -0.39225936, 0.07722985, 0.985592, 0.1504789, 0.38477445, -0.1687007, 0.9074628, -17.453453, 2.202053, -148.1239)
+
+[node name="OreVein" parent="Features/OreVeins/IronVeins3" unique_id=1993977421 instance=ExtResource("14_f23eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.243401, -11.315193)
+
+[node name="OreVein2" parent="Features/OreVeins/IronVeins3" unique_id=659239538 instance=ExtResource("14_f23eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5271587, 0.16387177, 4.547146)
+
+[node name="OreVein3" parent="Features/OreVeins/IronVeins3" unique_id=1062894987 instance=ExtResource("14_f23eu")]
+transform = Transform3D(0.26329815, -0.08893703, 0.96060616, 0.20176116, 0.9787971, 0.03531926, -0.94338, 0.18451348, 0.27565926, 28.933052, -3.3869438, -0.5800934)
+
+[node name="OreVein4" parent="Features/OreVeins/IronVeins3" unique_id=504880301 instance=ExtResource("14_f23eu")]
+transform = Transform3D(0.18521531, 0.4847818, 0.8547989, -0.7137967, 0.664223, -0.22203809, -0.67541766, -0.56902766, 0.46906006, 14.273872, -1.6123505, 5.969406)
+
+[node name="IronVeins4" type="Node3D" parent="Features/OreVeins" unique_id=1302799244]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -4.9277534, 5.0270414, -11.869785)
+
+[node name="OreVein" parent="Features/OreVeins/IronVeins4" unique_id=327131241 instance=ExtResource("14_f23eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0890326, -11.315191)
+
+[node name="OreVein2" parent="Features/OreVeins/IronVeins4" unique_id=906010722 instance=ExtResource("14_f23eu")]
+transform = Transform3D(1, -1.1641533e-08, -3.7252903e-09, 2.0954758e-09, 1, 1.4901161e-08, 1.8626451e-09, 1.4901161e-08, 1, -4.3480644, -3.5000134, 4.703253)
+
+[node name="OreVein3" parent="Features/OreVeins/IronVeins4" unique_id=705555207 instance=ExtResource("14_f23eu")]
+transform = Transform3D(0.26329815, -0.08893703, 0.9606064, 0.20176114, 0.9787971, 0.03531924, -0.94338, 0.18451351, 0.27565926, 13.147312, -3.6316814, -8.311239)
+
+[node name="OreVein4" parent="Features/OreVeins/IronVeins4" unique_id=1951969725 instance=ExtResource("14_f23eu")]
+transform = Transform3D(0.18521531, 0.48478183, 0.854799, -0.7137967, 0.664223, -0.22203809, -0.67541766, -0.56902766, 0.4690601, 14.273872, -3.258174, 5.969406)
+
 [node name="CopperVeins" type="Node3D" parent="Features/OreVeins" unique_id=1091247516]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.181377, 0, 58.823643)
 
@@ -132,6 +174,36 @@ type = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.801903, -1.1726785, -31.902918)
 type = 2
 
+[node name="CopperVeins2" type="Node3D" parent="Features/OreVeins" unique_id=1144557110]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.88645, 2.9014816, 148.04602)
+
+[node name="OreVein" parent="Features/OreVeins/CopperVeins2" unique_id=1083429200 instance=ExtResource("14_f23eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.6592865, -5.506363)
+type = 2
+
+[node name="OreVein2" parent="Features/OreVeins/CopperVeins2" unique_id=1478701230 instance=ExtResource("14_f23eu")]
+transform = Transform3D(-0.31671906, -0.76085055, -0.5663881, -0.371345, 0.64892715, -0.6640756, 0.8728069, 0, -0.48806566, 10.654884, -1.0025692, -42.968765)
+type = 2
+
+[node name="OreVein3" parent="Features/OreVeins/CopperVeins2" unique_id=971315686 instance=ExtResource("14_f23eu")]
+transform = Transform3D(0.3936318, 0, 0.9192682, 0, 1, 0, -0.9192682, 0, 0.3936318, 28.818043, -2.4254146, -9.231934)
+type = 2
+
+[node name="CopperVeins3" type="Node3D" parent="Features/OreVeins" unique_id=1200156244]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.302864, 2.9014816, 148.04602)
+
+[node name="OreVein" parent="Features/OreVeins/CopperVeins3" unique_id=277606407 instance=ExtResource("14_f23eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5825386, -5.506363)
+type = 2
+
+[node name="OreVein2" parent="Features/OreVeins/CopperVeins3" unique_id=1055541989 instance=ExtResource("14_f23eu")]
+transform = Transform3D(-0.31671906, -0.76085055, -0.5663881, -0.371345, 0.64892715, -0.6640756, 0.8728069, 0, -0.48806566, 10.654884, -0.20017242, -42.968765)
+type = 2
+
+[node name="OreVein3" parent="Features/OreVeins/CopperVeins3" unique_id=1187538353 instance=ExtResource("14_f23eu")]
+transform = Transform3D(0.3936318, 0, 0.9192682, 0, 1, 0, -0.9192682, 0, 0.3936318, 28.818047, -2.5080209, -9.231934)
+type = 2
+
 [node name="TitaniumVeins" type="Node3D" parent="Features/OreVeins" unique_id=583341678]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.52197, 0, 38.259563)
 
@@ -144,6 +216,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.289658, 1.8721733, -26.98
 type = 1
 
 [node name="OreVein3" parent="Features/OreVeins/TitaniumVeins" unique_id=775562148 instance=ExtResource("14_f23eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.2912, 1.6800485, -25.793009)
+type = 1
+
+[node name="TitaniumVeins2" type="Node3D" parent="Features/OreVeins" unique_id=828818516]
+transform = Transform3D(0.6875212, 0, -0.7261643, 0, 1, 0, 0.7261643, 0, 0.6875212, 111.52197, 1.9834023, 19.6221)
+
+[node name="OreVein" parent="Features/OreVeins/TitaniumVeins2" unique_id=1506398039 instance=ExtResource("14_f23eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.84649, -0.006503105, -16.87101)
+type = 1
+
+[node name="OreVein2" parent="Features/OreVeins/TitaniumVeins2" unique_id=695138924 instance=ExtResource("14_f23eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.289658, 1.8721733, -26.989367)
+type = 1
+
+[node name="OreVein3" parent="Features/OreVeins/TitaniumVeins2" unique_id=1417924086 instance=ExtResource("14_f23eu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.2912, 1.6800485, -25.793009)
 type = 1
 
@@ -162,6 +249,36 @@ type = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.80391, 0.43862963, 28.049824)
 type = 3
 
+[node name="TungstenVeins2" type="Node3D" parent="Features/OreVeins" unique_id=241944591]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -245.63132, 0, -17.081345)
+
+[node name="OreVein" parent="Features/OreVeins/TungstenVeins2" unique_id=1438669218 instance=ExtResource("14_f23eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.171783, 0.059151173, 4.6334343)
+type = 3
+
+[node name="OreVein2" parent="Features/OreVeins/TungstenVeins2" unique_id=90103166 instance=ExtResource("14_f23eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.635864, 0.32280827, 12.957321)
+type = 3
+
+[node name="OreVein3" parent="Features/OreVeins/TungstenVeins2" unique_id=1765599840 instance=ExtResource("14_f23eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.906082, 0.52863646, 28.049824)
+type = 3
+
+[node name="TungstenVeins3" type="Node3D" parent="Features/OreVeins" unique_id=1185069676]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -169.64948, 0, 81.60919)
+
+[node name="OreVein" parent="Features/OreVeins/TungstenVeins3" unique_id=800419315 instance=ExtResource("14_f23eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.207733, 0.18895769, 4.633438)
+type = 3
+
+[node name="OreVein2" parent="Features/OreVeins/TungstenVeins3" unique_id=595498315 instance=ExtResource("14_f23eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9104, 0.92607975, 12.957321)
+type = 3
+
+[node name="OreVein3" parent="Features/OreVeins/TungstenVeins3" unique_id=381625982 instance=ExtResource("14_f23eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.468918, 0.43862963, 28.04982)
+type = 3
+
 [node name="BigOres" type="Node3D" parent="Features" unique_id=1671891971]
 
 [node name="IronClump" type="Node3D" parent="Features/BigOres" unique_id=547076157]
@@ -169,6 +286,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1336327, 5.9965553, -50.438
 
 [node name="BigOre" parent="Features/BigOres/IronClump" unique_id=1368361251 instance=ExtResource("15_oeat8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5695367, -5.7812815, -4.440445)
+
+[node name="BigOre4" parent="Features/BigOres/IronClump" unique_id=373181258 instance=ExtResource("15_oeat8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.02846, -5.7812815, -4.440445)
+
+[node name="BigOre5" parent="Features/BigOres/IronClump" unique_id=1127245984 instance=ExtResource("15_oeat8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.16338, -5.7812815, 20.202515)
 
 [node name="BigOre2" parent="Features/BigOres/IronClump" unique_id=26504148 instance=ExtResource("15_oeat8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.42883, -5.547784, -8.968983)
@@ -180,11 +303,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3392, -5.547784, 7.3284035
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.672714, 7.392111, 57.840126)
 
 [node name="BigOre" parent="Features/BigOres/CopperClump" unique_id=1770050487 instance=ExtResource("15_oeat8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.300568, -5.547784, -30.680294)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.300568, -6.8059425, -30.680294)
 type = 2
 
 [node name="BigOre2" parent="Features/BigOres/CopperClump" unique_id=1188111205 instance=ExtResource("15_oeat8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.319344, -5.926609, -14.010487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.319344, -5.926609, -8.17416)
 type = 2
 
 [node name="BigOre3" parent="Features/BigOres/CopperClump" unique_id=905162606 instance=ExtResource("15_oeat8")]
@@ -200,6 +323,26 @@ type = 1
 
 [node name="BigOre2" parent="Features/BigOres/TitaniumClump" unique_id=27396671 instance=ExtResource("15_oeat8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.175446, -6.0791636, -19.856018)
+type = 1
+
+[node name="BigOre4" parent="Features/BigOres/TitaniumClump" unique_id=510917160 instance=ExtResource("15_oeat8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.10423, -6.0791636, -29.63559)
+type = 1
+
+[node name="BigOre5" parent="Features/BigOres/TitaniumClump" unique_id=553748685 instance=ExtResource("15_oeat8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.342781, -4.1391706, -76.14289)
+type = 1
+
+[node name="BigOre6" parent="Features/BigOres/TitaniumClump" unique_id=823644901 instance=ExtResource("15_oeat8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.434395, -3.4654627, -105.67085)
+type = 1
+
+[node name="BigOre7" parent="Features/BigOres/TitaniumClump" unique_id=413059224 instance=ExtResource("15_oeat8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.62001, -4.128047, -105.67085)
+type = 1
+
+[node name="BigOre8" parent="Features/BigOres/TitaniumClump" unique_id=768007112 instance=ExtResource("15_oeat8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.463028, -3.7900038, -83.569565)
 type = 1
 
 [node name="BigOre3" parent="Features/BigOres/TitaniumClump" unique_id=723542012 instance=ExtResource("15_oeat8")]
