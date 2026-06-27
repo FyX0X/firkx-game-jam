@@ -3,7 +3,6 @@ extends Building
 
 @onready var Audioscience: AudioStreamPlayer3D = $Audioscience
 
-
 const science_values : Dictionary = {
 	"iron": 1,
 	"titanium": 2,
@@ -48,11 +47,10 @@ func _process(delta: float) -> void:
 		buffer -= 1
 
 func _consume_item() -> void:
-	var item = inventory.get_all_items().keys()[0]
-	if Audioscience and not Audioscience.playing:
-		Audioscience.play()
-	if science_values.get(item):
-		GlobalSignals.science_generated.emit(science_values[item])
-		inventory.remove_item(item,1)
-	else:
-		print(item + " not in dico science")
+	for item in science_values.keys():
+		if inventory.has_item(item):
+			GlobalSignals.science_generated.emit(science_values[item])
+			inventory.remove_item(item,1)
+			if Audioscience and not Audioscience.playing:
+				Audioscience.play()
+			return

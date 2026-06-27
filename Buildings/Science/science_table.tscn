@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://dhnoig0ipeb42" path="res://assets/audio/bubble.wav" id="3_wqs34"]
 [ext_resource type="PackedScene" uid="uid://c2kdxjpj3ksci" path="res://AttentionGrabber/attention_grabber.tscn" id="4_556th"]
 
-[node name="ScienceTable" unique_id=243835565 instance=ExtResource("1_73vyo")]
+[node name="ScienceTable" unique_id=243835565 groups=["science_table"] instance=ExtResource("1_73vyo")]
 script = ExtResource("2_yjxsp")
 is_breakable = false
 cost = {
