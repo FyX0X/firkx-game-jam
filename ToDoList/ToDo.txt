@@ -29,11 +29,11 @@ Secondaires :
 	detruire les loot bags apres un certain temps ou quand ils sont vide 
 
 Martin:
-	faster factory
 	fix end scene not playing
 	disable focus in hud
 	fix lambda error with popup message
 Martin DONE:
+	faster factory
 	augment skill check time
 	remove srpint instruction
 	fix inventory count label
