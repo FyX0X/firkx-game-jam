@@ -10,7 +10,7 @@ const drill_cost : Dictionary = {
 	"titanium" = {"iron_bar": 10, "titanium_bar": 3},
 	"copper" = {"iron_bar" : 10, "copper_bar": 3},
 	"tungsten" = {"iron_bar" : 20, "titanium_bar": 5, "copper_bar":5, "tungsten_bar": 3},
-	"broken" = {}
+	"broken" = {"iron" : 10} # just small boost of early iron
 }
 
 const dico_speed : Dictionary = {
