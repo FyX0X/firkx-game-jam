@@ -31,10 +31,10 @@ Secondaires :
 Martin:
 	augment skill check time
 	fix end scene not playing
-	remove srpint instruction
 	disable focus in hud
 	fix lambda error with popup message
 Martin DONE:
+	remove srpint instruction
 	fix inventory count label
 	broken_drill
 	jetpack
