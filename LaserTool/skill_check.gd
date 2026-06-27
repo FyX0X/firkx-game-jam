@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 func start_check() -> void:
 	current_angle = -90.0
 	
-	success_start = randf() * 360
+	success_start = randf() * 270 # not in first quadrant
 	success_end = success_start + 20.0
 	
 	active = true

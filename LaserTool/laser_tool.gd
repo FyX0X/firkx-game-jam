@@ -14,7 +14,7 @@ var _connected_target: Node  = null
 var qte_bonus_time : float = 0.0
 
 var _qte_active : bool = false
-var bonus_duration : float = 0.25
+var bonus_duration : float = 0.5
 
 var laser_material : Material = preload("res://assets/Material/purple_laser.tres")
 var subdivisions : int = 50
