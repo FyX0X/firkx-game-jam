@@ -24,8 +24,8 @@ color = Color(1, 0, 0, 0)
 
 [node name="TaskUI" parent="." unique_id=1609663277 instance=ExtResource("2_2q3se")]
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=585950824]
-custom_maximum_size = Vector2(3, 3)
+[node name="Crosshair" type="ColorRect" parent="." unique_id=585950824 groups=["crosshair"]]
+custom_minimum_size = Vector2(4, 4)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -37,6 +37,8 @@ offset_right = 1.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
 color = Color(1, 1, 1, 0.5019608)
 
 [node name="SpinReactorUI" parent="." unique_id=606762906 instance=ExtResource("6_tnm0g")]
