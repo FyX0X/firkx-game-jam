@@ -8,8 +8,8 @@ enum Difficulty {
 
 const time_limit: Dictionary = {
 	Difficulty.EASY: -1,
-	Difficulty.NORMAL: 600,
-	Difficulty.HARDCORE: 300
+	Difficulty.NORMAL: 900,
+	Difficulty.HARDCORE: 400
 }
 const hologram_msg: Dictionary = {
 	Difficulty.EASY: "Please proceed to activate the spin reactor.",
