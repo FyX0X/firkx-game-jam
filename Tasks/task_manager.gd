@@ -26,7 +26,7 @@ func _ready() -> void:
 	
 	automation_group = TaskGroup.create("Automation", [
 		TaskData.create("factory", "Build a factory to smelt your resources into bars"),
-		TaskData.create("science", "Convert resources into science using the science table"),
+		TaskData.create("science", "Convert raw resources into science using the science table"),
 		TaskData.create("copper_drill", "Build a copper drill on an appropriate ground deposit"),
 		TaskData.create("titanium_drill", "Build a titanium drill on an appropriate ground deposit"),
 		TaskData.create("tungsten_drill", "Build a tungsten drill on an appropriate ground deposit"),
