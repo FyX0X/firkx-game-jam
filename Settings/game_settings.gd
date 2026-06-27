@@ -22,6 +22,8 @@ var _master_volume: float = 1
 var _music_volume: float = 0.5
 var _sfx_volume: float = 1
 
+var crosshair_enabled: bool = false
+
 func _ready() -> void:
 	_apply_audio()
 
@@ -45,6 +47,12 @@ func get_sfx_volume() -> float:
 func set_sfx_volume(value: float) -> void:
 	_sfx_volume = value
 	_apply_audio()
+
+func set_crosshair(toggled_on: bool) -> void:
+	crosshair_enabled = toggled_on
+	var crosshair: ColorRect = get_tree().get_first_node_in_group("crosshair")
+	if crosshair:
+		crosshair.visible = crosshair_enabled
 
 func _apply_audio():
 	AudioServer.set_bus_volume_db(

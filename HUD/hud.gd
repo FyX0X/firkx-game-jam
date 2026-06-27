@@ -14,6 +14,8 @@ extends CanvasLayer
 @onready var pause_menu: PauseMenu = $PauseMenu
 @onready var skill_check : SkillCheck = $SkillCheck
 @onready var task_ui: TaskUI = $TaskUI
+@onready var crosshair: ColorRect = $Crosshair
+
 
 const _INTRO_VIDEO: VideoStreamTheora = preload("res://assets/video/intro_long.ogv")
 var end_callable: Callable = Callable()
@@ -23,6 +25,7 @@ var messages: Array[Control] = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	close_all_ui()
+	crosshair.visible = GameSettings.crosshair_enabled
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
