@@ -44,6 +44,7 @@ func _ready() -> void:
 	current_grid = PowerManager.create_new_grid()
 	current_grid.add_building(self)
 	PowerManager.connection(self)
+	flame_particle.emitting = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

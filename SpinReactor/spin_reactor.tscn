@@ -113,6 +113,7 @@ bus = &"SFX"
 
 [node name="Flame" type="GPUParticles3D" parent="." unique_id=937425068]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 37.620335, -20.7679)
+custom_aabb = AABB(0, -15, -15, 60, 30, 30)
 emitting = false
 amount = 400
 lifetime = 0.5
