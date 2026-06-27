@@ -1,8 +1,8 @@
 class_name Building
 extends StaticBody3D
 
-@export var max_health: float = 100
-@export var regen: float = 2
+@export var max_health: float = 50
+@export var regen: float = 1
 @export var is_breakable: bool = true
 var health : float
 var process_speed : float = 0.5 #base_speed

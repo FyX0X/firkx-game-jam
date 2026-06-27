@@ -29,6 +29,7 @@ Secondaires :
 	detruire les loot bags apres un certain temps ou quand ils sont vide 
 
 Martin:
+	faster factory
 	augment skill check time
 	fix end scene not playing
 	disable focus in hud
