@@ -5,7 +5,7 @@ extends StaticBody3D
 @export var regen: float = 1
 @export var is_breakable: bool = true
 var health : float
-var process_speed : float = 0.5 #base_speed
+var process_speed : float = 1 #base_speed
 var buffer : float = 0.0
 @export var cost : Dictionary = {}
 @onready var inventory : Inventory = $Inventory

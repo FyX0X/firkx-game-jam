@@ -30,11 +30,11 @@ Secondaires :
 
 Martin:
 	faster factory
-	augment skill check time
 	fix end scene not playing
 	disable focus in hud
 	fix lambda error with popup message
 Martin DONE:
+	augment skill check time
 	remove srpint instruction
 	fix inventory count label
 	broken_drill
