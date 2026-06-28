@@ -29,6 +29,7 @@ Secondaires :
 	detruire les loot bags apres un certain temps ou quand ils sont vide 
 
 Martin:
+	fix bug factory : sometimes incorrect bar result when mulitple ingredients are put in the factory
 	tasks
 	disable focus in hud
 	fix lambda error with popup message
