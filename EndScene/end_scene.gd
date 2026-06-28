@@ -17,6 +17,7 @@ func _ready() -> void:
 	assert(sound != null)
 	title_label.text = title
 	quit_button.text = quit_button_text
+	end_sound_player.stream = sound
 	end_sound_player.play()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cqx6t3s8a5xtc"]
 
 [ext_resource type="Script" uid="uid://bdopv724nnndl" path="res://EndScene/end_scene.gd" id="1_rq2kn"]
-[ext_resource type="AudioStream" uid="uid://bc26q1ir1rv55" path="res://assets/audio/gameover.wav" id="2_eh40q"]
 [ext_resource type="PackedScene" uid="uid://bbh31pem6iexf" path="res://UI/MainMenu/credit.tscn" id="3_rq2kn"]
 
 [node name="EndScene" type="Control" unique_id=1874490453]
@@ -29,7 +28,6 @@ text = "TITLE"
 horizontal_alignment = 1
 
 [node name="EndSound" type="AudioStreamPlayer" parent="." unique_id=1875584184]
-stream = ExtResource("2_eh40q")
 bus = &"SFX"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1686921837]

@@ -76,11 +76,13 @@ func _ready() -> void:
 	debug_panel = get_tree().get_first_node_in_group("debug_panel")
 	spawnpoint = get_tree().get_first_node_in_group("spawn")
 	print("player _ready: REMOVE FREE RESOURCES")
-	# inventory.add_item("iron_bar", 200)
-	# inventory.add_item("copper_bar", 200)
-	# inventory.add_item("titanium_bar", 200)
-	# inventory.add_item("tungsten_bar", 200)
-	# science_points += 100
+	
+	if false:
+		inventory.add_item("iron_bar", 200)
+		inventory.add_item("copper_bar", 200)
+		inventory.add_item("titanium_bar", 200)
+		inventory.add_item("tungsten_bar", 200)
+		science_points += 100
 	 
 	assert(hud_layer != null)
 	assert(debug_panel != null)
