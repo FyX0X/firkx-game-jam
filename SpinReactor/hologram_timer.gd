@@ -46,7 +46,7 @@ func _on_time_critical() -> void:
 
 func _process(_delta):
 	var t = main.time_left
-	time_label.text = "Remaining Time : " + _format_time(t)
+	time_label.text = "Remaining Time : " + StringUtils.format_time_m_s(t)
 
 func set_time_visibility(shown: bool) -> void:
 	time_label.visible = shown
@@ -65,9 +65,3 @@ func set_hologram_color(color: Color) -> void:
 
 func set_message(msg: String) -> void:
 	message_label.text = msg
-
-func _format_time(t: float) -> String:
-	var minutes = int(t) / 60
-	var seconds = int(t) % 60
-
-	return "%02d:%02d" % [minutes, seconds]
