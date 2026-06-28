@@ -1,7 +1,7 @@
 class_name Factory
 extends Building
 
-@export var recipe : Dictionary = {} #ie my_recipe = {"input" : {ITEMS}, "output" : {ITEMS}, "time" : FLOAT}
+var recipe : Dictionary = {} #ie my_recipe = {"input" : {ITEMS}, "output" : {ITEMS}, "time" : FLOAT}
 var outputs : Dictionary = {}
 @onready var Audiofactory: AudioStreamPlayer3D = $Audiofactory
 
@@ -74,7 +74,3 @@ func _can_process_recipe(r: Dictionary) -> bool:
 		if not items.has(item) or items[item] < amount_needed:
 			return false
 	return true
-	
-func set_recipe(new_recipe : Dictionary):
-	recipe = new_recipe
-	

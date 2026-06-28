@@ -19,15 +19,6 @@ size = Vector3(3.851097, 0.26430893, 9.095947)
 
 [node name="Factory" unique_id=243835565 groups=["electrical"] instance=ExtResource("1_7h7j1")]
 script = ExtResource("2_4jq7f")
-recipe = {
-"input": {
-"iron": 2
-},
-"output": {
-"iron_bar": 1
-},
-"time": 1.5
-}
 cost = {
 "iron": 20
 }
