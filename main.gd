@@ -15,6 +15,7 @@ enum GameState { INTRO, GAME }
 var state: GameState = GameState.INTRO
 
 var timer_running: bool = false
+var time: float = 0
 var time_left: float = -1
 signal time_low_signal
 signal time_critical_signal
@@ -63,7 +64,7 @@ func set_state(new_state: GameState) -> void:
 			player.active = false
 			hud_layer.play_cinematic(_on_intro_finished)
 		GameState.GAME:
-			timer_running = GameSettings.difficulty != GameSettings.Difficulty.EASY
+			timer_running = true
 			player.active = true
 			player.set_state(Player.State.NORMAL)
 
@@ -76,6 +77,7 @@ func _on_outro_finished() -> void:
 
 func _on_win() -> void:
 	timer_running = false
+	Stats.finish_time = time
 	space_sky_environment.start_rotation()
 	# play spin reactor animation
 	
@@ -85,6 +87,10 @@ func _on_win() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if not timer_running:
+		return
+	time += delta
+	
+	if GameSettings.difficulty == GameSettings.Difficulty.EASY:
 		return
 	
 	time_left -= delta

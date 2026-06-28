@@ -1,7 +1,23 @@
 [gd_scene format=3 uid="uid://bfx3jwp0wsnfd"]
 
 [ext_resource type="PackedScene" uid="uid://cqx6t3s8a5xtc" path="res://EndScene/end_scene.tscn" id="1_h3fmx"]
+[ext_resource type="Script" uid="uid://c5258fjsu61a8" path="res://EndScene/win_scene.gd" id="2_eq24g"]
 [ext_resource type="AudioStream" uid="uid://1s4nbr3ln0hb" path="res://assets/audio/winning.wav" id="3_eq24g"]
 
-[node name="EndScene" unique_id=1874490453 instance=ExtResource("1_h3fmx")]
+[node name="WinScene" unique_id=1874490453 instance=ExtResource("1_h3fmx")]
+script = ExtResource("2_eq24g")
+title = null
+quit_button_text = null
 sound = ExtResource("3_eq24g")
+
+[node name="SpeedrunLabel" type="Label" parent="." index="4" unique_id=724459319]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = -11.5
+offset_right = 143.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Clear time : xx:xx:xx"

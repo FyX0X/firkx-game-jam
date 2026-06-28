@@ -21,6 +21,7 @@ GlobalSignals="*uid://b065htlq3swpc"
 PowerManager="*uid://ear7df81rs55"
 GameSettings="*uid://c1jaxnffettwi"
 MusicManager="*uid://bit3bwqamb6ho"
+Stats="*uid://chr4e71u3j4ew"
 
 [input]
 
